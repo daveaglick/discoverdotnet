@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Langdon';
+    src:url('langdon.woff') format('woff'),
+        url('langdon.svg#Langdon') format('svg'),
+        url('langdon.eot'),
+        url('langdon.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%; 
+    background-color: rgb(248, 249, 250);
+}
+
+main {
+    flex: 1;
+}
+
+.flex-0 {
+    flex: 0;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+header .jumbotron {                
+    background: rgb(86, 61, 124);
+    background: -webkit-linear-gradient(to bottom, rgb(149, 123, 190), rgb(86, 61, 124));
+    background: linear-gradient(to bottom, rgb(149, 123, 190), rgb(86, 61, 124));
+}
+
+header .jumbotron .lead {
+    font-size: 26px;
+}
+
+.accent-primary {
+    font-family: 'Langdon', sans-serif;
+    text-transform: lowercase;
+}
+
+.accent-secondary {
+    font-family: 'Langdon', sans-serif;
+    text-transform: uppercase;
+}
+
+.accent-script {
+    font-family: 'Lobster', cursive;
+}
+
+.card > .card-body:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.075);
+}

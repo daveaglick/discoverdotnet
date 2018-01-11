@@ -1,0 +1,14 @@
+#n Wyam.Yaml
+#n Wyam.Razor
+#n Wyam.Markdown
+
+Pipelines.Add("Pages",
+	ReadFiles("{!_,}*.cshtml"),
+	Razor()
+        .WithLayout("_Layout.cshtml"),
+	WriteFiles(".html")
+);
+
+Pipelines.Add("Resources",
+    CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,}")
+);
