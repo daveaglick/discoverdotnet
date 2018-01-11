@@ -1,0 +1,14 @@
+{
+    "date": "Thursday, January 11th, 2018",
+    "title": "Wyam",
+    "link": "/projects/wyam",
+    "description": "A modular static content and static site generator.",
+    "website": "https://wyam.io",
+    "stars": 14,
+    "forkCount": 154,
+    "issueCount": 85,
+    "source": "https://github.com/Wyamio/Wyam",
+    "nuget": "Wyam",
+    "twitter": "wyamio",
+    "chat": "https://gitter.im/Wyamio/Wyam"
+}

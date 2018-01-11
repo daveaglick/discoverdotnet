@@ -6,19 +6,22 @@
         
         <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@next/dist/css/bootstrap.min.css"/>
         <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+        <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
         <link type="text/css" rel="stylesheet" href="/assets/styles.css"/>
+        <script src="//cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script> 
         <script src="//cdn.jsdelivr.net/npm/vue"></script>
         <script src="//cdn.jsdelivr.net/npm/babel-polyfill@latest/dist/polyfill.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/http-vue-loader"></script>
+        <script src="//cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script defer src="//use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
     </head>
     <body>
         <div id="app" class="d-flex flex-column flex-nowrap h-100">
             <header class="mb-4">
                 <b-jumbotron fluid text-variant="white" class="text-center mb-0">
-                    <b-img slot="header" src="/assets/logo-white.svg" fluid alt="Discover .NET" style="min-width: 50%"></b-img>
-                    <span slot="lead" class="accent-script">Awesome .NET open source & community resources</span>
+                    <div><a href="/"><b-img slot="header" src="/assets/logo-white.svg" fluid alt="Discover .NET" style="min-width: 50%"></b-img></a></div>
+                    <div class="lead accent-script">Awesome .NET open source & community resources</div>
                 </b-jumbotron>
                 <b-navbar toggleable="md" type="dark" variant="dark">
                     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
@@ -52,7 +55,20 @@
                 </b-container>
             </footer>
         </div>
-        <script>
+        <script type="text/javascript">
+            Vue.config.debug = true; 
+            Vue.config.devtools = true
+
+            Vue.component('card', httpVueLoader('/components/card.vue'));
+
+            Vue.filter('no-protocol', function (value) {
+                if (!value)
+                {
+                    return '';
+                }
+                return value.replace(/^\/\/|^.*?:(\/\/)?/, '');
+            });
+
             new Vue({
                 el: '#app'
             });

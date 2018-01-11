@@ -2,11 +2,20 @@
 #n Wyam.Razor
 #n Wyam.Markdown
 
+Pipelines.Add("Projects",
+    ReadFiles("projects/*.md"),
+    FrontMatter(Yaml()),    
+    Razor()
+        .WithLayout("/_Layout.cshtml"),
+    WriteFiles(".html")
+);
+
 Pipelines.Add("Pages",
-	ReadFiles("{!_,}*.cshtml"),
-	Razor()
-        .WithLayout("_Layout.cshtml"),
-	WriteFiles(".html")
+    ReadFiles("**/{!_,}*.cshtml"),
+    FrontMatter(Yaml()),
+    Razor()
+        .WithLayout("/_Layout.cshtml"),
+    WriteFiles(".html")
 );
 
 Pipelines.Add("Resources",
