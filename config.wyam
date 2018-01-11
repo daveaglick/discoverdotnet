@@ -1,10 +1,35 @@
 #n Wyam.Yaml
 #n Wyam.Razor
 #n Wyam.Markdown
+#n Wyam.GitHub
+
+using Octokit;
 
 Pipelines.Add("Projects",
     ReadFiles("projects/*.md"),
     FrontMatter(Yaml()),    
+    Execute((doc, ctx) =>
+    {
+        // Extract the GitHub owner and name
+        Uri source;
+        if(Uri.TryCreate(doc.String("Source"), UriKind.Absolute, out source)
+            && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
+        {
+            return ctx.GetDocument(doc, new MetadataItems
+            {
+                { "GitHubOwner", source.Segments[1].Trim('/') },
+                { "GitHubName", source.Segments[2].Trim('/') }
+            });
+        }
+        return doc;
+    }),
+    If(@doc.ContainsKey("GitHubOwner"),        
+        GitHub()
+            .WithRequest("GitHubRepository", (doc, ctx, gh) => gh.Repository.Get(doc.String("GitHubOwner"), doc.String("GitHubName"))),
+        Meta("StargazersCount", @doc.Get<Repository>("GitHubRepository").StargazersCount),
+        Meta("ForksCount", @doc.Get<Repository>("GitHubRepository").ForksCount),
+        Meta("OpenIssuesCount", @doc.Get<Repository>("GitHubRepository").OpenIssuesCount)
+    ),
     Razor()
         .WithLayout("/_Layout.cshtml"),
     WriteFiles(".html")

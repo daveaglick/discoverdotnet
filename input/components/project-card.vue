@@ -1,18 +1,18 @@
 <template>
     <card :data="$props.data">
-        <b-card-body v-if="data.stars" class="flex-0">
+        <b-card-body v-if="data.stargazersCount" class="flex-0">
             <b-row class="text-center">
                 <b-col>
                     <div><i class="fas fa-star"></i></div>
-                    <h4>{{ data.stars }}</h4>
+                    <h4>{{ data.stargazersCount }}</h4>
                 </b-col>
                 <b-col>
                     <div><i class="fas fa-code-branch"></i></div>
-                    <h4>{{ data.forkCount }}</h4>
+                    <h4>{{ data.forksCount }}</h4>
                 </b-col>
                 <b-col>
                     <div><i class="fas fa-bug"></i></div>
-                    <h4>{{ data.issueCount }}</h4>
+                    <h4>{{ data.openIssuesCount }}</h4>
                 </b-col>
             </b-row>
         </b-card-body>
