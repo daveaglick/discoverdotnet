@@ -46,7 +46,7 @@ Task("Build")
     {
         Wyam(new WyamSettings
         {
-            UpdatePackages = true
+            //UpdatePackages = true
         });  
     });
 
@@ -58,7 +58,7 @@ Task("Preview")
         {
             Preview = true,
             Watch = true
-            UpdatePackages = true
+            //UpdatePackages = true
         });  
     });
 

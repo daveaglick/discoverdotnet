@@ -4,9 +4,12 @@
             <h1><span class="accent-primary">Discovery</span> <span class="accent-script small">of the</span> <span class="accent-secondary">day</span></h1>
             <hr />
             <h5 class="accent-script">{{ discovery.date }}</h5>
-            <p>A new featured .NET open source project (almost) every day. Add the <a href="/feed.rss">RSS feed</a> to your feed reader to collect them all.</p>
+            <p class="small">A new discovery (almost) every day.<br />Add the <a href="/feed.rss">RSS feed</a> to your feed reader to collect them all.</p>
         </div>
-        <project-card :data="discovery"></project-card>
+        <b-row>
+            <b-col>Short writeup of the daily discovery goes here.</b-col>
+            <b-col><component :is="getCard(discovery)" :card-data="discovery"></component></b-col>
+        </b-row>        
     </div>
 </template>
 

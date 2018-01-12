@@ -32,7 +32,6 @@
                                 <b-nav-item href="#">Help Wanted</b-nav-item>
                                 <b-nav-item href="#">Resources</b-nav-item>
                                 <b-nav-item href="#">Blogs</b-nav-item>
-                                <b-nav-item href="#">People</b-nav-item>
                                 <b-nav-item href="#">Events</b-nav-item>
                             </b-navbar-nav>                            
                             <b-navbar-nav class="float-right">
@@ -59,7 +58,8 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            Vue.component('card', httpVueLoader('/components/card.vue'));
+            Vue.component('card', httpVueLoader('/components/card.vue'));            
+            Vue.component('project', httpVueLoader('/components/project.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -72,6 +72,16 @@
             new Vue({
                 el: '#app'
             });
+            
+            function getCard(cardData) {
+                if(cardData && cardData.link)
+                {
+                    if(cardData.link.startsWith('/projects')) {
+                        return 'project';
+                    }
+                }
+                return 'card';
+            }
         </script>
     </body>
 </html>

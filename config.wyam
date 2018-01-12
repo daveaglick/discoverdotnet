@@ -1,7 +1,7 @@
 #n Wyam.Yaml
 #n Wyam.Razor
 #n Wyam.Markdown
-#n Wyam.GitHub
+#n Octokit
 
 using Octokit;
 
@@ -15,21 +15,23 @@ Pipelines.Add("Projects",
         if(Uri.TryCreate(doc.String("Source"), UriKind.Absolute, out source)
             && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
         {
+            string owner = source.Segments[1].Trim('/');
+            string name = source.Segments[2].Trim('/');
+
+            // Connect to GitHub and get the repository
+            GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"));
+            Repository repository = github.Repository.Get(owner, name).Result;
+
+            // Return a document with GitHub metadata
             return ctx.GetDocument(doc, new MetadataItems
             {
-                { "GitHubOwner", source.Segments[1].Trim('/') },
-                { "GitHubName", source.Segments[2].Trim('/') }
+                { "StargazersCount", repository.StargazersCount },
+                { "ForksCount", repository.ForksCount },
+                { "OpenIssuesCount", repository.OpenIssuesCount }
             });
         }
         return doc;
     }),
-    If(@doc.ContainsKey("GitHubOwner"),        
-        GitHub()
-            .WithRequest("GitHubRepository", (doc, ctx, gh) => gh.Repository.Get(doc.String("GitHubOwner"), doc.String("GitHubName"))),
-        Meta("StargazersCount", @doc.Get<Repository>("GitHubRepository").StargazersCount),
-        Meta("ForksCount", @doc.Get<Repository>("GitHubRepository").ForksCount),
-        Meta("OpenIssuesCount", @doc.Get<Repository>("GitHubRepository").OpenIssuesCount)
-    ),
     Razor()
         .WithLayout("/_Layout.cshtml"),
     WriteFiles(".html")

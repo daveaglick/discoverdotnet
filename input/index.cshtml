@@ -1,8 +1,14 @@
-<daily-discovery></daily-discovery>
+<b-row>
+    <b-col>
+        <daily-discovery></daily-discovery>
+    </b-col>
+    <b-col>
+        <p>Most recent blog posts and other stuff goes here.</p>
+    </b-col>
+</b-row>
 <previous-discoveries></previous-discoveries>
 
 <script type="text/javascript">
-    Vue.component('project-card', httpVueLoader('/components/project-card.vue'));
     Vue.component('daily-discovery', httpVueLoader('/components/daily-discovery.vue'));
     Vue.component('previous-discoveries', httpVueLoader('/components/previous-discoveries.vue'));
 </script>
