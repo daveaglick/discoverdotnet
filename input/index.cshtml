@@ -1,14 +1,41 @@
 <b-row>
     <b-col>
-        <daily-discovery></daily-discovery>
+        <discovery></discovery>
     </b-col>
     <b-col>
-        <p>Most recent blog posts and other stuff goes here.</p>
+        <div class="text-center">
+            <h3>
+                <span class="accent-secondary">Recent</span>
+                <span class="accent-primary">Blog</span>
+                <span class="accent-secondary">Posts</span>
+                
+                <!-- This adds extra height to line up the hr -->
+                <span class="h1"></span>
+            </h3>
+        </div>
+        <hr/>
+        <b-card no-body class="mb-4">
+            <b-list-group flush>
+                <b-list-group-item>
+                    <div class="font-weight-bold"><a href="#">Post title</a></div>
+                    <div class="small">Friday, January 12, 2018</div>
+                    <div><a href="#">Name (or link?) of the blog</a></div>
+                </b-list-group-item>
+                <b-list-group-item>
+                    <div class="font-weight-bold"><a href="#">Post title</a></div>
+                    <div class="small">Friday, January 12, 2018</div>
+                    <div><a href="#">Name (or link?) of the blog</a></div>
+                </b-list-group-item>
+            </b-list-group>
+        </b-card>
+        <div class="text-right">
+            <b-button href="/blogs">View More Blogs</b-button>
+        </div>
     </b-col>
 </b-row>
-<previous-discoveries></previous-discoveries>
+<discoveries></discoveries>
 
 <script type="text/javascript">
-    Vue.component('daily-discovery', httpVueLoader('/components/daily-discovery.vue'));
-    Vue.component('previous-discoveries', httpVueLoader('/components/previous-discoveries.vue'));
+    Vue.component('discovery', httpVueLoader('/components/discovery.vue'));
+    Vue.component('discoveries', httpVueLoader('/components/discoveries.vue'));
 </script>

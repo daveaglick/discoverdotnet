@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="text-center mt-5">
-            <h3><span class="accent-secondary">Previous discoveries</span></h3>
+            <h3><span class="accent-secondary">Past Discoveries</span></h3>
             <hr />
         </div>
         <b-card-group deck>

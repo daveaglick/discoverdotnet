@@ -1,6 +1,7 @@
-#n Wyam.Yaml
-#n Wyam.Razor
-#n Wyam.Markdown
+//#n Wyam.Yaml
+//#n Wyam.Razor
+//#n Wyam.Markdown
+//#n Wyam.Json
 #n Octokit
 
 using Octokit;
@@ -22,19 +23,70 @@ Pipelines.Add("Projects",
             GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"));
             Repository repository = github.Repository.Get(owner, name).Result;
 
-            // Return a document with GitHub metadata
-            return ctx.GetDocument(doc, new MetadataItems
+            // Get the metadata
+            MetadataItems metadata = new MetadataItems
             {
                 { "StargazersCount", repository.StargazersCount },
                 { "ForksCount", repository.ForksCount },
                 { "OpenIssuesCount", repository.OpenIssuesCount }
-            });
+            };
+            if(!doc.ContainsKey("Description"))
+            {
+                metadata.Add("Description", repository.Description);
+            }
+            if(!doc.ContainsKey("Website"))
+            {
+                metadata.Add("Website", repository.Homepage);
+            }
+
+            // Return a document with GitHub metadata
+            return ctx.GetDocument(doc, metadata);
         }
         return doc;
     }),
     Razor()
         .WithLayout("/_Layout.cshtml"),
-    WriteFiles(".html")
+    WriteFiles(".html"),
+    Meta("Link", @ctx.GetLink(@doc)),
+    GenerateJson(new []
+    {
+        "Title",
+        "Link",
+        "Description",
+        "Source",
+        "StargazersCount",
+        "ForksCount",
+        "OpenIssuesCount",
+        "Website",
+        "NuGet",
+        "Twitter",
+        "Chat",
+        "Language",
+        "Tags",
+        "DiscoveryDate",
+        "Comment"
+    }, "Json")
+        .WithCamelCase()
+);
+
+Pipelines.Add("ProjectsData",
+    Content("[" + string.Join(",", @ctx.Documents.FromPipeline("Projects").Select(x => x.String("Json"))) + "]"),
+    WriteFiles((doc, ctx) => "data/projects.json")
+);
+
+Pipelines.Add("Discoveries",
+    Documents("Projects"),
+    Where(@doc.ContainsKey("DiscoveryDate")),
+    OrderBy(@doc.DateTime("DiscoveryDate"))
+        .Descending(),
+    Content(@doc.String("Json")),
+    Branch(
+        // Daily discovery
+        Take(1),
+        WriteFiles((doc, ctx) => "data/discovery.json")
+    )
+    // Past discoveries
+    // TODO: skip 1, take 4 (or 8?)
 );
 
 Pipelines.Add("Pages",

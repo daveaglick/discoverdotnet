@@ -56,10 +56,17 @@ Task("Preview")
     {
         Wyam(new WyamSettings
         {
+            //UpdatePackages = true,
             Preview = true,
             Watch = true
-            //UpdatePackages = true
         });  
+    });
+
+Task("Debug")
+    .Does(() =>
+    {
+        StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
+            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\" -p");
     });
 
 Task("Publish")
