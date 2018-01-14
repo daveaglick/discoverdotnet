@@ -20,7 +20,11 @@ Pipelines.Add("Projects",
             string name = source.Segments[2].Trim('/');
 
             // Connect to GitHub and get the repository
-            GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"));
+            Wyam.Common.Tracing.Trace.Information($"Getting GitHub data for {owner}/{name}");
+            GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
+            {
+                Credentials = new Credentials(ctx.String("GitHubToken"))
+            };
             Repository repository = github.Repository.Get(owner, name).Result;
 
             // Get the metadata
@@ -87,6 +91,7 @@ Pipelines.Add("Discoveries",
     )
     // Past discoveries
     // TODO: skip 1, take 4 (or 8?)
+    // TODO: RSS feed
 );
 
 Pipelines.Add("Pages",

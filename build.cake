@@ -44,9 +44,14 @@ Task("Build")
     .Description("Generates the site.")
     .Does(() =>
     {
+        var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         Wyam(new WyamSettings
         {
-            //UpdatePackages = true
+            //UpdatePackages = true,
+            Settings = new Dictionary<string, object>
+            {
+                { "GitHubToken", gitHubToken }
+            }
         });  
     });
 
@@ -54,19 +59,25 @@ Task("Preview")
     .Description("Generates and previews the site.")
     .Does(() =>
     {
+        var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         Wyam(new WyamSettings
         {
             //UpdatePackages = true,
             Preview = true,
-            Watch = true
+            Watch = true,
+            Settings = new Dictionary<string, object>
+            {
+                { "GitHubToken", gitHubToken }
+            }
         });  
     });
 
 Task("Debug")
     .Does(() =>
     {
+        var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\" -p");
+            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\" -g GitHubToken=\"" + gitHubToken + "\" -p -w");
     });
 
 Task("Publish")

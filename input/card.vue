@@ -4,6 +4,7 @@
             <h4 v-if="cardData.link"><a :href="cardData.link" class="text-light">{{ cardData.title }}</a></h4>
             <h4 v-else>{{ cardData.title }}</h4>
             <h6 v-if="cardData.website"><a :href="cardData.website" class="text-light">{{ cardData.website | no-protocol }}</a></h6>
+            <h6 v-else>&nbsp;</h6>
         </div>
         <slot></slot>
         <b-card-body>        

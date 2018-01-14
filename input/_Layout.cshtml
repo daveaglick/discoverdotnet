@@ -28,11 +28,12 @@
                     <b-collapse is-nav id="nav_collapse">
                         <b-container>
                             <b-navbar-nav class="float-left">
-                                <b-nav-item href="#">Projects</b-nav-item>
+                                <b-nav-item href="/projects">Projects</b-nav-item>
                                 <b-nav-item href="#">Help Wanted</b-nav-item>
-                                <b-nav-item href="#">Resources</b-nav-item>
-                                <b-nav-item href="#">Blogs</b-nav-item>
-                                <b-nav-item href="#">Events</b-nav-item>
+                                <b-nav-item href="/resources">Resources</b-nav-item>
+                                <b-nav-item href="/blogs">Blogs</b-nav-item>
+                                <b-nav-item href="/events">Events</b-nav-item>
+                                <b-nav-item href="/events">People</b-nav-item>
                             </b-navbar-nav>                            
                             <b-navbar-nav class="float-right">
                                 <b-nav-item href="#">Get Involved</b-nav-item>
@@ -58,8 +59,8 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            Vue.component('card', httpVueLoader('/components/card.vue'));            
-            Vue.component('project', httpVueLoader('/components/project.vue'));
+            Vue.component('card', httpVueLoader('/card.vue'));            
+            Vue.component('project', httpVueLoader('/projects/project.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
