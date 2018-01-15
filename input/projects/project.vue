@@ -18,14 +18,6 @@
             </b-row>
         </b-card-body>     
         <dl slot="footer" class="small row">
-            <dt v-if="cardData.source" class="col-sm-6">Source</dt>
-            <dd v-if="cardData.source" class="col-sm-6"><a :href="cardData.source">{{ cardData.source | no-protocol }}</a></dd>
-            <dt v-if="cardData.nuGet" class="col-sm-6">NuGet</dt>
-            <dd v-if="cardData.nuGet" class="col-sm-6"><a :href="'https://www.nuget.org/packages/' + cardData.nuGet">{{ cardData.nuget }}</a></dd>
-            <dt v-if="cardData.twitter" class="col-sm-6">Twitter</dt>
-            <dd v-if="cardData.twitter" class="col-sm-6"><a :href="'https://twitter.com/' + cardData.twitter">@{{ cardData.twitter }}</a></dd>
-            <dt v-if="cardData.chat" class="col-sm-6">Chat</dt>
-            <dd v-if="cardData.chat" class="col-sm-6"><a :href="cardData.chat">{{ cardData.chat | no-protocol }}</a></dd>
             <dt class="col-sm-6">Language</dt>
             <dd class="col-sm-6"><a href="#"><b-badge>C#</b-badge></a></dd>
             <dt class="col-sm-6">Tag(s)</dt>

@@ -77,7 +77,7 @@ Task("Debug")
     {
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\" -g GitHubToken=\"" + gitHubToken + "\" -p -w");
+            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\" -s GitHubToken=\"" + gitHubToken + "\" -p -w");
     });
 
 Task("Publish")
