@@ -64,7 +64,8 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            Vue.component('card', httpVueLoader('/card.vue'));            
+            Vue.component('card', httpVueLoader('/card.vue'));   
+            Vue.component('cards', httpVueLoader('/cards.vue'));          
             Vue.component('project', httpVueLoader('/projects/project.vue'));
 
             Vue.filter('no-protocol', function (value) {
@@ -75,19 +76,24 @@
                 return value.replace(/^\/\/|^.*?:(\/\/)?/, '');
             });
 
+            Vue.mixin({
+                methods: {
+                    getCard: function(cardData) {
+                        var link = String(cardData.link);
+                        if(link)
+                        {
+                            if(link.startsWith('/projects')) {
+                                return 'project';
+                            }
+                        }
+                        return 'card';
+                    }
+                }
+            });
+
             new Vue({
                 el: '#app'
             });
-            
-            function getCard(cardData) {
-                if(cardData && cardData.link)
-                {
-                    if(cardData.link.startsWith('/projects')) {
-                        return 'project';
-                    }
-                }
-                return 'card';
-            }
         </script>
     </body>
 </html>

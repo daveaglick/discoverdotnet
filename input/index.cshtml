@@ -5,29 +5,41 @@
     <b-col>
         <div class="text-center">
             <h3>
-                <span class="accent-secondary">Recent</span>
-                <span class="accent-primary">Blog</span>
-                <span class="accent-secondary">Posts</span>
+                <span class="accent-secondary">Yesterday's</span>
+                <span class="accent-primary">News</span>
                 
                 <!-- This adds extra height to line up the hr -->
                 <span class="h1"></span>
             </h3>
+            <hr/>
+            <p class="small">A roundup of blog posts from the previous day.</p>
         </div>
-        <hr/>
-        <b-card no-body class="mb-4">
-            <b-list-group flush>
-                <b-list-group-item>
-                    <div class="font-weight-bold"><a href="#">Post title</a></div>
-                    <div class="small">Friday, January 12, 2018</div>
-                    <div><a href="#">Name (or link?) of the blog</a></div>
-                </b-list-group-item>
-                <b-list-group-item>
-                    <div class="font-weight-bold"><a href="#">Post title</a></div>
-                    <div class="small">Friday, January 12, 2018</div>
-                    <div><a href="#">Name (or link?) of the blog</a></div>
-                </b-list-group-item>
-            </b-list-group>
-        </b-card>
+
+        <b-card-group deck class="mb-4">
+            <b-card>
+                <div class="font-weight-bold"><a href="#">Post title</a></div>
+                <div class="small">Friday, January 12, 2018</div>
+                <div><a href="#">Name (or link?) of the blog</a></div>                
+            </b-card>
+            <b-card>
+                <div class="font-weight-bold"><a href="#">Post title</a></div>
+                <div class="small">Friday, January 12, 2018</div>
+                <div><a href="#">Name (or link?) of the blog</a></div>                
+            </b-card>
+        </b-card-group>        
+        <b-card-group deck class="mb-4">
+            <b-card>
+                <div class="font-weight-bold"><a href="#">Post title</a></div>
+                <div class="small">Friday, January 12, 2018</div>
+                <div><a href="#">Name (or link?) of the blog</a></div>                
+            </b-card>
+            <b-card>
+                <div class="font-weight-bold"><a href="#">Post title</a></div>
+                <div class="small">Friday, January 12, 2018</div>
+                <div><a href="#">Name (or link?) of the blog</a></div>                
+            </b-card>
+        </b-card-group>
+
         <div class="text-right">
             <b-button href="/blogs">View More Blogs</b-button>
         </div>

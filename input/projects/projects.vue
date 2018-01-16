@@ -21,20 +21,22 @@
                         <b-dropdown-item>static sites</b-dropdown-item>
                         <b-dropdown-item>build tools</b-dropdown-item>
                     </b-nav-item-dropdown>
+                    <b-nav-item-dropdown text="Sort">
+                        <b-dropdown-item>Name</b-dropdown-item>
+                        <b-dropdown-item>Most Stars</b-dropdown-item>
+                        <b-dropdown-item>Least Stars</b-dropdown-item>
+                    </b-nav-item-dropdown>
+                </b-navbar-nav>
+                <b-navbar-nav class="ml-auto">
+                    <b-nav-form>
+                        <b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle The Deck</b-button>
+                        <div class="w-100 mb-2 d-lg-none"></div>
+                        <b-button size="sm">Random Draw</b-button>
+                    </b-nav-form>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
-        <b-card-group deck v-for="i in Math.ceil(projects.length / 4)" :key="i" class="mb-4">
-            <project v-if="(i - 1) * 4 < projects.length" :card-data="projects[(i - 1) * 4]"></project>
-            <b-card v-else class="invisible"></b-card>            
-            <project v-if="((i - 1) * 4) + 1 < projects.length" :card-data="projects[((i - 1) * 4) + 1]"></project>
-            <b-card v-else class="invisible"></b-card>            
-            <div class="w-100 mb-4 d-lg-none"></div>
-            <project v-if="((i - 1) * 4) + 2 < projects.length" :card-data="projects[((i - 1) * 4) + 2]"></project>
-            <b-card v-else class="invisible"></b-card>            
-            <project v-if="((i - 1) * 4) + 3 < projects.length" :card-data="projects[((i - 1) * 4) + 3]"></project>
-            <b-card v-else class="invisible"></b-card>            
-        </b-card-group>
+        <cards :cards-data="filteredProjects"></cards>
     </div>
 </template>
 
@@ -57,6 +59,23 @@
             .catch(e => {
                 console.log(e);
             });
+    },
+    computed: {
+        filteredProjects: function() {
+            return this.projects;
+        }
+    },
+    methods: {
+        shuffle: function() {
+            // From https://stackoverflow.com/a/12646864/807064
+            for (var i = this.projects.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = this.projects[i];
+                this.projects[i] = this.projects[j];
+                this.projects[j] = temp;
+            }
+            console.log(this.projects);
+        }
     }
 }
 </script>
