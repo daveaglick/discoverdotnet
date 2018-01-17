@@ -2,7 +2,7 @@ Title: Wyam
 Source:  https://github.com/Wyamio/Wyam
 Language: C#
 Tags:
-  - static site generator
+  - Static Site Generation
 NuGet: Wyam
 Twitter: wyamio
 Chat: https://gitter.im/Wyamio/Wyam

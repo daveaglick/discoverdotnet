@@ -7,7 +7,7 @@
             <h6 v-if="cardData.website"><a :href="cardData.website" class="text-light">{{ cardData.website | no-protocol }}</a></h6>
         </div>
         <slot></slot>
-        <b-card-body>        
+        <b-card-body class="pb-1">        
             <p class="card-text">{{ cardData.description }}</p>
         </b-card-body>      
         <div slot="footer">

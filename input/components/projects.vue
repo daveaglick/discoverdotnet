@@ -6,21 +6,18 @@
                 <span class="accent-primary">Projects</span>
             </h1>
             <hr />        
-            <h5 class="accent-script">1234 Total Projects</h5>
+            <h5 class="accent-script">
+                {{ filteredProjects.length }} Projects
+                <small v-if="filteredProjects.length != projects.length">(Of {{ projects.length }} Total)</small>
+            </h5>
             <p><a href="/suggest/project">Suggest A Project</a></p>
         </div>
         <b-navbar toggleable="md" variant="dark" type="dark" class="my-4">
             <b-navbar-toggle target="filter-nav-collapse"></b-navbar-toggle>
             <b-collapse is-nav id="filter-nav-collapse">
                 <b-navbar-nav>      
-                    <b-nav-item-dropdown text="Language">
-                        <b-dropdown-item>C#</b-dropdown-item>
-                        <b-dropdown-item>F#</b-dropdown-item>
-                    </b-nav-item-dropdown>
-                    <b-nav-item-dropdown text="Tag">
-                        <b-dropdown-item>static sites</b-dropdown-item>
-                        <b-dropdown-item>build tools</b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    <filter-dropdown text="Language" :values="mapProjects('language').concat('F#')" :selected.sync="selectedLanguages"></filter-dropdown>
+                    <filter-dropdown text="Tags" :values="mapProjects('tags')" :selected.sync="selectedTags"></filter-dropdown>
                     <b-nav-item-dropdown text="Sort">
                         <b-dropdown-item>Name</b-dropdown-item>
                         <b-dropdown-item>Most Stars</b-dropdown-item>
@@ -40,11 +37,15 @@
     </div>
 </template>
 
-<script>
+<script>  
  module.exports = {
     data: function() {
         return {
-            projects: []
+            projects: [],
+            languageFilter: null,
+            tagsFilter: null,
+            selectedTags: [],
+            selectedLanguages: []
         }
     },
     created: function() {
@@ -62,18 +63,38 @@
     },
     computed: {
         filteredProjects: function() {
-            return this.projects;
+            var filtered = this.projects;
+            filtered = this.filter(filtered, this.selectedLanguages, 'language');
+            filtered = this.filter(filtered, this.selectedTags, 'tags');
+            return filtered;
         }
     },
     methods: {
         shuffle: function() {
-            // From https://stackoverflow.com/a/12646864/807064
-            for (var i = this.projects.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = this.projects[i];
-                this.projects[i] = this.projects[j];
-                this.projects[j] = temp;
+            this.projects = this.projects.sort(function(){return 0.5 - Math.random()});
+        },
+        mapProjects: function(field) {
+            return this.projects.map(function(item) {
+                if(field in item) {
+                    return item[field];
+                }
+            });
+        },
+        filter(filtered, selected, field) {
+            if(selected.length > 0) {
+                return filtered.filter(function(item) {
+                    if(field in item) {
+                        if(Array.isArray(item[field])) {
+                            return selected.some(function(search) {
+                                return item[field].indexOf(search) !== -1;
+                            });
+                        }
+                        return selected.indexOf(item[field]) !== -1;
+                    }
+                    return false;
+                });
             }
+            return filtered;
         }
     }
 }
