@@ -1,6 +1,10 @@
 <template>
     <b-nav-item-dropdown :text="text">
-        <b-dropdown-item v-for="filterValue in filterValues" :key="filterValue" @click="filterSelected(filterValue)" :class="{ 'font-weight-bold': isSelected(filterValue) }">
+        <b-dropdown-item
+            v-for="filterValue in filterValues"
+            :key="filterValue"
+            @click="filterSelected(filterValue)"
+            :class="{ 'font-weight-bold': isSelected(filterValue) }">
             {{ filterValue }}
         </b-dropdown-item>
     </b-nav-item-dropdown>
