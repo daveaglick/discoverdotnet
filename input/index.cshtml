@@ -3,7 +3,7 @@
         <discovery></discovery>
     </b-col>
     <b-col>
-        <div class="text-center">
+        <div class="text-center">            
             <h3>
                 <span class="accent-secondary">Yesterday's</span>
                 <span class="accent-primary">News</span>
@@ -12,28 +12,32 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p class="small">A roundup of blog posts from the previous day.</p>
+            <p class="small">A roundup of blog posts, podcasts, and more from the previous day.</p>
         </div>
 
         <b-card-group deck class="mb-4">
             <b-card>
+                <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
                 <div class="font-weight-bold"><a href="#">Post title</a></div>
                 <div class="small">Friday, January 12, 2018</div>
                 <div><a href="#">Name (or link?) of the blog</a></div>                
             </b-card>
             <b-card>
-                <div class="font-weight-bold"><a href="#">Post title</a></div>
+                <div class="card-corner card-corner-dark"><i class="fa fa-headphones"></i></div>
+                <div class="font-weight-bold"><a href="#">Podcast title</a></div>
                 <div class="small">Friday, January 12, 2018</div>
                 <div><a href="#">Name (or link?) of the blog</a></div>                
             </b-card>
         </b-card-group>        
         <b-card-group deck class="mb-4">
             <b-card>
+                <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
                 <div class="font-weight-bold"><a href="#">Post title</a></div>
                 <div class="small">Friday, January 12, 2018</div>
                 <div><a href="#">Name (or link?) of the blog</a></div>                
             </b-card>
             <b-card>
+                <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
                 <div class="font-weight-bold"><a href="#">Post title</a></div>
                 <div class="small">Friday, January 12, 2018</div>
                 <div><a href="#">Name (or link?) of the blog</a></div>                
@@ -41,13 +45,14 @@
         </b-card-group>
 
         <div class="text-right">
-            <b-button href="/blogs">View More Blogs</b-button>
+            <b-button href="/blogs">More Blogs</b-button>
+            <b-button href="/broadcasts">More Broadcasts</b-button>
         </div>
     </b-col>
 </b-row>
 <discoveries></discoveries>
 
 <script type="text/javascript">
-    Vue.component('discovery', httpVueLoader('/discovery.vue'));
-    Vue.component('discoveries', httpVueLoader('/discoveries.vue'));
+    Vue.component('discovery', httpVueLoader('/components/discovery.vue'));
+    Vue.component('discoveries', httpVueLoader('/components/discoveries.vue'));
 </script>

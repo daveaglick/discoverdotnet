@@ -2,6 +2,7 @@
 //#n Wyam.Razor
 //#n Wyam.Markdown
 //#n Wyam.Json
+//#n Wyam.Sass
 #n Octokit
 
 using Octokit;
@@ -98,6 +99,13 @@ Pipelines.Add("Pages",
     WriteFiles(".html")
 );
 
+Pipelines.Add("Sass",
+    ReadFiles("**/{!_,}*.scss"),
+    Sass()
+        .WithCompactOutputStyle(),
+    WriteFiles()
+);
+
 Pipelines.Add("Resources",
-    CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,}")
+    CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
 );

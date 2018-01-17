@@ -1,3 +1,7 @@
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+
 @font-face {
     font-family: 'Langdon';
     src:url('langdon.woff') format('woff'),
@@ -25,10 +29,8 @@ main {
     flex: 1;
 }
 
-header .jumbotron {                
-    background: rgb(86, 61, 124);
-    background: -webkit-linear-gradient(to bottom, rgb(149, 123, 190), rgb(86, 61, 124));
-    background: linear-gradient(to bottom, rgb(149, 123, 190), rgb(86, 61, 124));
+header .jumbotron {                   
+    @include gradient-y(rgb(149, 123, 190), rgb(86, 61, 124));
 }
 
 header .jumbotron .lead {
@@ -51,4 +53,30 @@ header .jumbotron .lead {
 
 .card > .card-body:not(:first-child) {
     border-top: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.card-corner {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 56px 56px 0;
+}
+
+.card-corner-light {
+    border-color: transparent rgba(255,255,255,0.2) transparent transparent;
+}
+
+.card-corner-dark {
+    border-color: transparent rgba(0,0,0,0.1) transparent transparent;
+}
+
+.card-corner > * {
+    margin-left: 28px;
+}
+
+.card-header.bg-dark {
+    @include gradient-bg($dark);
 }

@@ -1,5 +1,5 @@
 <template>
-    <card :card-data="$props.cardData">   
+    <card :card-data="$props.cardData" icon="fa-terminal">   
         <slot></slot>
         <b-card-body v-if="cardData.stargazersCount" class="flex-0">
             <b-row class="text-center">

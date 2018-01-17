@@ -74,7 +74,6 @@
                 this.projects[i] = this.projects[j];
                 this.projects[j] = temp;
             }
-            console.log(this.projects);
         }
     }
 }

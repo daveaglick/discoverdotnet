@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Discover .NET</title>
         
-        <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@next/dist/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="/bootstrap/bootstrap.css"/>
         <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
         <link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
         <link type="text/css" rel="stylesheet" href="/assets/styles.css"/>
@@ -30,9 +30,10 @@
                             <b-navbar-nav class="float-md-left">
                                 <b-nav-item href="/projects">Projects</b-nav-item>
                                 <b-nav-item href="#">Help Wanted</b-nav-item>
-                                <b-nav-item href="/resources">Resources</b-nav-item>
                                 <b-nav-item href="/blogs">Blogs</b-nav-item>
+                                <b-nav-item href="/broadcasts">Broadcasts</b-nav-item>
                                 <b-nav-item href="/events">Events</b-nav-item>
+                                <b-nav-item href="/resources">Resources</b-nav-item>
                                 <b-nav-item href="/people">People</b-nav-item>
                             </b-navbar-nav>                            
                             <b-navbar-nav class="float-md-right">
@@ -64,9 +65,9 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            Vue.component('card', httpVueLoader('/card.vue'));   
-            Vue.component('cards', httpVueLoader('/cards.vue'));          
-            Vue.component('project', httpVueLoader('/projects/project.vue'));
+            Vue.component('card', httpVueLoader('/components/card.vue'));   
+            Vue.component('cards', httpVueLoader('/components/cards.vue'));          
+            Vue.component('project', httpVueLoader('/components/project.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
