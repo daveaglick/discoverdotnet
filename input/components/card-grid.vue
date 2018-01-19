@@ -65,11 +65,6 @@ module.exports = {
             .get(this.cardJson)
             .then(response => {
                 this.cardData = response.data;
-
-                // TODO: Remove after testing
-                this.cardData = this.cardData.reduce(function (res, current, index, array) {
-                    return res.concat([current, current]);
-                }, []);
             })
             .catch(e => {
                 console.log(e);

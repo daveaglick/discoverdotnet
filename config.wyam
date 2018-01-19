@@ -31,10 +31,15 @@ Pipelines.Add("Projects",
             // Get the metadata
             MetadataItems metadata = new MetadataItems
             {
+                { "Owner", owner },
                 { "StargazersCount", repository.StargazersCount },
                 { "ForksCount", repository.ForksCount },
                 { "OpenIssuesCount", repository.OpenIssuesCount }
             };
+            if(!doc.ContainsKey("Title"))
+            {
+                metadata.Add("Title", repository.Name);
+            }
             if(!doc.ContainsKey("Description"))
             {
                 metadata.Add("Description", repository.Description);

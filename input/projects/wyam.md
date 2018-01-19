@@ -1,4 +1,3 @@
-Title: Wyam
 Source:  https://github.com/Wyamio/Wyam
 Language: C#
 Tags:
