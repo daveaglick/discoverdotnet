@@ -5,15 +5,15 @@
             <b-row class="text-center">
                 <b-col>
                     <div><i class="fas fa-star"></i></div>
-                    <h4>{{ cardData.stargazersCount }}</h4>
+                    <h5>{{ cardData.stargazersCount }}</h5>
                 </b-col>
                 <b-col>
                     <div><i class="fas fa-code-branch"></i></div>
-                    <h4>{{ cardData.forksCount }}</h4>
+                    <h5>{{ cardData.forksCount }}</h5>
                 </b-col>
                 <b-col>
                     <div><i class="fas fa-bug"></i></div>
-                    <h4>{{ cardData.openIssuesCount }}</h4>
+                    <h5>{{ cardData.openIssuesCount }}</h5>
                 </b-col>
             </b-row>
         </b-card-body>     

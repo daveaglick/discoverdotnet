@@ -23,10 +23,10 @@
                         :values="filterValues(filter)"
                         :selected.sync="selected[index]">
                     </filter-dropdown>
-                    <b-nav-item-dropdown text="Sort">
-                        <b-dropdown-item>Name</b-dropdown-item>
-                        <b-dropdown-item>Most Stars</b-dropdown-item>
-                        <b-dropdown-item>Least Stars</b-dropdown-item>
+                    <b-nav-item-dropdown v-if="sorts" text="Sort">
+                        <b-dropdown-item v-for="sort in sorts" :key="sort.text" @click="applySort(sort)">
+                            {{ sort.text }}
+                        </b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto">
@@ -51,7 +51,8 @@ module.exports = {
         'title',
         'suggestLink',
         'cardJson',
-        'filters'
+        'filters',
+        'sorts'
     ],
     data: function() {
         return {
@@ -65,6 +66,7 @@ module.exports = {
             .get(this.cardJson)
             .then(response => {
                 this.cardData = response.data;
+                this.shuffle();
             })
             .catch(e => {
                 console.log(e);
@@ -101,6 +103,9 @@ module.exports = {
     methods: {
         shuffle: function() {
             this.cardData = this.cardData.sort(function(){return 0.5 - Math.random()});
+        },
+        applySort: function(sortData) {
+            this.cardData = this.cardData.sort(sortData.sort);
         },
         filterValues: function(filter) {
             // If raw values were provided, use those
