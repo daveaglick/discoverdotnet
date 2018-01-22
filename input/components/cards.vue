@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card-group deck v-for="i in Math.ceil(cardData.length / 4)" :key="cardData[i].title" class="mb-4">
+        <b-card-group deck v-for="i in Math.ceil(cardData.length / 4)" :key="i" class="mb-4">
             <component v-if="(i - 1) * 4 < cardData.length" :is="getCard(cardData[(i - 1) * 4])" :card-data="cardData[(i - 1) * 4]"></component>
             <b-card v-else class="invisible"></b-card>            
             <component v-if="((i - 1) * 4) + 1 < cardData.length" :is="getCard(cardData[((i - 1) * 4) + 1])" :card-data="cardData[((i - 1) * 4) + 1]"></component>

@@ -5,55 +5,14 @@
 //#n Wyam.Sass
 #n Octokit
 
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 using Octokit;
 
 Pipelines.Add("Projects",
     ReadFiles("projects/*.md"),
     FrontMatter(Yaml()),    
-    Execute((doc, ctx) =>
-    {
-        // Extract the GitHub owner and name
-        Uri source;
-        if(Uri.TryCreate(doc.String("Source"), UriKind.Absolute, out source)
-            && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
-        {
-            string owner = source.Segments[1].Trim('/');
-            string name = source.Segments[2].Trim('/');
-
-            // Connect to GitHub and get the repository
-            Wyam.Common.Tracing.Trace.Information($"Getting GitHub data for {owner}/{name}");
-            GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
-            {
-                Credentials = new Credentials(ctx.String("GitHubToken"))
-            };
-            Repository repository = github.Repository.Get(owner, name).Result;
-
-            // Get the metadata
-            MetadataItems metadata = new MetadataItems
-            {
-                { "Owner", owner },
-                { "StargazersCount", repository.StargazersCount },
-                { "ForksCount", repository.ForksCount },
-                { "OpenIssuesCount", repository.OpenIssuesCount }
-            };
-            if(!doc.ContainsKey("Title"))
-            {
-                metadata.Add("Title", repository.Name);
-            }
-            if(!doc.ContainsKey("Description"))
-            {
-                metadata.Add("Description", repository.Description);
-            }
-            if(!doc.ContainsKey("Website"))
-            {
-                metadata.Add("Website", repository.Homepage);
-            }
-
-            // Return a document with GitHub metadata
-            return ctx.GetDocument(doc, metadata);
-        }
-        return doc;
-    }),
+    Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
     Razor()
         .WithLayout("/_Layout.cshtml"),
     WriteFiles(".html"),
@@ -114,3 +73,56 @@ Pipelines.Add("Sass",
 Pipelines.Add("Resources",
     CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
 );
+
+// Helper methods
+
+public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+{            
+    GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
+    {
+        Credentials = new Credentials(context.String("GitHubToken"))
+    };
+
+    return await Task.WhenAll(
+        inputs.Select(async input =>
+        {
+            // Extract the GitHub owner and name
+            Uri source;
+            if(Uri.TryCreate(input.String("Source"), UriKind.Absolute, out source)
+                && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
+            {
+                string owner = source.Segments[1].Trim('/');
+                string name = source.Segments[2].Trim('/');
+
+                // Connect to GitHub and get the repository
+                Wyam.Common.Tracing.Trace.Information($"Getting GitHub data for {owner}/{name}");
+                Repository repository = await github.Repository.Get(owner, name);
+
+                // Get the metadata
+                MetadataItems metadata = new MetadataItems
+                {
+                    { "Owner", owner },
+                    { "StargazersCount", repository.StargazersCount },
+                    { "ForksCount", repository.ForksCount },
+                    { "OpenIssuesCount", repository.OpenIssuesCount }
+                };
+                if(!input.ContainsKey("Title"))
+                {
+                    metadata.Add("Title", repository.Name);
+                }
+                if(!input.ContainsKey("Description"))
+                {
+                    metadata.Add("Description", repository.Description);
+                }
+                if(!input.ContainsKey("Website"))
+                {
+                    metadata.Add("Website", repository.Homepage);
+                }
+
+                // Return a document with GitHub metadata
+                return context.GetDocument(input, metadata);
+            }
+
+            return input;
+        }));
+}

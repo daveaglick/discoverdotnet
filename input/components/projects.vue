@@ -7,11 +7,6 @@
 
 <script>  
  module.exports = {
-    data: function() {
-        return {
-            projects: []
-        }
-    },
     computed: {
         filters: function() {
             return [
