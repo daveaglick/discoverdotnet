@@ -8,3 +8,4 @@ Chat: https://gitter.im/Wyamio/Wyam
 DiscoveryDate: 1/12/2018
 Comment: This project powers this site.
 ---
+Wyam rocks!

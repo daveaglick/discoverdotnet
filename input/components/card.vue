@@ -12,7 +12,7 @@
         </b-card-body>      
         <div slot="footer">
             <slot name="footer"></slot>
-            <div v-if="cardData.link" class="text-right">
+            <div v-if="cardData.link" class="text-right mt-3">
                 <b-button :href="cardData.link">More Details</b-button>
             </div>
         </div>

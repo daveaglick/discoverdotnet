@@ -17,16 +17,15 @@
                 </b-col>
             </b-row>
         </b-card-body>     
-        <dl slot="footer" class="small row">
-            <dt v-if="cardData.language" class="col-sm-6">Language</dt>
-            <dd v-if="cardData.language" class="col-sm-6"><a href="#"><b-badge>{{ cardData.language }}</b-badge></a></dd>
-            <dt v-if="cardData.tags" class="col-sm-6">Tag(s)</dt>
-            <dd v-if="cardData.tags" class="col-sm-6">
-                <span v-for="tag in cardData.tags" :key="tag">
-                    <a href="#"><b-badge>{{ tag }}</b-badge></a>
-                </span>
-            </dd>
-        </dl>
+        <div slot="footer" class="small">
+            <description v-if="cardData.pushedAt" term="Pushed At">
+                {{ moment(cardData.pushedAt).format("l LT") }}
+            </description>
+            <description v-if="cardData.language" term="Language">{{ cardData.language }}</description>
+            <description v-if="cardData.tags" term="Tags">
+                <div v-for="tag in cardData.tags" :key="tag">{{ tag }}</div>
+            </description>
+        </div>
     </card>
 </template>
 

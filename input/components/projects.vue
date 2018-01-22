@@ -47,6 +47,17 @@
                         }    
                         return -1;                    
                     }
+                },
+                {
+                    text: 'Recently Pushed',
+                    sort: function(a, b) {
+                        if('pushedAt' in a && 'pushedAt' in b) {
+                            return moment(b.pushedAt) - moment(a.pushedAt);
+                        } else if('pushedAt' in a) {
+                            return -1;
+                        }    
+                        return 1;                    
+                    }
                 }
             ]
         }

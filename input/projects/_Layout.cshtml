@@ -1,0 +1,69 @@
+@{
+	Layout = @"/_Layout.cshtml";
+}
+
+<h1 class="text-center font-weight-bold display-4">
+    @Model.String("Title") 
+</h1>
+
+<b-row>
+    <b-col md="8" class="mb-4">
+        <b-card class="h-100">
+            <p class="lead">@Model.String("Description")</p>
+            @RenderBody()
+        </b-card>
+    </b-col>
+    <b-col md="4" class="mb-4">
+        <b-card no-body class="h-100">
+            @if(Model.ContainsKey("Website") || Model.ContainsKey("Source"))
+            {
+                <b-card-body>
+                    @if(Model.ContainsKey("Website"))
+                    {
+                        <div>
+                            <a href="@Model.String("Website")">
+                                <span class="fa fa-external-link-square-alt"></span>
+                                {{ '@Model.String("Website")' | no-protocol }}
+                            </a>
+                        </div>
+                    }    
+                    @if(Model.ContainsKey("Source"))
+                    {
+                        <div>
+                            <a href="@Model.String("Source")">
+                                <span class="fa fa-code"></span>
+                                {{ '@Model.String("Source")' | no-protocol }}
+                            </a>
+                        </div>
+                    }
+                </b-card-body>
+            }
+            @if(Model.ContainsKey("StargazersCount"))
+            {
+                <b-card-body>
+                    <b-row class="text-center">
+                        <b-col>
+                            <div><i class="fas fa-star"></i></div>
+                            <h4>@Model.String("StargazersCount")</h4>
+                        </b-col>
+                        <b-col>
+                            <div><i class="fas fa-code-branch"></i></div>
+                            <h4>@Model.String("ForksCount")</h4>
+                        </b-col>
+                        <b-col>
+                            <div><i class="fas fa-bug"></i></div>
+                            <h4>@Model.String("OpenIssuesCount")</h4>
+                        </b-col>
+                    </b-row>
+                </b-card-body>
+            }
+        </b-card>
+    </b-col>
+</b-row>
+
+@if(Model.ContainsKey("Readme"))
+{
+    <b-card header="Project Readme" header-text-variant="white" header-bg-variant="dark">
+        @Html.Raw(Model.String("Readme"))
+    </b-card>
+}

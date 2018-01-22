@@ -14,7 +14,7 @@ Pipelines.Add("Projects",
     FrontMatter(Yaml()),    
     Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
     Razor()
-        .WithLayout("/_Layout.cshtml"),
+        .WithLayout("/projects/_Layout.cshtml"),
     WriteFiles(".html"),
     Meta("Link", @ctx.GetLink(@doc)),
     GenerateJson(new []
@@ -25,6 +25,7 @@ Pipelines.Add("Projects",
         "StargazersCount",
         "ForksCount",
         "OpenIssuesCount",
+        "PushedAt",
         "Website",
         "Language",
         "Tags",
@@ -104,7 +105,8 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
                     { "Owner", owner },
                     { "StargazersCount", repository.StargazersCount },
                     { "ForksCount", repository.ForksCount },
-                    { "OpenIssuesCount", repository.OpenIssuesCount }
+                    { "OpenIssuesCount", repository.OpenIssuesCount },
+                    { "PushedAt", repository.PushedAt }
                 };
                 if(!input.ContainsKey("Title"))
                 {
@@ -117,6 +119,14 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
                 if(!input.ContainsKey("Website"))
                 {
                     metadata.Add("Website", repository.Homepage);
+                }
+
+                // Get the readme
+                Wyam.Common.Tracing.Trace.Information($"Getting GitHub readme for {owner}/{name}");
+                string readme = await github.Repository.Content.GetReadmeHtml(owner, name);
+                if(!string.IsNullOrEmpty(readme))
+                {
+                    metadata.Add("Readme", readme);
                 }
 
                 // Return a document with GitHub metadata
