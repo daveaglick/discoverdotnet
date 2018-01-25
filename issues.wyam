@@ -1,0 +1,123 @@
+//#n Wyam.Yaml
+//#n Wyam.Json
+#n Octokit
+
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using Octokit;
+
+//////////////////////////////////////////////////////////////////////
+// Pipelines
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Issues",
+    ReadFiles("projects/*.md"),
+    FrontMatter(Yaml()),    
+    Execute((inputs, ctx, _) => GetIssueGitHubData(inputs, ctx).Result),
+    Where((doc, ctx) => doc.ContainsKey("Issues")),
+    GenerateJson(new []
+    {
+        "Issues",
+        "RecentIssuesCount",
+        "HelpWantedIssuesCount"
+    })
+        .WithCamelCase(),
+    WriteFiles((doc, ctx) => doc.Source.FileName.ChangeExtension(".json"))
+);
+
+//////////////////////////////////////////////////////////////////////
+// Helpers
+//////////////////////////////////////////////////////////////////////
+
+public class IssueData
+{
+    public static string[] HelpWantedLabels = new []
+    {
+        "helpwanted",
+        "goodfirstissue",
+        "firsttimersonly",
+        "upforgrabs",
+        "newcontributor",
+        "goodfirsttask"
+    };
+
+    public DateTimeOffset CreatedAt { get; }
+    public DateTimeOffset UpdatedAt { get; }
+    public string Link { get; }
+    public string Title { get; }
+    public string[] Labels { get; }
+    public bool Recent { get; }
+    public bool HelpWanted { get; }
+
+    public IssueData(Issue issue, DateTimeOffset oneDayAgo)
+    {
+        CreatedAt = issue.CreatedAt;
+        UpdatedAt = issue.UpdatedAt ?? issue.CreatedAt;
+        Link = issue.HtmlUrl;
+        Title = issue.Title;
+        Labels = issue.Labels.Select(x => x.Name).ToArray();
+        Recent = CreatedAt > oneDayAgo;
+        HelpWanted = Labels
+            .Select(l => new string(l.Where(c => char.IsLetterOrDigit(c)).ToArray()))
+            .Any(l => HelpWantedLabels.Contains(l, StringComparer.OrdinalIgnoreCase));
+    }
+}
+
+public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+{            
+    GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
+    {
+        Credentials = new Credentials(context.String("GitHubToken"))
+    };
+    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-24);
+
+    return await Task.WhenAll(
+        inputs.Select(async input =>
+        {
+            IDocument output = input;
+
+            // Extract the GitHub owner and name
+            Uri source;
+            if(Uri.TryCreate(input.String("Source"), UriKind.Absolute, out source)
+                && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
+            {
+                string owner = source.Segments[1].Trim('/');
+                string name = source.Segments[2].Trim('/');
+
+                // Get issue data
+                Wyam.Common.Tracing.Trace.Information($"Getting GitHub issue data for {owner}/{name}");
+                IReadOnlyList<Issue> issues = (await github.Issue.GetAllForRepository(
+                    owner,
+                    name,
+                    new RepositoryIssueRequest
+                    {
+                        Filter = IssueFilter.All
+                    },
+                    new ApiOptions
+                    {
+                        PageSize = 100
+                    }))
+                    .Where(x => x.PullRequest == null)
+                    .ToList();
+                if(issues.Count > 0)
+                {
+                    IssueData[] issueData = issues.Select(x => new IssueData(x, oneDayAgo)).ToArray();
+                    MetadataItems metadata = new MetadataItems
+                    {
+                        { "Issues", issueData },
+                        { "RecentIssuesCount", issueData.Count(x => x.Recent) },
+                        { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
+                    };
+                    
+                    // Return a document with issue metadata
+                    output = context.GetDocument(input, metadata);
+                }                    
+
+                // Report on out API rate limit
+                MiscellaneousRateLimit rateLimit = await github.Miscellaneous.GetRateLimits();
+                Wyam.Common.Tracing.Trace.Information($"GitHub rate limit: {rateLimit.Resources.Core.Remaining} remaining");
+            }
+
+            return output;
+        }));
+}

@@ -9,6 +9,10 @@ using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using Octokit;
 
+//////////////////////////////////////////////////////////////////////
+// Pipelines
+//////////////////////////////////////////////////////////////////////
+
 Pipelines.Add("Projects",
     ReadFiles("projects/*.md"),
     FrontMatter(Yaml()),    
@@ -30,9 +34,7 @@ Pipelines.Add("Projects",
         "Language",
         "Tags",
         "DiscoveryDate",
-        "Comment",
-        "RecentIssuesCount",
-        "HelpWantedIssuesCount"
+        "Comment"
     }, "Json")
         .WithCamelCase()
 );
@@ -77,35 +79,9 @@ Pipelines.Add("Resources",
     CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
 );
 
-// Helper classes and methods
-
-public class IssueData
-{
-    public static string[] HelpWantedLabels = new []
-    {
-        "helpwanted",
-        "goodfirstissue",
-        "firsttimersonly",
-        "upforgrabs",
-        "newcontributor",
-        "goodfirsttask"
-    };
-
-    public DateTimeOffset CreatedAt { get; }
-    public DateTimeOffset UpdatedAt { get; }
-    public string Link { get; }
-    public string Title { get; }
-    public string[] Labels { get; }
-
-    public IssueData(Issue issue)
-    {
-        CreatedAt = issue.CreatedAt;
-        UpdatedAt = issue.UpdatedAt ?? issue.CreatedAt;
-        Link = issue.HtmlUrl;
-        Title = issue.Title;
-        Labels = issue.Labels.Select(x => x.Name).ToArray();
-    }
-}
+//////////////////////////////////////////////////////////////////////
+// Helpers
+//////////////////////////////////////////////////////////////////////
 
 public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {            
@@ -158,38 +134,7 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
                 if(!string.IsNullOrEmpty(readme))
                 {
                     metadata.Add("Readme", readme);
-                }
-
-                // Get issue data
-                Wyam.Common.Tracing.Trace.Information($"Getting GitHub issue data for {owner}/{name}");
-                IReadOnlyList<Issue> issues = await github.Issue.GetAllForRepository(
-                    owner,
-                    name,
-                    new RepositoryIssueRequest
-                    {
-                        Filter = IssueFilter.All
-                    },
-                    new ApiOptions
-                    {
-                        PageSize = 100
-                    });
-                if(issues.Count > 0)
-                {
-                    IssueData[] issueData = issues.Select(x => new IssueData(x)).ToArray();
-                    metadata.Add("Issues", issueData);
-
-                    // Also add special issue counts
-                    
-                    metadata.Add("RecentIssuesCount", issueData.Count(x => x.CreatedAt > oneDayAgo));
-
-                    int helpWantedIssuesCount = issueData.Count(x => x.Labels
-                        .Select(l => new string(l.Where(c => char.IsLetterOrDigit(c)).ToArray()))
-                        .Any(l => IssueData.HelpWantedLabels.Contains(l, StringComparer.OrdinalIgnoreCase)));
-                    if(helpWantedIssuesCount > 0)
-                    {
-                        metadata.Add("HelpWantedIssuesCount", helpWantedIssuesCount);
-                    }
-                }                    
+                }                
 
                 // Report on out API rate limit
                 MiscellaneousRateLimit rateLimit = await github.Miscellaneous.GetRateLimits();

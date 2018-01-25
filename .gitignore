@@ -2,6 +2,7 @@
 [Tt]ools/*
 ![Tt]ools/packages.config
 [Oo]utput/
+[Oo]utput.issues/
 [Rr]elease/
 nuget.exe
 /debug.log
@@ -10,3 +11,5 @@ nuget.exe
 /packages.xml
 /config.wyam.hash
 /config.wyam.dll
+/issues.wyam.hash
+/issues.wyam.dll
