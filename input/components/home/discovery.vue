@@ -19,21 +19,21 @@
 </template>
 
 <script>
- module.exports = {
-    data: function() {
-        return {
-            cardData: {}
+    module.exports = {
+        data: function() {
+            return {
+                cardData: {}
+            }
+        },
+        created: function() {
+            axios
+                .get('/data/discovery.json')
+                .then(response => {
+                    this.cardData = response.data
+                })
+                .catch(e => {
+                    console.log(e);
+                });
         }
-    },
-    created: function() {
-        axios
-            .get('/data/discovery.json')
-            .then(response => {
-                this.cardData = response.data
-            })
-            .catch(e => {
-                console.log(e);
-            });
     }
-}
 </script>

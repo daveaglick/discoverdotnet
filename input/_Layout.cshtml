@@ -67,6 +67,7 @@
             Vue.config.devtools = true
 
             Vue.component('description', httpVueLoader('/components/description.vue'));   
+            Vue.component('small-card', httpVueLoader('/components/small-card.vue'));   
             Vue.component('card', httpVueLoader('/components/card.vue'));   
             Vue.component('cards', httpVueLoader('/components/cards.vue'));     
             Vue.component('card-grid', httpVueLoader('/components/card-grid.vue'));  
@@ -79,6 +80,14 @@
                     return '';
                 }
                 return value.replace(/^\/\/|^.*?:(\/\/)?/, '');
+            });
+
+            Vue.filter('from-now', function (value) {
+                if (!value)
+                {
+                    return '';
+                }
+                return moment(value).fromNow();
             });
 
             Vue.mixin({

@@ -13,17 +13,17 @@
         <div slot="footer">
             <slot name="footer"></slot>
             <div v-if="cardData.link" class="text-right mt-3">
-                <a class="font-weight-bold" :href="cardData.link">More Details</a>
+                <a class="font-weight-bold" :href="cardData.link">More Details  <span class="fa fa-long-arrow-alt-right"></span></a>
             </div>
         </div>
     </b-card>
 </template>
 
 <script>
-module.exports = {
-    props: [
-        'cardData',
-        'icon'
-    ]
-}
+    module.exports = {
+        props: [
+            'cardData',
+            'icon'
+        ]
+    }
 </script>

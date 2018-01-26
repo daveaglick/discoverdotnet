@@ -22,8 +22,7 @@ Pipelines.Add("Projects",
     WriteFiles(".html"),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
-    GenerateJson(new []
-    {
+    Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
         "Link",
@@ -37,21 +36,35 @@ Pipelines.Add("Projects",
         "Tags",
         "DiscoveryDate",
         "Comment"
-    }, "Json")
-        .WithCamelCase()
+    ))
 );
 
-Pipelines.Add("ProjectsData",
-    Content("[" + string.Join(",", @ctx.Documents.FromPipeline("Projects").Select(x => x.String("Json"))) + "]"),
+Pipelines.Add("Project Data",
+    GenerateJson((doc, ctx) =>
+        @ctx.Documents.FromPipeline("Projects").Select(x => x["CardData"]))
+        .WithCamelCase(),
     WriteFiles((doc, ctx) => "data/projects.json")
+);
+
+Pipelines.Add("Project Keys",
+    GenerateJson((doc, ctx) =>
+        @ctx.Documents.FromPipeline("Projects")
+            .Select(x => x.GetMetadata(
+                "Key",
+                "Title",
+                "Link")))
+        .WithCamelCase(),
+    WriteFiles((doc, ctx) => "data/project-keys.json")
 );
 
 Pipelines.Add("Discoveries",
     Documents("Projects"),
+    // TODO: Add other pipelines of discoverable items
     Where(@doc.ContainsKey("DiscoveryDate")),
     OrderBy(@doc.DateTime("DiscoveryDate"))
         .Descending(),
-    Content(@doc.String("Json")),
+    GenerateJson((doc, ctx) => doc["CardData"])
+        .WithCamelCase(),
     Branch(
         // Daily discovery
         Take(1),

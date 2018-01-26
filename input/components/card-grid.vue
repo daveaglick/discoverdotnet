@@ -46,80 +46,80 @@
 </template>
 
 <script>
-module.exports = {
-    props: [
-        'title',
-        'suggestLink',
-        'cardJson',
-        'filters',
-        'sorts'
-    ],
-    data: function() {
-        return {
-            cardData: [],
-            // See https://stackoverflow.com/q/25512771/807064 
-            selected: Array.apply(null, new Array(this.filters.length)).map(function(){ return new Array(); })
-        }
-    },
-    created: function() {
-        axios
-            .get(this.cardJson)
-            .then(response => {
-                this.cardData = response.data;
-                this.shuffle();
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    },
-    computed: {
-        filteredCardData: function() {
-            var selected = this.selected;
-            var filtered = this.cardData;
-            this.filters.forEach(function(filter, index) {
-                if('filter' in filter) {
-                    // Call the specified filter function
-                    filtered = filter['filter'](filtered, selected[index]);
-                } else {
-                    // Filter by the specificed field prop
-                    if(selected[index].length > 0) {
-                        filtered = filtered.filter(function(item) {
-                            if(filter.field in item) {
-                                if(Array.isArray(item[filter.field])) {
-                                    return selected[index].some(function(search) {
-                                        return item[filter.field].indexOf(search) !== -1;
-                                    });
-                                }
-                                return selected[index].indexOf(item[filter.field]) !== -1;
-                            }
-                            return false;
-                        });
-                    }
-                }
-            });
-            return filtered;
-        }
-    },
-    methods: {
-        shuffle: function() {
-            this.cardData = this.cardData.sort(function(){return 0.5 - Math.random()});
-        },
-        applySort: function(sortData) {
-            this.cardData = this.cardData.sort(sortData.sort);
-        },
-        filterValues: function(filter) {
-            // If raw values were provided, use those
-            if('values' in filter) {
-                return filter['values'];
+    module.exports = {
+        props: [
+            'title',
+            'suggestLink',
+            'cardJson',
+            'filters',
+            'sorts'
+        ],
+        data: function() {
+            return {
+                cardData: [],
+                // See https://stackoverflow.com/q/25512771/807064 
+                selected: Array.apply(null, new Array(this.filters.length)).map(function(){ return new Array(); })
             }
-
-            // Otherwise, map the field values from the data
-            return this.cardData.map(function(item) {
-                if(filter.field in item) {
-                    return item[filter.field];
+        },
+        created: function() {
+            axios
+                .get(this.cardJson)
+                .then(response => {
+                    this.cardData = response.data;
+                    this.shuffle();
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        computed: {
+            filteredCardData: function() {
+                var selected = this.selected;
+                var filtered = this.cardData;
+                this.filters.forEach(function(filter, index) {
+                    if('filter' in filter) {
+                        // Call the specified filter function
+                        filtered = filter['filter'](filtered, selected[index]);
+                    } else {
+                        // Filter by the specificed field prop
+                        if(selected[index].length > 0) {
+                            filtered = filtered.filter(function(item) {
+                                if(filter.field in item) {
+                                    if(Array.isArray(item[filter.field])) {
+                                        return selected[index].some(function(search) {
+                                            return item[filter.field].indexOf(search) !== -1;
+                                        });
+                                    }
+                                    return selected[index].indexOf(item[filter.field]) !== -1;
+                                }
+                                return false;
+                            });
+                        }
+                    }
+                });
+                return filtered;
+            }
+        },
+        methods: {
+            shuffle: function() {
+                this.cardData = this.cardData.sort(function(){return 0.5 - Math.random()});
+            },
+            applySort: function(sortData) {
+                this.cardData = this.cardData.sort(sortData.sort);
+            },
+            filterValues: function(filter) {
+                // If raw values were provided, use those
+                if('values' in filter) {
+                    return filter['values'];
                 }
-            });
+
+                // Otherwise, map the field values from the data
+                return this.cardData.map(function(item) {
+                    if(filter.field in item) {
+                        return item[filter.field];
+                    }
+                });
+            }
         }
     }
-}
 </script>

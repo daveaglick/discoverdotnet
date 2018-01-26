@@ -16,22 +16,19 @@ Pipelines.Add("Issues",
     Execute((inputs, ctx, _) => GetIssueGitHubData(inputs, ctx).Result),
     Where((doc, ctx) => doc.ContainsKey("Issues")),
     Meta("ProjectKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
-    GenerateJson(new []
-    {
-        "Issues"
-    })
+    GenerateJson((doc, ctx) => doc["Issues"])
         .WithCamelCase(),
     WriteFiles((doc, ctx) => doc.Source.FileName.ChangeExtension(".json"))
 );
 
 Pipelines.Add("All Counts",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
-        .Select(x => new
-        {
-            ProjectKey = x.String("ProjectKey"),
-            RecentIssuesCount = x.Get<int>("RecentIssuesCount"),
-            HelpWantedIssuesCount = x.Get<int>("HelpWantedIssuesCount")
-        })),
+        .Select(x => x.GetMetadata(
+            "ProjectKey",
+            "RecentIssuesCount",
+            "HelpWantedIssuesCount"
+        )))
+        .WithCamelCase(),
     WriteFiles((doc, ctx) => "all-counts.json")
 );
 
@@ -45,7 +42,8 @@ Pipelines.Add("All Help Wanted",
                 CreatedAt = i.CreatedAt,
                 Link = i.Link,
                 Title = i.Title
-            }))),
+            })))
+        .WithCamelCase(),
     WriteFiles((doc, ctx) => "all-help-wanted.json")
 );
 
@@ -59,7 +57,8 @@ Pipelines.Add("All Recent",
                 CreatedAt = i.CreatedAt,
                 Link = i.Link,
                 Title = i.Title
-            }))),
+            })))
+        .WithCamelCase(),
     WriteFiles((doc, ctx) => "all-recent.json")
 );
 

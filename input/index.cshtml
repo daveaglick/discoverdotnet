@@ -7,8 +7,7 @@
         <discoveries></discoveries>
     </b-col>
     <b-col md="12" order="3" lg="3" order-lg="3">
-        <recent-issues></recent-issues>
-        <help-wanted></help-wanted>
+        <issues></issues>
     </b-col>
 </b-row>
 
@@ -16,6 +15,7 @@
     Vue.component('discovery', httpVueLoader('/components/home/discovery.vue'));
     Vue.component('discoveries', httpVueLoader('/components/home/discoveries.vue'));
     Vue.component('yesterdays-news', httpVueLoader('/components/home/yesterdays-news.vue'));
+    Vue.component('issues', httpVueLoader('/components/home/issues.vue'));
     Vue.component('recent-issues', httpVueLoader('/components/home/recent-issues.vue'));
     Vue.component('help-wanted', httpVueLoader('/components/home/help-wanted.vue'));
 </script>

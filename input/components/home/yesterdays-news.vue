@@ -15,38 +15,37 @@
         <b-card class="mb-4">
             <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
             <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div class="small">Friday, January 12, 2018</div>
-            <div><a href="#">Name (or link?) of the blog</a></div>                
+            <div class="small">A short description of the post.</div>
+            <div><a href="#">Name of the blog</a></div>                
         </b-card>
         <b-card class="mb-4">
             <div class="card-corner card-corner-dark"><i class="fa fa-headphones"></i></div>
             <div class="font-weight-bold"><a href="#">Podcast title</a></div>
-            <div class="small">Friday, January 12, 2018</div>
-            <div><a href="#">Name (or link?) of the blog</a></div>                
+            <div class="small">A short description of the post.</div>
+            <div><a href="#">Name of the blog</a></div>                
         </b-card>
         <b-card class="mb-4">
             <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
             <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div class="small">Friday, January 12, 2018</div>
-            <div><a href="#">Name (or link?) of the blog</a></div>                
+            <div><a href="#">Name of the blog</a></div>                
         </b-card>
         <b-card class="mb-4">
             <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
             <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div class="small">Friday, January 12, 2018</div>
-            <div><a href="#">Name (or link?) of the blog</a></div>                
+            <div class="small">A short description of the post.</div>
+            <div><a href="#">Name of the blog</a></div>                
         </b-card>
 
-        <p><a href="/blogs">More Blogs</a></p>
-        <p><a href="/broadcasts">More Broadcasts</a></p>
+        <p><a href="/blogs">More Blogs <span class="fa fa-long-arrow-alt-right"></span></a></p>
+        <p><a href="/broadcasts">More Broadcasts <span class="fa fa-long-arrow-alt-right"></span></a></p>
     </div>
 </template>
 
 
 <script>
-module.exports = {
-    data: function() {
-        return {}
+    module.exports = {
+        data: function() {
+            return {}
+        }
     }
-}
 </script>

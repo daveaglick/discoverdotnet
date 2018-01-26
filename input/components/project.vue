@@ -30,9 +30,9 @@
 </template>
 
 <script>
-module.exports = {
-    props: [
-        'cardData'
-    ]
-}
+    module.exports = {
+        props: [
+            'cardData'
+        ]
+    }
 </script>

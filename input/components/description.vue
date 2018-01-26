@@ -8,9 +8,9 @@
 </template>
 
 <script>
-module.exports = {
-    props: [
-        'term'
-    ]
-}
+    module.exports = {
+        props: [
+            'term'
+        ]
+    }
 </script>

@@ -10,15 +10,51 @@
             </h3>
             <hr/>
             <p class="small">Some issues from the last 24 hours.</p>
+            <small-card v-for="issue in firstIssues" :key="issue.link" icon="fa-bug">
+                <div class="font-weight-bold"><a :href="issue.link">{{ issue.title }}</a></div>
+                <div class="small">{{ issue.createdAt | from-now }}</div>
+                <div><a :href="getProject(issue).link">{{ getProject(issue).title }}</a></div>
+            </small-card>
+            <div class="text-right"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>
         </div>
     </div>
 </template>
 
 
 <script>
-module.exports = {
-    data: function() {
-        return {}
+    module.exports = {
+        props: [
+            "projectKeys"
+        ],
+        data: function() {
+            return {
+                issues: []
+            }
+        },
+        created: function() {
+            axios
+                .get('/data/issues/all-recent.json')
+                .then(response => {
+                    this.issues = response.data
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        computed: {
+            firstIssues: function() {
+                return this.issues.slice(0, 4);
+            }
+        },
+        methods: {
+            shuffle: function() {
+                this.issues = this.issues.sort(function(){return 0.5 - Math.random()});
+            },
+            getProject: function(issue) {
+                return this.projectKeys.find(function(item) {
+                    return item.key == issue.projectKey;
+                });
+            }
+        }
     }
-}
 </script>
