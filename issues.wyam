@@ -15,14 +15,52 @@ Pipelines.Add("Issues",
     FrontMatter(Yaml()),    
     Execute((inputs, ctx, _) => GetIssueGitHubData(inputs, ctx).Result),
     Where((doc, ctx) => doc.ContainsKey("Issues")),
+    Meta("ProjectKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     GenerateJson(new []
     {
-        "Issues",
-        "RecentIssuesCount",
-        "HelpWantedIssuesCount"
+        "Issues"
     })
         .WithCamelCase(),
     WriteFiles((doc, ctx) => doc.Source.FileName.ChangeExtension(".json"))
+);
+
+Pipelines.Add("All Counts",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Select(x => new
+        {
+            ProjectKey = x.String("ProjectKey"),
+            RecentIssuesCount = x.Get<int>("RecentIssuesCount"),
+            HelpWantedIssuesCount = x.Get<int>("HelpWantedIssuesCount")
+        })),
+    WriteFiles((doc, ctx) => "all-counts.json")
+);
+
+Pipelines.Add("All Help Wanted",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.HelpWanted)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                Link = i.Link,
+                Title = i.Title
+            }))),
+    WriteFiles((doc, ctx) => "all-help-wanted.json")
+);
+
+Pipelines.Add("All Recent",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.Recent)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                Link = i.Link,
+                Title = i.Title
+            }))),
+    WriteFiles((doc, ctx) => "all-recent.json")
 );
 
 //////////////////////////////////////////////////////////////////////
@@ -104,6 +142,8 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
                     IssueData[] issueData = issues.Select(x => new IssueData(x, oneDayAgo)).ToArray();
                     MetadataItems metadata = new MetadataItems
                     {
+                        { "GitHubOwner", owner },
+                        { "GitHubName", name },
                         { "Issues", issueData },
                         { "RecentIssuesCount", issueData.Count(x => x.Recent) },
                         { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }

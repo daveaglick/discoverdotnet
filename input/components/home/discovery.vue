@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mb-5">
         <div class="text-center">
             <h1>
                 <span class="accent-primary">Discovery</span>
