@@ -1,7 +1,7 @@
 <template>
     <div>
         <recent-issues :project-keys="projectKeys"></recent-issues>
-        <help-wanted></help-wanted>
+        <help-wanted :project-keys="projectKeys"></help-wanted>
     </div>
 </template>
 

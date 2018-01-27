@@ -80,3 +80,8 @@ header .jumbotron .lead {
 .card-header.bg-dark {
     @include gradient-bg($dark);
 }
+
+// Hide anchors from the GitHub readme files
+.anchor {
+    display: none;
+}
