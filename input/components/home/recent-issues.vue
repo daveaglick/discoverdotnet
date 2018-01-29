@@ -12,7 +12,7 @@
             <p class="small">Some issues from the last 24 hours.</p>
             <small-card v-for="issue in firstIssues" :key="issue.link" icon="fa-bug">
                 <div class="font-weight-bold"><a :href="issue.link">{{ issue.title }}</a></div>
-                <div class="small">{{ issue.createdAt | from-now }}</div>
+                <div class="small">Created {{ issue.createdAt | from-now }}</div>
                 <div><a :href="getProject(issue).link">{{ getProject(issue).title }}</a></div>
             </small-card>
             <div class="text-right"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>

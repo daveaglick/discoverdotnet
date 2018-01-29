@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-center">        
+        <div v-if="title" class="text-center">        
             <h1>
                 <span class="accent-secondary">All</span>
                 <span class="accent-primary">{{ title }}</span>
@@ -30,7 +30,7 @@
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item :href="suggestLink">Suggest New</b-nav-item>
+                    <b-nav-item v-if="suggestLink" :href="suggestLink">Suggest New</b-nav-item>
                     <b-nav-form>
                         <b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle The Deck</b-button>
                         <div class="w-100 mb-2 d-lg-none"></div>
@@ -41,7 +41,9 @@
             </b-collapse>
         </b-navbar>
 
-        <cards :card-data="filteredCardData"></cards>
+        <slot :card-data="filteredCardData">
+            <cards :card-data="filteredCardData"></cards>
+        </slot>
     </div>
 </template>
 

@@ -17,11 +17,11 @@ Pipelines.Add("Projects",
     ReadFiles("projects/*.md"),
     FrontMatter(Yaml()),    
     Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
+    Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/projects/_Layout.cshtml"),
     WriteFiles(".html"),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
-    Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",

@@ -23,9 +23,12 @@
                     </b-card>
                 </b-tab>
             }
-            <b-tab title="Issues">
-
-            </b-tab>
+            @if(Model.Get<int>("OpenIssuesCount") > 0)
+            {
+                <b-tab title="Issues">
+                    <issues issue-json="/data/issues/@(Model.String("Key")).json"></issues>
+                </b-tab>
+            }
         </b-tabs>
     </b-col>
     <b-col md="3">
@@ -79,3 +82,7 @@
         </b-card>
     </b-col>
 </b-row>
+
+<script type="text/javascript">
+    Vue.component('issues', httpVueLoader('/components/issues.vue'));
+</script>
