@@ -50,12 +50,20 @@
         </b-navbar>
    
         <div class="row">
-            <div v-for="cardData in filteredCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
+            <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
                 <slot :card-data="cardData">
                     <component :is="getCard(cardData)" :card-data="cardData"></component>
                 </slot>
             </div>
         </div>
+            
+        <b-pagination
+            v-if="filteredCardData.length > perPage"
+            :total-rows="filteredCardData.length"
+            v-model="currentPage"
+            :per-page="perPage"
+            align="center">
+        </b-pagination>
     </div>
 </template>
 
@@ -67,6 +75,10 @@
             cardJson: null,
             filters: null,
             sorts: null,
+            perPage:
+            {
+                default: 24
+            },
             columnClasses:
             {                
                 default: "col-sm-6 col-md-4 col-lg-3"
@@ -75,7 +87,8 @@
         data: function() {
             return {
                 cardData: [],
-                selected: []
+                selected: [],
+                currentPage: 1
             }
         },
         created: function() {
@@ -131,6 +144,16 @@
                         }
                     }
                 });
+
+                return filtered;
+            },
+            pagedCardData: function() {
+                var filtered = this.filteredCardData;
+                
+                if(filtered.length > this.perPage) {
+                    filtered = filtered.slice((this.currentPage - 1) * this.perPage, this.currentPage * this.perPage);
+                }
+
                 return filtered;
             }
         },
