@@ -126,6 +126,10 @@ Task("Preview")
             Settings = new Dictionary<string, object>
             {
                 { "GitHubToken", gitHubToken }
+            },
+            ContentTypes = new Dictionary<string, string>
+            {
+                { ".vue", "text/plain" }
             }
         });  
         */
@@ -135,7 +139,8 @@ Task("Preview")
             + $" --config \"config.wyam\""
             + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
             + " --noclean -p -w"
-            + $" --setting GitHubToken=\"{gitHubToken}\"");
+            + $" --setting GitHubToken=\"{gitHubToken}\""
+            + $" --content-type .vue=text/plain");
     });
 
 Task("Publish")

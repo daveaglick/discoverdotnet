@@ -8,7 +8,7 @@
 </h1>
 
 <b-row>
-    <b-col md="9">
+    <b-col md="9" order="2" order-md="1">
         <b-card class="mb-4">
             <p class="lead">@Model.String("Description")</p>
             @RenderBody()
@@ -31,7 +31,7 @@
             }
         </b-tabs>
     </b-col>
-    <b-col md="3">
+    <b-col md="3" order="1" order-md="2">
         <b-card no-body class="mb-4">
             @if(Model.ContainsKey("Website") || Model.ContainsKey("Source"))
             {

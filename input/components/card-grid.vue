@@ -16,14 +16,22 @@
             <b-navbar-toggle target="filter-nav-collapse"></b-navbar-toggle>
             <b-collapse is-nav id="filter-nav-collapse">
                 <b-navbar-nav>   
-                    <filter-dropdown
-                        v-for="(filter, index) in filters"
-                        :key="filter.text"
-                        :text="filter.text"
-                        :values="filterValues(filter)"
-                        :selected.sync="selected[index]">
-                    </filter-dropdown>
-                    <b-nav-item-dropdown v-if="sorts" text="Sort">
+                    <span v-for="(filter, index) in filters" :key="filter.text">
+                        <filter-dropdown
+                            v-if="'field' in filter || 'values' in filter"
+                            :text="filter.text"
+                            :values="filterValues(filter)"
+                            :selected.sync="selected[index]">
+                        </filter-dropdown>
+                        <b-nav-item
+                            v-else
+                            :active="selected[index]"
+                            @click="filterItemClicked(index)"
+                            href="#">
+                                {{ filter.text }}
+                        </b-nav-item>
+                    </span>
+                    <b-nav-item-dropdown v-if="sorts.length > 0" text="Sort">
                         <b-dropdown-item v-for="sort in sorts" :key="sort.text" @click="applySort(sort)">
                             {{ sort.text }}
                         </b-dropdown-item>
@@ -40,30 +48,54 @@
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
-
-        <slot :card-data="filteredCardData">
-            <cards :card-data="filteredCardData"></cards>
-        </slot>
+   
+        <div class="row">
+            <div v-for="cardData in filteredCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
+                <slot :card-data="cardData">
+                    <component :is="getCard(cardData)" :card-data="cardData"></component>
+                </slot>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     module.exports = {
-        props: [
-            'title',
-            'suggestLink',
-            'cardJson',
-            'filters',
-            'sorts'
-        ],
+        props: {
+            title: null,
+            suggestLink: null,
+            cardJson: null,
+            filters: null,
+            sorts: null,
+            columnClasses:
+            {                
+                default: "col-sm-6 col-md-4 col-lg-3"
+            }
+        },
         data: function() {
             return {
                 cardData: [],
-                // See https://stackoverflow.com/q/25512771/807064 
-                selected: Array.apply(null, new Array(this.filters.length)).map(function(){ return new Array(); })
+                selected: []
             }
         },
         created: function() {
+            var self = this;
+            
+            // Prepare the filter selection array
+            // See https://stackoverflow.com/q/25512771/807064 
+            this.selected = Array
+                .apply(null, new Array(this.filters.length))
+                .map(function(item, index){ 
+                    var filter = self.filters[index];
+                    if('field' in self.filters[index] || 'values' in self.filters[index])
+                    {
+                        return new Array(); 
+                    } else {
+                        return false;
+                    }
+                });
+
+            // Get the card data
             axios
                 .get(this.cardJson)
                 .then(response => {
@@ -121,6 +153,9 @@
                         return item[filter.field];
                     }
                 });
+            },
+            filterItemClicked: function(index) {
+                Vue.set(this.selected, index, !this.selected[index]);
             }
         }
     }

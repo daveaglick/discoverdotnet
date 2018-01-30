@@ -81,6 +81,10 @@ header .jumbotron .lead {
     @include gradient-bg($dark);
 }
 
+.full-height-card > .card {
+    height: 100% !important;
+}
+
 // Hide anchors from the GitHub readme files
 .anchor {
     display: none;
