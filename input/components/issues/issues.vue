@@ -1,18 +1,14 @@
 <template>
     <div>
         <card-grid
-            :card-json="issueJson"
+            card-json="/data/issues/all.json"
             :filters="filters"
-            :sorts="sorts"
-            column-classes="col-sm-12 col-md-6 col-lg-4">
+            :sorts="sorts">
             <small-card slot-scope="props" icon="fa-bug">
                 <div class="font-weight-bold"><a :href="props.cardData.link">{{ props.cardData.title }}</a></div>
-                <div>
-                    <b-badge v-for="label in props.cardData.labels" :key="label" variant="light" class="mr-2">{{ label }}</b-badge>
-                </div>
+                <div><a :href="getProject(props.cardData).link">{{ getProject(props.cardData).title }}</a></div>
                 <div slot="footer">
                     <div class="small">Created {{ props.cardData.createdAt | from-now }}</div>
-                    <div class="small">Updated {{ props.cardData.createdAt | from-now }}</div>
                 </div>
             </small-card>
         </card-grid>
@@ -22,15 +18,14 @@
 
 <script>
     module.exports = {
-        props: [
-            'issueJson'
-        ],
         data: function() {
             return {
+                projectKeys: [],
                 filters: [
                     {
                         text: "Recent",
                         filter: function(items, selected) {
+                            debugger;
                             if(selected) {
                                 return items.filter(function(item) {
                                     return item.recent;
@@ -63,14 +58,25 @@
                         sort: function(a, b) {
                             return moment(a.createdAt) - moment(b.createdAt);                 
                         }
-                    },
-                    {
-                        text: 'Recently Updated',
-                        sort: function(a, b) {
-                            return moment(b.updatedAt) - moment(a.updatedAt);              
-                        }
                     }
                 ]
+            }
+        },
+        created: function() {
+            axios
+                .get('/data/project-keys.json')
+                .then(response => {
+                    this.projectKeys = response.data
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        methods: {
+            getProject: function(issue) {
+                return this.projectKeys.find(function(item) {
+                    return item.key == issue.projectKey;
+                });
             }
         }
     }

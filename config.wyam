@@ -3,6 +3,7 @@
 //#n Wyam.Markdown
 //#n Wyam.Json
 //#n Wyam.Sass
+//#n Wyam.Minification
 #n Octokit
 
 using System.Collections.Concurrent;
@@ -43,6 +44,7 @@ Pipelines.Add("Project Data",
     GenerateJson((doc, ctx) =>
         @ctx.Documents.FromPipeline("Projects").Select(x => x["CardData"]))
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => "data/projects.json")
 );
 
@@ -54,6 +56,7 @@ Pipelines.Add("Project Keys",
                 "Title",
                 "Link")))
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => "data/project-keys.json")
 );
 
@@ -65,6 +68,7 @@ Pipelines.Add("Discoveries",
         .Descending(),
     GenerateJson((doc, ctx) => doc["CardData"])
         .WithCamelCase(),
+    MinifyJs(),
     Branch(
         // Daily discovery
         Take(1),

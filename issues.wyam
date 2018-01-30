@@ -1,5 +1,6 @@
 //#n Wyam.Yaml
 //#n Wyam.Json
+//#n Wyam.Minification
 #n Octokit
 
 using System.Collections.Concurrent;
@@ -18,6 +19,7 @@ Pipelines.Add("Issues",
     Meta("ProjectKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     GenerateJson((doc, ctx) => doc["Issues"])
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => doc.Source.FileName.ChangeExtension(".json"))
 );
 
@@ -29,6 +31,7 @@ Pipelines.Add("All Counts",
             "HelpWantedIssuesCount"
         )))
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => "all-counts.json")
 );
 
@@ -44,6 +47,7 @@ Pipelines.Add("All Help Wanted",
                 Title = i.Title
             })))
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => "all-help-wanted.json")
 );
 
@@ -59,7 +63,25 @@ Pipelines.Add("All Recent",
                 Title = i.Title
             })))
         .WithCamelCase(),
+    MinifyJs(),
     WriteFiles((doc, ctx) => "all-recent.json")
+);
+
+Pipelines.Add("All",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Recent = i.Recent,
+                HelpWanted = i.HelpWanted
+            })))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "all.json")
 );
 
 //////////////////////////////////////////////////////////////////////
