@@ -7,13 +7,13 @@
     @Model.String("Title") 
 </h1>
 
+<b-card class="mb-4">
+    <p class="lead">@Model.String("Description")</p>
+    @RenderBody()
+</b-card>
+
 <b-row>
     <b-col md="9" order="2" order-md="1">
-        <b-card class="mb-4">
-            <p class="lead">@Model.String("Description")</p>
-            @RenderBody()
-        </b-card>
-
         <b-tabs pills>
             @if(Model.ContainsKey("Readme"))
             {
@@ -33,33 +33,51 @@
     </b-col>
     <b-col md="3" order="1" order-md="2">
         <b-card no-body class="mb-4">
-            @if(Model.ContainsKey("Website") || Model.ContainsKey("Source"))
-            {
-                <b-card-body>
-                    @{
-                        string website = Model.String("Website");
-                        string source = Model.String("Source");
-                        if(!string.IsNullOrWhiteSpace(website))
-                        {
-                            <div>
-                                <a href="@(website)">
-                                    <span class="fa fa-external-link-square-alt"></span>
-                                    {{ '@(website)' | no-protocol }}
-                                </a>
-                            </div>
-                        }    
-                        if(!string.IsNullOrWhiteSpace(source))
-                        {
-                            <div>
-                                <a href="@(source)">
-                                    <span class="fa fa-code"></span>
-                                    {{ '@(source)' | no-protocol }}
-                                </a>
-                            </div>
-                        }
+            <b-card-body>
+                @{
+                    string website = Model.String("Website");
+                    string source = Model.String("Source");
+                    string twitter = Model.String("Twitter");
+                    string chat = Model.String("Chat");
+                    string package = Model.String("NuGet");
+                    if(!string.IsNullOrWhiteSpace(website))
+                    {
+                        <div class="font-weight-bold">
+                            <span class="fa fa-external-link-square-alt"></span> Website
+                        </div>
+                        <div>
+                            <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
+                        </div>
+                    }    
+                    if(!string.IsNullOrWhiteSpace(source))
+                    {
+                        <div class="font-weight-bold">
+                            <span class="fa fa-code"></span> Source
+                        </div>
+                        <div>
+                            <a href="@(source)">{{ '@(source)' | no-protocol }}</a>
+                        </div>
                     }
-                </b-card-body>
-            }
+                    if(!string.IsNullOrWhiteSpace(twitter))
+                    {
+                        <div class="font-weight-bold">
+                            <span class="fab fa-twitter"></span> Twitter
+                        </div>
+                        <div>
+                            <a href="https://twitter.com/@(twitter)">@@@(twitter)</a>
+                        </div>
+                    }
+                    if(!string.IsNullOrWhiteSpace(package))
+                    {
+                        <div class="font-weight-bold">
+                            <span class="fa fa-download"></span> NuGet
+                        </div>
+                        <div>
+                            <a href="https://www.nuget.org/packages/@(package)">@(package)</a>
+                        </div>
+                    }
+                }
+            </b-card-body>
             @if(Model.ContainsKey("StargazersCount"))
             {
                 <b-card-body>
@@ -79,6 +97,10 @@
                     </b-row>
                 </b-card-body>
             }
+        </b-card>
+
+        <b-card header-text-variant="white" header-bg-variant="dark" class="mb-4">
+            <div slot="header">NuGet Statistics</div>
         </b-card>
     </b-col>
 </b-row>

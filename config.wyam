@@ -131,7 +131,8 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
                     { "StargazersCount", repository.StargazersCount },
                     { "ForksCount", repository.ForksCount },
                     { "OpenIssuesCount", repository.OpenIssuesCount },
-                    { "PushedAt", repository.PushedAt }
+                    { "PushedAt", repository.PushedAt },
+                    { "CreatedAt", repository.CreatedAt }
                 };
                 if(!input.ContainsKey("Title"))
                 {

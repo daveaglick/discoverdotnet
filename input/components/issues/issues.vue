@@ -1,6 +1,7 @@
 <template>
     <div>
         <card-grid
+            title="issues"
             card-json="/data/issues/all.json"
             :filters="filters"
             :sorts="sorts">
