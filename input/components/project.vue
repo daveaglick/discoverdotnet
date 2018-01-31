@@ -25,6 +25,11 @@
             <description v-if="cardData.tags" term="Tags">
                 <div v-for="tag in cardData.tags" :key="tag">{{ tag }}</div>
             </description>
+            <div>
+                <b-badge v-if="cardData.platform" variant="dark">.NET Platform</b-badge>
+                <b-badge v-if="cardData.microsoft" variant="success">Microsoft</b-badge>
+                <b-badge v-if="cardData.foundation" variant="primary">.NET Foundation</b-badge>
+            </div>
         </div>
     </card>
 </template>

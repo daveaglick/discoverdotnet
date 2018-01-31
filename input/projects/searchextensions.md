@@ -3,5 +3,5 @@ Website: http://ninjanye.github.io/SearchExtensions/
 Language: C#
 NuGet: NinjaNye.SearchExtensions
 Tags:
-  - Foundational
+  - Search
 ---

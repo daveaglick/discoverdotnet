@@ -81,6 +81,10 @@ header .jumbotron .lead {
     @include gradient-bg($dark);
 }
 
+.thead-dark, .thead-dark th {
+    @include gradient-bg($dark);
+}
+
 .full-height-card > .card {
     height: 100% !important;
 }

@@ -3,4 +3,5 @@ Language: C#
 Tags:
   - Web Framework
 NuGet: Nancy
+Foundation: true
 ---

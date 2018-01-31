@@ -16,6 +16,39 @@
             return {
                 filters: [
                     {
+                        text: '.NET Platform',
+                        filter: function(items, selected) {
+                            if(selected) {
+                                return items.filter(function(item) {
+                                    return item.platform;
+                                });
+                            }
+                            return items;
+                        }
+                    },
+                    {
+                        text: 'Microsoft',
+                        filter: function(items, selected) {
+                            if(selected) {
+                                return items.filter(function(item) {
+                                    return item.microsoft;
+                                });
+                            }
+                            return items;
+                        }
+                    },
+                    {
+                        text: '.NET Foundation',
+                        filter: function(items, selected) {
+                            if(selected) {
+                                return items.filter(function(item) {
+                                    return item.foundation;
+                                });
+                            }
+                            return items;
+                        }
+                    },
+                    {
                         text: 'Language',
                         field: 'language' // or values: ['a', 'b', 'c']
                         //filter: function(items, selected) {} // for custom filter 

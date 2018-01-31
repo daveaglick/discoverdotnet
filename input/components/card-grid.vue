@@ -12,6 +12,8 @@
             </h5>
         </div>
 
+        <a id="card-grid-anchor"></a>
+
         <b-navbar toggleable="md" variant="dark" type="dark" class="my-4">
             <b-navbar-toggle target="filter-nav-collapse"></b-navbar-toggle>
             <b-collapse is-nav id="filter-nav-collapse">
@@ -47,8 +49,8 @@
                     </b-nav-form>
                 </b-navbar-nav>
             </b-collapse>
-        </b-navbar>
-   
+        </b-navbar>   
+
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
                 <slot :card-data="cardData">
@@ -62,7 +64,8 @@
             :total-rows="filteredCardData.length"
             v-model="currentPage"
             :per-page="perPage"
-            align="center">
+            align="center"
+            @change="pageChange">
         </b-pagination>
     </div>
 </template>
@@ -82,7 +85,8 @@
             columnClasses:
             {                
                 default: "col-sm-6 col-md-4 col-lg-3"
-            }
+            },
+            initialSort: null
         },
         data: function() {
             return {
@@ -112,8 +116,11 @@
             axios
                 .get(this.cardJson)
                 .then(response => {
-                    this.cardData = response.data;
-                    this.shuffle();
+                    if(this.initialSort) {
+                        this.cardData = response.data.sort(this.initialSort);
+                    } else {
+                        this.cardData = response.data.sort(function(){return 0.5 - Math.random()});
+                    }
                 })
                 .catch(e => {
                     console.log(e);
@@ -179,6 +186,9 @@
             },
             filterItemClicked: function(index) {
                 Vue.set(this.selected, index, !this.selected[index]);
+            },
+            pageChange: function() {
+                document.getElementById('card-grid-anchor').scrollIntoView({ behavior: "smooth" });
             }
         }
     }
