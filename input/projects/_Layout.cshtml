@@ -12,6 +12,10 @@
     @RenderBody()
 </b-card>
 
+@{
+    string package = Model.String("NuGet");
+}
+
 <b-row>
     <b-col md="9" order="2" order-md="1">
         <b-tabs pills>
@@ -29,6 +33,35 @@
                     <issues issue-json="/data/issues/@(Model.String("Key")).json"></issues>
                 </b-tab>
             }
+            @if(Model.ContainsKey("Versions"))
+            {
+                <b-tab title="Versions">
+                    <b-card no-body class="my-4">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Version</th>
+                                    <th scope="col">Downloads</th>
+                                    <th scope="col">Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(VersionData version in Model.Get<List<VersionData>>("Versions"))
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(version.Version)">@(version.Version)</a></div>
+                                            <div class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(version.Version)">Direct Download</a></div>
+                                        </td>
+                                        <td>@(version.Downloads)</td>
+                                        <td>@(version.LastUpdated.ToString("MMMM d, yyyy"))</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </b-card>
+                </b-tab>
+            }
         </b-tabs>
     </b-col>
     <b-col md="3" order="1" order-md="2">
@@ -39,42 +72,41 @@
                     string source = Model.String("Source");
                     string twitter = Model.String("Twitter");
                     string chat = Model.String("Chat");
-                    string package = Model.String("NuGet");
                     if(!string.IsNullOrWhiteSpace(website))
                     {
-                        <div class="font-weight-bold">
+                        <h5>
                             <span class="fa fa-external-link-square-alt"></span> Website
-                        </div>
-                        <div>
+                        </h5>
+                        <p>
                             <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
-                        </div>
+                        </p>
                     }    
                     if(!string.IsNullOrWhiteSpace(source))
                     {
-                        <div class="font-weight-bold">
+                        <h5>
                             <span class="fa fa-code"></span> Source
-                        </div>
-                        <div>
+                        </h5>
+                        <p>
                             <a href="@(source)">{{ '@(source)' | no-protocol }}</a>
-                        </div>
+                        </p>
                     }
                     if(!string.IsNullOrWhiteSpace(twitter))
                     {
-                        <div class="font-weight-bold">
+                        <h5>
                             <span class="fab fa-twitter"></span> Twitter
-                        </div>
-                        <div>
+                        </h5>
+                        <p>
                             <a href="https://twitter.com/@(twitter)">@@@(twitter)</a>
-                        </div>
+                        </p>
                     }
                     if(!string.IsNullOrWhiteSpace(package))
                     {
-                        <div class="font-weight-bold">
+                        <h5>
                             <span class="fa fa-download"></span> NuGet
-                        </div>
-                        <div>
+                        </h5>
+                        <p>
                             <a href="https://www.nuget.org/packages/@(package)">@(package)</a>
-                        </div>
+                        </p>
                     }
                 }
             </b-card-body>
@@ -99,9 +131,26 @@
             }
         </b-card>
 
-        <b-card header-text-variant="white" header-bg-variant="dark" class="mb-4">
-            <div slot="header">NuGet Statistics</div>
-        </b-card>
+        @if(Model.ContainsKey("TotalDownloads"))
+        {
+            <b-card header-text-variant="white" header-bg-variant="dark" class="mb-4">
+                <div slot="header">NuGet Statistics</div>
+
+                <h5>Downloads</h5>
+                <p>
+                    <span>@(Model.String("TotalDownloads")) total downloads</span><br/>
+                    <span>@(Model.String("PerDayDownloads")) downloads per day</span>
+                </p>
+
+                <h5>Latest Version</h5>
+                <p>
+                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.String("LatestVersion"))">@(Model.String("LatestVersion"))</a></span><br/>
+                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.String("LatestVersion"))">Direct Download</a></span><br/>
+                    <span>@(Model.String("LatestVersionDownloads")) downloads</span><br/>
+                    <span>Last updated @(Model.DateTime("LatestVersionLastUpdated").ToString("MMMM d, yyyy"))</span>
+                </p>
+            </b-card>
+        }
     </b-col>
 </b-row>
 
