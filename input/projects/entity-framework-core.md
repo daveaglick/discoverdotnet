@@ -1,0 +1,8 @@
+Title: Entity Framework Core
+Source: https://github.com/aspnet/EntityFrameworkCore
+Docs: https://docs.microsoft.com/ef/core
+Language: C#
+Platform: true
+Tags:
+  - ORM
+---

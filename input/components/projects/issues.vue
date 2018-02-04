@@ -4,7 +4,6 @@
             :card-json="issueJson"
             :filters="filters"
             :sorts="sorts"
-            :initial-sort="initialSort"
             column-classes="col-sm-12 col-md-6 col-lg-4">
             <small-card slot-scope="props" icon="fa-bug">
                 <div class="font-weight-bold"><a :href="props.cardData.link">{{ props.cardData.title }}</a></div>
@@ -75,11 +74,6 @@
                         }
                     }
                 ]
-            }
-        },
-        methods: {
-            initialSort: function(a, b) {
-                return moment(b.createdAt) - moment(a.createdAt);        
             }
         }
     }

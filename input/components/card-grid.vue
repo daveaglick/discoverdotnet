@@ -86,7 +86,7 @@
             {                
                 default: "col-sm-6 col-md-4 col-lg-3"
             },
-            initialSort: null
+            randomizeOrder: null
         },
         data: function() {
             return {
@@ -116,10 +116,10 @@
             axios
                 .get(this.cardJson)
                 .then(response => {
-                    if(this.initialSort) {
-                        this.cardData = response.data.sort(this.initialSort);
-                    } else {
+                    if(this.randomizeOrder) {
                         this.cardData = response.data.sort(function(){return 0.5 - Math.random()});
+                    } else {
+                        this.cardData = response.data;
                     }
                 })
                 .catch(e => {

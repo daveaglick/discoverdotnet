@@ -1,0 +1,6 @@
+Title: .NET Core
+Source: https://github.com/dotnet/core
+Website: https://www.microsoft.com/net
+Docs: https://docs.microsoft.com/en-us/dotnet/core/
+Platform: true
+---

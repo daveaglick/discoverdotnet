@@ -5,7 +5,8 @@
             suggest-link="/suggest/project"
             card-json="/data/projects.json"
             :filters="filters"
-            :sorts="sorts">
+            :sorts="sorts"
+            :randomizeOrder="true">
         </card-grid>
     </div>
 </template>

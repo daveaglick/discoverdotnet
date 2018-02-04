@@ -117,7 +117,8 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
         "dotnet",
         "aspnet",
         "microsoft",
-        "nuget"
+        "nuget",
+        "mono"
     };
 
     GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))

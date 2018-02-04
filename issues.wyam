@@ -20,10 +20,10 @@ Pipelines.Add("Issues",
     GenerateJson((doc, ctx) => doc["Issues"])
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => doc.Source.FileName.ChangeExtension(".json"))
+    WriteFiles((doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".json"))
 );
 
-Pipelines.Add("All Counts",
+Pipelines.Add("Project Counts",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
         .Select(x => x.GetMetadata(
             "ProjectKey",
@@ -32,26 +32,10 @@ Pipelines.Add("All Counts",
         )))
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "all-counts.json")
+    WriteFiles((doc, ctx) => "project-counts.json")
 );
 
-Pipelines.Add("All Help Wanted",
-    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
-        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
-            .Where(i => i.HelpWanted)
-            .Select(i => new
-            {
-                ProjectKey = d.String("ProjectKey"),
-                CreatedAt = i.CreatedAt,
-                Link = i.Link,
-                Title = i.Title
-            })))
-        .WithCamelCase(),
-    MinifyJs(),
-    WriteFiles((doc, ctx) => "all-help-wanted.json")
-);
-
-Pipelines.Add("All Recent",
+Pipelines.Add("Recent",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
         .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
             .Where(i => i.Recent)
@@ -61,32 +45,197 @@ Pipelines.Add("All Recent",
                 CreatedAt = i.CreatedAt,
                 Link = i.Link,
                 Title = i.Title
-            })))
+            }))
+        .OrderByDescending(x => x.CreatedAt))
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "all-recent.json")
+    WriteFiles((doc, ctx) => "recent/all.json")
 );
 
-Pipelines.Add("All",
+Pipelines.Add("Help Wanted",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
         .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.HelpWanted)
             .Select(i => new
             {
                 ProjectKey = d.String("ProjectKey"),
                 CreatedAt = i.CreatedAt,
                 Link = i.Link,
-                Title = i.Title,
-                Recent = i.Recent,
-                HelpWanted = i.HelpWanted
-            })))
+                Title = i.Title
+            }))
+        .OrderByDescending(x => x.CreatedAt))
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "all.json")
+    WriteFiles((doc, ctx) => "help-wanted/all.json")
+);
+
+Pipelines.Add("All",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.All)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"all/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Help Wanted Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.HelpWanted)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.HelpWanted)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"help-wanted/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Microsoft Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Microsoft"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Microsoft)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"microsoft/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Foundation Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Foundation"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Foundation)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"foundation/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Platform Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Platform"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Platform)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"platform/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Total Counts",
+    GenerateJson(ctx => TotalCounts.Instance)
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "total-counts.json")
 );
 
 //////////////////////////////////////////////////////////////////////
 // Helpers
 //////////////////////////////////////////////////////////////////////
+
+public class TotalCounts
+{
+    public int All;
+    public int HelpWanted;
+    public int Microsoft;
+    public int Foundation;
+    public int Platform;
+
+    public static TotalCounts Instance = new TotalCounts();
+}
+
+public static class Extensions
+{
+	public static IEnumerable<IGrouping<int, TSource>> Partition<TSource>(
+		this IEnumerable<TSource> source,
+		int groupSize,
+        out int count)
+	{
+		int c = 0;
+		IEnumerable<IGrouping<int, TSource>> result = source
+			.Select(x => new KeyValuePair<int, TSource>(c++ / groupSize, x))
+			.GroupBy(x => x.Key, x => x.Value)
+            .ToList();  // Materialize the list since we need an accurate count to pass out
+        count = c;
+        return result;
+	}
+}
 
 public class IssueData
 {
@@ -123,12 +272,28 @@ public class IssueData
 }
 
 public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
-{            
+{           
+    string[] microsoftOwners = new []
+    {
+        "dotnet",
+        "aspnet",
+        "microsoft",
+        "nuget",
+        "mono"
+    };
+
     GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
     {
         Credentials = new Credentials(context.String("GitHubToken"))
     };
     DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-24);
+    
+    Wyam.Common.Tracing.Trace.Information($"Getting .NET Foundation readme");
+    string foundationReadme;
+    using(System.Net.WebClient webClient = new System.Net.WebClient())
+	{
+		foundationReadme = await webClient.DownloadStringTaskAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
+	}
 
     return await Task.WhenAll(
         inputs.Select(async input =>
@@ -160,7 +325,10 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
                     .ToList();
                 if(issues.Count > 0)
                 {
-                    IssueData[] issueData = issues.Select(x => new IssueData(x, oneDayAgo)).ToArray();
+                    IssueData[] issueData = issues
+                        .Select(x => new IssueData(x, oneDayAgo))
+                        .OrderByDescending(x => x.CreatedAt)
+                        .ToArray();
                     MetadataItems metadata = new MetadataItems
                     {
                         { "GitHubOwner", owner },
@@ -168,7 +336,15 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
                         { "Issues", issueData },
                         { "RecentIssuesCount", issueData.Count(x => x.Recent) },
                         { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
-                    };
+                    };                
+                    if(!input.ContainsKey("Microsoft") && microsoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
+                    {
+                        metadata.Add("Microsoft", true);
+                    }
+                    if(!input.ContainsKey("Foundation") && foundationReadme.IndexOf($"github.com/{owner}/{name}", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        metadata.Add("Foundation", true);
+                    }
                     
                     // Return a document with issue metadata
                     output = context.GetDocument(input, metadata);

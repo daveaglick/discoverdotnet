@@ -35,7 +35,7 @@
         },
         created: function() {
             axios
-                .get('/data/issues/all-help-wanted.json')
+                .get('/data/issues/help-wanted/all.json')
                 .then(response => {
                     this.issues = response.data
                 })

@@ -4,8 +4,7 @@
             title="issues"
             card-json="/data/issues/all.json"
             :filters="filters"
-            :sorts="sorts"
-            :initial-sort="initialSort">
+            :sorts="sorts">
             <small-card slot-scope="props" icon="fa-bug">
                 <div class="font-weight-bold"><a :href="props.cardData.link">{{ props.cardData.title }}</a></div>
                 <div><a :href="getProject(props.cardData).link">{{ getProject(props.cardData).title }}</a></div>
@@ -78,9 +77,6 @@
                 return this.projectKeys.find(function(item) {
                     return item.key == issue.projectKey;
                 });
-            },
-            initialSort: function(a, b) {
-                return moment(b.createdAt) - moment(a.createdAt);  
             }
         }
     }

@@ -44,7 +44,7 @@
             @if(Model.Get<int>("OpenIssuesCount") > 0)
             {
                 <b-tab title="Issues">
-                    <issues issue-json="/data/issues/@(Model.String("Key")).json"></issues>
+                    <issues issue-json="/data/issues/projects/@(Model.String("Key")).json"></issues>
                 </b-tab>
             }
             @if(Model.ContainsKey("Versions"))
@@ -83,6 +83,7 @@
             <b-card-body>
                 @{
                     string website = Model.String("Website");
+                    string docs = Model.String("Docs");
                     string source = Model.String("Source");
                     string twitter = Model.String("Twitter");
                     string chat = Model.String("Chat");
@@ -93,6 +94,15 @@
                         </h5>
                         <p>
                             <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
+                        </p>
+                    }    
+                    if(!string.IsNullOrWhiteSpace(docs))
+                    {
+                        <h5>
+                            <span class="fa fa-book"></span> Documentation
+                        </h5>
+                        <p>
+                            <a href="@(docs)">{{ '@(docs)' | no-protocol }}</a>
                         </p>
                     }    
                     if(!string.IsNullOrWhiteSpace(source))
