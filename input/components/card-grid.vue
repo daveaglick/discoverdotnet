@@ -64,8 +64,9 @@
             :total-rows="filteredCardData.length"
             v-model="currentPage"
             :per-page="perPage"
+            :last-text="'&raquo; ' + filteredCardData.length + ' Total'"
             align="center"
-            @change="pageChange">
+            @input="pageChange">
         </b-pagination>
     </div>
 </template>
@@ -188,7 +189,9 @@
                 Vue.set(this.selected, index, !this.selected[index]);
             },
             pageChange: function() {
-                document.getElementById('card-grid-anchor').scrollIntoView({ behavior: "smooth" });
+                Vue.nextTick(function () {
+                    document.getElementById('card-grid-anchor').scrollIntoView({ behavior: "smooth" });
+                });
             }
         }
     }

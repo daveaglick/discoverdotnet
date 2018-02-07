@@ -4,17 +4,9 @@
             :card-json="issueJson"
             :filters="filters"
             :sorts="sorts"
-            column-classes="col-sm-12 col-md-6 col-lg-4">
-            <small-card slot-scope="props" icon="fa-bug">
-                <div class="font-weight-bold"><a :href="props.cardData.link">{{ props.cardData.title }}</a></div>
-                <div>
-                    <b-badge v-for="label in props.cardData.labels" :key="label" variant="light" class="mr-2">{{ label }}</b-badge>
-                </div>                
-                <div slot="footer">
-                    <div class="small">Created {{ props.cardData.createdAt | from-now }}</div>
-                    <div class="small">Updated {{ props.cardData.updatedAt | from-now }}</div>
-                </div>
-            </small-card>
+            column-classes="col-sm-12 col-md-6 col-lg-4">            
+            <issue-card slot-scope="props" :card-data="props.cardData">
+            </issue-card>
         </card-grid>
     </div>
 </template>

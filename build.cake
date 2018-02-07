@@ -109,7 +109,7 @@ Task("Preview")
         // Copy the issue data
         var issuesDataDir = outputDir + Directory("data/issues");
         EnsureDirectoryExists(issuesDataDir);
-        CopyFiles("output.issues/*", issuesDataDir);
+        CopyFiles("output.issues/**/*", issuesDataDir, true);
 
         // Generate the main site, but don't clean it out
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");

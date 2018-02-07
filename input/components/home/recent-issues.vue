@@ -9,14 +9,9 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p class="small">Some issues from the last 24 hours.</p>
-            <small-card v-for="issue in firstIssues" :key="issue.link" icon="fa-bug">
-                <div class="font-weight-bold"><a :href="issue.link">{{ issue.title }}</a></div>
-                <div><a :href="getProject(issue).link">{{ getProject(issue).title }}</a></div>
-                <div slot="footer">
-                    <div class="small">Created {{ issue.createdAt | from-now }}</div>
-                </div>
-            </small-card>
+            <p class="small">Some issues from the last 24 hours.</p>            
+            <issue-card v-for="issue in firstIssues" :key="issue.link" :card-data="issue" :project-keys="projectKeys">
+            </issue-card>
             <div class="text-right"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>
         </div>
     </div>
@@ -51,11 +46,6 @@
         methods: {
             shuffle: function() {
                 this.issues = this.issues.sort(function(){return 0.5 - Math.random()});
-            },
-            getProject: function(issue) {
-                return this.projectKeys.find(function(item) {
-                    return item.key == issue.projectKey;
-                });
             }
         }
     }

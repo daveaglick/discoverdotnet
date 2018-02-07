@@ -70,8 +70,9 @@
             Vue.component('small-card', httpVueLoader('/components/small-card.vue'));   
             Vue.component('card', httpVueLoader('/components/card.vue'));   
             Vue.component('card-grid', httpVueLoader('/components/card-grid.vue'));  
-            Vue.component('filter-dropdown', httpVueLoader('/components/filter-dropdown.vue'));         
-            Vue.component('project', httpVueLoader('/components/project.vue'));
+            Vue.component('filter-dropdown', httpVueLoader('/components/filter-dropdown.vue'));    
+            Vue.component('paged-grid', httpVueLoader('/components/paged-grid.vue'));       
+            Vue.component('project-card', httpVueLoader('/components/project.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -96,7 +97,7 @@
                         if(link)
                         {
                             if(link.startsWith('/projects')) {
-                                return 'project';
+                                return 'project-card';
                             }
                         }
                         return 'card';
