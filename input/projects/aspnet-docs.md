@@ -3,6 +3,7 @@ Source: https://github.com/aspnet/Docs
 Website: https://docs.microsoft.com/aspnet
 Platform: true
 Tags:
+  - ASP.NET
   - Web Framework
   - Documentation
 ---

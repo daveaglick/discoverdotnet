@@ -1,0 +1,10 @@
+Description: A starting point for new modern ASP.NET MVC web applications with best practices and most popular tools.
+Language: C#
+NuGet: Abp
+Source: https://github.com/aspnetboilerplate/aspnetboilerplate
+Tags:
+  - ASP.NET
+  - Web Framework
+Title: ASP.NET Boilerplate
+Website: https://aspnetboilerplate.com/
+---

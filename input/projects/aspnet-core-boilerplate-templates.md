@@ -1,0 +1,6 @@
+Language: C#
+Source: https://github.com/ASP-NET-Core-Boilerplate/Templates
+Tags:
+  - Templates
+Title: ASP.NET Core Boilerplate Templates
+---

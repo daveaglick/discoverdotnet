@@ -279,7 +279,8 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
         "aspnet",
         "microsoft",
         "nuget",
-        "mono"
+        "mono",
+        "azure"
     };
 
     GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
