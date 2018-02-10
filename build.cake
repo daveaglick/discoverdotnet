@@ -89,7 +89,8 @@ Task("Issues")
             OutputPath = issuesDir,
             Settings = new Dictionary<string, object>
             {
-                { "GitHubToken", gitHubToken }
+                { "GitHubToken", gitHubToken },
+                { "Preview", string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase ) }
             }
         });  
         */        
@@ -98,7 +99,8 @@ Task("Issues")
             "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
             + $" --config \"issues.wyam\""
             + $" --output \"{MakeAbsolute(issuesDir).ToString()}\""
-            + $" --setting GitHubToken=\"{gitHubToken}\"");
+            + $" --setting GitHubToken=\"{gitHubToken}\""
+            + $" --setting Preview=\"{ string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase) }\"");
     });
 
 Task("Preview")
@@ -125,7 +127,8 @@ Task("Preview")
             Watch = true,
             Settings = new Dictionary<string, object>
             {
-                { "GitHubToken", gitHubToken }
+                { "GitHubToken", gitHubToken },
+                { "Preview", true }
             },
             ContentTypes = new Dictionary<string, string>
             {
@@ -140,6 +143,7 @@ Task("Preview")
             + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
             + " --noclean -p -w"
             + $" --setting GitHubToken=\"{gitHubToken}\""
+            + $" --setting Preview=\"true\""
             + $" --content-type .vue=text/plain");
     });
 

@@ -19,7 +19,10 @@ using AngleSharp;
 //////////////////////////////////////////////////////////////////////
 
 Pipelines.Add("Projects",
-    ReadFiles("projects/*.md"),
+    ReadFiles("projects/*.md"),    
+    If(ctx => ctx.Bool("Preview"),
+        OrderBy((doc, ctx2) => doc.Source),        
+        Take(10)),
     FrontMatter(Yaml()),    
     Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
     Execute((inputs, ctx, _) => GetProjectNuGetData(inputs, ctx).Result),
