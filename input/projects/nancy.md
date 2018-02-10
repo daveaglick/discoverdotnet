@@ -4,4 +4,5 @@ Tags:
   - Web Framework
 NuGet: Nancy
 Foundation: true
+Donations: http://pledgie.com/campaigns/17251
 ---

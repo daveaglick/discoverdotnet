@@ -153,6 +153,19 @@
                     </b-row>
                 </b-card-body>
             }
+            @if(Model.ContainsKey("Donations"))
+            {
+                string donations = Model.String("Donations");
+                <b-card-body>
+                    <h5>This project accepts donations</h5>
+                    <p>
+                        <b-button href="@(donations)"><i class="fas fa-heart"></i> Show Some Love</b-button>
+                    </p>
+                    <p>
+                        <a href="@(donations)">{{ '@(donations)' | no-protocol }}</a>
+                    </p>
+                </b-card-body>
+            }
         </b-card>
 
         @if(Model.ContainsKey("TotalDownloads"))
