@@ -1,0 +1,11 @@
+Description: Spring.NET is an open source application framework that makes building  enterprise .NET applications easier.
+Language: C#
+NuGet: Spring.Core
+Source: https://github.com/spring-projects/spring-net
+Tags:
+  - Application Framework
+  - Web Framework
+Title: Spring.NET
+Twitter: SpringForNet
+Website: http://www.springframework.net/
+

@@ -1,8 +1,0 @@
-Description: Windows 10 templates with design patterns
-Docs: https://github.com/Windows-XAML/Template10/wiki
-Language: C#
-Source: https://github.com/Windows-XAML/Template10
-Tags:
-  - Templates
-  - XAML
----

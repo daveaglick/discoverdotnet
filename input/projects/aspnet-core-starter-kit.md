@@ -1,7 +1,0 @@
-Language: C#
-Source: https://github.com/kriasoft/aspnet-starter-kit
-Tags:
-  - Templates
-Title: ASP.NET Core Starter Kit
-Twitter: dotnetreact
----

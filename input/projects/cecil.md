@@ -1,9 +1,0 @@
-Language: C#
-NuGet: Mono.Cecil
-Source: https://github.com/jbevain/cecil
-Tags:
-  - Metaprogramming
-  - Assembly Manipulation
-Title: Cecil
-Website: http://cecil.pe/
----

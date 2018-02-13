@@ -1,7 +1,0 @@
-Language: C#
-NuGet: ExcelDataReader
-Source: https://github.com/ExcelDataReader/ExcelDataReader
-Tags:
-  - Serialization
-  - Office
----

@@ -1,7 +1,0 @@
-Language: C#
-NuGet: ServiceStack
-Source: https://github.com/ServiceStack/ServiceStack
-Tags:
-  - API
-Website: https://servicestack.net/
----

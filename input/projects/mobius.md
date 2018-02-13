@@ -1,6 +1,0 @@
-Language: C#
-NuGet: Microsoft.SparkCLR
-Source: https://github.com/Microsoft/Mobius
-Tags:
-  - API
----

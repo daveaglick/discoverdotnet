@@ -1,6 +1,0 @@
-Source:  https://github.com/akkadotnet/Hyperion
-Language: C#
-Tags:
-  - Serialization
-NuGet: Hyperion
----

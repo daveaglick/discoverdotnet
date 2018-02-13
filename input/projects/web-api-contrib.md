@@ -1,7 +1,0 @@
-Language: C#
-NuGet: WebAPIContrib
-Source: https://github.com/WebApiContrib/WebAPIContrib
-Tags:
-  - API
-Website: http://webapicontrib.github.io/
----

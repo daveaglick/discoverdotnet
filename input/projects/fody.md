@@ -1,7 +1,0 @@
-Language: C#
-NuGet: Fody
-Source: https://github.com/Fody/Fody
-Tags:
-  - Metaprogramming
-  - Assembly Manipulation
----

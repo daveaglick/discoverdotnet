@@ -1,7 +1,0 @@
-Language: C#
-NuGet: Mono.Addins
-Source: https://github.com/mono/mono-addins
-Tags:
-  - Extensibility
-Title: Mono.Addins
----

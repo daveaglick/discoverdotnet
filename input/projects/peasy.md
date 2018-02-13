@@ -1,6 +1,0 @@
-Language: C#
-NuGet: Peasy
-Source: https://github.com/peasy/Peasy.NET
-Tags:
-  - Application Framework
----

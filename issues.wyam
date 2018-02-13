@@ -12,11 +12,11 @@ using Octokit;
 //////////////////////////////////////////////////////////////////////
 
 Pipelines.Add("Issues",
-    ReadFiles("projects/*.md"),
+    ReadFiles("data/projects/*.yml"),
     If(ctx => ctx.Bool("Preview"),
         OrderBy((doc, ctx2) => doc.Source),
         Take(10)),
-    FrontMatter(Yaml()),    
+    Yaml(),    
     Execute((inputs, ctx, _) => GetIssueGitHubData(inputs, ctx).Result),
     Where((doc, ctx) => doc.ContainsKey("Issues")),
     Meta("ProjectKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),

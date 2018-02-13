@@ -19,17 +19,18 @@ using AngleSharp;
 //////////////////////////////////////////////////////////////////////
 
 Pipelines.Add("Projects",
-    ReadFiles("projects/*.md"),    
+    ReadFiles("data/projects/*.yml"),    
     If(ctx => ctx.Bool("Preview"),
         OrderBy((doc, ctx2) => doc.Source),        
         Take(10)),
-    FrontMatter(Yaml()),    
+    Yaml(),    
+    Content(string.Empty),
     Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
     Execute((inputs, ctx, _) => GetProjectNuGetData(inputs, ctx).Result),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/projects/_Layout.cshtml"),
-    WriteFiles(".html"),
+    WriteFiles((doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".html")),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",

@@ -1,5 +1,0 @@
-Language: C#
-Source: https://github.com/NonFactors/MVC6.Template
-Tags:
-  - Templates
----

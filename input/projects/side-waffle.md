@@ -1,6 +1,0 @@
-Language: C#
-Source: https://github.com/LigerShark/side-waffle
-Tags:
-  - Templates
-Website: http://sidewaffle.com/
----

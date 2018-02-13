@@ -1,9 +1,0 @@
-Description: API framework enabling rich data access by using the OData 3 protocol. Client libraries available for JavaScript and C#.
-Language: C#
-NuGet: Breeze.Server.WebApi2
-Source: https://github.com/Breeze/breeze.server.net
-Tags:
-  - API
-Title: Breeze
-Website: http://breeze.github.io/doc-main/
----
