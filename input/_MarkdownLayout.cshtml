@@ -1,0 +1,13 @@
+@{
+	Layout = @"/_Layout.cshtml";
+}
+
+@if(Model.ContainsKey("Title"))
+{
+    <h1 class="font-weight-bold display-4">
+        @Model.String("Title")
+    </h1>
+}
+<b-card>
+    @RenderBody()
+</b-card>

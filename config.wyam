@@ -92,10 +92,18 @@ Pipelines.Add("Discoveries",
 );
 
 Pipelines.Add("Pages",
-    ReadFiles("**/{!_,}*.cshtml"),
+    ReadFiles("**/{!_,}*.md"),
     FrontMatter(Yaml()),
+    Markdown()
+        .UseExtensions(),
     Razor()
-        .WithLayout("/_Layout.cshtml"),
+        .WithLayout("/_MarkdownLayout.cshtml"),
+    Concat(
+        ReadFiles("**/{!_,}*.cshtml"),
+        FrontMatter(Yaml()),
+        Razor()
+            .WithLayout("/_Layout.cshtml")
+    ),
     WriteFiles(".html")
 );
 
