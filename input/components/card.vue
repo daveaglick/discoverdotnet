@@ -7,7 +7,7 @@
             <div v-if="cardData.website" class="small"><a :href="cardData.website" class="text-light">{{ cardData.website | no-protocol }}</a></div>
         </div>
         <slot></slot>
-        <b-card-body class="pb-1">        
+        <b-card-body class="pb-4">        
             <p class="card-text">{{ cardData.description }}</p>
         </b-card-body>      
         <div slot="footer">

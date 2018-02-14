@@ -89,10 +89,14 @@ header .jumbotron .lead {
     height: 100% !important;
 }
 
-pre > code {
+pre {
     background-color: $gray-200 !important;
     @include border-radius($border-radius-lg);
     padding: 6px;
+}
+
+pre code {
+    background-color: $gray-200 !important;
 }
 
 // Hide anchors from the GitHub readme files

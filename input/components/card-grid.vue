@@ -18,7 +18,7 @@
             <b-navbar-toggle target="filter-nav-collapse"></b-navbar-toggle>
             <b-collapse is-nav id="filter-nav-collapse">
                 <b-navbar-nav>   
-                    <span v-for="(filter, index) in filters" :key="filter.text">
+                    <span v-if="filters" v-for="(filter, index) in filters" :key="filter.text">
                         <filter-dropdown
                             v-if="'field' in filter || 'values' in filter"
                             :text="filter.text"
@@ -99,19 +99,21 @@
         created: function() {
             var self = this;
             
-            // Prepare the filter selection array
-            // See https://stackoverflow.com/q/25512771/807064 
-            this.selected = Array
-                .apply(null, new Array(this.filters.length))
-                .map(function(item, index){ 
-                    var filter = self.filters[index];
-                    if('field' in self.filters[index] || 'values' in self.filters[index])
-                    {
-                        return new Array(); 
-                    } else {
-                        return false;
-                    }
-                });
+            if(this.filters) {
+                // Prepare the filter selection array
+                // See https://stackoverflow.com/q/25512771/807064 
+                this.selected = Array
+                    .apply(null, new Array(this.filters.length))
+                    .map(function(item, index){ 
+                        var filter = self.filters[index];
+                        if('field' in self.filters[index] || 'values' in self.filters[index])
+                        {
+                            return new Array(); 
+                        } else {
+                            return false;
+                        }
+                    });
+            }
 
             // Get the card data
             axios
@@ -131,27 +133,29 @@
             filteredCardData: function() {
                 var selected = this.selected;
                 var filtered = this.cardData;
-                this.filters.forEach(function(filter, index) {
-                    if('filter' in filter) {
-                        // Call the specified filter function
-                        filtered = filter['filter'](filtered, selected[index]);
-                    } else {
-                        // Filter by the specificed field prop
-                        if(selected[index].length > 0) {
-                            filtered = filtered.filter(function(item) {
-                                if(filter.field in item) {
-                                    if(Array.isArray(item[filter.field])) {
-                                        return selected[index].some(function(search) {
-                                            return item[filter.field].indexOf(search) !== -1;
-                                        });
+                if(this.filters) {
+                    this.filters.forEach(function(filter, index) {
+                        if('filter' in filter) {
+                            // Call the specified filter function
+                            filtered = filter['filter'](filtered, selected[index]);
+                        } else {
+                            // Filter by the specificed field prop
+                            if(selected[index].length > 0) {
+                                filtered = filtered.filter(function(item) {
+                                    if(filter.field in item) {
+                                        if(Array.isArray(item[filter.field])) {
+                                            return selected[index].some(function(search) {
+                                                return item[filter.field].indexOf(search) !== -1;
+                                            });
+                                        }
+                                        return selected[index].indexOf(item[filter.field]) !== -1;
                                     }
-                                    return selected[index].indexOf(item[filter.field]) !== -1;
-                                }
-                                return false;
-                            });
+                                    return false;
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+                }
 
                 return filtered;
             },

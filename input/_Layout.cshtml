@@ -79,7 +79,9 @@
             Vue.component('filter-dropdown', httpVueLoader('/components/filter-dropdown.vue'));    
             Vue.component('paged-grid', httpVueLoader('/components/paged-grid.vue'));       
             Vue.component('project-card', httpVueLoader('/components/project-card.vue'));
+            Vue.component('blog-card', httpVueLoader('/components/blog-card.vue'));
             Vue.component('issue-card', httpVueLoader('/components/issue-card.vue'));
+            Vue.component('post-card', httpVueLoader('/components/post-card.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -105,6 +107,9 @@
                         {
                             if(link.startsWith('/projects')) {
                                 return 'project-card';
+                            }
+                            if(link.startsWith('/blogs')) {
+                                return 'blog-card';
                             }
                         }
                         return 'card';

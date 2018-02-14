@@ -19,7 +19,7 @@ To suggest a new project, submit a PR to the [discoverdotnet](https://github.com
 
 For example, here's what the YAML file for [Wyam](https://wyam.io) looks like:
 
-```csharp
+```yaml
 Source:  https://github.com/Wyamio/Wyam
 Language: C#
 Tags:

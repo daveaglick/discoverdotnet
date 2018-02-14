@@ -1,0 +1,30 @@
+@{
+	Layout = @"/_Layout.cshtml";
+}
+
+<h5 class="mb-0 accent-script text-secondary" style="line-height: 0">Blog</h5>
+<h1 class="font-weight-bold display-4">
+    @Model.String("Title")
+</h1>
+
+<b-card class="mb-4">
+	@{
+		string website = Model.String("Website");
+		string description = Model.String("Description");
+	}
+	@if(!string.IsNullOrWhiteSpace(website))
+	{
+		<p><a href="@(website)">{{ '@(website)' | no-protocol }}</a></p>
+	}
+	@if(!string.IsNullOrWhiteSpace(description))
+	{
+    	<p class="lead">@Html.Raw(description)</p>
+	}
+    @RenderBody()
+</b-card>
+
+<posts post-json="/data/posts/blogs/@(Model.String("Key")).json"></posts>
+
+<script type="text/javascript">
+    Vue.component('posts', httpVueLoader('/components/blogs/posts.vue'));
+</script>
