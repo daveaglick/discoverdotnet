@@ -1,8 +1,8 @@
 <template>
     <small-card :icon="icon">
-        <h4 class="card-title"><a :href="cardData.link">{{ cardData.title }}</a></h4>      
+        <h5 class="card-title font-weight-bold"><a :href="cardData.link">{{ cardData.title }}</a></h5>      
         <h6 v-if="cardData.published" class="card-subtitle mb-2 text-muted">{{ moment(cardData.published).format("LLLL") }}</h6>
-        <div v-if="sourceKeys"><a :href="getSource(cardData).link">{{ getSource(cardData).title }}</a></div>
+        <div v-if="feed"><a :href="feed.link">{{ feed.title }}</a></div>
         <p v-if="cardData.description" v-html="cardData.description"></p>
         <slot></slot>
         <div slot="footer">
@@ -16,12 +16,18 @@
         props: [
             'icon',
             'cardData',
-            'sourceKeys'
+            'feedKeys'
         ],
-        methods: {
-            getSource: function(post) {
-                return this.sourceKeys.find(function(item) {
-                    return item.key == post.sourceKey;
+        data: function() {
+            return {
+                feed: null,
+            };
+        },
+        created: function() {
+            var self = this;
+            if(this.feedKeys) {
+                this.feed = this.feedKeys.find(function(item) {
+                    return item.key == self.cardData.feedKey;
                 });
             }
         }

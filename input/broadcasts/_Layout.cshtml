@@ -2,7 +2,7 @@
 	Layout = @"/_Layout.cshtml";
 }
 
-<h5 class="mb-0 accent-script text-secondary" style="line-height: 0">Blog</h5>
+<h5 class="mb-0 accent-script text-secondary" style="line-height: 0">Broadcast</h5>
 <h1 class="font-weight-bold display-4">
     @Model.String("Title")
 </h1>
@@ -23,7 +23,7 @@
     @RenderBody()
 </b-card>
 
-<feed-items feed-item-json="/data/posts/@(Model.String("Key")).json" icon="fa-pencil-alt"></feed-items>
+<feed-items feed-item-json="/data/episodes/@(Model.String("Key")).json" icon="fa-headphones"></feed-items>
 
 <script type="text/javascript">
     Vue.component('feed-items', httpVueLoader('/components/feeds/feed-items.vue'));

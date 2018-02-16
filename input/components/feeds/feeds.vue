@@ -1,9 +1,9 @@
 <template>
     <div>            
         <card-grid
-            title="Blogs"
-            suggest-link="/suggest/blog"
-            card-json="/data/blogs.json"
+            :title="title"
+            :suggest-link="suggestLink"
+            :card-json="cardJson"
             :sorts="sorts"
             :randomizeOrder="true">
         </card-grid>
@@ -12,6 +12,11 @@
 
 <script>  
     module.exports = {
+        props: [
+            'title',
+            'suggestLink',
+            'cardJson'
+        ],
         data: function() {
             return {                
                 sorts: [

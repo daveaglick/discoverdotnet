@@ -12,29 +12,8 @@
             <p class="small">A roundup of blog posts, podcasts, and more from the previous day.</p>
         </div>
 
-        <b-card class="mb-4">
-            <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
-            <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div class="small">A short description of the post.</div>
-            <div><a href="#">Name of the blog</a></div>                
-        </b-card>
-        <b-card class="mb-4">
-            <div class="card-corner card-corner-dark"><i class="fa fa-headphones"></i></div>
-            <div class="font-weight-bold"><a href="#">Podcast title</a></div>
-            <div class="small">A short description of the post.</div>
-            <div><a href="#">Name of the blog</a></div>                
-        </b-card>
-        <b-card class="mb-4">
-            <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
-            <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div><a href="#">Name of the blog</a></div>                
-        </b-card>
-        <b-card class="mb-4">
-            <div class="card-corner card-corner-dark"><i class="fa fa-pencil-alt"></i></div>
-            <div class="font-weight-bold"><a href="#">Post title</a></div>
-            <div class="small">A short description of the post.</div>
-            <div><a href="#">Name of the blog</a></div>                
-        </b-card>
+        <feed-item-card v-for="card in cardData" :key="card.link" :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
+        </feed-item-card>
 
         <p><a href="/blogs">More Blogs <span class="fa fa-long-arrow-alt-right"></span></a></p>
         <p><a href="/broadcasts">More Broadcasts <span class="fa fa-long-arrow-alt-right"></span></a></p>
@@ -45,7 +24,39 @@
 <script>
     module.exports = {
         data: function() {
-            return {}
+            return {
+                cardData: [],
+                feedKeys: []
+            }
+        },
+        created: function() {
+            axios
+                .get('/data/recent-feed-items.json')
+                .then(response => {
+                    this.cardData = response.data
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+            axios
+                .get('/data/feed-keys.json')
+                .then(response => {
+                    this.feedKeys = response.data
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        },
+        methods: {
+            getIcon: function(card) {
+                if(card.feedKey.startsWith('blogs/')) {
+                    return "fa-pencil-alt";
+                }
+                if(card.feedKey.startsWith('broadcasts/')) {
+                    return "fa-headphones";
+                }
+                return "";
+            }
         }
     }
 </script>

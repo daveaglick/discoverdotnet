@@ -11,5 +11,5 @@ To suggest a new blog, submit a PR to the [discoverdotnet](https://github.com/da
 For example, here's what the YAML file for [my blog](https://daveaglick.com) looks like:
 
 ```yaml
-RSS: https://daveaglick.com/feed.rss
+Feed: https://daveaglick.com/feed.rss
 ```

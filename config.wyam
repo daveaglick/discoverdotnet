@@ -70,7 +70,7 @@ Pipelines.Add("Project Data",
 
 Pipelines.Add("Project Keys",
     GenerateJson((doc, ctx) =>
-        @ctx.Documents.FromPipeline("Projects")
+        ctx.Documents.FromPipeline("Projects")
             .Select(x => x.GetMetadata(
                 "Key",
                 "Title",
@@ -90,8 +90,8 @@ Pipelines.Add("Blogs",
         Take(10)),
     Yaml(),    
     Content(string.Empty),
-    Execute((inputs, ctx, _) => GetBlogData(inputs, ctx).Result),
-    Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
+    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result),
+    Meta("Key", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/blogs/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
@@ -116,22 +116,70 @@ Pipelines.Add("Blog Data",
 
 Pipelines.Add("Posts",
     Documents("Blogs"),
-    Where((doc, ctx) => doc.ContainsKey("Posts")),
-    GenerateJson((doc, ctx) => doc["Posts"])
+    Where((doc, ctx) => doc.ContainsKey("FeedItems")),
+    GenerateJson((doc, ctx) => doc["FeedItems"])
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/posts/blogs/" + doc.Source.FileName.ChangeExtension(".json")),
-    Meta("SourceKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath)
+    Meta("FeedKey", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath)
 );
 
+// Broadcasts and Episodes
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Broadcasts",
+    ReadFiles("data/broadcasts/*.yml"),    
+    If(ctx => ctx.Bool("Preview"),
+        OrderBy((doc, ctx2) => doc.Source),        
+        Take(10)),
+    Yaml(),    
+    Content(string.Empty),
+    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result),
+    Meta("Key", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath),
+    Razor()
+        .WithLayout("/broadcasts/_Layout.cshtml"),
+    WriteFiles((doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
+    Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
+    Meta("CardData", (doc, ctx) => doc.GetMetadata(
+        "Key",
+        "Title",
+        "Link",
+        "Description",
+        "Website",
+        "LastPublished"
+    ))
+);
+
+Pipelines.Add("Broadcast Data",
+    GenerateJson((doc, ctx) =>
+        @ctx.Documents.FromPipeline("Broadcasts").Select(x => x["CardData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/broadcasts.json")
+);
+
+Pipelines.Add("Episodes",
+    Documents("Broadcasts"),
+    Where((doc, ctx) => doc.ContainsKey("FeedItems")),
+    GenerateJson((doc, ctx) => doc["FeedItems"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/episodes/broadcasts/" + doc.Source.FileName.ChangeExtension(".json")),
+    Meta("FeedKey", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath)
+);
+
+// Aggregate, Pages, and Resources
+//////////////////////////////////////////////////////////////////////
+
 // TODO: This should aggregate all posts from all sources (blogs, broadcasts, etc.)
-Pipelines.Add("RecentPosts",
+Pipelines.Add("Recent Feed Items",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Posts")
-        .SelectMany(d => d.Get<IEnumerable<PostData>>("Posts")
+        .Concat(ctx.Documents.FromPipeline("Episodes"))
+        .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
             .Where(p => p.Recent)
             .Select(p => new
             {
-                SourceKey = d.String("SourceKey"),
+                FeedKey = d.String("FeedKey"),
                 Published = p.Published,
                 Link = p.Link,
                 Title = p.Title
@@ -139,15 +187,30 @@ Pipelines.Add("RecentPosts",
         .OrderByDescending(x => x.Published))
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "data/posts/recent/all.json")
+    WriteFiles((doc, ctx) => "data/recent-feed-items.json")
 );
 
-// Aggregate, Pages, and Resources
-//////////////////////////////////////////////////////////////////////
+Pipelines.Add("Feed Keys",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Blogs")
+            .Concat(ctx.Documents.FromPipeline("Broadcasts"))
+            .Select(x => x.GetMetadata(
+                "Key",
+                "Title",
+                "Link")))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/feed-keys.json")
+);
 
 Pipelines.Add("Discoveries",
     Documents("Projects"),
-    // TODO: Add other pipelines of discoverable items
+    Concat(
+        Documents("Blogs")
+    ),
+    Concat(
+        Documents("Broadcasts")
+    ),
     Where(@doc.ContainsKey("DiscoveryDate")),
     OrderBy(@doc.DateTime("DiscoveryDate"))
         .Descending(),
@@ -338,7 +401,7 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
         }));
 }
 
-public class PostData
+public class FeedItemData
 {
     public string Title { get; }
     public string Link { get; }
@@ -346,7 +409,7 @@ public class PostData
     public DateTimeOffset Published { get; }
     public bool Recent { get; }
 
-    public PostData(ISyndicationItem item, DateTimeOffset oneDayAgo)
+    public FeedItemData(ISyndicationItem item, DateTimeOffset oneDayAgo)
     {
         Title = item.Title;
         Link = item.Id;
@@ -362,9 +425,9 @@ public class PostData
     }
 }
 
-public async Task<IEnumerable<IDocument>> GetBlogData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
-    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-24);
+    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-96);
     return await Task.WhenAll(
         inputs.Select(async input =>
         {
@@ -374,11 +437,11 @@ public async Task<IEnumerable<IDocument>> GetBlogData(IReadOnlyList<IDocument> i
                 try
                 {
                     // Download the feed
-                    Wyam.Common.Tracing.Trace.Information($"Getting blog feed for {feed}");
+                    Wyam.Common.Tracing.Trace.Information($"Getting feed for {feed}");
                     string website = null;
                     string title = null;
                     string description = null;
-                    List<ISyndicationItem> posts = new List<ISyndicationItem>();
+                    List<ISyndicationItem> items = new List<ISyndicationItem>();
                     using(XmlReader xmlReader = XmlReader.Create(feed, new XmlReaderSettings { Async = true }))
                     {
                         XmlFeedReader feedReader = string.Equals(input.String("FeedType"), "Atom", StringComparison.OrdinalIgnoreCase)
@@ -395,7 +458,7 @@ public async Task<IEnumerable<IDocument>> GetBlogData(IReadOnlyList<IDocument> i
                                     
                                 case SyndicationElementType.Item:
                                     ISyndicationItem item = await feedReader.ReadItem();
-                                    posts.Add(item);
+                                    items.Add(item);
                                     break;
                                     
                                 default:
@@ -416,14 +479,15 @@ public async Task<IEnumerable<IDocument>> GetBlogData(IReadOnlyList<IDocument> i
                     
                     // Get a new document with feed metadata
                     MetadataItems metadata = new MetadataItems();
-                    if(posts.Count > 0)
+                    if(items.Count > 0)
                     {
-                        PostData[] postData = posts
-                            .Select(x => new PostData(x, oneDayAgo))
+                        FeedItemData[] feedItems = items
+                            .Select(x => new FeedItemData(x, oneDayAgo))
                             .OrderByDescending(x => x.Published)
+                            .Take(20)  // Only take the 20 most recent items
                             .ToArray();
-                        metadata.Add("Posts", postData);
-                        metadata.Add("LastPublished", postData.Max(x => x.Published));
+                        metadata.Add("FeedItems", feedItems);
+                        metadata.Add("LastPublished", feedItems.First().Published);
                     };
                     if(!input.ContainsKey("Website") && !string.IsNullOrEmpty(website))
                     {
@@ -441,7 +505,7 @@ public async Task<IEnumerable<IDocument>> GetBlogData(IReadOnlyList<IDocument> i
                 }
                 catch(Exception ex) 
                 {
-                    Wyam.Common.Tracing.Trace.Warning($"Error getting blog feed for {feed}: {ex.Message}");
+                    Wyam.Common.Tracing.Trace.Warning($"Error getting feed for {feed}: {ex.Message}");
                 }
             }
 

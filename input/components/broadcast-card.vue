@@ -1,5 +1,5 @@
 <template>
-    <card :card-data="$props.cardData" icon="fa-newspaper">   
+    <card :card-data="$props.cardData" icon="fa-rss">   
         <slot></slot>   
         <div slot="footer" class="small">
             <description v-if="cardData.lastPublished" term="Last Published">

@@ -1,7 +1,7 @@
 <template>
     <small-card icon="fa-bug">
         <div class="font-weight-bold"><a :href="cardData.link">{{ cardData.title }}</a></div>        
-        <div v-if="projectKeys"><a :href="getProject(cardData).link">{{ getProject(cardData).title }}</a></div>
+        <div v-if="project"><a :href="project.link">{{ project.title }}</a></div>
         <div v-if="cardData.labels">
             <b-badge v-for="label in cardData.labels" :key="label" variant="light" class="mr-2">{{ label }}</b-badge>
         </div>
@@ -19,10 +19,16 @@
             'cardData',
             'projectKeys'
         ],
-        methods: {
-            getProject: function(issue) {
-                return this.projectKeys.find(function(item) {
-                    return item.key == issue.projectKey;
+        data: function() {
+            return {
+                project: null
+            };
+        },
+        created: function() {
+            var self = this;
+            if(this.projectKeys) {
+                this.project = this.projectKeys.find(function(item) {
+                    return item.key == self.cardData.projectKey;
                 });
             }
         }
