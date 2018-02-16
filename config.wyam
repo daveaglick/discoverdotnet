@@ -408,6 +408,7 @@ public class FeedItemData
     public string Description { get; }
     public DateTimeOffset Published { get; }
     public bool Recent { get; }
+    public IDictionary<string, string> Links { get; }
 
     public FeedItemData(ISyndicationItem item, DateTimeOffset oneDayAgo)
     {
@@ -416,6 +417,9 @@ public class FeedItemData
         Published = item.Published != default(DateTimeOffset) ? item.Published : item.LastUpdated;
         Recent = Published > oneDayAgo;
         Description = item.Description;
+        Links = item.Links
+            .Where(x => !string.IsNullOrEmpty(x.MediaType))
+            .ToDictionary(x => x.MediaType, x => x.Uri.ToString());
 
         AtomEntry atom = item as AtomEntry;
         if(atom != null && !string.IsNullOrEmpty(atom.Summary))
@@ -427,7 +431,7 @@ public class FeedItemData
 
 public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
-    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-96);
+    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(context.Bool("Preview") ? -168 : -24);
     return await Task.WhenAll(
         inputs.Select(async input =>
         {

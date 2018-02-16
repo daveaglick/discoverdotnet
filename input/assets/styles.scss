@@ -103,3 +103,21 @@ pre code {
 .anchor {
     display: none;
 }
+
+.collapsed-detail {
+    max-height: 48px;
+    overflow: hidden;
+    position: relative;
+
+    .fade-detail { 
+        position: absolute; 
+        bottom: 0em;
+        width: 100%;
+        height: 48px;
+        @include gradient-y(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), 0%, 100%);
+    }
+}
+
+.small-card-image {
+    width: 256px;
+}
