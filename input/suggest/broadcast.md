@@ -1,4 +1,4 @@
-Title: Suggest a Blog
+Title: Suggest A Broadcast
 ---
 To suggest a new broadcast (podcast, video series, etc.), submit a PR to the [discoverdotnet](https://github.com/daveaglick/discoverdotnet) project manually or by clicking on this link: [https://github.com/daveaglick/discoverdotnet/new/master/input/data/broadcasts](https://github.com/daveaglick/discoverdotnet/new/master/input/data/broadcasts). You should add a new YAML file with a `.yml` extension that contains the following properties, all of which are optional unless indicated.
 

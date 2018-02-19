@@ -1,6 +1,7 @@
 // The following environment variables need to be set:
 // DISCOVERDOTNET_GITHUB_TOKEN
 // DISCOVERDOTNET_NETLIFY_TOKEN
+// DISCOVERDOTNET_MEETUP_TOKEN
 
 #tool "Wyam"
 #addin "Cake.Wyam"
@@ -53,6 +54,7 @@ Task("Build")
     .Does(() =>
     {
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
+        var meetupToken = EnvironmentVariable("DISCOVERDOTNET_MEETUP_TOKEN");
 
         /*
         Wyam(new WyamSettings
@@ -62,7 +64,8 @@ Task("Build")
             OutputPath = outputDir,
             Settings = new Dictionary<string, object>
             {
-                { "GitHubToken", gitHubToken }
+                { "GitHubToken", gitHubToken },
+                { "MeetupToken", meetupToken }
             }
         });
         */  
@@ -71,7 +74,8 @@ Task("Build")
             "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
             + $" --config \"config.wyam\""
             + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
-            + $" --setting GitHubToken=\"{gitHubToken}\"");
+            + $" --setting GitHubToken=\"{gitHubToken}\""
+            + $" --setting MeetupToken=\"{meetupToken}\"");
     });
 
 Task("Issues")
@@ -115,6 +119,7 @@ Task("Preview")
 
         // Generate the main site, but don't clean it out
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
+        var meetupToken = EnvironmentVariable("DISCOVERDOTNET_MEETUP_TOKEN");
 
         /*
         Wyam(new WyamSettings
@@ -128,6 +133,7 @@ Task("Preview")
             Settings = new Dictionary<string, object>
             {
                 { "GitHubToken", gitHubToken },
+                { "MeetupToken", meetupToken },
                 { "Preview", true }
             },
             ContentTypes = new Dictionary<string, string>
@@ -143,6 +149,7 @@ Task("Preview")
             + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
             + " --noclean -p -w"
             + $" --setting GitHubToken=\"{gitHubToken}\""
+            + $" --setting MeetupToken=\"{meetupToken}\""
             + $" --setting Preview=\"true\""
             + $" --content-type .vue=text/plain");
     });
