@@ -74,16 +74,17 @@
 
             // Global components
             Vue.component('description', httpVueLoader('/components/description.vue'));   
-            Vue.component('small-card', httpVueLoader('/components/small-card.vue'));   
-            Vue.component('card', httpVueLoader('/components/card.vue'));   
-            Vue.component('card-grid', httpVueLoader('/components/card-grid.vue'));  
-            Vue.component('filter-dropdown', httpVueLoader('/components/filter-dropdown.vue'));    
-            Vue.component('paged-grid', httpVueLoader('/components/paged-grid.vue'));       
-            Vue.component('project-card', httpVueLoader('/components/project-card.vue'));
-            Vue.component('blog-card', httpVueLoader('/components/blog-card.vue'));
-            Vue.component('broadcast-card', httpVueLoader('/components/broadcast-card.vue'));
-            Vue.component('issue-card', httpVueLoader('/components/issue-card.vue'));
-            Vue.component('feed-item-card', httpVueLoader('/components/feed-item-card.vue'));
+            Vue.component('small-card', httpVueLoader('/components/cards/small-card.vue'));   
+            Vue.component('card', httpVueLoader('/components/cards/card.vue'));   
+            Vue.component('card-grid', httpVueLoader('/components/grids/card-grid.vue'));  
+            Vue.component('filter-dropdown', httpVueLoader('/components/grids/filter-dropdown.vue'));    
+            Vue.component('paged-grid', httpVueLoader('/components/grids/paged-grid.vue'));       
+            Vue.component('project-card', httpVueLoader('/components/cards/project-card.vue'));
+            Vue.component('blog-card', httpVueLoader('/components/cards/blog-card.vue'));
+            Vue.component('broadcast-card', httpVueLoader('/components/cards/broadcast-card.vue'));
+            Vue.component('issue-card', httpVueLoader('/components/cards/issue-card.vue'));
+            Vue.component('feed-item-card', httpVueLoader('/components/cards/feed-item-card.vue'));
+            Vue.component('group-card', httpVueLoader('/components/cards/group-card.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -105,8 +106,7 @@
                 methods: {
                     getCard: function(cardData) {
                         var link = String(cardData.link);
-                        if(link)
-                        {
+                        if(link) {
                             if(link.startsWith('/projects')) {
                                 return 'project-card';
                             }
@@ -115,6 +115,12 @@
                             }
                             if(link.startsWith('/broadcasts')) {
                                 return 'broadcast-card';
+                            }
+                        }
+                        var cardType = cardData.cardType;
+                        if(cardType) {
+                            if(cardType === "Group") {
+                                return `group-card`;
                             }
                         }
                         return 'card';

@@ -4,9 +4,8 @@ To suggest a new group, submit a PR to the [discoverdotnet](https://github.com/d
 
 Note that the Meetup API is used to find and automatically add all groups with a topic of ".NET". If your group is on Meetup and uses the ".NET" topic you don't need to supply a YAML file for it.
 
-**Website**: The URL of the group. If the group is on Meetup, please use that URL so we can get more data from the Meetup API.
+**Link**: The URL of the group. If the group is on Meetup, please use that URL so we can get more data from the Meetup API.
 **Title**: The title of the group. If the website is a link to Meetup and this is omitted, then the title will be taken from the Meetup API.
-**Description**: The description of the group. If the website is a link to Meetup and this is omitted, then the description will be taken from the Meetup API.
 **Location**: A plain text description of the location of the group. If the website is a link to Meetup and this is omitted, then the location will be taken from the Meetup API.
 **Lat**: A rough latitude of the group location used for mapping and proximity calculations. If the website is a link to Meetup and this is omitted, then the latitude will be taken from the Meetup API. If you need to lookup the latitude you can use [GeoNames](http://www.geonames.org/).
 **Lon**: A rough longitude of the group location used for mapping and proximity calculations. If the website is a link to Meetup and this is omitted, then the longitude will be taken from the Meetup API. If you need to lookup the longitude you can use [GeoNames](http://www.geonames.org/).
