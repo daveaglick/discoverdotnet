@@ -1,6 +1,6 @@
 <template>
     <b-card no-body header-text-variant="white" header-bg-variant="dark">
-        <div slot="header" style="height: 62px">
+        <div slot="header">
             <div v-if="icon" class="card-corner card-corner-light"><i class="fa" :class="icon"></i></div>           
             <h5 v-if="cardData.link" class="mb-1 font-weight-bold"><a :href="cardData.link" class="text-light">{{ cardData.title }}</a></h5>
             <h5 v-else class="mb-1 font-weight-bold">{{ cardData.title }}</h5>

@@ -183,7 +183,7 @@ Pipelines.Add("Groups",
     Execute((inputs, ctx, _) => GetMeetupData(inputs, ctx).Result),
     Meta("CardType", "Group"),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
-        "Link",
+        "Website",
         "Title",
         "Location",
         "Lat",
@@ -624,7 +624,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     return groups.Select(x => context.GetDocument(new MetadataItems
     {
         { "Title", x.Name },
-        { "Link", x.Link },
+        { "Website", x.Link },
         { "Location", x.Localized_Location },
         { "Lat", x.Lat },
         { "Lon", x.Lon }

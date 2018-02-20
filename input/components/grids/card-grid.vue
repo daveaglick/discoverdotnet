@@ -44,8 +44,6 @@
                     <b-nav-form>
                         <b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle The Deck</b-button>
                         <div class="w-100 mb-2 d-lg-none"></div>
-                        <b-button size="sm">Random Draw</b-button>
-                        <div class="w-100 mb-2 d-lg-none"></div>
                     </b-nav-form>
                 </b-navbar-nav>
             </b-collapse>
