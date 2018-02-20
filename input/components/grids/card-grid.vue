@@ -172,7 +172,14 @@
                 this.cardData = this.cardData.sort(function(){return 0.5 - Math.random()});
             },
             applySort: function(sortData) {
-                this.cardData = this.cardData.sort(sortData.sort);
+                if("apply" in sortData) {
+                    var self = this;
+                    sortData.apply(function() {
+                        self.cardData = self.cardData.sort(sortData.sort);
+                    });
+                } else {
+                    this.cardData = this.cardData.sort(sortData.sort);
+                }
             },
             filterValues: function(filter) {
                 // If raw values were provided, use those

@@ -5,6 +5,10 @@ To suggest a new event, submit a PR to the [discoverdotnet](https://github.com/d
 **Website**: The URL of the event.
 **Title**: The title of the event.
 **Image**: A URL to an image or logo of the event.
+**Location**: A plain text description of the location of the group.
+**Country**: The localized country name where the group is located (used for filtering).
+**Lat**: A rough latitude of the group location used for mapping and proximity calculations. If you need to lookup the latitude you can use [GeoNames](http://www.geonames.org/).
+**Lon**: A rough longitude of the group location used for mapping and proximity calculations. If you need to lookup the longitude you can use [GeoNames](http://www.geonames.org/).
 **Date**: The date of the event in YYYY/MM/DD format.
 **EndDate**: The end date of the event in YYYY/MM/DD format (if the event is more than one day long).
 **Time**: The local time of the event in 24 hour HH:MM format.

@@ -1,9 +1,13 @@
 <template>
-    <div>            
+    <div>           
+        <b-alert :show="geoAlert" dismissible variant="warning" @dismissed="geoAlert=false">
+            Could not get  your location.
+        </b-alert> 
         <card-grid
             title="Groups"
             suggest-link="/suggest/group"
             card-json="/data/groups.json"
+            :filters="filters"
             :sorts="sorts"
             :randomizeOrder="true">
         </card-grid>
@@ -14,39 +18,54 @@
     module.exports = {
         data: function() {
             return {       
-                lat: null,
-                lon: null,         
+                geoAlert: false,
+                filters: [
+                    {
+                        text: 'Country',
+                        field: 'country'
+                    }
+                ],
                 sorts: [
                     {
                         text: 'Closest',
-                        sort: function(a, b) {
-                            if(this.lat == null) {
+                        self: this,
+                        apply: function(sort) {
+                            var self = this.self;
+                            if(currentLat == null) {
                                 if ("geolocation" in navigator) {
-                                    var self = this;
-                                    navigator.geolocation.getCurrentPosition(function(position) {
-                                        self.lat = position.coords.latitude;
-                                        self.lon = position.coords.longitude;
-                                    });
+                                    navigator.geolocation.getCurrentPosition(
+                                        function(position) {
+                                            currentLat = position.coords.latitude;
+                                            currentLon = position.coords.longitude;
+                                            sort();
+                                        },
+                                        function() {
+                                            self.geoAlert = true;
+                                        });
                                 } else {
-                                    this.lat = "";
-                                    /* geolocation IS NOT available */
+                                    self.geoAlert = true;
                                 }
+                            } else {                                
+                                sort();
                             }
-
-                            // Do the sort
-                            if(this.lat != "") {
-                                if("lat" in a && "lon" in a) {
-                                    if("lat" in b && "lon" in b) {
-                                        return calculateDistance(this.lat, this.lon, a.lat, a.lon) -
-                                            calculateDistance(this.lat, this.lon, b.lat, b.lon);
+                        },
+                        sort: function(a, b) {
+                            if(currentLat != null) {
+                                if(!("distance" in a)) {
+                                    if("lat" in a && "lon" in a) {
+                                        a.distance = calculateDistance(a.lat, a.lon);
                                     } else {
-                                        return 1;
+                                        a.distance = Number.MIN_VALUE;
                                     }
-                                } else if("lat" in b && "lon" in b) {
-                                    return -1;
-                                } else {
-                                    return 0;
                                 }
+                                if(!("distance" in b)) {
+                                    if("lat" in b && "lon" in b) {
+                                        b.distance = calculateDistance(b.lat, b.lon);
+                                    } else {
+                                        b.distance = Number.MIN_VALUE;
+                                    }
+                                }
+                                return a.distance - b.distance;
                             }
                         }
                     },
@@ -66,13 +85,18 @@
             }
         }
     }
+
+    // Globals FTW!
+
+    var currentLat = null;
+    var currentLon = null;
     
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-        var radlat1 = Math.PI * lat1/180;
+    function calculateDistance(lat2, lon2) {
+        var radlat1 = Math.PI * currentLat/180;
         var radlat2 = Math.PI * lat2/180;
-        var radlon1 = Math.PI * lon1/180;
+        var radlon1 = Math.PI * currentLon/180;
         var radlon2 = Math.PI * lon2/180;
-        var theta = lon1-lon2;
+        var theta = currentLon-lon2;
         var radtheta = Math.PI * theta/180;
         var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
         dist = Math.acos(dist);
