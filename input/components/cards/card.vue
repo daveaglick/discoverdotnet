@@ -8,6 +8,7 @@
         </div>
         <slot></slot>
         <b-card-body class="pb-4">
+            <div v-if="cardData.image"><b-img fluid :src="cardData.image" class="small-card-image mb-2"></b-img></div>
             <slot name="description">        
                 <p class="card-text">{{ cardData.description }}</p>
             </slot>

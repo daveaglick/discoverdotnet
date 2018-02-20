@@ -4,6 +4,7 @@ To suggest a new broadcast (podcast, video series, etc.), submit a PR to the [di
 
 **Website**: The URL of the broadcast. If a feed was provided and this is omitted, the website will be taken from the feed.  
 **Title**: The title of the broadcast. If a feed was provided and this is omitted, the title will be taken from the feed.  
+**Image**: A URL to an image or logo of the broadcast.
 **Description**: The description of the broadcast. If a feed was provided and this is omitted, the description will be taken from the feed.  
 **Feed**: A URL to the feed for the broadcast.  
 **FeedType**: `Atom` or `RSS` (`RSS` is assumed if this property is omitted).

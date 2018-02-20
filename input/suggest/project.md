@@ -3,7 +3,8 @@ Title: Suggest A Project
 To suggest a new project, submit a PR to the [discoverdotnet](https://github.com/daveaglick/discoverdotnet) project manually or by clicking on this link: [https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects](https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects). You should add a new YAML file with a `.yml` extension that contains the following properties, all of which are optional unless indicated.
 
 **Source**: The location of the source code for the project. Should contain a full URL like `https://github.com/daveaglick/discoverdotnet`.  
-**Title**: The title of the project. If a GitHub repository was provided for the source and this is omitted, the title from the repository metadata will be used.  
+**Title**: The title of the project. If a GitHub repository was provided for the source and this is omitted, the title from the repository metadata will be used. 
+**Image**: A URL to an image or logo of the project. 
 **Description**: A short description of the project. If a GitHub repository was provided for the source and this is omitted, the description from the repository metadata will be used.  
 **Website**: The primary website for the project. If a GitHub repository was provided for the source and this is omitted, the website from the repository metadata will be used.  
 **Docs**: The primary documentation site for the project.  

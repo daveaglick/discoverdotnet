@@ -4,6 +4,7 @@ To suggest a new event, submit a PR to the [discoverdotnet](https://github.com/d
 
 **Website**: The URL of the event.
 **Title**: The title of the event.
+**Image**: A URL to an image or logo of the event.
 **Date**: The date of the event in YYYY/MM/DD format.
 **EndDate**: The end date of the event in YYYY/MM/DD format (if the event is more than one day long).
 **Time**: The local time of the event in 24 hour HH:MM format.
