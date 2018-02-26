@@ -1,13 +1,13 @@
-//#n Wyam.Yaml
-//#n Wyam.Razor
-//#n Wyam.Markdown
-//#n Wyam.Json
-//#n Wyam.Sass
-//#n Wyam.Minification
+#n Wyam.Yaml -v 1.3.0
+#n Wyam.Razor -v 1.3.0
+#n Wyam.Markdown -v 1.3.0
+#n Wyam.Json -v 1.3.0
+#n Wyam.Sass -v 1.3.0
+#n Wyam.Minification -v 1.3.0
 
-#n Octokit
-#n AngleSharp
-#n Microsoft.SyndicationFeed.ReaderWriter
+#n Octokit -v 0.29.0
+#n AngleSharp -v 0.9.9.1
+#n Microsoft.SyndicationFeed.ReaderWriter -v 1.0.2
 
 using System.Collections.Concurrent;
 using System.Threading.Tasks;

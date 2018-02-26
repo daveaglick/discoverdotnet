@@ -3,11 +3,11 @@
 // DISCOVERDOTNET_NETLIFY_TOKEN
 // DISCOVERDOTNET_MEETUP_TOKEN
 
-#tool "Wyam"
-#addin "Cake.Wyam"
-#addin "NetlifySharp"
-#addin "Newtonsoft.Json"
-#addin "System.Runtime.Serialization.Formatters"
+#tool nuget:?package=Wyam&version=1.3.0
+#addin nuget:?package=Cake.Wyam&version=1.3.0
+#addin nuget:?package=NetlifySharp&version=0.1.0
+#addin nuget:?package=Newtonsoft.Json&version=10.0.3
+#addin nuget:?package=System.Runtime.Serialization.Formatters&version=4.3.0
 
 using NetlifySharp;
 
@@ -56,7 +56,6 @@ Task("Build")
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         var meetupToken = EnvironmentVariable("DISCOVERDOTNET_MEETUP_TOKEN");
 
-        /*
         Wyam(new WyamSettings
         {
             //UpdatePackages = true,
@@ -68,14 +67,13 @@ Task("Build")
                 { "MeetupToken", meetupToken }
             }
         });
-        */  
 
-        StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
-            + $" --config \"config.wyam\""
-            + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
-            + $" --setting GitHubToken=\"{gitHubToken}\""
-            + $" --setting MeetupToken=\"{meetupToken}\"");
+        //StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
+        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    + $" --config \"config.wyam\""
+        //    + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
+        //    + $" --setting GitHubToken=\"{gitHubToken}\""
+        //    + $" --setting MeetupToken=\"{meetupToken}\"");
     });
 
 Task("Issues")
@@ -85,7 +83,6 @@ Task("Issues")
     {
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
 
-        /*
         Wyam(new WyamSettings
         {
             //UpdatePackages = true,
@@ -96,15 +93,14 @@ Task("Issues")
                 { "GitHubToken", gitHubToken },
                 { "Preview", string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase ) }
             }
-        });  
-        */        
-
-        StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
-            + $" --config \"issues.wyam\""
-            + $" --output \"{MakeAbsolute(issuesDir).ToString()}\""
-            + $" --setting GitHubToken=\"{gitHubToken}\""
-            + $" --setting Preview=\"{ string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase) }\"");
+        });       
+        
+        // StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
+        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    + $" --config \"issues.wyam\""
+        //    + $" --output \"{MakeAbsolute(issuesDir).ToString()}\""
+        //    + $" --setting GitHubToken=\"{gitHubToken}\""
+        //    + $" --setting Preview=\"{ string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase) }\"");
     });
 
 Task("Preview")
@@ -121,7 +117,6 @@ Task("Preview")
         var gitHubToken = EnvironmentVariable("DISCOVERDOTNET_GITHUB_TOKEN");
         var meetupToken = EnvironmentVariable("DISCOVERDOTNET_MEETUP_TOKEN");
 
-        /*
         Wyam(new WyamSettings
         {
             //UpdatePackages = true,
@@ -141,17 +136,16 @@ Task("Preview")
                 { ".vue", "text/plain" }
             }
         });  
-        */
 
-        StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-            "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
-            + $" --config \"config.wyam\""
-            + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
-            + " --noclean -p -w"
-            + $" --setting GitHubToken=\"{gitHubToken}\""
-            + $" --setting MeetupToken=\"{meetupToken}\""
-            + $" --setting Preview=\"true\""
-            + $" --content-type .vue=text/plain");
+        // StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
+        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    + $" --config \"config.wyam\""
+        //    + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
+        //    + " --noclean -p -w"
+        //    + $" --setting GitHubToken=\"{gitHubToken}\""
+        //    + $" --setting MeetupToken=\"{meetupToken}\""
+        //    + $" --setting Preview=\"true\""
+        //    + $" --content-type .vue=text/plain");
     });
 
 Task("Publish")
