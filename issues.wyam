@@ -299,66 +299,72 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
 		foundationReadme = await webClient.DownloadStringTaskAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 
-    return await Task.WhenAll(
-        inputs.Select(async input =>
+    // Even though it's much slower, we have to query the GitHub API sequentially or else we'll trigger the abuse detection mechanisms:
+    // "Make requests for a single user or client ID serially. Do not make requests for a single user or client ID concurrently."
+    // https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits
+
+    List<IDocument> outputs = new List<IDocument>();
+    foreach(IDocument input in inputs)
+    {
+        IDocument output = input;
+
+        // Extract the GitHub owner and name
+        Uri source;
+        if(Uri.TryCreate(input.String("Source"), UriKind.Absolute, out source)
+            && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
         {
-            IDocument output = input;
+            string owner = source.Segments[1].Trim('/');
+            string name = source.Segments[2].Trim('/');
 
-            // Extract the GitHub owner and name
-            Uri source;
-            if(Uri.TryCreate(input.String("Source"), UriKind.Absolute, out source)
-                && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
-            {
-                string owner = source.Segments[1].Trim('/');
-                string name = source.Segments[2].Trim('/');
-
-                // Get issue data
-                Wyam.Common.Tracing.Trace.Information($"Getting GitHub issue data for {owner}/{name}");
-                IReadOnlyList<Issue> issues = (await github.Issue.GetAllForRepository(
-                    owner,
-                    name,
-                    new RepositoryIssueRequest
-                    {
-                        Filter = IssueFilter.All
-                    },
-                    new ApiOptions
-                    {
-                        PageSize = 100
-                    }))
-                    .Where(x => x.PullRequest == null)
-                    .ToList();
-                if(issues.Count > 0)
+            // Get issue data
+            Wyam.Common.Tracing.Trace.Information($"Getting GitHub issue data for {owner}/{name}");
+            IReadOnlyList<Issue> issues = (await github.Issue.GetAllForRepository(
+                owner,
+                name,
+                new RepositoryIssueRequest
                 {
-                    IssueData[] issueData = issues
-                        .Select(x => new IssueData(x, oneDayAgo))
-                        .OrderByDescending(x => x.CreatedAt)
-                        .ToArray();
-                    MetadataItems metadata = new MetadataItems
-                    {
-                        { "GitHubOwner", owner },
-                        { "GitHubName", name },
-                        { "Issues", issueData },
-                        { "RecentIssuesCount", issueData.Count(x => x.Recent) },
-                        { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
-                    };                
-                    if(!input.ContainsKey("Microsoft") && microsoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
-                    {
-                        metadata.Add("Microsoft", true);
-                    }
-                    if(!input.ContainsKey("Foundation") && foundationReadme.IndexOf($"github.com/{owner}/{name}", StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        metadata.Add("Foundation", true);
-                    }
-                    
-                    // Return a document with issue metadata
-                    output = context.GetDocument(input, metadata);
-                }                    
+                    Filter = IssueFilter.All
+                },
+                new ApiOptions
+                {
+                    PageSize = 100
+                }))
+                .Where(x => x.PullRequest == null)
+                .ToList();
+            if(issues.Count > 0)
+            {
+                IssueData[] issueData = issues
+                    .Select(x => new IssueData(x, oneDayAgo))
+                    .OrderByDescending(x => x.CreatedAt)
+                    .ToArray();
+                MetadataItems metadata = new MetadataItems
+                {
+                    { "GitHubOwner", owner },
+                    { "GitHubName", name },
+                    { "Issues", issueData },
+                    { "RecentIssuesCount", issueData.Count(x => x.Recent) },
+                    { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
+                };                
+                if(!input.ContainsKey("Microsoft") && microsoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
+                {
+                    metadata.Add("Microsoft", true);
+                }
+                if(!input.ContainsKey("Foundation") && foundationReadme.IndexOf($"github.com/{owner}/{name}", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    metadata.Add("Foundation", true);
+                }
+                
+                // Return a document with issue metadata
+                output = context.GetDocument(input, metadata);
+            }                    
 
-                // Report on out API rate limit
-                MiscellaneousRateLimit rateLimit = await github.Miscellaneous.GetRateLimits();
-                Wyam.Common.Tracing.Trace.Information($"GitHub rate limit: {rateLimit.Resources.Core.Remaining} remaining");
-            }
+            // Report on out API rate limit
+            MiscellaneousRateLimit rateLimit = await github.Miscellaneous.GetRateLimits();
+            Wyam.Common.Tracing.Trace.Information($"GitHub rate limit: {rateLimit.Resources.Core.Remaining} remaining");
+        }
 
-            return output;
-        }));
+        outputs.Add(output);
+    }
+
+    return outputs;
 }

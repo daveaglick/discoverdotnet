@@ -148,15 +148,26 @@ Task("Preview")
         //    + $" --content-type .vue=text/plain");
     });
 
-Task("Publish")
+Task("Publish-Issues")
+    .Description("Generates and deploys the issue data.")
+    .IsDependentOn("Issues")
+    .Does(() =>
+    {
+        Information("Deploying issue data to Netlify");
+        var netlifyToken = EnvironmentVariable("DISCOVERDOTNET_NETLIFY_TOKEN");
+        var client = new NetlifyClient(netlifyToken);
+        client.UpdateSite("discoverdotnet-issues.netlify.com", MakeAbsolute(issuesDir).FullPath).SendAsync().Wait();
+    });
+
+Task("Publish-Site")
     .Description("Generates and deploys the site.")
     .IsDependentOn("Build")
     .Does(() =>
     {
-        Information("Deploying output to Netlify");
+        Information("Deploying site to Netlify");
         var netlifyToken = EnvironmentVariable("DISCOVERDOTNET_NETLIFY_TOKEN");
-        //var client = new NetlifyClient(netlifyToken);
-        //client.UpdateSite("discoverdotnet.netlify.com", MakeAbsolute(outputDir).FullPath).SendAsync().Wait();
+        var client = new NetlifyClient(netlifyToken);
+        client.UpdateSite("discoverdotnet.netlify.com", MakeAbsolute(outputDir).FullPath).SendAsync().Wait();
     });
 
 //////////////////////////////////////////////////////////////////////
@@ -165,6 +176,10 @@ Task("Publish")
     
 Task("Default")
     .IsDependentOn("Preview");
+    
+Task("Publish")
+    .IsDependentOn("Publish-Issues")
+    .IsDependentOn("Publish-Site");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
