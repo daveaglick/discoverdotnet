@@ -2,6 +2,10 @@ branches:
   only:
     - master
     
+# Don't start any commit builds, only scheduled
+skip_tags: true
+skip_non_tags: true
+    
 environment:
   VisualStudioVersion: 15.0
   MSBuildToolsVersion: 15.0
