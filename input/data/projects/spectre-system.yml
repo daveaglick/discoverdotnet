@@ -1,0 +1,5 @@
+Description: A library containing cross platform abstractions for environments and IO.
+Language: C#
+Source: https://github.com/spectresystems/spectre.system
+Tags:
+  - IO
