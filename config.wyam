@@ -93,7 +93,7 @@ Pipelines.Add("Blogs",
         Take(10)),
     Yaml(),    
     Content(string.Empty),
-    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result),
+    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/blogs/_Layout.cshtml"),
@@ -138,7 +138,7 @@ Pipelines.Add("Broadcasts",
         Take(10)),
     Yaml(),    
     Content(string.Empty),
-    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result),
+    Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/broadcasts/_Layout.cshtml"),
@@ -588,7 +588,7 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                 }
             }
 
-            return input;
+            return null;
         }));
 }
 
