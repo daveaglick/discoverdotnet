@@ -511,7 +511,10 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
                     using(XmlReader xmlReader = XmlReader.Create(feed, new XmlReaderSettings { Async = true }))
                     {
-                        XmlFeedReader feedReader = string.Equals(input.String("FeedType"), "Atom", StringComparison.OrdinalIgnoreCase)
+                        xmlReader.MoveToContent();
+                        bool atom = xmlReader.Name == "feed";
+                        Wyam.Common.Tracing.Trace.Information("Reading feed as " + (atom ? "Atom" : "RSS"));
+                        XmlFeedReader feedReader = atom
                             ? (XmlFeedReader)new AtomFeedReader(xmlReader)
                             : new RssFeedReader(xmlReader);                            
                         while(await feedReader.Read())
