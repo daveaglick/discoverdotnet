@@ -1,0 +1,5 @@
+Description: An extremly opinionated command line parser.
+Language: C#
+Source: https://github.com/spectresystems/spectre.commandline
+Tags:
+  - CLI
