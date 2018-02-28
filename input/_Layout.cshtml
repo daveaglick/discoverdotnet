@@ -104,6 +104,22 @@
                 }
                 return moment(value).fromNow();
             });
+                        
+            Vue.filter('event-date', function (value) {
+                if (!value)
+                {
+                    return '';
+                }
+                return moment(value, "YYYY/MM/DD").format("l");
+            });
+                        
+            Vue.filter('event-time', function (value) {
+                if (!value)
+                {
+                    return '';
+                }
+                return moment(value, "HH:mm").format("LT");
+            });
 
             Vue.mixin({
                 methods: {

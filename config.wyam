@@ -90,7 +90,7 @@ Pipelines.Add("Blogs",
     ReadFiles("data/blogs/*.yml"),    
     If(ctx => ctx.Bool("Preview"),
         OrderBy((doc, ctx2) => doc.Source),        
-        Take(10)),
+        Take(5)),
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
@@ -135,7 +135,7 @@ Pipelines.Add("Broadcasts",
     ReadFiles("data/broadcasts/*.yml"),    
     If(ctx => ctx.Bool("Preview"),
         OrderBy((doc, ctx2) => doc.Source),        
-        Take(10)),
+        Take(5)),
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
@@ -193,7 +193,11 @@ Pipelines.Add("Groups",
         "Country",
         "Lat",
         "Lon",
-        "CardType"
+        "CardType",
+        "NextEventWebsite",
+        "NextEventTitle",
+        "NextEventDate",
+        "NextEventTime"
     ))
 );
 
@@ -203,6 +207,44 @@ Pipelines.Add("Group Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/groups.json")
+);
+
+Pipelines.Add("Events",
+    ReadFiles("data/events/*.yml"),    
+    If(ctx => ctx.Bool("Preview"),
+        OrderBy((doc, ctx2) => doc.Source),        
+        Take(10)),
+    Yaml(),
+    Concat(
+        Documents("Groups"),
+        Where((doc, ctx) => doc.ContainsKey("NextEvent")),
+        Execute((doc, ctx) => ctx.GetDocument((MetadataItems)doc["NextEvent"]))
+    ),
+    Content(string.Empty),
+    Meta("CardType", "Event"),
+    Meta("CardData", (doc, ctx) => doc.GetMetadata(
+        "Website",
+        "Title",
+        "Image",
+        "Location",
+        "Country",
+        "Lat",
+        "Lon",
+        "Date",
+        "EndDate",
+        "Time",
+        "EndTime",
+        "CardType",
+        "NextEvent"
+    ))
+);
+
+Pipelines.Add("Event Data",
+    GenerateJson((doc, ctx) =>
+        @ctx.Documents.FromPipeline("Events").Select(x => x["CardData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/events.json")
 );
 
 // Aggregate, Pages, and Resources
@@ -479,12 +521,12 @@ public class FeedItemData
     public bool Recent { get; }
     public IDictionary<string, string> Links { get; }
 
-    public FeedItemData(ISyndicationItem item, DateTimeOffset oneDayAgo)
+    public FeedItemData(ISyndicationItem item, DateTimeOffset recent)
     {
         Title = item.Title;
         Link = item.Id;
         Published = item.Published != default(DateTimeOffset) ? item.Published : item.LastUpdated;
-        Recent = Published > oneDayAgo;
+        Recent = Published > recent;
         Description = item.Description;
         Links = item.Links
             .Where(x => !string.IsNullOrEmpty(x.MediaType))
@@ -500,7 +542,7 @@ public class FeedItemData
 
 public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
-    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(context.Bool("Preview") ? -168 : -24);
+    DateTimeOffset recent = new DateTimeOffset(DateTime.Today.AddHours(context.Bool("Preview") ? -168 : -24));
     return await Task.WhenAll(
         inputs.Select(async input =>
         {
@@ -564,7 +606,7 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     if(items.Count > 0)
                     {
                         FeedItemData[] feedItems = items
-                            .Select(x => new FeedItemData(x, oneDayAgo))
+                            .Select(x => new FeedItemData(x, recent))
                             .OrderByDescending(x => x.Published)
                             .Take(20)  // Only take the 20 most recent items
                             .ToArray();
@@ -612,11 +654,27 @@ public class MeetupGroup
 
 	public class NextEvent
 	{
+        public string Id { get; set; }
 		public string Name { get; set; }
 		public long Time { get; set; }
 		public long Utc_Offset { get; set; }
 		public DateTimeOffset Date => DateTimeOffset.FromUnixTimeMilliseconds(Time);
 		public DateTimeOffset LocalDate => Date.AddMilliseconds(Utc_Offset);
+
+        public MetadataItems GetMetadata(MeetupGroup group)
+        {
+            return new MetadataItems
+            {
+                { "Website", $"{group.Link}events/{Id}" },
+                { "Title", Name },
+                { "Location", group.Localized_Location },
+                { "Country", group.Localized_Country_Name },
+                { "Lat", group.Lat },
+                { "Lon", group.Lon },
+                { "Date", LocalDate.ToString("yyyy/MM/dd") },
+                { "Time", LocalDate.ToString("HH:mm") }
+            };
+        }
 	}
 
     public class Photo
@@ -639,6 +697,14 @@ public class MeetupGroup
         if(!string.IsNullOrEmpty(image))
         {
             metadata.Add("Image", image);
+        }
+        if(Next_Event != null)
+        {
+            metadata.Add("NextEvent", Next_Event.GetMetadata(this));
+            metadata.Add("NextEventWebsite", $"{Link}events/{Next_Event.Id}");
+            metadata.Add("NextEventTitle", Next_Event.Name);
+            metadata.Add("NextEventDate", Next_Event.LocalDate.ToString("yyyy/MM/dd"));
+            metadata.Add("NextEventTime", Next_Event.LocalDate.ToString("HH:mm"));
         }
         return metadata;
     }
@@ -677,8 +743,37 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
 	}
     IList<IDocument> outputs = groups.Select(x => context.GetDocument(x.GetMetadata())).ToList();
 
-    // TODO: Query API for Meetup groups that aren't already part of the .NET topic set
-    // TODO: Return unmodified group documents that aren't meetup groups
+    // Process input documents    
+	using (WebClient webClient = new WebClient())
+	{
+        foreach(IDocument input in inputs)
+        {
+            string meetup = input.String("Meetup");
+            if(!string.IsNullOrEmpty(meetup))
+            {            
+                // Query API for Meetup groups that aren't already part of the .NET topic set
+                Wyam.Common.Tracing.Trace.Information($"Getting group data for group {meetup}");
+                using (Stream stream = await webClient.OpenReadTaskAsync(
+                    $"https://api.meetup.com/{meetup}?only=name,link,localized_location,localized_country_name,lat,lon,key_photo,next_event&key={meetupToken}"))
+                {
+                    using (StreamReader streamReader = new StreamReader(stream))
+                    {
+                        using (JsonTextReader jsonReader = new JsonTextReader(streamReader))
+                        {
+                            MeetupGroup group = serializer.Deserialize<MeetupGroup>(jsonReader);
+                            outputs.Add(context.GetDocument(group.GetMetadata()));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Not on Meetup, just add this group directly
+                outputs.Add(input);
+            }
+        }
+    }
+
     // TODO: Add Meetup events to the Meetup group documents for the events pipeline to use
 
     return outputs.OrderBy(x => x.String("Title"));

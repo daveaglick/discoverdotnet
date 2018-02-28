@@ -12,7 +12,8 @@
             <slot name="description">        
                 <p class="card-text">{{ cardData.description }}</p>
             </slot>
-        </b-card-body>      
+        </b-card-body> 
+        <slot name="bottom"></slot>     
         <div slot="footer">
             <slot name="footer"></slot>
             <div v-if="cardData.link" class="text-right mt-3">
