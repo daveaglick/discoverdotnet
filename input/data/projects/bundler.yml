@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Bundler
+Source: https://github.com/ServiceStack/Bundler
+Tags:
+  - Assets

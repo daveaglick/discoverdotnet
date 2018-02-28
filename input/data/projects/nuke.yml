@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/nuke-build/presentation/master/images/logo2.png
+Language: C#
+NuGet: Nuke.Core
+Source: https://github.com/nuke-build/nuke
+Tags:
+  - Build Tool

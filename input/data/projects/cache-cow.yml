@@ -1,0 +1,5 @@
+Language: C#
+NuGet: CacheCow.Common45
+Source: https://github.com/aliostad/CacheCow
+Tags:
+  - Caching

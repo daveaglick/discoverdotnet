@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/Taritsyn/BundleTransformer/master/images/BundleTransformer_Logo.png
+Language: C#
+NuGet: BundleTransformer.Core
+Source: https://github.com/Taritsyn/BundleTransformer
+Tags:
+  - Assets

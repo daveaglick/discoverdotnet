@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Cassette.Aspnet
+Source: https://github.com/andrewdavey/cassette
+Tags:
+  - Assets

@@ -1,0 +1,5 @@
+Language: F#
+NuGet: FAKE
+Source: https://github.com/fsharp/FAKE
+Tags:
+  - Build Tool

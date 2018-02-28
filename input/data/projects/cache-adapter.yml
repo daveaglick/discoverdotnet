@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Glav.CacheAdapter
+Source: https://github.com/glav/Glav.CacheAdapter
+Tags:
+  - Caching

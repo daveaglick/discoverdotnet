@@ -1,0 +1,5 @@
+Language: C#
+NuGet: NodeAssets.AspNet
+Source: https://github.com/ajorkowski/NodeAssets
+Tags:
+  - Assets

@@ -1,0 +1,5 @@
+Language: F#
+NuGet: Hawk
+Source: https://github.com/logibit/logibit.hawk/
+Tags:
+  - Security

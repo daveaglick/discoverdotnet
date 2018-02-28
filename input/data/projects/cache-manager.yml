@@ -1,0 +1,5 @@
+Language: C#
+NuGet: CacheManager.Core
+Source: https://github.com/MichaCo/CacheManager
+Tags:
+  - Caching
