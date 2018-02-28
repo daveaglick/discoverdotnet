@@ -106,7 +106,10 @@ Pipelines.Add("Blogs",
         "Link",
         "Description",
         "Website",
-        "LastPublished"
+        "LastPublished",
+        "NewestFeedItemTitle",
+        "NewestFeedItemLink",
+        "NewestFeedItemPublished"
     ))
 );
 
@@ -151,7 +154,10 @@ Pipelines.Add("Broadcasts",
         "Link",
         "Description",
         "Website",
-        "LastPublished"
+        "LastPublished",
+        "NewestFeedItemTitle",
+        "NewestFeedItemLink",
+        "NewestFeedItemPublished"
     ))
 );
 
@@ -220,11 +226,13 @@ Pipelines.Add("Events",
         Where((doc, ctx) => doc.ContainsKey("NextEvent")),
         Execute((doc, ctx) => ctx.GetDocument((MetadataItems)doc["NextEvent"]))
     ),
+    OrderBy((doc, ctx) => doc.String("Date")),
     Content(string.Empty),
     Meta("CardType", "Event"),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
+        "Description",
         "Image",
         "Location",
         "Country",
@@ -612,6 +620,9 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                             .ToArray();
                         metadata.Add("FeedItems", feedItems);
                         metadata.Add("LastPublished", feedItems.First().Published);
+                        metadata.Add("NewestFeedItemTitle", feedItems[0].Title);
+                        metadata.Add("NewestFeedItemLink", feedItems[0].Link);
+                        metadata.Add("NewestFeedItemPublished", feedItems[0].Published);
                     };
                     if(!input.ContainsKey("Website") && !string.IsNullOrEmpty(website))
                     {

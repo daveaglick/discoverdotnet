@@ -44,7 +44,6 @@
                                 <b-nav-item href="/groups">Groups</b-nav-item>
                                 <b-nav-item href="/events">Events</b-nav-item>
                                 <b-nav-item href="/resources">Resources</b-nav-item>
-                                <b-nav-item href="/people">People</b-nav-item>
                             </b-navbar-nav>                            
                             <b-navbar-nav class="float-md-right">
                                 <b-nav-form>
@@ -88,6 +87,7 @@
             Vue.component('issue-card', httpVueLoader('/components/cards/issue-card.vue'));
             Vue.component('feed-item-card', httpVueLoader('/components/cards/feed-item-card.vue'));
             Vue.component('group-card', httpVueLoader('/components/cards/group-card.vue'));
+            Vue.component('event-card', httpVueLoader('/components/cards/event-card.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -140,6 +140,9 @@
                         if(cardType) {
                             if(cardType === "Group") {
                                 return `group-card`;
+                            }
+                            if(cardType === "Event") {
+                                return `event-card`;
                             }
                         }
                         return 'card';

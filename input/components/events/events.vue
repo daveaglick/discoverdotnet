@@ -4,12 +4,11 @@
             Could not get your location.
         </b-alert> 
         <card-grid
-            title="Groups"
-            suggest-link="/suggest/group"
-            card-json="/data/groups.json"
+            title="Events"
+            suggest-link="/suggest/event"
+            card-json="/data/events.json"
             :filters="filters"
-            :sorts="sorts"
-            :randomizeOrder="true">
+            :sorts="sorts">
         </card-grid>
     </div>
 </template>
@@ -20,6 +19,17 @@
             return {       
                 geoAlert: false,
                 filters: [
+                    {
+                        text: 'Include Meetups',
+                        filter: function(items, selected) {
+                            if(selected) {
+                                return items;
+                            }
+                            return items.filter(function(item) {
+                                return !item.website.startsWith("https://www.meetup.com");
+                            });
+                        }
+                    },
                     {
                         text: 'Country',
                         field: 'country'
@@ -70,15 +80,11 @@
                         }
                     },
                     {
-                        text: 'A-Z',
+                        text: 'Soonest',
                         sort: function(a, b) {
-                            return a.title.localeCompare(b.title);
-                        }
-                    },
-                    {
-                        text: 'Z-A',
-                        sort: function(a, b) {      
-                            return b.title.localeCompare(a.title);     
+                            if(moment(a.date, "YYYY/MM/DD").isBefore(moment(b.date, "YYYY/MM/DD"))) return -1;   
+                            if(moment(b.date, "YYYY/MM/DD").isBefore(moment(a.date, "YYYY/MM/DD"))) return 1;
+                            return 0;              
                         }
                     }
                 ]

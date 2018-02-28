@@ -4,6 +4,7 @@ To suggest a new event, submit a PR to the [discoverdotnet](https://github.com/d
 
 **Website**: The URL of the event.
 **Title**: The title of the event.
+**Description**: A description of the event.
 **Image**: A URL to an image or logo of the event.
 **Location**: A plain text description of the location of the event.
 **Country**: The localized country name where the event is located (used for filtering).
