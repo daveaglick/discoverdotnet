@@ -255,6 +255,34 @@ Pipelines.Add("Event Data",
     WriteFiles((doc, ctx) => "data/events.json")
 );
 
+// Resources
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Resources",
+    ReadFiles("data/resources/*.yml"),    
+    If(ctx => ctx.Bool("Preview"),
+        OrderBy((doc, ctx2) => doc.Source),        
+        Take(10)),
+    Yaml(),    
+    Content(string.Empty),
+    Meta("CardType", "Resource"),
+    Meta("CardData", (doc, ctx) => doc.GetMetadata(
+        "Website",
+        "Title",
+        "Image",
+        "Description",
+        "CardType"
+    ))
+);
+
+Pipelines.Add("Resource Data",
+    GenerateJson((doc, ctx) =>
+        @ctx.Documents.FromPipeline("Resources").Select(x => x["CardData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/resources.json")
+);
+
 // Aggregate, Pages, and Resources
 //////////////////////////////////////////////////////////////////////
 
@@ -301,6 +329,12 @@ Pipelines.Add("Discoveries",
     Concat(
         Documents("Groups")
     ),
+    Concat(
+        Documents("Events")
+    ),
+    Concat(
+        Documents("Resources")
+    ),
     Where(@doc.ContainsKey("DiscoveryDate")),
     OrderBy(@doc.DateTime("DiscoveryDate"))
         .Descending(),
@@ -340,7 +374,7 @@ Pipelines.Add("Sass",
     WriteFiles()
 );
 
-Pipelines.Add("Resources",
+Pipelines.Add("Site Resources",
     CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
 );
 
@@ -550,7 +584,7 @@ public class FeedItemData
 
 public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
-    DateTimeOffset recent = new DateTimeOffset(DateTime.Today.AddHours(context.Bool("Preview") ? -168 : -24));
+    DateTimeOffset recent = new DateTimeOffset(DateTime.Today.AddHours(context.Bool("Preview") ? -168 : -48));
     return await Task.WhenAll(
         inputs.Select(async input =>
         {

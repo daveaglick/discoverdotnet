@@ -88,6 +88,7 @@
             Vue.component('feed-item-card', httpVueLoader('/components/cards/feed-item-card.vue'));
             Vue.component('group-card', httpVueLoader('/components/cards/group-card.vue'));
             Vue.component('event-card', httpVueLoader('/components/cards/event-card.vue'));
+            Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -143,6 +144,9 @@
                             }
                             if(cardType === "Event") {
                                 return `event-card`;
+                            }
+                            if(cardType === "Resource") {
+                                return `resource-card`;
                             }
                         }
                         return 'card';

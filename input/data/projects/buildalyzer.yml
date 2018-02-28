@@ -3,3 +3,4 @@ Language: C#
 Tags:
   - Build Tool
 NuGet: Buildalyzer
+Image: https://github.com/daveaglick/Buildalyzer/raw/master/docs/buildalyzer.png
