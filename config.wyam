@@ -376,10 +376,17 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
 
             // Get the readme
             Wyam.Common.Tracing.Trace.Information($"Getting GitHub readme for {owner}/{name}");
-            string readme = await github.Repository.Content.GetReadmeHtml(owner, name);
-            if(!string.IsNullOrEmpty(readme))
+            try
             {
-                metadata.Add("Readme", readme);
+                string readme = await github.Repository.Content.GetReadmeHtml(owner, name);
+                if(!string.IsNullOrEmpty(readme))
+                {
+                    metadata.Add("Readme", readme);
+                }
+            }
+            catch(Exception ex)
+            {
+                Wyam.Common.Tracing.Trace.Information($"Exception getting GitHub readme for {owner}/{name}: {ex.Message}");
             }                
 
             // Report on out API rate limit
