@@ -8,7 +8,7 @@
             </h1>
             <hr />
             <h5 class="accent-script">{{ cardData.discoveryDate }}</h5>
-            <p class="small">A new discovery (almost) every day.<br />Add the <a href="/feed.rss">RSS feed</a> to your feed reader to collect them all.</p>
+            <p class="small">A new discovery (almost) every day.</p>
         </div>
         <component :is="getCard(cardData)" :card-data="cardData">
             <b-card-body class="flex-0" v-if="cardData.comment">

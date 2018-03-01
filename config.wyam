@@ -337,18 +337,27 @@ Pipelines.Add("Discoveries",
     ),
     Where(@doc.ContainsKey("DiscoveryDate")),
     OrderBy(@doc.DateTime("DiscoveryDate"))
-        .Descending(),
+        .Descending()
+);
+
+Pipelines.Add("Discovery",
+    Documents("Discoveries"),
+    Take(1),
     GenerateJson((doc, ctx) => doc["CardData"])
         .WithCamelCase(),
     MinifyJs(),
-    Branch(
-        // Daily discovery
-        Take(1),
-        WriteFiles((doc, ctx) => "data/discovery.json")
-    )
-    // Past discoveries
-    // TODO: skip 1, take 4 (or 8?)
-    // TODO: RSS feed
+    WriteFiles((doc, ctx) => "data/discovery.json")
+);
+
+Pipelines.Add("Past Discoveries",
+    GenerateJson(ctx =>
+        ctx.Documents.FromPipeline("Discoveries")
+            .Skip(1)
+            .Take(4)
+            .Select(x => x["CardData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/past-discoveries.json")
 );
 
 Pipelines.Add("Pages",

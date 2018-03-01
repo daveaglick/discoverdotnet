@@ -1,5 +1,6 @@
 Language: C#
 NuGet: Microsoft.Build
 Source: https://github.com/Microsoft/msbuild
+Platform: true
 Tags:
   - Build Tool

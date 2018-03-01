@@ -1,5 +1,6 @@
 Language: C#
 NuGet: Microsoft.AspNet.Identity.Core
 Source: https://github.com/aspnet/Identity/
+Platform: true
 Tags:
   - Security

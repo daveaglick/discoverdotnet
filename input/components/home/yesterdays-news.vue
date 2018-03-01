@@ -9,7 +9,7 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p class="small">A roundup of blog posts, podcasts, and more from the last day or two.</p>
+            <p class="small">A roundup of recent blog posts, podcasts, and more.</p>
         </div>
 
         <feed-item-card v-for="card in cardData" :key="card.link" :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
