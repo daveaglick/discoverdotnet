@@ -9,10 +9,11 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p class="small">A few help wanted issues perfect for digging in.</p>               
+            <p class="small">A few help wanted issues perfect for digging in. <a href="javascript:void(0)" @click="shuffle">Shuffle</a> to see more.</p>            
             <issue-card v-for="issue in firstIssues" :key="issue.link" :card-data="issue" :project-keys="projectKeys">
             </issue-card>
-            <div class="text-right"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>
+            <div class="text-right mb-4"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>            
+            <p class="text-left"><a href="/issues/?help-wanted">All Help Wanted Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
         </div>
     </div>
 </template>

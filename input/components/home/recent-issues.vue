@@ -9,10 +9,14 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p class="small">Some issues from the last 24 hours.</p>            
+            <p class="small">Some issues from the last 24 hours. <a href="javascript:void(0)" @click="shuffle">Shuffle</a> to see more.</p>            
             <issue-card v-for="issue in firstIssues" :key="issue.link" :card-data="issue" :project-keys="projectKeys">
             </issue-card>
-            <div class="text-right"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>
+            <div class="text-right mb-4"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>                     
+            <p class="text-left"><a href="/issues">All Recent Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/issues/?platform">All .NET Platform Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/issues/?microsoft">All Microsoft Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/issues/?foundation">All .NET Foundation Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
         </div>
     </div>
 </template>

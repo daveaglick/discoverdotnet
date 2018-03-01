@@ -1,5 +1,6 @@
 <template>
     <div>
+        <projects :project-keys="projectKeys"></projects>
         <help-wanted :project-keys="projectKeys"></help-wanted>
         <recent-issues :project-keys="projectKeys"></recent-issues>
     </div>

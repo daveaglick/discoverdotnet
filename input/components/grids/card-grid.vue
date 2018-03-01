@@ -111,6 +111,21 @@
                             return false;
                         }
                     });
+
+                // Preselect a filter from the query string
+                var queryDict = {};
+                location.search.substr(1).split("&").forEach(function(item) {
+                    queryDict[item.split("=")[0]] = item.split("=")[1]
+                });
+                if('filter' in queryDict) {
+                    var filterText = queryDict['filter'];
+                    var filterIndex = this.filters.findIndex(function(item) {
+                        return item.text.replace(/\W/g, '').toLowerCase() === filterText.toLowerCase();
+                    });
+                    if(filterIndex !== -1 && this.selected[filterIndex] === false) {
+                        this.selected[filterIndex] = true;
+                    }
+                }
             }
 
             // Get the card data

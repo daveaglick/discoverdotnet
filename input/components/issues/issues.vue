@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-tabs pills>
+        <b-tabs pills v-model="tabIndex">
             <b-tab title="All Issues" class="mt-4">
                 <paged-grid
                     card-json="/data/issues/all/"
@@ -51,10 +51,23 @@
         data: function() {
             return {
                 projectKeys: [],
-                totalCounts: {}
+                totalCounts: {},
+                tabIndex: 0
             }
         },
         created: function() {
+            // Go to a specific tab
+            var tab = location.search.substr(1).split("&")[0];
+            if(tab === "help-wanted") {
+                this.tabIndex = 1;
+            } else if(tab === "platform") {
+                this.tabIndex = 2;
+            } else if(tab === "microsoft") {
+                this.tabIndex = 3;
+            } else if(tab === "foundation") {
+                this.tabIndex = 4;
+            }
+
             axios
                 .get('/data/issues/total-counts.json')
                 .then(response => {
