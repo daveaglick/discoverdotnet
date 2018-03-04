@@ -1,0 +1,5 @@
+Language: C#
+NuGet: FlubuCore
+Source: https://github.com/flubu-core/flubu.core
+Tags:
+  - Build Tool

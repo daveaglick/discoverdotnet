@@ -1,0 +1,5 @@
+Language: C#
+NuGet: clipr
+Source: https://github.com/nemec/clipr
+Tags:
+  - CLI

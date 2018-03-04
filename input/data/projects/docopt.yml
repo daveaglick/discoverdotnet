@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Docopt.net
+Source: https://github.com/docopt/docopt.net
+Tags:
+  - CLI

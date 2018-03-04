@@ -1,0 +1,5 @@
+Language: C#
+NuGet: EntryPoint
+Source: https://github.com/Nick-Lucas/EntryPoint
+Tags:
+  - CLI

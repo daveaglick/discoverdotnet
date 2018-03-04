@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Metrics.NET
+Source: https://github.com/Recognos/Metrics.NET
+Tags:
+  - Code Analysis
