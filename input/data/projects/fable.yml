@@ -1,0 +1,6 @@
+Source: https://github.com/fable-compiler/Fable
+Language: F#
+Tags:
+  - Compiler
+NuGet: Fable.Compiler
+Chat: https://gitter.im/fable-compiler/Fable

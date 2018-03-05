@@ -4,3 +4,4 @@ Docs: https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/
 Platform: true
 Tags:
   - Code Analysis
+  - Compiler

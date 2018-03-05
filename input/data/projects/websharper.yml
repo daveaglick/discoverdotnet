@@ -1,0 +1,6 @@
+Source: https://github.com/dotnet-websharper/core
+Language: F#
+Tags:
+  - Compiler
+Chat: https://gitter.im/intellifactory/websharper
+NuGet: WebSharper

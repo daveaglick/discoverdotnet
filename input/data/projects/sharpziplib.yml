@@ -1,0 +1,6 @@
+Source: https://github.com/icsharpcode/SharpZipLib
+Language: C#
+Tags:
+  - Compression
+NuGet: SharpZipLib
+Chat: https://gitter.im/icsharpcode/SharpZipLib

@@ -1,0 +1,5 @@
+Source: https://github.com/adamhathcock/sharpcompress
+Language: C#
+Tags:
+  - Compression
+NuGet: sharpcompress
