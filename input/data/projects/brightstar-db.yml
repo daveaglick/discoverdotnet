@@ -1,0 +1,5 @@
+Source: https://github.com/BrightstarDB/BrightstarDB
+Language: C#
+Tags:
+  - Database
+NuGet: BrightstarDB

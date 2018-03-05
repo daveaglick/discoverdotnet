@@ -1,0 +1,5 @@
+Source: https://github.com/sebastienros/yessql
+Language: C#
+Tags:
+  - Data Access
+NuGet: YesSql.Core

@@ -1,0 +1,5 @@
+Source: https://github.com/bcgit/bc-csharp
+Language: C#
+Tags:
+  - Cryptography
+NuGet: BouncyCastle

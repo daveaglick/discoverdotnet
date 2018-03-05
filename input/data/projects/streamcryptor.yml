@@ -1,0 +1,5 @@
+Source: https://github.com/bitbeans/StreamCryptor
+Language: C#
+Tags:
+  - Cryptography
+NuGet: StreamCryptor
