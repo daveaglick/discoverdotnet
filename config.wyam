@@ -521,41 +521,47 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
             if(!string.IsNullOrEmpty(package))
             {
                 Wyam.Common.Tracing.Trace.Information($"Getting NuGet data for {package}");
-                IBrowsingContext browsingContext = BrowsingContext.New(config);
-	            AngleSharp.Dom.IDocument document = await browsingContext.OpenAsync($"https://www.nuget.org/packages/{package}");
-                if(document != null)
-                {
-                    // Get statistics
-                    AngleSharp.Dom.IElement statistics = document
-                        .QuerySelectorAll(".package-details-info h2")
-                        .First(x => x.TextContent == "Statistics")
-                        .NextElementSibling;
-                    string totalDownloads = statistics.Children
-                        .First(x => x.TextContent.Contains("total downloads"))
-                        .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    string latestVersionDownloads = statistics.Children
-                        .First(x => x.TextContent.Contains("latest version"))
-                        .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    string perDayDownloads = statistics.Children
-                        .First(x => x.TextContent.Contains("per day"))
-                        .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
-
-                    // Get versions
-                    List<VersionData> versions = document
-			            .QuerySelectorAll("#version-history table tbody tr")
-                        .Select(x => new VersionData(x))
-                        .ToList();
-                    
-                    // Return a document with NuGet data
-                    return context.GetDocument(input, new MetadataItems
+                try{
+                    IBrowsingContext browsingContext = BrowsingContext.New(config);
+    	            AngleSharp.Dom.IDocument document = await browsingContext.OpenAsync($"https://www.nuget.org/packages/{package}");
+                    if(document != null)
                     {
-                        { "TotalDownloads", totalDownloads },
-                        { "LatestVersionDownloads", latestVersionDownloads },
-                        { "PerDayDownloads", perDayDownloads },
-                        { "LatestVersion", versions.First().Version },                        
-                        { "LatestVersionLastUpdated", versions.First().LastUpdated },
-                        { "Versions", versions }
-                    });
+                        // Get statistics
+                        AngleSharp.Dom.IElement statistics = document
+                            .QuerySelectorAll(".package-details-info h2")
+                            .First(x => x.TextContent == "Statistics")
+                            .NextElementSibling;
+                        string totalDownloads = statistics.Children
+                            .First(x => x.TextContent.Contains("total downloads"))
+                            .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+                        string latestVersionDownloads = statistics.Children
+                            .First(x => x.TextContent.Contains("latest version"))
+                            .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+                        string perDayDownloads = statistics.Children
+                            .First(x => x.TextContent.Contains("per day"))
+                            .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
+    
+                        // Get versions
+                        List<VersionData> versions = document
+    			            .QuerySelectorAll("#version-history table tbody tr")
+                            .Select(x => new VersionData(x))
+                            .ToList();
+                        
+                        // Return a document with NuGet data
+                        return context.GetDocument(input, new MetadataItems
+                        {
+                            { "TotalDownloads", totalDownloads },
+                            { "LatestVersionDownloads", latestVersionDownloads },
+                            { "PerDayDownloads", perDayDownloads },
+                            { "LatestVersion", versions.First().Version },                        
+                            { "LatestVersionLastUpdated", versions.First().LastUpdated },
+                            { "Versions", versions }
+                        });
+                    }
+                    catch(Exception ex)
+                    {
+                        Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
+                    }
                 }
             }
 
