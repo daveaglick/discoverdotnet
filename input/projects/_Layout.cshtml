@@ -191,6 +191,8 @@
     </b-col>
 </b-row>
 
-<script type="text/javascript">
-    Vue.component('issues', httpVueLoader('/components/projects/issues.vue'));
-</script>
+@section Script {
+    <script type="text/javascript">
+        Vue.component('issues', httpVueLoader('/components/projects/issues.vue'));
+    </script>
+}

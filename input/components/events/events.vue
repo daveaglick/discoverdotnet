@@ -8,13 +8,8 @@
             suggest-link="/suggest/event"
             card-json="/data/events.json"
             :filters="filters"
-            :sorts="sorts">            
-            <div slot="header" slot-scope="props">
-                <v-map :zoom=3 :center="[41, -38]" style="height: 280px">
-                    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-                    <v-marker v-for="cardData in props.filteredCardData" :key="cardData" v-if="cardData.lat && cardData.lon" :lat-lng="[cardData.lat, cardData.lon]"></v-marker>
-                </v-map>
-            </div>
+            :sorts="sorts">  
+                <card-map slot="header" slot-scope="props" :filtered-card-data="props.filteredCardData"></card-map>          
         </card-grid>
     </div>
 </template>

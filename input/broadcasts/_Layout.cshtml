@@ -25,6 +25,8 @@
 
 <feed-items feed-item-json="/data/episodes/@(Model.String("Key")).json" icon="fa-headphones"></feed-items>
 
-<script type="text/javascript">
-    Vue.component('feed-items', httpVueLoader('/components/feeds/feed-items.vue'));
-</script>
+@section Script {
+	<script type="text/javascript">
+		Vue.component('feed-items', httpVueLoader('/components/feeds/feed-items.vue'));
+	</script>
+}

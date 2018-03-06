@@ -1,7 +1,7 @@
-@section Head {
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.js"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/vue2-leaflet@0.0.58/dist/vue2-leaflet.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.css" rel="stylesheet"></link>
+@section Head {    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/vue2-leaflet@0.0.58/dist/vue2-leaflet.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.css" rel="stylesheet"></link>
 }
 
 <events></events>
@@ -11,7 +11,9 @@
         Vue.component('v-map', Vue2Leaflet.Map);
         Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
         Vue.component('v-marker', Vue2Leaflet.Marker);
+        Vue.component('v-popup', Vue2Leaflet.Popup);
 
         Vue.component('events', httpVueLoader('/components/events/events.vue'));
+        Vue.component('card-map', httpVueLoader('/components/card-map.vue'));
     </script>
 }

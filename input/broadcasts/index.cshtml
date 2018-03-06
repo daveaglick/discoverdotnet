@@ -4,6 +4,8 @@
     card-json="/data/broadcasts.json">
 </feeds>
 
-<script type="text/javascript">
-    Vue.component('feeds', httpVueLoader('/components/feeds/feeds.vue'));
-</script>
+@section Script {
+    <script type="text/javascript">
+        Vue.component('feeds', httpVueLoader('/components/feeds/feeds.vue'));
+    </script>
+}

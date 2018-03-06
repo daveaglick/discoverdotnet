@@ -10,20 +10,7 @@
             :filters="filters"
             :sorts="sorts"
             :randomizeOrder="true">
-            <div slot="header" slot-scope="props">
-                <v-map :zoom=3 :center="[41, -38]" style="height: 280px">
-                    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
-                    <v-marker-cluster>
-                        <v-marker
-                            v-for="cardData in props.filteredCardData"
-                            :key="cardData"
-                            v-if="cardData.lat && cardData.lon"
-                            :lat-lng="[cardData.lat, cardData.lon]">
-                            <v-popup :content="cardData.title"></v-popup>
-                        </v-marker>
-                    </v-marker-cluster>
-                </v-map>
-            </div>
+                <card-map slot="header" slot-scope="props" :filtered-card-data="props.filteredCardData"></card-map>
         </card-grid>
     </div>
 </template>
