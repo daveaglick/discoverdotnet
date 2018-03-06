@@ -521,7 +521,8 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
             if(!string.IsNullOrEmpty(package))
             {
                 Wyam.Common.Tracing.Trace.Information($"Getting NuGet data for {package}");
-                try{
+                try
+                {
                     IBrowsingContext browsingContext = BrowsingContext.New(config);
     	            AngleSharp.Dom.IDocument document = await browsingContext.OpenAsync($"https://www.nuget.org/packages/{package}");
                     if(document != null)
@@ -558,10 +559,10 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
                             { "Versions", versions }
                         });
                     }
-                    catch(Exception ex)
-                    {
-                        Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
-                    }
+                }
+                catch(Exception ex)
+                {
+                    Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
                 }
             }
 
