@@ -2,7 +2,7 @@
     <div>           
         <b-alert :show="geoAlert" dismissible variant="warning" @dismissed="geoAlert=false">
             Could not get your location.
-        </b-alert> 
+        </b-alert>
         <card-grid
             title="Groups"
             suggest-link="/suggest/group"
@@ -10,6 +10,12 @@
             :filters="filters"
             :sorts="sorts"
             :randomizeOrder="true">
+            <div slot="header" slot-scope="props">
+                <v-map :zoom=3 :center="[41, -38]" style="height: 280px">
+                    <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+                    <v-marker v-for="cardData in props.filteredCardData" :key="cardData" v-if="cardData.lat && cardData.lon" :lat-lng="[cardData.lat, cardData.lon]"></v-marker>
+                </v-map>
+            </div>
         </card-grid>
     </div>
 </template>

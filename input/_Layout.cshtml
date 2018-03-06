@@ -21,6 +21,9 @@
         <script src="https://cdn.jsdelivr.net/npm/moment@2.20.1/moment.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+
+        @RenderSection("Head", false)
+
         <script>
             hljs.initHighlightingOnLoad();
         </script>
@@ -70,6 +73,9 @@
                 </b-container>
             </footer>
         </div>
+
+        @RenderSection("Script", false)
+
         <script type="text/javascript">
             Vue.config.debug = true; 
             Vue.config.devtools = true

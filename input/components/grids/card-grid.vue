@@ -12,6 +12,8 @@
             </h5>
         </div>
 
+        <slot name="header" :filtered-card-data="filteredCardData"></slot>
+
         <a id="card-grid-anchor"></a>
 
         <b-navbar toggleable="md" variant="dark" type="dark" class="my-4">
