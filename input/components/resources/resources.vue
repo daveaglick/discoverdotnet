@@ -4,6 +4,7 @@
             title="Resources"
             suggest-link="/suggest/resource"
             card-json="/data/resources.json"
+            :filters="filters"
             :sorts="sorts">
         </card-grid>
     </div>
@@ -12,7 +13,13 @@
 <script>  
     module.exports = {
         data: function() {
-            return {       
+            return {
+                filters: [
+                    {
+                        text: 'Tags',
+                        field: 'tags'
+                    }
+                ],       
                 sorts: [                    
                     {
                         text: 'A-Z',

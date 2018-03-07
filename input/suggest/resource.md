@@ -6,3 +6,4 @@ To suggest a new resource (such as a web page), submit a PR to the [discoverdotn
 **Title**: The title of the resource.
 **Description**: A description of the resource.
 **Image**: A URL to an image or logo of the resource.
+**Tags**: A list of tags for the resource. Care should be taken to use already existing tags where practical. 

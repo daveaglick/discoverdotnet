@@ -1,0 +1,6 @@
+Source: https://github.com/ServiceStack/ServiceStack.Redis
+Language: C#
+Tags:
+  - Data Access
+Twitter: ServiceStack
+NuGet: ServiceStack.Redis

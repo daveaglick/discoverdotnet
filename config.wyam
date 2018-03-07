@@ -271,7 +271,8 @@ Pipelines.Add("Resources",
         "Title",
         "Image",
         "Description",
-        "CardType"
+        "CardType",
+        "Tags"
     ))
 );
 

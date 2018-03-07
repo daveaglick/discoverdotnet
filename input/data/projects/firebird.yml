@@ -1,0 +1,7 @@
+Title: Firebird
+Description: Firebird RDBMS offers ANSI SQL features & runs on Linux, Windows & several Unix platforms.
+Source: https://sourceforge.net/projects/firebird/
+Language: C#
+Tags:
+  - Database
+Website: http://www.firebirdsql.org
