@@ -1,6 +1,7 @@
 <template>
     <v-map :zoom=1 :center="[41, -38]" style="height: 280px">
         <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+        <v-marker-cluster>
             <v-marker
                 v-for="cardData in filteredCardData"
                 :key="cardData"
@@ -8,6 +9,7 @@
                 :lat-lng="[cardData.lat, cardData.lon]">
                 <v-popup :content="popup(cardData)"></v-popup>
             </v-marker>
+        </v-marker-cluster>
     </v-map>
 </template>
 
