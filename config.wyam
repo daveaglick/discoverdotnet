@@ -42,6 +42,12 @@ Pipelines.Add("Projects",
         .WithLayout("/projects/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".html")),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
+    Meta("DonationsData", (doc, ctx) => doc.GetMetadata(
+        "Website",
+        "NuGet",
+        "Source",
+        "Donations"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
@@ -65,10 +71,27 @@ Pipelines.Add("Projects",
 
 Pipelines.Add("Project Data",
     GenerateJson((doc, ctx) =>
-        @ctx.Documents.FromPipeline("Projects").Select(x => x["CardData"]))
+        ctx.Documents.FromPipeline("Projects").Select(x => x["CardData"]))
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/projects.json")
+);
+
+Pipelines.Add("Donations Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Projects")
+            .Where(x => x.ContainsKey("Donations"))
+            .Select(x => x.GetMetadata(
+                "Title",
+                "Website",
+                "NuGet",
+                "Source",
+                "Donations"
+            ))
+        )
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/donations.json")
 );
 
 Pipelines.Add("Project Keys",
