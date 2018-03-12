@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Reactive.EventAggregator
+Source: https://github.com/shiftkey/Reactive.EventAggregator
+Tags:
+  - Messaging
+  - Reactive

@@ -1,0 +1,5 @@
+Language: F#
+NuGet: FSharp.Formatting
+Source: https://github.com/fsprojects/FSharp.Formatting
+Tags:
+  - Documentation

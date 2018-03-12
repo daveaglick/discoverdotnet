@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/jbogard/MediatR/master/assets/logo/flat_64x64.png
+Language: C#
+NuGet: MediatR
+Source: https://github.com/jbogard/MediatR
+Tags:
+  - Messaging

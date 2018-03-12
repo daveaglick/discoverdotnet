@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Swashbuckle
+Source: https://github.com/domaindrivendev/Swashbuckle
+Tags:
+  - Documentation
+  - API

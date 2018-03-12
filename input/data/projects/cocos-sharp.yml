@@ -1,0 +1,5 @@
+Language: C#
+NuGet: CocosSharp
+Source: https://github.com/mono/CocosSharp
+Tags:
+  - Game Development

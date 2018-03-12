@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Stripe.net
+Source: https://github.com/stripe/stripe-dotnet
+Tags:
+  - Commerce

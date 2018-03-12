@@ -1,0 +1,6 @@
+Language: C#
+NuGet: SharpDX
+Source: https://github.com/sharpdx/SharpDX
+Tags:
+  - Graphics
+  - Game Development

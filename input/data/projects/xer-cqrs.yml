@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Xer.Cqrs.CommandStack
+Source: https://github.com/XerProjects/Xer.Cqrs
+Tags:
+  - Messaging

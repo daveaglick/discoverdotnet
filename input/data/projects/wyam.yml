@@ -2,6 +2,7 @@ Source:  https://github.com/Wyamio/Wyam
 Language: C#
 Tags:
   - Static Site Generation
+  - Documentation
 NuGet: Wyam
 Twitter: wyamio
 Chat: https://gitter.im/Wyamio/Wyam

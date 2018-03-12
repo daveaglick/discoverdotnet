@@ -1,0 +1,5 @@
+Language: C#
+NuGet: OctoPack
+Source: https://github.com/OctopusDeploy/OctoPack
+Tags:
+  - Deployment
