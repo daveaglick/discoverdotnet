@@ -1,0 +1,6 @@
+Language: C#
+NuGet: OsmSharp
+Source: https://github.com/OsmSharp/core
+Tags:
+  - GIS
+Website: http://www.osmsharp.com/

@@ -1,0 +1,5 @@
+Language: C#
+NuGet: ngit
+Source: https://github.com/mono/ngit
+Tags:
+  - Git

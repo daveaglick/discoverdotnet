@@ -1,0 +1,5 @@
+Language: C#
+NuGet: LibGit2Sharp
+Source: https://github.com/libgit2/libgit2sharp
+Tags:
+  - Git
