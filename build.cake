@@ -3,10 +3,9 @@
 // DISCOVERDOTNET_NETLIFY_TOKEN
 // DISCOVERDOTNET_MEETUP_TOKEN
 
-#tool nuget:?package=Wyam&version=1.3.0
-#addin nuget:?package=Cake.Wyam&version=1.3.0
+#tool nuget:?package=Wyam&version=1.4.1
+#addin nuget:?package=Cake.Wyam&version=1.4.1
 #addin nuget:?package=NetlifySharp&version=0.1.0
-#addin nuget:?package=Newtonsoft.Json&version=10.0.3
 #addin nuget:?package=System.Runtime.Serialization.Formatters&version=4.3.0
 
 using NetlifySharp;
@@ -69,7 +68,7 @@ Task("Build")
         });
 
         //StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    "-a \"../Wyam/tests/integration/Wyam.Examples.Tests/bin/Debug/net462/**/*.dll\""
         //    + $" --config \"config.wyam\""
         //    + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
         //    + $" --setting GitHubToken=\"{gitHubToken}\""
@@ -94,9 +93,9 @@ Task("Issues")
                 { "Preview", string.Equals(target, "Preview", StringComparison.OrdinalIgnoreCase ) }
             }
         });       
-        
+      
         // StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    "-a \"../Wyam/tests/integration/Wyam.Examples.Tests/bin/Debug/net462/**/*.dll\""
         //    + $" --config \"issues.wyam\""
         //    + $" --output \"{MakeAbsolute(issuesDir).ToString()}\""
         //    + $" --setting GitHubToken=\"{gitHubToken}\""
@@ -138,7 +137,7 @@ Task("Preview")
         });  
 
         // StartProcess("../Wyam/src/clients/Wyam/bin/Debug/net462/wyam.exe",
-        //    "-a \"../Wyam/src/**/bin/Debug/**/*.dll\""
+        //    "-a \"../Wyam/tests/integration/Wyam.Examples.Tests/bin/Debug/net462/**/*.dll\""
         //    + $" --config \"config.wyam\""
         //    + $" --output \"{MakeAbsolute(outputDir).ToString()}\""
         //    + " --noclean -p -w"

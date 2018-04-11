@@ -1,0 +1,5 @@
+Language: C#
+NuGet: CppSharp
+Source: https://github.com/mono/CppSharp
+Tags:
+  - Interoperability

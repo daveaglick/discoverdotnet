@@ -1,9 +1,9 @@
 [Pp]ackages/
 [Tt]ools/*
-![Tt]ools/packages.config
 [Oo]utput/
 [Oo]utput.issues/
 [Rr]elease/
+[Dd]iagnostic/
 nuget.exe
 /debug.log
 /node_modules/

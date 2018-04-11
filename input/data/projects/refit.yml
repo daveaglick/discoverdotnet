@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Refit
+Source: https://github.com/paulcbetts/refit
+Tags:
+  - HTTP

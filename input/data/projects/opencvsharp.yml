@@ -1,0 +1,5 @@
+Language: C#
+NuGet: OpenCvSharp3-AnyCPU
+Source: https://github.com/shimat/opencvsharp/
+Tags:
+  - Graphics

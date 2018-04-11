@@ -1,0 +1,7 @@
+Title: RoslynPad
+Website: https://github.com/aelij/RoslynPad
+Description: A cross-platform C# editor based on Roslyn and AvalonEdit
+Image: https://raw.githubusercontent.com/aelij/RoslynPad/master/src/RoslynPad/Resources/RoslynPad.png
+Tags:
+  - Tool
+  - IDE

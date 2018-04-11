@@ -1,0 +1,5 @@
+Language: C#
+NuGet: EasyHttp
+Source: https://github.com/EasyHttp/EasyHttp
+Tags:
+  - HTTP

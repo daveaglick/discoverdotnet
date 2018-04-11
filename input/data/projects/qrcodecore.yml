@@ -1,0 +1,5 @@
+Language: C#
+NuGet: QRCodeCore
+Source: https://github.com/dlemstra/QRCodeCore
+Tags:
+  - Graphics

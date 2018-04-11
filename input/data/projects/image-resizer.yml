@@ -1,0 +1,5 @@
+Language: C#
+NuGet: ImageResizer
+Source: https://github.com/imazen/resizer
+Tags:
+  - Graphics

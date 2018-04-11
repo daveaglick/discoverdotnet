@@ -1,0 +1,5 @@
+Language: C#
+NuGet: DynamicImage
+Source: https://github.com/tgjones/dynamic-image
+Tags:
+  - Graphics
