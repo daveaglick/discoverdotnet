@@ -8,6 +8,7 @@
 #addin nuget:?package=NetlifySharp&version=0.1.0
 #addin nuget:?package=System.Runtime.Serialization.Formatters&version=4.3.0
 
+using System.Reflection;
 using NetlifySharp;
 
 //////////////////////////////////////////////////////////////////////
@@ -35,6 +36,25 @@ var issuesDir = Directory("./output.issues");
 Setup(context =>
 {
     Information("Building Discover .NET");
+
+    // See https://github.com/cake-build/cake/issues/2116
+    AppDomain.CurrentDomain.AssemblyResolve += (_, eventArgs) =>
+    {
+        AssemblyName name = new AssemblyName(eventArgs.Name);
+        Verbose($"Resolving assembly {eventArgs.Name}");
+        Assembly assembly = AppDomain.CurrentDomain.GetAssemblies()
+            .FirstOrDefault(x => !x.IsDynamic && x.GetName().Name == name.Name)
+            ?? Assembly.Load(name.Name);       
+        if(assembly != null)
+        {
+            Verbose($"Resolved by assembly {assembly.FullName}");
+        }
+        else
+        {
+            Verbose($"Assembly not resolved");
+        }
+        return assembly;
+    };
 });
 
 //////////////////////////////////////////////////////////////////////
