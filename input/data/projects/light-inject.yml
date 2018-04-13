@@ -1,0 +1,5 @@
+Language: C#
+NuGet: LightInject
+Source: https://github.com/seesharper/LightInject
+Tags:
+  - IoC

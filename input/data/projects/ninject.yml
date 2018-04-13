@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Ninject
+Source: https://github.com/ninject/ninject
+Tags:
+  - IoC

@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Microsoft.VisualStudio.Composition
+Source: https://github.com/Microsoft/vs-mef
+Tags:
+  - IoC
+  - Extensibility

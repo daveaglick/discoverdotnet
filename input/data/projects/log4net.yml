@@ -1,0 +1,6 @@
+Language: C#
+NuGet: log4net
+Source: https://github.com/apache/logging-log4net/
+Tags:
+  - Logging
+Website: https://logging.apache.org/log4net/

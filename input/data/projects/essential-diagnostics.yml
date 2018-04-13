@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/sgryphon/essential-diagnostics/develop/docs/images/Essential-Diagnostics-64.png
+Language: C#
+NuGet: Essential.Diagnostics.Core
+Source: https://github.com/sgryphon/essential-diagnostics
+Tags:
+  - Logging

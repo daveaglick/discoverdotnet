@@ -1,0 +1,6 @@
+Language: F#
+NuGet: MathNet.Symbolics
+Source: https://github.com/mathnet/mathnet-symbolics
+Tags:
+  - Data Science
+Twitter: MathDotNet

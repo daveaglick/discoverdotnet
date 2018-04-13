@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/NLog/NLog.github.io/master/images/NLog-logo-only_small.png
+Language: C#
+NuGet: NLog
+Source: https://github.com/nlog/NLog/
+Tags:
+  - Logging

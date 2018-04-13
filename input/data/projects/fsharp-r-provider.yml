@@ -1,0 +1,7 @@
+Image: http://bluemountaincapital.github.io/FSharpRProvider/images/logo.png
+Language: F#
+NuGet: RProvider
+Source: https://github.com/BlueMountainCapital/FSharpRProvider
+Tags:
+  - Data Science
+  - Interoperability

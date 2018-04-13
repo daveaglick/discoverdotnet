@@ -4,4 +4,4 @@ Language: C#
 NuGet: Exceptionless
 Source: https://github.com/exceptionless/Exceptionless.Net
 Tags:
-  - Error Handling
+  - Logging

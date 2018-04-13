@@ -1,0 +1,5 @@
+Language: C#
+NuGet: CommonMark.NET
+Source: https://github.com/Knagis/CommonMark.NET
+Tags:
+  - Markdown

@@ -1,0 +1,5 @@
+Language: C#
+NuGet: MathNet.Filtering
+Source: https://github.com/mathnet/mathnet-filtering
+Tags:
+  - Data Science
