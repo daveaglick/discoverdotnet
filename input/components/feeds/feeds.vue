@@ -5,7 +5,7 @@
             :suggest-link="suggestLink"
             :card-json="cardJson"
             :sorts="sorts"
-            :randomizeOrder="true">
+            :randomize-order="true">
         </card-grid>
     </div>
 </template>

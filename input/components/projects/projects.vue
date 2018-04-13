@@ -6,7 +6,7 @@
             card-json="/data/projects.json"
             :filters="filters"
             :sorts="sorts"
-            :randomizeOrder="true">
+            :randomize-order="true">
         </card-grid>
     </div>
 </template>

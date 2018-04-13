@@ -9,7 +9,7 @@
             card-json="/data/groups.json"
             :filters="filters"
             :sorts="sorts"
-            :randomizeOrder="true">
+            :randomize-order="true">
                 <card-map slot="header" slot-scope="props" :filtered-card-data="props.filteredCardData"></card-map>
         </card-grid>
     </div>
