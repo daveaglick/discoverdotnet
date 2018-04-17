@@ -32,10 +32,10 @@
 
 <b-row>
     <b-col md="9" order="2" order-md="1">
-        <b-tabs pills>
+        <b-tabs class="body-tabs">
             @if(Model.ContainsKey("Readme"))
             {
-                <b-tab title="Readme" class="mt-2" active>
+                <b-tab title="Readme" class="mt-4" active>
                     <b-card>
                         @Html.Raw(Model.String("Readme"))
                     </b-card>
@@ -44,7 +44,7 @@
             @if(Model.Get<int>("OpenIssuesCount") > 0)
             {
                 <b-tab title="Issues">
-                    <issues issue-json="/data/issues/projects/@(Model.String("Key")).json"></issues>
+                    <issues issue-json="/data/issues/projects/@(Model.String("Key")).json" class="mt-4"></issues>
                 </b-tab>
             }
             @if(Model.ContainsKey("Versions"))

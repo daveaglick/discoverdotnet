@@ -1,6 +1,13 @@
 <template>
-    <div>
-        <b-tabs pills v-model="tabIndex">
+    <div>        
+        <div class="text-center mb-4">        
+            <h1>
+                <span class="accent-secondary">All</span>
+                <span class="accent-primary">Issues</span>
+            </h1>
+        </div>
+
+        <b-tabs v-model="tabIndex" class="body-tabs">
             <b-tab title="All Issues" class="mt-4">
                 <paged-grid
                     card-json="/data/issues/all/"

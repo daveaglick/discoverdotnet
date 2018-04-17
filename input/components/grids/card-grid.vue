@@ -1,55 +1,70 @@
 <template>
     <div>
-        <div v-if="title" class="text-center">        
+        <div v-if="title" class="text-center mb-4">        
             <h1>
                 <span class="accent-secondary">All</span>
                 <span class="accent-primary">{{ title }}</span>
             </h1>
-            <hr />        
-            <h5 class="accent-script">
-                {{ filteredCardData.length }} {{ title }}
-                <small v-if="filteredCardData.length != cardData.length">(Of {{ cardData.length }} Total)</small>
-            </h5>
         </div>
-
-        <slot name="header" :filtered-card-data="filteredCardData"></slot>
 
         <a id="card-grid-anchor"></a>
 
-        <b-navbar toggleable="md" variant="dark" type="dark" class="my-4">
-            <b-navbar-toggle target="filter-nav-collapse"></b-navbar-toggle>
-            <b-collapse is-nav id="filter-nav-collapse">
-                <b-navbar-nav>   
-                    <span v-if="filters" v-for="(filter, index) in filters" :key="filter.text">
-                        <filter-dropdown
-                            v-if="'field' in filter || 'values' in filter"
+        <b-card no-body class="mb-4">            
+            <slot name="header" :filtered-card-data="filteredCardData"></slot>
+            <b-card-body>
+                <h5 class="text-uppercase font-weight-bold text-muted">Sort</h5>
+                <span v-if="sorts.length > 0">                    
+                    <b-button
+                        v-for="sort in sorts"
+                        :key="sort.text"
+                        size="sm"
+                        class="mb-2 mr-2"
+                        variant="light"
+                        @click="applySort(sort)">
+                        {{ sort.text }}
+                    </b-button>
+                    <b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
+                </span>
+            </b-card-body>
+            <b-card-body v-if="filters">
+                <h5 class="text-uppercase font-weight-bold text-muted">Filter</h5>
+                <span v-for="(filter, index) in filters" :key="filter.text">
+                    <span v-if="'field' in filter || 'values' in filter">
+                        <filter-buttons
                             :text="filter.text"
                             :values="filterValues(filter)"
                             :selected.sync="selected[index]">
-                        </filter-dropdown>
-                        <b-nav-item
-                            v-else
-                            :active="selected[index]"
-                            @click="filterItemClicked(index)"
-                            href="#">
-                                {{ filter.text }}
-                        </b-nav-item>
+                        </filter-buttons>
                     </span>
-                    <b-nav-item-dropdown v-if="sorts.length > 0" text="Sort">
-                        <b-dropdown-item v-for="sort in sorts" :key="sort.text" @click="applySort(sort)">
-                            {{ sort.text }}
-                        </b-dropdown-item>
-                    </b-nav-item-dropdown>
-                </b-navbar-nav>
-                <b-navbar-nav class="ml-auto">
-                    <b-nav-item v-if="suggestLink" :href="suggestLink">Suggest New</b-nav-item>
-                    <b-nav-form>
-                        <b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle The Deck</b-button>
-                        <div class="w-100 mb-2 d-lg-none"></div>
-                    </b-nav-form>
-                </b-navbar-nav>
-            </b-collapse>
-        </b-navbar>   
+                    <b-button
+                        v-else
+                        size="sm"
+                        class="mb-2 mr-2"
+                        :variant="selected[index] ? 'primary' : 'light'"
+                        @click="filterItemClicked(index)">
+                        {{ filter.text }}
+                    </b-button>
+                </span>
+            </b-card-body>
+            <b-card-body>
+                <b-row>
+                    <b-col sm>
+                        <b-button v-if="filters" size="sm" @click="resetFilterSelection">Reset Filters</b-button>
+                    </b-col>
+                    <b-col sm class="text-center">
+                        <h6 class="accent-script">
+                            <span v-if="filteredCardData.length != cardData.length">
+                                {{ filteredCardData.length }} <small>(Of {{ cardData.length }} Total)</small>
+                            </span>
+                            <span v-else>{{ cardData.length }} Total</span>
+                        </h6>
+                    </b-col>
+                    <b-col sm class="text-right">
+                        <b-link v-if="suggestLink" :href="suggestLink">Suggest New</b-link>
+                    </b-col>
+                </b-row>
+            </b-card-body>
+        </b-card>
 
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
@@ -100,19 +115,7 @@
             var self = this;
             
             if(this.filters) {
-                // Prepare the filter selection array
-                // See https://stackoverflow.com/q/25512771/807064 
-                this.selected = Array
-                    .apply(null, new Array(this.filters.length))
-                    .map(function(item, index){ 
-                        var filter = self.filters[index];
-                        if('field' in self.filters[index] || 'values' in self.filters[index])
-                        {
-                            return new Array(); 
-                        } else {
-                            return false;
-                        }
-                    });
+                this.resetFilterSelection();
 
                 // Preselect a filter from the query string
                 var queryDict = {};
@@ -218,6 +221,22 @@
                 Vue.nextTick(function () {
                     document.getElementById('card-grid-anchor').scrollIntoView({ behavior: "smooth" });
                 });
+            },
+            resetFilterSelection: function() {                
+                // Prepare the filter selection array
+                // See https://stackoverflow.com/q/25512771/807064 
+                var self = this;
+                this.selected = Array
+                    .apply(null, new Array(this.filters.length))
+                    .map(function(item, index){ 
+                        var filter = self.filters[index];
+                        if('field' in self.filters[index] || 'values' in self.filters[index])
+                        {
+                            return new Array(); 
+                        } else {
+                            return false;
+                        }
+                    });     
             }
         }
     }

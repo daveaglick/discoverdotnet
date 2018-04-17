@@ -117,3 +117,23 @@ pre code {
         @include gradient-y(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), 0%, 100%);
     }
 }
+
+.body-tabs {
+    .nav-tabs {
+        border: 1px solid $nav-tabs-border-color;
+        border-radius: $border-radius !important;
+        padding: ($spacer * .5) ($spacer * .5) 0 ($spacer * .5);
+        background: $white;
+        
+        .nav-link {
+            @include hover-focus {
+                border-bottom-color: transparent;
+            }
+        }
+        
+        .nav-link.active {
+            background-color: rgb(248, 249, 250);
+            border-bottom-color: rgb(248, 249, 250);
+        }
+    }
+}

@@ -1,13 +1,16 @@
 <template>
-    <b-nav-item-dropdown :text="text">
-        <b-dropdown-item
+    <span v-if="filterValues.length > 0">
+        <span class="small font-weight-bold text-muted mx-2">{{ text }}</span>
+        <b-button
             v-for="filterValue in filterValues"
             :key="filterValue"
             @click="filterSelected(filterValue)"
-            :class="{ 'font-weight-bold': isSelected(filterValue) }">
+            size="sm"
+            class="mb-2 mr-2"            
+            :variant="isSelected(filterValue) ? 'primary' : 'light'">
             {{ filterValue }}
-        </b-dropdown-item>
-    </b-nav-item-dropdown>
+        </b-button>
+    </span>
 </template>
 
 <script>
