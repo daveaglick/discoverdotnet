@@ -22,8 +22,7 @@
                         variant="light"
                         @click="applySort(sort)">
                         {{ sort.text }}
-                    </b-button>
-                    <b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
+                    </b-button><b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
                 </span>
             </b-card-body>
             <b-card-body v-if="filters">
