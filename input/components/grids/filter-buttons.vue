@@ -4,6 +4,7 @@
         <b-button
             v-for="filterValue in filterValues"
             :key="filterValue"
+            v-if="filterValue.length > 0"
             @click="filterSelected(filterValue)"
             size="sm"
             class="mb-2 mr-2"            
