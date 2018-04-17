@@ -5,7 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Discover .NET</title>
+        <title>Discover .NET@(Model.ContainsKey("Title") ? " - " + Model.String("Title") : "")</title>
+
+        <meta name="description" content="Awesome .NET open source & community resources">
         
         <link href="/bootstrap/bootstrap.css" rel="stylesheet"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.1/dist/bootstrap-vue.css" rel="stylesheet"/>
