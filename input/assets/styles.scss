@@ -81,6 +81,10 @@ header .jumbotron .lead {
     @include gradient-bg($dark);
 }
 
+.icon-card-image {
+    max-height: 64px;
+}
+
 .thead-dark, .thead-dark th {
     @include gradient-bg($dark);
 }
