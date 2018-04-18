@@ -1,0 +1,5 @@
+Source: https://github.com/Pereingo/statsd-csharp-client
+Language: C#
+NuGet: StatsdClient
+Tags:
+  - Data Science

@@ -47,10 +47,10 @@
             </b-card-body>
             <b-card-body>
                 <b-row>
-                    <b-col sm>
+                    <b-col>
                         <b-button v-if="filters" size="sm" @click="resetFilterSelection">Reset Filters</b-button>
                     </b-col>
-                    <b-col sm class="text-center">
+                    <b-col class="text-center">
                         <h6 class="accent-script">
                             <span v-if="filteredCardData.length != cardData.length">
                                 {{ filteredCardData.length }} <small>(Of {{ cardData.length }} Total)</small>
@@ -58,7 +58,7 @@
                             <span v-else>{{ cardData.length }} Total</span>
                         </h6>
                     </b-col>
-                    <b-col sm class="text-right">
+                    <b-col class="text-right">
                         <b-link v-if="suggestLink" :href="suggestLink">Suggest New</b-link>
                     </b-col>
                 </b-row>
