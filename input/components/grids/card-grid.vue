@@ -7,43 +7,64 @@
             </h1>
         </div>
 
-        <a id="card-grid-anchor"></a>
-
         <b-card no-body class="mb-4">            
             <slot name="header" :filtered-card-data="filteredCardData"></slot>
             <b-card-body>
-                <h5 class="text-uppercase font-weight-bold text-muted">Sort</h5>
-                <span v-if="sorts.length > 0">                    
-                    <b-button
-                        v-for="sort in sorts"
-                        :key="sort.text"
-                        size="sm"
-                        class="mb-2 mr-2"
-                        variant="light"
-                        @click="applySort(sort)">
-                        {{ sort.text }}
-                    </b-button><b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
-                </span>
+                <div>
+                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2">Sort</span>                
+                    <b-link href="#" v-b-toggle="'sort-collapse'" class="small">
+                        <!-- Have to use d-none instead of v-if/v-else because Font Awesome SVGs don't rerender: https://stackoverflow.com/q/49343425/807064 -->
+                        <span :class="{'d-none': !sortVisible}"><i class="far fa-minus-square"></i> Hide</span>
+                        <span :class="{'d-none': sortVisible}"><i class="far fa-plus-square"></i> Show</span>
+                    </b-link>
+                </div>
+                <b-collapse id="sort-collapse" v-model="sortVisible">
+                    <div class="mt-3">
+                        <span v-if="sorts.length > 0">
+                            <b-button
+                                v-for="sort in sorts"
+                                :key="sort.text"
+                                size="sm"
+                                class="mb-2 mr-2"
+                                variant="light"
+                                @click="applySort(sort)">
+                                {{ sort.text }}
+                            </b-button><b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
+                        </span>
+                    </div>
+                </b-collapse>
             </b-card-body>
             <b-card-body v-if="filters">
-                <h5 class="text-uppercase font-weight-bold text-muted">Filter</h5>
-                <span v-for="(filter, index) in filters" :key="filter.text">
-                    <span v-if="'field' in filter || 'values' in filter">
-                        <filter-buttons
-                            :text="filter.text"
-                            :values="filterValues(filter)"
-                            :selected.sync="selected[index]">
-                        </filter-buttons>
-                    </span>
-                    <b-button
-                        v-else
-                        size="sm"
-                        class="mb-2 mr-2"
-                        :variant="selected[index] ? 'primary' : 'light'"
-                        @click="filterItemClicked(index)">
-                        {{ filter.text }}
-                    </b-button>
-                </span>
+                <div>
+                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2">Filters</span>        
+                    <b-link href="#" v-b-toggle="'filters-collapse'" class="small">
+                        <span :class="{'d-none': !filtersVisible}"><i class="far fa-minus-square"></i> Hide</span>
+                        <span :class="{'d-none': filtersVisible}"><i class="far fa-plus-square"></i> Show</span>
+                    </b-link>
+                </div>
+                <b-collapse id="filters-collapse" v-model="filtersVisible">
+                    <div class="mt-3">
+                        <span v-for="(filter, index) in filters" :key="filter.text">
+                            <span v-if="'field' in filter || 'values' in filter">
+                                <div>
+                                    <filter-buttons
+                                        :text="filter.text"
+                                        :values="filterValues(filter)"
+                                        :selected.sync="selected[index]">
+                                    </filter-buttons>
+                                </div>
+                            </span>
+                            <b-button
+                                v-else
+                                size="sm"
+                                class="mb-2 mr-2"
+                                :variant="selected[index] ? 'primary' : 'light'"
+                                @click="filterItemClicked(index)">
+                                {{ filter.text }}
+                            </b-button>
+                        </span>
+                    </div>
+                </b-collapse>
             </b-card-body>
             <b-card-body>
                 <b-row>
@@ -64,6 +85,8 @@
                 </b-row>
             </b-card-body>
         </b-card>
+        
+        <a id="card-grid-anchor"></a>
 
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
@@ -107,7 +130,9 @@
             return {
                 cardData: [],
                 selected: [],
-                currentPage: 1
+                currentPage: 1,
+                sortVisible: true,
+                filtersVisible: true
             }
         },
         created: function() {
