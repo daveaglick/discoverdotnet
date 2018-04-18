@@ -8,7 +8,7 @@
                 <span class="h1"></span>
             </h3>
             <hr/>
-            <p><span class="accent-script">{{ projectKeys.length }}</span> total projects indexed!</p>
+            <p class="accent-script">{{ projectKeys.length }} total projects indexed!</p>
             <p class="text-left"><a href="/projects">All Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>   
             <p class="text-left"><a href="/projects/?filter=NETPlatform">All .NET Platform Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         
             <p class="text-left"><a href="/projects/?filter=Microsoft">All Microsoft Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         

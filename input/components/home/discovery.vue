@@ -3,8 +3,7 @@
         <div class="text-center">
             <h1>
                 <span class="accent-primary">Discovery</span>
-                <span class="accent-script small">of the</span>
-                <span class="accent-secondary">Day</span>
+                <span class="accent-secondary"><small>of the</small> Day</span>
             </h1>
             <hr />
             <h5 class="accent-script">{{ cardData.discoveryDate }}</h5>
