@@ -222,7 +222,7 @@ $transition-collapse:         height .35s ease !default;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Nunito', sans-serif !default;
+$font-family-sans-serif:      'Roboto', sans-serif !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -246,8 +246,8 @@ $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
-$headings-font-family:        'Nunito Sans', sans-serif !default;
-$headings-font-weight:        400 !default;
+$headings-font-family:        'Roboto Slab', sans-serif !default;
+$headings-font-weight:        700 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 

@@ -38,17 +38,22 @@ header .jumbotron .lead {
 }
 
 .accent-primary {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-weight: 700;
 }
 
 .accent-secondary {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-weight: 300;
 }
 
 .accent-script {
     font-family: 'Nothing You Could Do', cursive;
+}
+
+h4, h5, h6 {
+    font-family: $font-family-sans-serif;
+    font-weight: 300;
 }
 
 .card > .card-body:not(:first-child) {
