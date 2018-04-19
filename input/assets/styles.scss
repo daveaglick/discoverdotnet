@@ -33,6 +33,23 @@ main {
     @include gradient-y(#bd9ee5, #563d7c);
     position: relative;
     padding: 0;
+    height: 24vw;
+
+    @media (min-width: 576px) {  
+        height: 200px;        
+    }
+    
+    @media (min-width: 768px) {    
+        height: 200px;
+    }
+    
+    @media (min-width: 992px) {   
+        height: 240px;
+    }
+
+    @media (min-width: 1200px) {
+        height: 260px;        
+    }
 
     .header-map {  
         position: absolute;
@@ -40,68 +57,68 @@ main {
         height: 100%;
         width: 100%;
         mix-blend-mode: multiply;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
     }
-    
-    .header-logo {
-        top: 0;
+
+    .logo-wrapper {
+        position: absolute;
+        width: 100%;
         height: 100%;
-        text-align: center;
+        z-index: 9999;
     
-        .fa-binoculars {
-            color: rgba(white, .2);
-            font-size: 20vw;
-            margin-left: -.5em;
-            margin-top: .1em;
+        .logo {
+            top: 0;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        
+            .binoculars {
+                width: 100%;
+                text-align: center;
+                position: absolute;
 
-            @media (min-width: 768px) {                           
-                font-size: 16vw;
-            }
-            
-            @media (min-width: 992px) {
-                font-size: 12vw;                
-            }
-
-            align-self: center;
-            position: absolute;
-        }
-    
-        h1 {
-            color: white;
-            text-transform: uppercase;
-            font-family: 'Roboto Slab';
-            font-weight: 100;
-            text-shadow: 0 0 1rem indigo;
-            padding: .5em .25em .25em .25em;
-            margin: 0;
-            font-size: 10vw;
-
-            @media (min-width: 768px) {                           
-                font-size: 8vw;
-            }
-            
-            @media (min-width: 992px) {
-                font-size: 6vw;                
+                .fa-binoculars {
+                    color: rgba(white, .2);
+                    margin-top: 0;
+                    font-size: 24vw;
+                
+                    @media (min-width: 576px) {  
+                        font-size: 200px;        
+                    }
+                    
+                    @media (min-width: 768px) {    
+                        font-size: 200px;
+                    }
+                    
+                    @media (min-width: 992px) {   
+                        font-size: 240px;
+                    }
+                
+                    @media (min-width: 1200px) {
+                        font-size: 260px;        
+                    }
+                }
             }
 
-            .net {      
-                background: white;
-                color: black;
-                mix-blend-mode: screen;
-                padding-left: .25em;
-                padding-right: .25em;
-                margin-left: .25em;
-                font-weight: 700;
-                text-shadow: none;
-                @include border-radius($border-radius-sm);
+            img {
+                width: 100%;    
+                -webkit-filter: drop-shadow( 0 0 1rem indigo ); 
+                filter: drop-shadow( 0 0 1rem indigo );
+
+                @media (min-width: 768px) {    
+                    width: 80%;   
+                }
             }
-        }
-    
-        p {
-            color: white;
-            font-size: 1.5rem;
-            font-family: 'Nothing You Could Do';
-            padding-bottom: 1.5em;
-            margin: 0;
+        
+            p {
+                color: white;
+                font-size: 1.5rem;
+                font-family: 'Nothing You Could Do';
+                margin: 0;
+                margin-top: 1em;
+            }
         }
     }
 }

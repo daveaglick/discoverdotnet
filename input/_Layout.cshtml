@@ -41,14 +41,18 @@
         <div id="app" class="d-flex flex-column flex-nowrap h-100">
             <header class="mb-4">
                 <div class="logo-header text-center">
+                    <div class="logo-wrapper">
+                        <div class="logo container">
+                            <div class="binoculars">
+                                <i class="fas fa-binoculars" data-fa-transform="rotate-30"></i>
+                            </div>
+                            <a href="/"><img src="/assets/logo.svg"></img></a>
+                            <p class="d-none d-sm-block">Awesome .NET open source & community resources</p>
+                        </div>                        
+                    </div>
                     <v-map :zoom="headerMapZoom" :center="headerMapCenter" :options="headerMapOptions" class="header-map">
                         <v-tilelayer :url="headerMapUrl" :attribution="headerMapAttribution"></v-tilelayer>
                     </v-map>
-                    <div class="header-logo">
-                        <i class="fas fa-binoculars" data-fa-transform="rotate-30"></i>
-                        <h1 class="display-3">Discover<span class="net">.NET</span></h1>
-                        <p>Awesome .NET open source & community resources</p>
-                    </div>
                 </div>
                 <b-navbar toggleable="md" type="dark" variant="dark">
                     <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
