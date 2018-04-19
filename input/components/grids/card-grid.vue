@@ -72,7 +72,7 @@
                         <b-button v-if="filters" size="sm" @click="resetFilterSelection">Reset Filters</b-button>
                     </b-col>
                     <b-col class="text-center">
-                        <h6 class="accent-script">
+                        <h6>
                             <span v-if="filteredCardData.length != cardData.length">
                                 {{ filteredCardData.length }} <small>(Of {{ cardData.length }} Total)</small>
                             </span>

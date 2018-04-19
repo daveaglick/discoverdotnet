@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div v-for="cardData in cardDatas" :key="cardData" class="col-sm-6 col-md-6 col-lg-6 mb-5 full-height-card">
-                <h6 class="accent-script text-center">{{ cardData.discoveryDate }}</h6>
+                <h6 class="text-center">{{ cardData.discoveryDate }}</h6>
                 <component :is="getCard(cardData)" :card-data="cardData">
                     <b-card-body class="flex-0" v-if="cardData.comment">
                         <b-alert show class="mb-0">{{ cardData.comment }}</b-alert>

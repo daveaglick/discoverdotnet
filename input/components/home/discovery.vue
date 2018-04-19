@@ -6,8 +6,8 @@
                 <span class="accent-secondary"><small>of the</small> Day</span>
             </h1>
             <hr />
-            <h5 class="accent-script">{{ cardData.discoveryDate }}</h5>
-            <p class="small">A new discovery (almost) every day.</p>
+            <p class="accent-script">A new discovery (almost) every day.</p>
+            <h5>{{ cardData.discoveryDate }}</h5>
         </div>
         <component :is="getCard(cardData)" :card-data="cardData">
             <b-card-body class="flex-0" v-if="cardData.comment">
