@@ -38,27 +38,22 @@ header .jumbotron .lead {
 }
 
 .accent-primary {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
     font-weight: 700;
 }
 
 .accent-secondary {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-weight: 300;
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 100;
 }
 
-.accent-slab, .display-1, .display-2, .display-3, .display-4 {
+.display-1, .display-2, .display-3, .display-4 {
     font-family: 'Roboto Slab', sans-serif;
     font-weight: 700;
 }
 
 .accent-script {
     font-family: 'Nothing You Could Do', cursive;
-}
-
-h4, h5, h6, .h4, .h5, .h6 {
-    font-family: $font-family-sans-serif;
-    font-weight: 300;
 }
 
 .card > .card-body:not(:first-child) {
