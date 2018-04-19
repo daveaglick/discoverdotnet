@@ -38,13 +38,18 @@ header .jumbotron .lead {
 }
 
 .accent-primary {
-    font-family: 'Roboto Slab', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
 }
 
 .accent-secondary {
-    font-family: 'Roboto Slab', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300;
+}
+
+.accent-slab, .display-1, .display-2, .display-3, .display-4 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 700;
 }
 
 .accent-script {
