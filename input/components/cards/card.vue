@@ -8,7 +8,7 @@
         </div>
         <slot></slot>
         <b-img v-if="cardData.image && !iconImages" fluid :src="cardData.image" class="small-card-image"></b-img>
-        <b-card-body class="pb-4">
+        <b-card-body v-if="(cardData.image && iconImages) || cardData.description" class="pb-4">
             <div v-if="cardData.image && iconImages"><b-img fluid :src="cardData.image" class="small-card-image mb-2 icon-card-image"></b-img></div>
             <slot name="description">        
                 <p class="card-text">{{ cardData.description }}</p>
