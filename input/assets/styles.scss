@@ -29,12 +29,81 @@ main {
     flex: 1;
 }
 
-header .jumbotron {                   
-    @include gradient-y(rgb(149, 123, 190), rgb(86, 61, 124));
-}
+.logo-header {                   
+    @include gradient-y(#bd9ee5, #563d7c);
+    position: relative;
+    padding: 0;
 
-header .jumbotron .lead {
-    font-size: 26px;
+    .header-map {  
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        mix-blend-mode: multiply;
+    }
+    
+    .header-logo {
+        top: 0;
+        height: 100%;
+        text-align: center;
+    
+        .fa-binoculars {
+            color: rgba(white, .2);
+            font-size: 20vw;
+            margin-left: -.5em;
+            margin-top: .1em;
+
+            @media (min-width: 768px) {                           
+                font-size: 16vw;
+            }
+            
+            @media (min-width: 992px) {
+                font-size: 12vw;                
+            }
+
+            align-self: center;
+            position: absolute;
+        }
+    
+        h1 {
+            color: white;
+            text-transform: uppercase;
+            font-family: 'Roboto Slab';
+            font-weight: 100;
+            text-shadow: 0 0 1rem indigo;
+            padding: .5em .25em .25em .25em;
+            margin: 0;
+            font-size: 10vw;
+
+            @media (min-width: 768px) {                           
+                font-size: 8vw;
+            }
+            
+            @media (min-width: 992px) {
+                font-size: 6vw;                
+            }
+
+            .net {      
+                background: white;
+                color: black;
+                mix-blend-mode: screen;
+                padding-left: .25em;
+                padding-right: .25em;
+                margin-left: .25em;
+                font-weight: 700;
+                text-shadow: none;
+                @include border-radius($border-radius-sm);
+            }
+        }
+    
+        p {
+            color: white;
+            font-size: 1.5rem;
+            font-family: 'Nothing You Could Do';
+            padding-bottom: 1.5em;
+            margin: 0;
+        }
+    }
 }
 
 .accent-primary {

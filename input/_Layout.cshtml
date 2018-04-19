@@ -17,6 +17,7 @@
         <link href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/MarkerCluster.min.css" rel="stylesheet"></link>
         <link href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.min.css" rel="stylesheet"></link>
         <link href="/assets/styles.css" rel="stylesheet"/>   
+
         <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
@@ -39,10 +40,16 @@
     <body>
         <div id="app" class="d-flex flex-column flex-nowrap h-100">
             <header class="mb-4">
-                <b-jumbotron fluid text-variant="white" class="text-center mb-0">
-                    <div><a href="/"><b-img slot="header" src="/assets/logo-white.svg" fluid alt="Discover .NET" style="min-width: 50%"></b-img></a></div>
-                    <div class="lead accent-script">Awesome .NET open source & community resources</div>
-                </b-jumbotron>
+                <div class="logo-header text-center">
+                    <v-map :zoom="headerMapZoom" :center="headerMapCenter" :options="headerMapOptions" class="header-map">
+                        <v-tilelayer :url="headerMapUrl" :attribution="headerMapAttribution"></v-tilelayer>
+                    </v-map>
+                    <div class="header-logo">
+                        <i class="fas fa-binoculars" data-fa-transform="rotate-30"></i>
+                        <h1 class="display-3">Discover<span class="net">.NET</span></h1>
+                        <p>Awesome .NET open source & community resources</p>
+                    </div>
+                </div>
                 <b-navbar toggleable="md" type="dark" variant="dark">
                     <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
                     <b-collapse is-nav id="main-nav-collapse">
@@ -103,6 +110,13 @@
             Vue.component('group-card', httpVueLoader('/components/cards/group-card.vue'));
             Vue.component('event-card', httpVueLoader('/components/cards/event-card.vue'));
             Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
+
+            // Map components
+            Vue.component('v-map', Vue2Leaflet.Map);
+            Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
+            Vue.component('v-marker', Vue2Leaflet.Marker);
+            Vue.component('v-popup', Vue2Leaflet.Popup);
+            Vue.component('v-marker-cluster', httpVueLoader('/components/Vue2LeafletMarkercluster.vue'));
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
@@ -169,7 +183,25 @@
             });
 
             new Vue({
-                el: '#app'
+                el: '#app',
+                data: {
+                    headerMapZoom: 6,
+                    headerMapCenter: [
+                        (Math.random() * 40 + 20).toFixed(3) * 1,
+                        (Math.random() * 120).toFixed(3) * 1
+                    ],
+                    headerMapUrl:'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+                    headerMapAttribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+                    headerMapOptions: {
+                        zoomControl: false,
+                        boxZoom: false,
+                        doubleClickZoom: false,
+                        dragging: false,
+                        keyboard: false,
+                        scrollWheelZoom: false,
+                        touchZoom: false
+                    }
+                }
             });
         </script>
     </body>
