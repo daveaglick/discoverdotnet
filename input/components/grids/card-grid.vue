@@ -11,7 +11,7 @@
             <slot name="header" :filtered-card-data="filteredCardData"></slot>
             <b-card-body>
                 <div>
-                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2 accent-secondary">Sort</span>                
+                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2">Sort</span>                
                     <b-link href="#" v-b-toggle="'sort-collapse'" class="small">
                         <!-- Have to use d-none instead of v-if/v-else because Font Awesome SVGs don't rerender: https://stackoverflow.com/q/49343425/807064 -->
                         <span :class="{'d-none': !sortVisible}"><i class="far fa-minus-square"></i> Hide</span>
@@ -36,7 +36,7 @@
             </b-card-body>
             <b-card-body v-if="filters">
                 <div>
-                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2 accent-secondary">Filters</span>        
+                    <span class="h5 text-uppercase font-weight-bold text-muted mr-2">Filters</span>        
                     <b-link href="#" v-b-toggle="'filters-collapse'" class="small">
                         <span :class="{'d-none': !filtersVisible}"><i class="far fa-minus-square"></i> Hide</span>
                         <span :class="{'d-none': filtersVisible}"><i class="far fa-plus-square"></i> Show</span>
