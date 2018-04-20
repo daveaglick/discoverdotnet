@@ -7,9 +7,9 @@
             <div v-if="cardData.website" class="small"><a :href="cardData.website" class="text-light">{{ cardData.website | no-protocol }}</a></div>
         </div>
         <slot></slot>
-        <b-img v-if="cardData.image && !iconImages" fluid :src="cardData.image" class="small-card-image"></b-img>
+        <div v-if="cardData.image && !iconImages" class="bg-dark"><b-img :src="cardData.image" class="mw-100"></b-img></div>
         <b-card-body v-if="(cardData.image && iconImages) || cardData.description" class="pb-4">
-            <div v-if="cardData.image && iconImages"><b-img fluid :src="cardData.image" class="small-card-image mb-2 icon-card-image"></b-img></div>
+            <div v-if="cardData.image && iconImages"><b-img fluid :src="cardData.image" class="mb-2 icon-card-image"></b-img></div>
             <slot name="description">        
                 <p class="card-text">{{ cardData.description }}</p>
             </slot>

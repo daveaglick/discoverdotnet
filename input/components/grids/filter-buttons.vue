@@ -1,6 +1,6 @@
 <template>
     <span v-if="filterValues.length > 0">
-        <span class="small font-weight-bold text-muted mx-2">{{ text }}</span>
+        <span class="h6 text-muted mx-2">{{ text }}</span>
         <b-button
             v-for="filterValue in filterValues"
             :key="filterValue"
