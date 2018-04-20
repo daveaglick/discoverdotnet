@@ -189,13 +189,14 @@
             new Vue({
                 el: '#app',
                 data: {
-                    headerMapZoom: 6,
+                    headerMapZoom: 10,
                     headerMapCenter: [
                         (Math.random() * 40 + 20).toFixed(3) * 1,
                         (Math.random() * 120).toFixed(3) * 1
                     ],
-                    headerMapUrl:'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-                    headerMapAttribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+                    //headerMapUrl: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
+                    headerMapUrl: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png',
+                    headerMapAttribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>',
                     headerMapOptions: {
                         zoomControl: false,
                         boxZoom: false,
