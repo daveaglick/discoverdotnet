@@ -16,7 +16,15 @@
                     <h5>{{ cardData.openIssuesCount }}</h5>
                 </b-col>
             </b-row>
-        </b-card-body>     
+        </b-card-body>    
+        <div slot="bottom">
+            <div v-if="cardData.donations" class="bg-gradient-danger text-white text-center p-2">
+                <i class="fas fa-heart"></i> <b-link :href="cardData.donations" class="text-white">Donations Accepted</b-link>
+            </div>
+            <div v-if="issueCounts && issueCounts.helpWantedIssuesCount > 0" class="bg-gradient-success text-white text-center p-2">
+                <b-link :href="cardData.link + '?filter=helpwanted'" class="text-white"><b-badge variant="light"><i class="fas fa-bug"></i> {{ issueCounts.helpWantedIssuesCount }}</b-badge> Help Wanted</b-link>
+            </div>
+        </div> 
         <div slot="footer" class="small">
             <description v-if="cardData.pushedAt" term="Pushed At">
                 {{ moment(cardData.pushedAt).format("l LT") }}
@@ -37,7 +45,21 @@
 <script>
     module.exports = {
         props: [
-            'cardData'
-        ]
+            'cardData',
+            'extraData'
+        ],
+        data: function() {
+            return {
+                issueCounts: null
+            }
+        },
+        created: function() {
+            var self = this;
+            if(this.extraData) {
+                this.issueCounts = this.extraData.find(function(item) {
+                    return item.projectKey == self.cardData.key;
+                })
+            }
+        }
     }
 </script>

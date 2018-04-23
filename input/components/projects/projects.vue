@@ -4,6 +4,7 @@
             title="Projects"
             suggest-link="/suggest/project"
             card-json="/data/projects.json"
+            extra-json="/data/issues/project-counts.json"
             :filters="filters"
             :sorts="sorts"
             :randomize-order="true">

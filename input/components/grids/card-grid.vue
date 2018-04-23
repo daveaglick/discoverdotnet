@@ -29,7 +29,7 @@
                                 variant="light"
                                 @click="applySort(sort)">
                                 {{ sort.text }}
-                            </b-button><b-button size="sm" class="mb-2 mr-2" variant="light" @click="shuffle">Shuffle</b-button>
+                            </b-button><b-button size="sm" class="mb-2 mr-2" variant="secondary" @click="shuffle">Shuffle</b-button>
                         </span>
                     </div>
                 </b-collapse>
@@ -90,8 +90,8 @@
 
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
-                <slot :card-data="cardData">
-                    <component :is="getCard(cardData)" :card-data="cardData"></component>
+                <slot :card-data="cardData" :extra-data="extraData">
+                    <component :is="getCard(cardData)" :card-data="cardData" :extra-data="extraData"></component>
                 </slot>
             </div>
         </div>
@@ -114,6 +114,7 @@
             title: null,
             suggestLink: null,
             cardJson: null,
+            extraJson: null,
             filters: null,
             sorts: null,
             perPage:
@@ -129,6 +130,7 @@
         data: function() {
             return {
                 cardData: [],
+                extraData: [],
                 selected: [],
                 currentPage: 1,
                 sortVisible: true,
@@ -170,6 +172,18 @@
                 .catch(e => {
                     console.log(e);
                 });
+                
+            // Get the extra data
+            if(this.extraJson) {
+                axios
+                    .get(this.extraJson)
+                    .then(response => {
+                        this.extraData = response.data;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            }
         },
         computed: {
             filteredCardData: function() {

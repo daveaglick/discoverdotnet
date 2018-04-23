@@ -14,9 +14,9 @@
             </issue-card>
             <div class="text-right mb-4"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>                     
             <p class="text-left"><a href="/issues">All Recent Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
-            <p class="text-left"><a href="/issues/?platform">All .NET Platform Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
-            <p class="text-left"><a href="/issues/?microsoft">All Microsoft Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
-            <p class="text-left"><a href="/issues/?foundation">All .NET Foundation Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
+            <p class="text-left"><a href="/issues/?tab=platform">All .NET Platform Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/issues/?tab=microsoft">All Microsoft Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/issues/?tab=foundation">All .NET Foundation Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
         </div>
     </div>
 </template>
