@@ -16,15 +16,15 @@
                 tabIndex: 0
             }
         },
-        created: function() {
+        mounted: function() {
             var queryDict = {};
             location.search.substr(1).split("&").forEach(function(item) {
                 queryDict[item.split("=")[0]] = item.split("=")[1]
             });
-            if('tab' in queryDict && this.querySelectors !== null) {
+            if('tab' in queryDict) {
                 var tabText = queryDict['tab'];
-                this.tabIndex = this.querySelectors.findIndex(function(item) {
-                    return item.replace(/\W/g, '').toLowerCase() === tabText.toLowerCase();
+                this.tabIndex = this.$children[0].$children.findIndex(function(item) {
+                    return item.$props["title"].replace(/\W/g, '').toLowerCase() === tabText.toLowerCase();
                 });
             }
         }

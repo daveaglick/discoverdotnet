@@ -7,7 +7,7 @@
             </h1>
         </div>
 
-        <body-tabs :query-selectors="['all', 'helpwanted', 'platform', 'microsoft', 'foundation']">
+        <body-tabs>
             <b-tab title="All Issues" class="mt-4">
                 <paged-grid
                     card-json="/data/issues/all/"

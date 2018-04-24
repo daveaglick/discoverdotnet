@@ -22,7 +22,7 @@
                 <i class="fas fa-heart"></i> <b-link :href="cardData.donations" class="text-white">Donations Accepted</b-link>
             </div>
             <div v-if="issueCounts && issueCounts.helpWantedIssuesCount > 0" class="bg-gradient-success text-white text-center p-2">
-                <b-link :href="cardData.link + '?filter=helpwanted'" class="text-white"><b-badge variant="light"><i class="fas fa-bug"></i> {{ issueCounts.helpWantedIssuesCount }}</b-badge> Help Wanted</b-link>
+                <b-link :href="cardData.link + '?tab=issues&filter=helpwanted'" class="text-white"><b-badge variant="light"><i class="fas fa-bug"></i> {{ issueCounts.helpWantedIssuesCount }}</b-badge> Help Wanted</b-link>
             </div>
         </div> 
         <div slot="footer" class="small">
