@@ -1,0 +1,8 @@
+Language: C#
+NuGet: Catel.Core
+Source: https://github.com/catel/catel
+Tags:
+  - MVVM
+  - UWP
+  - WPF
+  - Xamarin

@@ -1,0 +1,10 @@
+Chat: https://prismslack.herokuapp.com/
+Language: C#
+NuGet: Prism.Core
+Source: https://github.com/PrismLibrary/Prism
+Tags:
+  - MVVM
+  - XAML
+  - WPF
+  - UWP
+  - Xamarin

@@ -1,0 +1,9 @@
+Language: C#
+NuGet: Caliburn.Micro
+Source: https://github.com/Caliburn-Micro/Caliburn.Micro
+Tags:
+  - XAML
+  - UWP
+  - Xamarin
+  - WPF
+  - MVVM

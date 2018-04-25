@@ -1,0 +1,7 @@
+Chat: http://www.pollytalk.org/
+Image: https://camo.githubusercontent.com/34b63e5aeab626ae9686f7243db578ca5dfdb21d/68747470733a2f2f7261772e6769746875622e636f6d2f4170702d764e6578742f506f6c6c792f6d61737465722f506f6c6c792d4c6f676f2e706e67
+Language: C#
+NuGet: Polly
+Source: https://github.com/App-vNext/Polly
+Tags:
+  - Error Handling

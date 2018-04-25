@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Aeron.Client
+Source: https://github.com/AdaptiveConsulting/Aeron.NET
+Tags:
+  - Networking

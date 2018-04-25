@@ -1,0 +1,5 @@
+Language: C#
+NuGet: EmailValidation
+Source: https://github.com/jstedfast/EmailValidation
+Tags:
+  - Mail

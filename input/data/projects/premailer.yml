@@ -1,0 +1,5 @@
+Language: C#
+NuGet: PreMailer.Net
+Source: https://github.com/milkshakesoftware/PreMailer.Net
+Tags:
+  - Mail

@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/lukencode/FluentEmail/master/assets/fluentemail_logo_64x64.png
+Language: C#
+NuGet: FluentEmail.Core
+Source: https://github.com/lukencode/FluentEmail
+Tags:
+  - Mail

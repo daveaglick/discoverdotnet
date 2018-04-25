@@ -1,0 +1,8 @@
+Image: https://raw.githubusercontent.com/FantasticFiasco/mvvm-dialogs/master/doc/resources/Icon_128x128.png
+Language: C#
+NuGet: MvvmDialogs
+Source: https://github.com/FantasticFiasco/mvvm-dialogs
+Tags:
+  - MVVM
+  - WPF
+  - UWP

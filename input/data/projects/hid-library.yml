@@ -1,0 +1,5 @@
+Language: C#
+NuGet: HidLibrary
+Source: https://github.com/mikeobrien/HidLibrary
+Tags:
+  - Hardware

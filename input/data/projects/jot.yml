@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Jot
+Source: https://github.com/anakic/jot
+Tags:
+  - Configuration

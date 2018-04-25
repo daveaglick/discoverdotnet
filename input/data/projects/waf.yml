@@ -1,0 +1,8 @@
+Language: C#
+NuGet: System.Waf.Core
+Source: https://github.com/jbe2277/waf
+Tags:
+  - XAML
+  - WPF
+  - UWP
+  - MVVM

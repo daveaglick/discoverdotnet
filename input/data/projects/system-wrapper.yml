@@ -1,0 +1,5 @@
+Language: C#
+NuGet: SystemWrapper.Wrappers
+Source: https://github.com/jozefizso/SystemWrapper
+Tags:
+  - Testing

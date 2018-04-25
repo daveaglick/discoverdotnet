@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Flatmapper
+Source: https://github.com/joaomatossilva/FlatMapper
+Tags:
+  - Data Formats
+  - IO

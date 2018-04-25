@@ -1,0 +1,5 @@
+Language: C#
+NuGet: ByteSize
+Source: https://github.com/omar/ByteSize
+Tags:
+  - Utility
