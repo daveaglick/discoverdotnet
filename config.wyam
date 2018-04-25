@@ -48,6 +48,14 @@ Pipelines.Add("Projects",
         "Source",
         "Donations"
     )),
+    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
+        "Key",
+        "Title",
+        "Image",
+        "Description",
+        "StargazersCount",
+        "Tags"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
@@ -76,6 +84,14 @@ Pipelines.Add("Project Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/projects.json")
+);
+
+Pipelines.Add("Project Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Projects").Select(x => x["SearchData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/projects.json")
 );
 
 Pipelines.Add("Donations Data",
@@ -123,6 +139,12 @@ Pipelines.Add("Blogs",
         .WithLayout("/blogs/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
+    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
+        "Key",
+        "Title",
+        "Image",
+        "Description"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
@@ -143,6 +165,14 @@ Pipelines.Add("Blog Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/blogs.json")
+);
+
+Pipelines.Add("Blog Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Blogs").Select(x => x["SearchData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/blogs.json")
 );
 
 Pipelines.Add("Posts",
@@ -171,6 +201,12 @@ Pipelines.Add("Broadcasts",
         .WithLayout("/broadcasts/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
+    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
+        "Key",
+        "Title",
+        "Image",
+        "Description"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
@@ -191,6 +227,14 @@ Pipelines.Add("Broadcast Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/broadcasts.json")
+);
+
+Pipelines.Add("Broadcast Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Broadcasts").Select(x => x["SearchData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/broadcasts.json")
 );
 
 Pipelines.Add("Episodes",
@@ -215,6 +259,13 @@ Pipelines.Add("Groups",
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetMeetupData(inputs, ctx).Result),
     Meta("CardType", "Group"),
+    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
+        "Website",
+        "Title",
+        "Image",
+        "Location",
+        "Country"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
@@ -237,6 +288,14 @@ Pipelines.Add("Group Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/groups.json")
+);
+
+Pipelines.Add("Group Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Groups").Select(x => x["SearchData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/groups.json")
 );
 
 Pipelines.Add("Events",
@@ -290,6 +349,13 @@ Pipelines.Add("Resources",
     Yaml(),    
     Content(string.Empty),
     Meta("CardType", "Resource"),
+    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
+        "Website",
+        "Title",
+        "Image",
+        "Description",
+        "Tags"
+    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
@@ -306,6 +372,14 @@ Pipelines.Add("Resource Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/resources.json")
+);
+
+Pipelines.Add("Resource Search Data",
+    GenerateJson((doc, ctx) =>
+        ctx.Documents.FromPipeline("Resources").Select(x => x["SearchData"]))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/resources.json")
 );
 
 // Aggregate, Pages, and Resources

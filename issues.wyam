@@ -208,6 +208,21 @@ Pipelines.Add("Total Counts",
     WriteFiles((doc, ctx) => "total-counts.json")
 );
 
+Pipelines.Add("Search",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            })))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "search.json")
+);
+
 //////////////////////////////////////////////////////////////////////
 // Helpers
 //////////////////////////////////////////////////////////////////////
