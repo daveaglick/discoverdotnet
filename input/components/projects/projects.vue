@@ -93,6 +93,18 @@
                             }    
                             return 1;                    
                         }
+                    },
+                    {
+                        text: 'A-Z',
+                        sort: function(a, b) {
+                            return a.title.localeCompare(b.title);
+                        }
+                    },
+                    {
+                        text: 'Z-A',
+                        sort: function(a, b) {      
+                            return b.title.localeCompare(a.title);     
+                        }
                     }
                 ]
             }
