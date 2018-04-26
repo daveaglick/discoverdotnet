@@ -29,6 +29,7 @@
         <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.js"></script> 
         <script src="https://cdn.jsdelivr.net/npm/vue2-leaflet@0.0.58/dist/vue2-leaflet.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/leaflet.markercluster-src.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
 
         @RenderSection("Head", false)
@@ -55,25 +56,25 @@
                     </v-map>
                 </div>
                 <b-navbar toggleable="md" type="dark" variant="dark">
-                    <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
-                    <b-collapse is-nav id="main-nav-collapse">
-                        <b-container>
-                            <b-navbar-nav class="float-md-left">
-                                <b-nav-item href="/projects">Projects</b-nav-item>
-                                <b-nav-item href="/issues">Issues</b-nav-item>
-                                <b-nav-item href="/blogs">Blogs</b-nav-item>
-                                <b-nav-item href="/broadcasts">Broadcasts</b-nav-item>
-                                <b-nav-item href="/groups">Groups</b-nav-item>
-                                <b-nav-item href="/events">Events</b-nav-item>
-                                <b-nav-item href="/resources">Resources</b-nav-item>
-                            </b-navbar-nav>                            
-                            <b-navbar-nav class="float-md-right">
-                                <b-nav-form>
-                                    <b-form-input type="search" placeholder="Search"></b-form-input>
-                                </b-nav-form>
-                            </b-navbar-nav>
-                        </b-container>
-                    </b-collapse>
+                    <b-container>
+                        <div class="flex-grow-1">
+                            <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
+                            <b-collapse is-nav id="main-nav-collapse">
+                                    <b-navbar-nav class="float-md-left">
+                                        <b-nav-item href="/projects">Projects</b-nav-item>
+                                        <b-nav-item href="/issues">Issues</b-nav-item>
+                                        <b-nav-item href="/blogs">Blogs</b-nav-item>
+                                        <b-nav-item href="/broadcasts">Broadcasts</b-nav-item>
+                                        <b-nav-item href="/groups">Groups</b-nav-item>
+                                        <b-nav-item href="/events">Events</b-nav-item>
+                                        <b-nav-item href="/resources">Resources</b-nav-item>
+                                    </b-navbar-nav>     
+                            </b-collapse>  
+                        </div>                
+                        <b-navbar-nav class="align-self-start">
+                            <search></search>
+                        </b-navbar-nav>   
+                    </b-container>
                 </b-navbar>
             </header>
             <main>
@@ -115,6 +116,7 @@
             Vue.component('event-card', httpVueLoader('/components/cards/event-card.vue'));
             Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
             Vue.component('body-tabs', httpVueLoader('/components/body-tabs.vue'));   
+            Vue.component('search', httpVueLoader('/components/search.vue'));   
 
             // Map components
             Vue.component('v-map', Vue2Leaflet.Map);
