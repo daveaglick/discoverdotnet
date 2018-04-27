@@ -241,4 +241,25 @@ pre code {
 .popover {
     max-width: 80%;
     z-index: 10000;
+
+    /* This is an ugly hack to make sure the popover "flips" by positioning it above the search box and then always making
+    it taller than the header so it consistently displays below the search box - these heights need to match up with the header */    
+    
+    margin-bottom: 24vw;
+
+    @media (min-width: 576px) {  
+        margin-bottom: 200px;        
+    }
+    
+    @media (min-width: 768px) {    
+        margin-bottom: 200px;
+    }
+    
+    @media (min-width: 992px) {   
+        margin-bottom: 240px;
+    }
+
+    @media (min-width: 1200px) {
+        margin-bottom: 260px;        
+    }
 }
