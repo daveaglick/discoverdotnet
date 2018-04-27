@@ -232,3 +232,13 @@ pre code {
         }
     }
 }
+
+.search-results em {
+    font-style: normal;
+    background-color: lighten( $yellow, 40% );
+}
+
+.popover {
+    max-width: 80%;
+    z-index: 10000;
+}

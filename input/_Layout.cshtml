@@ -72,13 +72,13 @@
                             </b-collapse>  
                         </div>                
                         <b-navbar-nav class="align-self-start">
-                            <search></search>
+                            <search :project-keys="projectKeys"></search>
                         </b-navbar-nav>   
                     </b-container>
                 </b-navbar>
             </header>
             <main>
-                <b-container>
+                <b-container id="main">
                     @RenderBody()
                 </b-container>
             </main>
@@ -117,6 +117,7 @@
             Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
             Vue.component('body-tabs', httpVueLoader('/components/body-tabs.vue'));   
             Vue.component('search', httpVueLoader('/components/search.vue'));   
+            Vue.component('search-results', httpVueLoader('/components/search-results.vue'));   
 
             // Map components
             Vue.component('v-map', Vue2Leaflet.Map);
@@ -208,7 +209,18 @@
                         keyboard: false,
                         scrollWheelZoom: false,
                         touchZoom: false
-                    }
+                    },
+                    projectKeys: []
+                },
+                created: function() {              
+                    axios
+                        .get('/data/project-keys.json')
+                        .then(response => {
+                            this.projectKeys = response.data
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        });
                 }
             });
         </script>

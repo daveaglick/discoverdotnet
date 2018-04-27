@@ -55,9 +55,11 @@
 
 <script>
     module.exports = {
+        props: [
+            'projectKeys'
+        ],
         data: function() {
             return {
-                projectKeys: [],
                 totalCounts: {}
             }
         },
@@ -66,14 +68,6 @@
                 .get('/data/issues/total-counts.json')
                 .then(response => {
                     this.totalCounts = response.data
-                })
-                .catch(e => {
-                    console.log(e);
-                });                
-            axios
-                .get('/data/project-keys.json')
-                .then(response => {
-                    this.projectKeys = response.data
                 })
                 .catch(e => {
                     console.log(e);

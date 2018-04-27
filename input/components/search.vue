@@ -11,15 +11,67 @@
             target="query-input"
             title="Search Results"
             placement="bottomleft"
+            container="main"
             triggers="blur"
             :show.sync="showResults"
             @hidden="onResultsHidden">
+            <b-container class="search-results">
+                <b-row>
+                    <b-col sm v-if="(getResults('projects') !== null && getResults('projects').nbHits > 0) || (getResults('issues') !== null && getResults('issues').nbHits > 0)">
+                        <search-results title="Projects" :results="getResults('projects')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="'/projects/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                                <div class="small" v-html="props.result._highlightResult.description.value"></div>
+                            </template>
+                        </search-results>
+                        <search-results title="Issues" :results="getResults('issues')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="props.result.link" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link>
+                                <div v-if="getProject(props.result.projectKey)" class="small"><a :href="getProject(props.result.projectKey).link">{{ getProject(props.result.projectKey).title }}</a></div>
+                            </template>
+                        </search-results>
+                    </b-col>
+                    <b-col sm v-if="getResults('blogs') !== null && getResults('blogs').nbHits > 0">
+                        <search-results title="Blogs" :results="getResults('blogs')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="'/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                                <div class="small" v-html="props.result._highlightResult.description.value"></div>
+                            </template>
+                        </search-results>
+                    </b-col>
+                    <b-col sm v-if="getResults('broadcasts') !== null && getResults('broadcasts').nbHits > 0">
+                        <search-results title="Broadcasts" :results="getResults('broadcasts')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="'/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                                <div class="small" v-html="props.result._highlightResult.description.value"></div>
+                            </template>
+                        </search-results>
+                    </b-col>
+                    <b-col sm v-if="(getResults('groups') !== null && getResults('groups').nbHits > 0) || (getResults('resources') !== null && getResults('resources').nbHits > 0)">
+                        <search-results title="Groups" :results="getResults('groups')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="props.result.website" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                                <div class="small" v-html="props.result._highlightResult.location.value"></div>
+                            </template>
+                        </search-results>
+                        <search-results title="Resources" :results="getResults('resources')"> 
+                            <template slot-scope="props">
+                                <div><b-link :href="props.result.website" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                                <div class="small" v-html="props.result._highlightResult.description.value"></div>
+                            </template>
+                        </search-results>
+                    </b-col>
+                </b-row>
+            </b-container>
         </b-popover>
     </b-nav-form>
 </template>
 
 <script>
     module.exports = {
+        props: [
+            'projectKeys'
+        ],
         data: function() {
             return {
                 query: null,
@@ -81,6 +133,22 @@
             },
             onResultsHidden() {
                 this.results = null;
+            },            
+            getResults: function(index) {
+                if(this.results === null) {
+                    return null;
+                }
+                return this.results.find(function(item) {
+                    return item.index === index;
+                });
+            },            
+            getProject: function(key) {
+                if(this.projectKeys === null) {
+                    return null;
+                }
+                return this.projectKeys.find(function(item) {
+                    return item.key == key;
+                });
             }
         }
     }
