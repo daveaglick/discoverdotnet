@@ -215,8 +215,7 @@ Pipelines.Add("Search",
             {
                 ProjectKey = d.String("ProjectKey"),
                 Link = i.Link,
-                Title = i.Title,
-                Labels = i.Labels
+                Title = i.Title
             })))
         .WithCamelCase(),
     MinifyJs(),

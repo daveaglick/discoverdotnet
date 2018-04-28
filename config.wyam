@@ -51,7 +51,6 @@ Pipelines.Add("Projects",
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
-        "Image",
         "Description",
         "StargazersCount",
         "Tags"
@@ -142,7 +141,6 @@ Pipelines.Add("Blogs",
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
-        "Image",
         "Description"
     )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
@@ -185,6 +183,21 @@ Pipelines.Add("Posts",
     Meta("FeedKey", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath)
 );
 
+Pipelines.Add("Post Search Data",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Blogs")
+        .Where(d => d.ContainsKey("FeedItems"))
+        .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
+            .Select(i => new
+            {
+                Title = i.Title,
+                Link = i.Link,
+                Published = i.Published
+            })))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/posts.json")
+);
+
 // Broadcasts and Episodes
 //////////////////////////////////////////////////////////////////////
 
@@ -204,7 +217,6 @@ Pipelines.Add("Broadcasts",
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Key",
         "Title",
-        "Image",
         "Description"
     )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
@@ -247,6 +259,21 @@ Pipelines.Add("Episodes",
     Meta("FeedKey", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath)
 );
 
+Pipelines.Add("Episode Search Data",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Episodes")
+        .Where(d => d.ContainsKey("FeedItems"))
+        .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
+            .Select(i => new
+            {
+                Title = i.Title,
+                Link = i.Link,
+                Published = i.Published
+            })))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/search/episodes.json")
+);
+
 // Groups And Events
 //////////////////////////////////////////////////////////////////////
 
@@ -262,9 +289,7 @@ Pipelines.Add("Groups",
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
-        "Image",
-        "Location",
-        "Country"
+        "Location"
     )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
@@ -352,7 +377,6 @@ Pipelines.Add("Resources",
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
-        "Image",
         "Description",
         "Tags"
     )),

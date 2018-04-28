@@ -7,6 +7,7 @@
 #addin nuget:?package=Cake.Wyam&version=1.4.1
 #addin nuget:?package=NetlifySharp&version=0.1.0
 #addin nuget:?package=System.Runtime.Serialization.Formatters&version=4.3.0
+#addin nuget:?package=Algolia.Search&version=5.0.0
 
 using System.Reflection;
 using NetlifySharp;
