@@ -12,6 +12,9 @@
 
 using System.Reflection;
 using NetlifySharp;
+using Algolia.Search;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -182,7 +185,7 @@ Task("Publish-Issues")
         Information("Updating search indexes");
         var algoliaToken = EnvironmentVariable("DISCOVERDOTNET_ALGOLIA_TOKEN");
         var algoliaClient = new AlgoliaClient("7TKEQH0O12", algoliaToken);
-        UpdateSearchIndex(algoliaClient, "issues", Path.Combine(MakeAbsolute(issuesDir).FullPath, "search.json"));
+        UpdateSearchIndex(algoliaClient, "issues", System.IO.Path.Combine(MakeAbsolute(issuesDir).FullPath, "search.json"));
     });
 
 Task("Publish-Site")
@@ -198,12 +201,12 @@ Task("Publish-Site")
         Information("Updating search indexes");
         var algoliaToken = EnvironmentVariable("DISCOVERDOTNET_ALGOLIA_TOKEN");
         var algoliaClient = new AlgoliaClient("7TKEQH0O12", algoliaToken);
-        UpdateSearchIndex(algoliaClient, "projects", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "projects.json"));
-        UpdateSearchIndex(algoliaClient, "blogs", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "blogs.json"));
-        UpdateSearchIndex(algoliaClient, "posts", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "posts.json"));
-        UpdateSearchIndex(algoliaClient, "broadcasts", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "broadcasts.json"));
-        UpdateSearchIndex(algoliaClient, "episodes", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "episodes.json"));
-        UpdateSearchIndex(algoliaClient, "resources", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "resources.json"));
+        UpdateSearchIndex(algoliaClient, "projects", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "projects.json"));
+        UpdateSearchIndex(algoliaClient, "blogs", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "blogs.json"));
+        UpdateSearchIndex(algoliaClient, "posts", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "posts.json"));
+        UpdateSearchIndex(algoliaClient, "broadcasts", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "broadcasts.json"));
+        UpdateSearchIndex(algoliaClient, "episodes", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "episodes.json"));
+        UpdateSearchIndex(algoliaClient, "resources", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "resources.json"));
     });
 
 //////////////////////////////////////////////////////////////////////
