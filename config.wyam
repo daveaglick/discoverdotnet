@@ -286,11 +286,6 @@ Pipelines.Add("Groups",
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetMeetupData(inputs, ctx).Result),
     Meta("CardType", "Group"),
-    Meta("SearchData", (doc, ctx) => doc.GetMetadata(
-        "Website",
-        "Title",
-        "Location"
-    )),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
         "Title",
@@ -313,14 +308,6 @@ Pipelines.Add("Group Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/groups.json")
-);
-
-Pipelines.Add("Group Search Data",
-    GenerateJson((doc, ctx) =>
-        ctx.Documents.FromPipeline("Groups").Select(x => x["SearchData"]))
-        .WithCamelCase(),
-    MinifyJs(),
-    WriteFiles((doc, ctx) => "data/search/groups.json")
 );
 
 Pipelines.Add("Events",

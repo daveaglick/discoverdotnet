@@ -59,13 +59,7 @@
                             </template>
                         </search-results>
                     </b-col>
-                    <b-col sm v-if="(getIndexResults('groups') !== null && getIndexResults('groups').nbHits > 0) || (getIndexResults('resources') !== null && getIndexResults('resources').nbHits > 0)">
-                        <search-results title="Groups" :results="getIndexResults('groups')"> 
-                            <template slot-scope="props">
-                                <div><b-link :href="props.result.website" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
-                                <div class="small" v-if="props.result._highlightResult.location" v-html="props.result._highlightResult.location.value"></div>
-                            </template>
-                        </search-results>
+                    <b-col sm v-if="getIndexResults('resources') !== null && getIndexResults('resources').nbHits > 0">
                         <search-results title="Resources" :results="getIndexResults('resources')"> 
                             <template slot-scope="props">
                                 <div><b-link :href="props.result.website" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>

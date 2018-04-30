@@ -11,6 +11,8 @@ environment:
     secure: PAD80ZOLND+R6d20Bih7Vi9pN8taJKPIMGvtCvFmKh0=
   DISCOVERDOTNET_NETLIFY_TOKEN:
     secure: RPNadUVcxNcoERSyRyhYNpOBWV7H+d9iD4La44gyZsPgBjnHM2OU6TCzdSA+PSWH0eppMaCIgUm/2aVhmq8ixJq5tje5s3w2RRTwzXVwx8I=
+  DISCOVERDOTNET_ALGOLIA_TOKEN:
+    secure: AOo43zW9J/1tb72nGKo9dzapVge0KjiptMc7ntxDYqqtV+aj2I6HnOaIOLF1/2Dw
 
 image: Visual Studio 2017
 

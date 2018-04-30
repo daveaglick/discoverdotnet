@@ -2,6 +2,7 @@
 // DISCOVERDOTNET_GITHUB_TOKEN
 // DISCOVERDOTNET_NETLIFY_TOKEN
 // DISCOVERDOTNET_MEETUP_TOKEN
+// DISCOVERDOTNET_ALGOLIA_TOKEN
 
 #tool nuget:?package=Wyam&version=1.4.1
 #addin nuget:?package=Cake.Wyam&version=1.4.1
@@ -177,6 +178,11 @@ Task("Publish-Issues")
         var netlifyToken = EnvironmentVariable("DISCOVERDOTNET_NETLIFY_TOKEN");
         var client = new NetlifyClient(netlifyToken);
         client.UpdateSite("discoverdotnet-issues.netlify.com", MakeAbsolute(issuesDir).FullPath).SendAsync().Wait();
+        
+        Information("Updating search indexes");
+        var algoliaToken = EnvironmentVariable("DISCOVERDOTNET_ALGOLIA_TOKEN");
+        var algoliaClient = new AlgoliaClient("7TKEQH0O12", algoliaToken);
+        UpdateSearchIndex(algoliaClient, "issues", Path.Combine(MakeAbsolute(issuesDir).FullPath, "search.json"));
     });
 
 Task("Publish-Site")
@@ -188,7 +194,75 @@ Task("Publish-Site")
         var netlifyToken = EnvironmentVariable("DISCOVERDOTNET_NETLIFY_TOKEN");
         var client = new NetlifyClient(netlifyToken);
         client.UpdateSite("discoverdotnet.netlify.com", MakeAbsolute(outputDir).FullPath).SendAsync().Wait();
+        
+        Information("Updating search indexes");
+        var algoliaToken = EnvironmentVariable("DISCOVERDOTNET_ALGOLIA_TOKEN");
+        var algoliaClient = new AlgoliaClient("7TKEQH0O12", algoliaToken);
+        UpdateSearchIndex(algoliaClient, "projects", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "projects.json"));
+        UpdateSearchIndex(algoliaClient, "blogs", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "blogs.json"));
+        UpdateSearchIndex(algoliaClient, "posts", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "posts.json"));
+        UpdateSearchIndex(algoliaClient, "broadcasts", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "broadcasts.json"));
+        UpdateSearchIndex(algoliaClient, "episodes", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "episodes.json"));
+        UpdateSearchIndex(algoliaClient, "resources", Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "resources.json"));
     });
+
+//////////////////////////////////////////////////////////////////////
+// HELPERS
+//////////////////////////////////////////////////////////////////////
+
+public class SearchIndexItemEqualityComparer : IEqualityComparer<JObject>
+{
+	public bool Equals(JObject a, JObject b)
+	{
+		return a.Properties().Where(x => x.Name != "objectID").Select(x => (x.Name, x.Value.ToString())).OrderBy(x => x.Name)
+			.SequenceEqual(b.Properties().Where(x => x.Name != "objectID").Select(x => (x.Name, x.Value.ToString())).OrderBy(x => x.Name));
+	}
+
+	public int GetHashCode(JObject obj)
+	{
+		int hash = 27;
+		foreach (var prop in obj.Properties().Where(x => x.Name != "objectID").Select(x => (x.Name, x.Value.ToString())).OrderBy(x => x.Name))
+		{
+			hash = (13 * hash) + prop.Name.GetHashCode();
+			hash = (13 * hash) + prop.Item2.GetHashCode();
+		}
+		return hash;
+	}
+}
+
+public void UpdateSearchIndex(AlgoliaClient client, string indexName, string path)
+{
+	// Read from Algolia
+	Index index = client.InitIndex(indexName);
+	Query query = new Query("");
+	Index.IndexIterator results = index.BrowseAll(query);
+	HashSet<JObject> existing = new HashSet<JObject>(new IndexItemEqualityComparer());
+	foreach (JObject result in results)
+	{
+		existing.Add(result);
+	}
+
+	// Read from the file
+	List<JObject> adds = new List<JObject>();
+	JArray file = JArray.Parse(File.ReadAllText(path));
+	foreach(JObject item in file)
+	{
+		// Is it already in the index?
+		if(!existing.Remove(item))
+		{
+			// It wasn't matched, so this is a new one
+			adds.Add(item);
+		}
+	}
+	
+    Information($"Search index \"{indexName}\": deleting {existing.Count}, adding {adds.Count}");
+	
+	// Delete
+	index.DeleteObjects(existing.Select(x => x.Property("objectID").Value.ToString()));
+	
+	// Add
+	index.AddObjects(adds);
+}
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
