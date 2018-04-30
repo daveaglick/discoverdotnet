@@ -239,7 +239,7 @@ public void UpdateSearchIndex(AlgoliaClient client, string indexName, string pat
 	Index index = client.InitIndex(indexName);
 	Query query = new Query("");
 	Index.IndexIterator results = index.BrowseAll(query);
-	HashSet<JObject> existing = new HashSet<JObject>(new IndexItemEqualityComparer());
+	HashSet<JObject> existing = new HashSet<JObject>(new SearchIndexItemEqualityComparer());
 	foreach (JObject result in results)
 	{
 		existing.Add(result);
@@ -247,7 +247,7 @@ public void UpdateSearchIndex(AlgoliaClient client, string indexName, string pat
 
 	// Read from the file
 	List<JObject> adds = new List<JObject>();
-	JArray file = JArray.Parse(File.ReadAllText(path));
+	JArray file = JArray.Parse(System.IO.File.ReadAllText(path));
 	foreach(JObject item in file)
 	{
 		// Is it already in the index?
