@@ -201,12 +201,13 @@ Task("Publish-Site")
         Information("Updating search indexes");
         var algoliaToken = EnvironmentVariable("DISCOVERDOTNET_ALGOLIA_TOKEN");
         var algoliaClient = new AlgoliaClient("7TKEQH0O12", algoliaToken);
-        UpdateSearchIndex(algoliaClient, "projects", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "projects.json"));
-        UpdateSearchIndex(algoliaClient, "blogs", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "blogs.json"));
-        UpdateSearchIndex(algoliaClient, "posts", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "posts.json"));
-        UpdateSearchIndex(algoliaClient, "broadcasts", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "broadcasts.json"));
-        UpdateSearchIndex(algoliaClient, "episodes", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "episodes.json"));
-        UpdateSearchIndex(algoliaClient, "resources", System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "search", "resources.json"));
+        string indexPath = System.IO.Path.Combine(MakeAbsolute(outputDir).FullPath, "data", "search");
+        UpdateSearchIndex(algoliaClient, "projects", System.IO.Path.Combine(indexPath, "projects.json"));
+        UpdateSearchIndex(algoliaClient, "blogs", System.IO.Path.Combine(indexPath, "blogs.json"));
+        UpdateSearchIndex(algoliaClient, "posts", System.IO.Path.Combine(indexPath, "posts.json"));
+        UpdateSearchIndex(algoliaClient, "broadcasts", System.IO.Path.Combine(indexPath, "broadcasts.json"));
+        UpdateSearchIndex(algoliaClient, "episodes", System.IO.Path.Combine(indexPath, "episodes.json"));
+        UpdateSearchIndex(algoliaClient, "resources", System.IO.Path.Combine(indexPath, "resources.json"));
     });
 
 //////////////////////////////////////////////////////////////////////
