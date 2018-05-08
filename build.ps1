@@ -32,3 +32,5 @@ else
 {
     dotnet "$CAKE_DLL" "$BuildFile" --target="$Target" --verbosity="$Verbosity"
 }
+
+exit $LASTEXITCODE
