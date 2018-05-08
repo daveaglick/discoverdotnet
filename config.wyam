@@ -793,6 +793,7 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                         FeedItemData[] feedItems = items
                             .Select(x => new FeedItemData(x, recent))
                             .OrderByDescending(x => x.Published)
+                            .Take(50)  // Only take the 50 most recent items
                             .ToArray();
                         metadata.Add("FeedItems", feedItems);
                         metadata.Add("LastPublished", feedItems.First().Published);
