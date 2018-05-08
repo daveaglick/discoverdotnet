@@ -698,6 +698,8 @@ public class FeedItemData
         Description = item.Description;
         Links = item.Links
             .Where(x => !string.IsNullOrEmpty(x.MediaType))
+            .GroupBy(x => x.MediaType)
+            .Select(x => x.First())
             .ToDictionary(x => x.MediaType, x => x.Uri.ToString());
 
         AtomEntry atom = item as AtomEntry;
@@ -726,45 +728,64 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     string description = null;
                     string image = null;
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
-                    using(XmlReader xmlReader = XmlReader.Create(feed, new XmlReaderSettings { Async = true }))
+                    using (WebClient webClient = new WebClient())
                     {
-                        xmlReader.MoveToContent();
-                        bool atom = xmlReader.Name == "feed";
-                        Wyam.Common.Tracing.Trace.Information("Reading feed as " + (atom ? "Atom" : "RSS"));
-                        XmlFeedReader feedReader = atom
-                            ? (XmlFeedReader)new AtomFeedReader(xmlReader)
-                            : new RssFeedReader(xmlReader);                            
-                        while(await feedReader.Read())
+                        using (Stream stream = await webClient.OpenReadTaskAsync(feed))
                         {
-                            switch(feedReader.ElementType)
+                            using (StreamReader streamReader = new XmlStreamReader(stream))
                             {
-                                case SyndicationElementType.Image:
-                                    ISyndicationImage img = await feedReader.ReadImage();
-                                    image = img.Url.ToString();
-                                    break;
+                                using(XmlReader xmlReader = XmlReader.Create(streamReader, new XmlReaderSettings { Async = true, DtdProcessing = DtdProcessing.Ignore }))
+                                {
+                                    xmlReader.MoveToContent();
+                                    bool atom = xmlReader.Name == "feed";
+                                    Wyam.Common.Tracing.Trace.Information($"Reading {feed} as " + (atom ? "Atom" : "RSS"));
+                                    XmlFeedReader feedReader = atom
+                                        ? (XmlFeedReader)new AtomFeedReader(xmlReader, new DiscoverAtomParser())
+                                        : new RssFeedReader(xmlReader);                            
+                                    while(await feedReader.Read())
+                                    {
+                                        try
+                                        {
+                                            switch(feedReader.ElementType)
+                                            {
+                                                case SyndicationElementType.Image:
+                                                    ISyndicationImage img = await feedReader.ReadImage();
+                                                    image = img.Url.ToString();
+                                                    break;
 
-                                case SyndicationElementType.Link:
-                                    ISyndicationLink link = await feedReader.ReadLink();
-                                    website = link.Uri.ToString();
-                                    break;	
-                                    
-                                case SyndicationElementType.Item:
-                                    ISyndicationItem item = await feedReader.ReadItem();
-                                    items.Add(item);
-                                    break;
-                                    
-                                default:
-                                    ISyndicationContent content = await feedReader.ReadContent();
-                                    if(string.Equals(content.Name, "title", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        title = content.Value;
+                                                case SyndicationElementType.Link:
+                                                    ISyndicationLink link = await feedReader.ReadLink();
+                                                    website = link.Uri.ToString();
+                                                    break;	
+                                                    
+                                                case SyndicationElementType.Item:
+                                                    ISyndicationItem item = await feedReader.ReadItem();
+                                                    items.Add(item);
+                                                    break;                                    
+                                                
+                                                case SyndicationElementType.None:
+                                                    break;
+                                                    
+                                                default:
+                                                    ISyndicationContent content = await feedReader.ReadContent();
+                                                    if(string.Equals(content.Name, "title", StringComparison.OrdinalIgnoreCase))
+                                                    {
+                                                        title = content.Value;
+                                                    }
+                                                    else if(string.Equals(content.Name, "description", StringComparison.OrdinalIgnoreCase)
+                                                        || string.Equals(content.Name, "subtitle", StringComparison.OrdinalIgnoreCase))
+                                                    {
+                                                        description = content.Value;
+                                                    }
+                                                    break;
+                                            }
+                                        }
+                                        catch(Exception ex)
+                                        {
+                                            Wyam.Common.Tracing.Trace.Warning($"Exception while processing {feedReader.ElementType}: {ex.Message}");
+                                        }
                                     }
-                                    else if(string.Equals(content.Name, "description", StringComparison.OrdinalIgnoreCase)
-                                        || string.Equals(content.Name, "subtitle", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        description = content.Value;
-                                    }
-                                    break;
+                                }
                             }
                         }
                     }
@@ -810,6 +831,76 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
 
             return null;
         }));
+}
+
+public class DiscoverAtomParser : AtomParser
+{
+	public override IAtomEntry CreateEntry(ISyndicationContent content)
+	{
+		// Remove author and contributor entries since we don't use them and they've caused problems
+		ICollection<ISyndicationContent> children = (ICollection<ISyndicationContent>)content.Fields;
+		ISyndicationContent author = children.FirstOrDefault(x => x.Name == AtomContributorTypes.Author);
+		if(author != null)
+		{
+			children.Remove(author);
+		}
+		ISyndicationContent contributor = children.FirstOrDefault(x => x.Name == AtomContributorTypes.Contributor);
+		{
+			children.Remove(contributor);
+		}
+		return base.CreateEntry(content);
+	}
+}
+
+public class XmlStreamReader : StreamReader
+{
+	public XmlStreamReader(Stream stream) : base(stream)
+	{
+	}
+
+	public override int Peek()
+	{
+		int ch = 0;
+		while (ch != -1)
+		{
+			ch = base.Peek();
+			if (XmlConvert.IsXmlChar((char)ch))
+			{
+				return ch;
+			}
+			base.Read();
+		}
+		return ch;
+	}
+
+	public override int Read()
+	{
+		int ch = 0;
+		while (ch != -1)
+		{
+			ch = base.Read();
+			if (XmlConvert.IsXmlChar((char)ch))
+			{
+				return ch;
+			}
+		}
+		return ch;
+	}
+
+	public override int Read(char[] buffer, int index, int count)
+	{
+		int i;
+		for(i = index ; i < count ; i++)
+		{
+			int c = Read();
+			if(c == -1)
+			{
+				break;
+			}
+			buffer[i] = (char)c;
+		}
+		return i - index;
+	}
 }
 
 public class MeetupGroup
