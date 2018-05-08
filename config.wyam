@@ -151,9 +151,7 @@ Pipelines.Add("Blogs",
         "Description",
         "Website",
         "LastPublished",
-        "NewestFeedItemTitle",
-        "NewestFeedItemLink",
-        "NewestFeedItemPublished"
+        "NewestFeedItem"
     ))
 );
 
@@ -227,9 +225,7 @@ Pipelines.Add("Broadcasts",
         "Description",
         "Website",
         "LastPublished",
-        "NewestFeedItemTitle",
-        "NewestFeedItemLink",
-        "NewestFeedItemPublished"
+        "NewestFeedItem"
     ))
 );
 
@@ -692,7 +688,7 @@ public class FeedItemData
     public FeedItemData(ISyndicationItem item, DateTimeOffset recent)
     {
         Title = item.Title;
-        Link = item.Id;
+        Link = item.Links.FirstOrDefault(x => x.RelationshipType == RssLinkTypes.Alternate)?.Uri.ToString() ?? item.Id;
         Published = item.Published != default(DateTimeOffset) ? item.Published : item.LastUpdated;
         Recent = Published > recent;
         Description = item.Description;
@@ -797,13 +793,10 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                         FeedItemData[] feedItems = items
                             .Select(x => new FeedItemData(x, recent))
                             .OrderByDescending(x => x.Published)
-                            .Take(20)  // Only take the 20 most recent items
                             .ToArray();
                         metadata.Add("FeedItems", feedItems);
                         metadata.Add("LastPublished", feedItems.First().Published);
-                        metadata.Add("NewestFeedItemTitle", feedItems[0].Title);
-                        metadata.Add("NewestFeedItemLink", feedItems[0].Link);
-                        metadata.Add("NewestFeedItemPublished", feedItems[0].Published);
+                        metadata.Add("NewestFeedItem", feedItems[0]);
                     };
                     if(!input.ContainsKey("Website") && !string.IsNullOrEmpty(website))
                     {
