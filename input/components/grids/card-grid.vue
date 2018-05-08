@@ -88,6 +88,8 @@
         
         <a id="card-grid-anchor"></a>
 
+        <loading :data="cardData"></loading>
+
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">
                 <slot :card-data="cardData" :extra-data="extraData">

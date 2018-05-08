@@ -11,6 +11,8 @@
             <hr/>
             <p class="accent-script">A roundup of recent blog posts, podcasts, and more.</p>
         </div>
+        
+        <loading :data="cardData"></loading>
 
         <feed-item-card v-for="card in cardData" :key="card.link" :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
         </feed-item-card>

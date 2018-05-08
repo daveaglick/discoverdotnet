@@ -1,6 +1,8 @@
 <template>
     <div>
         <a id="card-grid-anchor"></a>
+        
+        <loading :data="pagedCardData"></loading>
 
         <div class="row">
             <div v-for="cardData in pagedCardData" :key="cardData" :class="columnClasses" class="mb-4 full-height-card">

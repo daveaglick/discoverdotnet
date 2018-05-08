@@ -101,6 +101,7 @@
             Vue.config.devtools = true
 
             // Global components
+            Vue.component('loading', httpVueLoader('/components/loading.vue'));   
             Vue.component('description', httpVueLoader('/components/description.vue'));   
             Vue.component('small-card', httpVueLoader('/components/cards/small-card.vue'));   
             Vue.component('card', httpVueLoader('/components/cards/card.vue'));   
