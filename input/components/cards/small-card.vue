@@ -1,7 +1,9 @@
 <template>
-    <b-card class="mb-4 text-left">
+    <b-card no-body class="mb-4 text-left">
         <div v-if="icon" class="card-corner card-corner-dark"><i class="fa" :class="icon"></i></div>
-        <slot></slot>
+        <b-card-body class="pb-3">
+            <slot></slot>
+        </b-card-body>
         <div slot="footer">
             <slot name="footer"></slot>
         </div>

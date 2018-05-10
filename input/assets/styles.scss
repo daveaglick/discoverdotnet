@@ -181,8 +181,10 @@ main {
     @include gradient-bg($dark);
 }
 
-.full-height-card > .card {
-    height: 100% !important;
+.full-height-card {
+    > .card {
+        height: 100% !important;
+    }
 }
 
 pre {

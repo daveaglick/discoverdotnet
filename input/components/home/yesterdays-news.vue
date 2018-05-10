@@ -14,8 +14,12 @@
         
         <loading :data="cardData"></loading>
 
-        <feed-item-card v-for="card in cardData" :key="card.link" :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
-        </feed-item-card>
+        <div class="row">
+            <div v-for="card in cardData" :key="card.link" class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-4 full-height-card">
+                <feed-item-card :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
+                </feed-item-card>
+            </div>
+        </div>
 
         <p><a href="/blogs">More Blogs <span class="fa fa-long-arrow-alt-right"></span></a></p>
         <p><a href="/broadcasts">More Broadcasts <span class="fa fa-long-arrow-alt-right"></span></a></p>
