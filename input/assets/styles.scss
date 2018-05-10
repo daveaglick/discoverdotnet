@@ -102,13 +102,14 @@ main {
                 }
             }
 
-            img {
-                width: 100%;    
+            img { 
+                width: 100%;
+                max-height: 50%; 
                 -webkit-filter: drop-shadow( 0 0 1rem indigo ); 
                 filter: drop-shadow( 0 0 1rem indigo );
 
                 @media (min-width: 768px) {    
-                    width: 80%;   
+                    width: 80%;  
                 }
             }
         

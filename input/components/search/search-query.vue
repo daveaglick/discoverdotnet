@@ -1,5 +1,5 @@
 <template>
-    <b-container class="search-results">
+    <b-container fluid class="search-results">
         <b-row v-if="anyResults()">
             <b-col sm v-if="(getIndexResults('projects') !== null && getIndexResults('projects').nbHits > 0) || (getIndexResults('issues') !== null && getIndexResults('issues').nbHits > 0)">
                 <search-results title="Projects" :results="getIndexResults('projects')"> 
