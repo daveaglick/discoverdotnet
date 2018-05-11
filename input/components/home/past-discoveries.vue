@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-5 d-sm-none d-md-block">
+    <div class="mb-5 d-xs-none d-sm-none d-md-block">
         <div class="text-center">
             <h3>
                 <span class="accent-secondary">Recent</span>
