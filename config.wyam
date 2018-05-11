@@ -620,28 +620,28 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
 {
     AngleSharp.IConfiguration config = AngleSharp.Configuration.Default.WithDefaultLoader();
     
-    return await Task.WhenAll(
-        inputs.Select(async input =>
+    List<IDocument> outputs = new List<IDocument>();
+    foreach(IDocument input in inputs)
+    {
+        IDocument output = input;
+        string package = input.String("NuGet");
+        if(!string.IsNullOrEmpty(package))
         {
-            string package = input.String("NuGet");
-            if(!string.IsNullOrEmpty(package))
+            Wyam.Common.Tracing.Trace.Information($"Getting NuGet data for {package}");
+            try
             {
-                Wyam.Common.Tracing.Trace.Information($"Getting NuGet data for {package}");
-                try
+                IBrowsingContext browsingContext = BrowsingContext.New(config);
+                AngleSharp.Dom.IDocument document = await browsingContext.OpenAsync($"https://www.nuget.org/packages/{package}");
+                if(document.StatusCode != System.Net.HttpStatusCode.OK)
                 {
-                    IBrowsingContext browsingContext = BrowsingContext.New(config);
-    	            AngleSharp.Dom.IDocument document = await browsingContext.OpenAsync($"https://www.nuget.org/packages/{package}");
-                    if(document.StatusCode != System.Net.HttpStatusCode.OK)
-                    {
-                        Wyam.Common.Tracing.Trace.Warning($"Bad status code for {package}: {document.StatusCode}");
-                        return input;
-                    }
-                    if(document == null)
-                    {
-                        Wyam.Common.Tracing.Trace.Warning($"Could not get document for {package}");
-                        return input;
-                    }
-
+                    Wyam.Common.Tracing.Trace.Warning($"Bad status code for {package}: {document.StatusCode}");
+                }
+                else if(document == null)
+                {
+                    Wyam.Common.Tracing.Trace.Warning($"Could not get document for {package}");
+                }
+                else
+                {
                     // Get statistics
                     AngleSharp.Dom.IElement statistics = document
                         .QuerySelectorAll(".package-details-info h2")
@@ -664,7 +664,7 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
                         .ToList();
                     
                     // Return a document with NuGet data
-                    return context.GetDocument(input, new MetadataItems
+                    output = context.GetDocument(input, new MetadataItems
                     {
                         { "TotalDownloads", totalDownloads },
                         { "LatestVersionDownloads", latestVersionDownloads },
@@ -674,14 +674,16 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
                         { "Versions", versions }
                     });
                 }
-                catch(Exception ex)
-                {
-                    Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
-                }
             }
+            catch(Exception ex)
+            {
+                Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
+            }
+        }
+        outputs.Add(output);
+    }
 
-            return input;
-        }));
+    return outputs;
 }
 
 public class FeedItemData
