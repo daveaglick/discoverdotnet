@@ -8,23 +8,53 @@
 </h1>
 <div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/@(Model.String("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
-<b-card class="mb-4">
-	@{
-		string website = Model.String("Website");
-		string description = Model.String("Description");
-	}
-	@if(!string.IsNullOrWhiteSpace(website))
-	{
-		<p><a href="@(website)">{{ '@(website)' | no-protocol }}</a></p>
-	}
-	@if(!string.IsNullOrWhiteSpace(description))
-	{
-    	<p class="lead">@Html.Raw(description)</p>
-	}
-    @RenderBody()
-</b-card>
+@if(!string.IsNullOrWhiteSpace(@Model.String("Description")))
+{
+    <b-card class="mb-4">
+        <p class="lead mb-0">@Model.String("Description")</p>
+    </b-card>
+}
 
-<feed-items feed-item-json="/data/posts/@(Model.String("Key")).json" icon="fa-pencil-alt"></feed-items>
+@RenderBody()
+
+<b-row>
+    <b-col md="9" order="2" order-md="1">
+		<feed-items feed-item-json="/data/posts/@(Model.String("Key")).json" icon="fa-pencil-alt"></feed-items>
+    </b-col>
+    <b-col md="3" order="1" order-md="2">
+		<b-card no-body class="mb-4">
+            <b-card-body>
+                @{
+					string image = Model.String("Image");
+                    string website = Model.String("Website");
+                    string feed = Model.String("Feed");
+					if(!string.IsNullOrWhiteSpace(image))
+					{
+						<b-img src="@(image)" fluid class="mb-4"></b-img>
+					}
+                    if(!string.IsNullOrWhiteSpace(website))
+                    {
+                        <h5>
+                            <span class="fa fa-external-link-square-alt"></span> Website
+                        </h5>
+                        <p>
+                            <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
+                        </p>
+                    }    
+                    if(!string.IsNullOrWhiteSpace(feed))
+                    {
+                        <h5>
+                            <span class="fas fa-rss"></span> Feed
+                        </h5>
+                        <p>
+                            <a href="@(feed)">{{ '@(feed)' | no-protocol }}</a>
+                        </p>
+                    }    
+                }
+            </b-card-body>
+		</b-card>
+    </b-col>
+</b-row>
 
 @section Script {
 	<script type="text/javascript">

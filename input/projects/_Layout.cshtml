@@ -22,10 +22,14 @@
 </div>
 <div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.String("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
-<b-card class="mb-4">
-    <p class="lead">@Model.String("Description")</p>
-    @RenderBody()
-</b-card>
+@if(!string.IsNullOrWhiteSpace(@Model.String("Description")))
+{
+    <b-card class="mb-4">
+        <p class="lead mb-0">@Model.String("Description")</p>
+    </b-card>
+}
+
+@RenderBody()
 
 @{
     string package = Model.String("NuGet");
@@ -83,11 +87,16 @@
         <b-card no-body class="mb-4">
             <b-card-body>
                 @{
+					string image = Model.String("Image");
                     string website = Model.String("Website");
                     string docs = Model.String("Docs");
                     string source = Model.String("Source");
                     string twitter = Model.String("Twitter");
                     string chat = Model.String("Chat");
+					if(!string.IsNullOrWhiteSpace(image))
+					{
+						<b-img src="@(image)" fluid class="mb-4"></b-img>
+					}
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
