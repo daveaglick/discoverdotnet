@@ -610,9 +610,9 @@ public class VersionData
 
     public VersionData(AngleSharp.Dom.IElement element)
     {
-        Version = element.Children[0].TextContent.Replace("(current version)", string.Empty).Trim();
-        Downloads = element.Children[1].TextContent;
-        LastUpdated = DateTime.Parse(element.Children[2].FirstElementChild.GetAttribute("data-datetime"));
+		Version = element.Children[1].TextContent.Replace("(current)", string.Empty).Trim();
+		Downloads = element.Children[2].TextContent.Trim();
+		LastUpdated = DateTime.Parse(element.QuerySelector("*[data-datetime]").GetAttribute("data-datetime"));
     }
 }
 

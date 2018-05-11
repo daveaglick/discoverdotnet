@@ -7,15 +7,15 @@
             </h3>
             <hr />
         </div>
-        <div class="row">
-            <div v-for="cardData in cardDatas" :key="cardData">
-                <p class="accent-script text-center">{{ cardData.discoveryDate }}</p>
-                <component :is="getCard(cardData)" :card-data="cardData">
-                    <b-card-body class="flex-0" v-if="cardData.comment">
-                        <b-alert show class="mb-0">{{ cardData.comment }}</b-alert>
-                    </b-card-body>
-                </component>
+        <div v-for="cardData in cardDatas" :key="cardData" class="mb-5">
+            <div class="text-center">
+                <h5 class="text-muted"><i class="far fa-calendar-alt"></i> {{ moment(cardData.discoveryDate).format("LL") }}</h5>
             </div>
+            <component :is="getCard(cardData)" :card-data="cardData">
+                <b-card-body class="flex-0" v-if="cardData.comment">
+                    <b-alert show class="mb-0">{{ cardData.comment }}</b-alert>
+                </b-card-body>
+            </component>
         </div>
     </div>
 </template>

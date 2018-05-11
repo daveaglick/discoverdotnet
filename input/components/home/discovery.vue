@@ -7,7 +7,7 @@
             </h1>
             <hr />
             <p class="accent-script">A new discovery (almost) every day.</p>
-            <h5>{{ cardData.discoveryDate }}</h5>
+            <h5 class="text-muted"><i class="far fa-calendar-alt"></i> {{ moment(cardData.discoveryDate).format("LL") }}</h5>
         </div>
         <component :is="getCard(cardData)" :card-data="cardData">
             <b-card-body class="flex-0" v-if="cardData.comment">

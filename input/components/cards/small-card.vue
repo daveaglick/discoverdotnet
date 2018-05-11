@@ -1,5 +1,5 @@
 <template>
-    <b-card no-body class="mb-4 text-left">
+    <b-card no-body class="text-left">
         <div v-if="icon" class="card-corner card-corner-dark"><i class="fa" :class="icon"></i></div>
         <b-card-body class="pb-3">
             <slot></slot>
