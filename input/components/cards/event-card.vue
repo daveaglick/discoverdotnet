@@ -6,10 +6,11 @@
                 {{ cardData.description }}
             </p>       
             <div v-if="cardData.date">
+                <i class="far fa-calendar-alt"></i> 
                 <span class="font-weight-bold">{{ cardData.date | event-date }}</span><span v-if="cardData.time"> {{ cardData.time | event-time }}</span>
-            </div>
-            <div v-if="cardData.endDate">
-                to <span class="font-weight-bold">{{ cardData.endDate | event-date }}</span><span v-if="cardData.endTime"> {{ cardData.endTime | event-time }}</span>
+                <span v-if="cardData.endDate">
+                    to <span class="font-weight-bold">{{ cardData.endDate | event-date }}</span><span v-if="cardData.endTime"> {{ cardData.endTime | event-time }}</span>
+                </span>
             </div>
         </div>
         <div slot="footer" class="text-right">
