@@ -143,7 +143,11 @@ main {
     font-family: 'Nothing You Could Do', cursive;
 }
 
-.card > .card-body:not(:first-child) {
+.card > .card-border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.card > .card-border-top {
     border-top: 1px solid rgba(0, 0, 0, 0.075);
 }
 

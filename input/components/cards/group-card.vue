@@ -1,7 +1,7 @@
 <template>
     <card :card-data="$props.cardData" icon="fa-comments">   
         <slot></slot>    
-        <b-card-body v-if="cardData.nextEventTitle" class="pb-4" slot="bottom">
+        <b-card-body v-if="cardData.nextEventTitle" class="pb-4 flex-0" slot="bottom">
             <div><small>Next Event</small></div>
             <div class="font-weight-bold"><a :href="cardData.nextEventWebsite">{{ cardData.nextEventTitle }}</a></div>
             <div><small>{{ cardData.nextEventDate | event-date }} {{ cardData.nextEventTime | event-time }}</small></div>

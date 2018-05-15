@@ -1,7 +1,7 @@
 <template>
     <card :card-data="$props.cardData" icon="fa-newspaper">   
         <slot></slot>           
-        <b-card-body v-if="cardData.newestFeedItem" class="pb-4" slot="bottom">
+        <b-card-body v-if="cardData.newestFeedItem" class="pb-4 flex-0" slot="bottom">
             <div><small>Most Recent</small></div>
             <div class="font-weight-bold"><a :href="cardData.newestFeedItem.link">{{ cardData.newestFeedItem.title }}</a></div>            
             <play-button :card-data="cardData.newestFeedItem"></play-button>

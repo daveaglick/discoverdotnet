@@ -1,7 +1,7 @@
 <template>
     <card :card-data="$props.cardData" icon="fa-terminal" :icon-images="true">   
         <slot></slot>
-        <b-card-body v-if="cardData.stargazersCount" class="flex-0">
+        <b-card-body v-if="cardData.stargazersCount" class="flex-0 card-border-bottom">
             <b-row class="text-center">
                 <b-col>
                     <div><i class="fas fa-star"></i></div>

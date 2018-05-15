@@ -6,9 +6,9 @@
             <h5 v-else class="mb-1 font-weight-bold">{{ cardData.title }}</h5>
             <div v-if="cardData.website" class="small"><a :href="cardData.website" class="text-light">{{ cardData.website | no-protocol }}</a></div>
         </div>
+        <div v-if="cardData.image && !iconImages" class="bg-gradient-light text-center p-2 card-border-bottom"><b-img :src="cardData.image" class="mw-100"></b-img></div>        
         <slot></slot>
-        <div v-if="cardData.image && !iconImages" class="bg-gradient-light text-center p-2"><b-img :src="cardData.image" class="mw-100"></b-img></div>
-        <b-card-body class="pb-4">
+        <b-card-body :class="((cardData.image && iconImages) || cardData.description || hasDescriptionSlot) ? 'pb-4' : 'py-0'">
             <div v-if="cardData.image && iconImages"><b-img fluid :src="cardData.image" class="mb-2 icon-card-image"></b-img></div>
             <slot name="description">        
                 <p class="card-text">{{ cardData.description }}</p>
@@ -30,6 +30,11 @@
             'cardData',
             'icon',
             'iconImages'
-        ]
+        ],
+        computed: {
+            hasDescriptionSlot() {
+                return 'description' in this.$slots;
+            }
+        }
     }
 </script>
