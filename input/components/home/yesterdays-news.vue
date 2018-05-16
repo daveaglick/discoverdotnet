@@ -21,6 +21,9 @@
             </div>
         </div>
 
+        <p class="small text-right text-muted">
+            <i class="fas fa-rss"></i> <a href="/feeds/news.atom">Atom</a> <a href="/feeds/news.rss">RSS</a>
+        </p>
         <p><a href="/blogs">More Blogs <span class="fa fa-long-arrow-alt-right"></span></a></p>
         <p><a href="/broadcasts">More Broadcasts <span class="fa fa-long-arrow-alt-right"></span></a></p>
     </div>

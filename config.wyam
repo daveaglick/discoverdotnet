@@ -4,6 +4,7 @@
 #n Wyam.Json
 #n Wyam.Sass
 #n Wyam.Minification
+#n Wyam.Feeds
 
 #n Octokit -v 0.29.0
 #n AngleSharp -v 0.9.9.1
@@ -20,6 +21,9 @@ using Microsoft.SyndicationFeed.Rss;
 using Microsoft.SyndicationFeed.Atom;
 using Newtonsoft.Json;
 using System.IO;
+
+Settings[Keys.Host] = "discoverdot.net";
+Settings[Keys.LinksUseHttps] = true;
 
 //////////////////////////////////////////////////////////////////////
 // Pipelines
@@ -491,6 +495,28 @@ Pipelines.Add("Sass",
 
 Pipelines.Add("Site Resources",
     CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
+);
+
+// Feeds
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("News Feed",
+    Documents("Posts"),
+    Concat(Documents("Episodes")),
+    Where((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Recent),
+    OrderBy((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Published).Descending(),
+    GenerateFeeds()
+        .WithAtomPath(_ => "feeds/news.atom")
+        .WithRssPath(_ => "feeds/news.rss")
+        .WithFeedTitle(_ => "Recent News From Discover .NET")
+        .WithFeedDescription(_ => "A roundup of recent blog posts, podcasts, and more.")
+        .WithItemTitle((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Title)
+        .WithItemDescription((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Description)
+        .WithItemPublished((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Published.DateTime)
+        .WithItemLink((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Link)
+        .WithItemId((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Link)
+        .WithItemImageLink((doc, ctx) => null),
+    WriteFiles()
 );
 
 //////////////////////////////////////////////////////////////////////
