@@ -1,0 +1,52 @@
+Title: Suggest A Group
+---
+<suggest title="Group" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/groups">
+    <p>Note that the Meetup API is used to find and automatically add all groups with a topic of ".NET". If your group is on Meetup and uses the ".NET" topic you don't need to supply a YAML file for it.</p>
+</suggest>
+
+@section Script {
+    <script type="text/javascript">
+        Vue.component('suggest', httpVueLoader('/components/suggest.vue'));
+
+        Vue.mixin({
+            data: function () {
+                return {
+                    fields: [
+                        {
+                            name: "Meetup",
+                            description: "The Meetup ID of the group (from the group URL). If the group is on Meetup, please use this property so we can get more data from the Meetup API."
+                        },
+                        {
+                            name: "Website",
+                            description: "The URL of the group. If the Meetup property is provided and this is omitted, then the website will be taken from the Meetup API."
+                        },
+                        {
+                            name: "Title",
+                            description: "The title of the group. If the Meetup property is provided and this is omitted, then the title will be taken from the Meetup API."
+                        },
+                        {
+                            name: "Image",
+                            description: "A URL to an image or logo of the group. If the Meetup property is provided and this is omitted, then the image will be taken from the Meetup API."
+                        },
+                        {
+                            name: "Location",
+                            description: "A plain text description of the location of the group. If the Meetup property is provided and this is omitted, then the location will be taken from the Meetup API."
+                        },
+                        {
+                            name: "Country",
+                            description: "The localized country name where the group is located (used for filtering)."
+                        },
+                        {
+                            name: "Lat",
+                            description: "A rough latitude in decimal form of the group location used for mapping and proximity calculations. If the Meetup property is provided and this is omitted, then the latitude will be taken from the Meetup API. If you need to lookup the latitude you can use <a href='http://www.geonames.org/'>GeoNames</a>."
+                        },
+                        {
+                            name: "Lon",
+                            description: "A rough longitude in decimal form of the group location used for mapping and proximity calculations. If the Meetup property is provided and this is omitted, then the longitude will be taken from the Meetup API. If you need to lookup the longitude you can use <a href='http://www.geonames.org/'>GeoNames</a>."
+                        }
+                    ]
+                };
+            }
+        })
+    </script>
+}

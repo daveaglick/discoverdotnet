@@ -43,7 +43,7 @@
             <header class="mb-4">
                 <div class="logo-header text-center">
                     <div class="logo-wrapper">
-                        <div class="logo container">
+                        <div class="logo container-fluid layout-container">
                             <div class="binoculars">
                                 <i class="fas fa-binoculars" data-fa-transform="rotate-30"></i>
                             </div>
@@ -56,7 +56,7 @@
                     </v-map>
                 </div>
                 <b-navbar toggleable="md" type="dark" variant="dark">
-                    <b-container>
+                    <b-container fluid class="layout-container">
                         <div class="flex-grow-1">
                             <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
                             <b-collapse is-nav id="main-nav-collapse">
@@ -78,12 +78,12 @@
                 </b-navbar>
             </header>
             <main>
-                <b-container id="main">
+                <b-container fluid id="main" class="layout-container">
                     @RenderBody()
                 </b-container>
             </main>
             <footer class="bg-dark text-center text-muted py-3 mt-5">
-                <b-container>
+                <b-container fluid class="layout-container">
                     <div class="mb-2">
                         <a href="/get-involved" class="text-light mr-2">Get Involved</a>
                         <a href="/suggest" class="text-light mr-2">Suggest Content</a>

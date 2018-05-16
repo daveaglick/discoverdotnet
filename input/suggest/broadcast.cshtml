@@ -1,0 +1,43 @@
+Title: Suggest A Broadcast
+---
+<suggest title="Broadcast" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/broadcasts">
+    <p>Note that a broadcast can be any sort of episodic program such as a podcast, video channel, playlist, etc.</p>
+    <p>To add a YouTube playlist, find the playlist ID in the normal URL and then add a feed with a URL of <code>https://www.youtube.com/feeds/videos.xml?playlist_id=[playlist ID]</code></p>
+    <p>To add a YouTube channel, find the channel ID in the normal URL and then add a feed with a URL of <code>https://www.youtube.com/feeds/videos.xml?channel_id=[channel ID]</code></p>
+</suggest>
+
+@section Script {
+    <script type="text/javascript">
+        Vue.component('suggest', httpVueLoader('/components/suggest.vue'));
+
+        Vue.mixin({
+            data: function () {
+                return {
+                    fields: [
+                        {
+                            name: "Feed",
+                            description: "<strong>Required.</strong> A URL to the feed for the broadcast (the format will be auto-detected).",
+                            required: true
+                        },
+                        {
+                            name: "Title",
+                            description: "The title of the broadcast. If a feed was provided and this is omitted, the title will be taken from the feed."
+                        },
+                        {
+                            name: "Website",
+                            description: "The URL of the broadcast. If a feed was provided and this is omitted, the website will be taken from the feed."
+                        },
+                        {
+                            name: "Image",
+                            description: "A URL to an image or logo of the broadcast."
+                        },
+                        {
+                            name: "Description",
+                            description: "The description of the broadcast. If a feed was provided and this is omitted, the description will be taken from the feed."
+                        }
+                    ]
+                };
+            }
+        })
+    </script>
+}
