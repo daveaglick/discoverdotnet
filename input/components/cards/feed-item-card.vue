@@ -1,7 +1,8 @@
 <template>
     <small-card :icon="icon">
         <div v-if="cardData.links && cardData.links.image"><b-img fluid :src="cardData.links.image" class="small-card-image mb-2"></b-img></div>
-        <h5 class="card-title font-weight-bold"><a :href="cardData.link">{{ cardData.title }}</a></h5>      
+        <h5 class="card-title font-weight-bold mb-2"><a :href="cardData.link">{{ cardData.title }}</a></h5>
+        <div v-if="cardData.author" class="text-muted mb-2">By {{ cardData.author }}</div>
         <h6 v-if="cardData.published" class="card-subtitle mb-2 text-muted">{{ moment(cardData.published).format("LL") }}</h6>
         <play-button :card-data="cardData"></play-button>
         <div v-if="feed"><a :href="feed.link">{{ feed.title }}</a></div>

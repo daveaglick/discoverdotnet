@@ -515,6 +515,11 @@ Pipelines.Add("News Feed",
         .WithItemPublished((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Published.DateTime)
         .WithItemLink((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Link)
         .WithItemId((doc, ctx) => doc.Get<FeedItemData>("FeedItems").Link)
+        .WithItemAuthor((doc, ctx) => 
+            doc.Get<FeedItemData>("FeedItems").Author
+            ?? doc.String("Author")
+            ?? doc.String("Title")
+        )
         .WithItemImageLink((doc, ctx) => null),
     WriteFiles()
 );
@@ -720,6 +725,7 @@ public class FeedItemData
     public DateTimeOffset Published { get; }
     public bool Recent { get; }
     public IDictionary<string, string> Links { get; }
+    public string Author { get; }
 
     public FeedItemData(ISyndicationItem item, DateTimeOffset recent)
     {
@@ -733,6 +739,12 @@ public class FeedItemData
             .GroupBy(x => x.MediaType)
             .Select(x => x.First())
             .ToDictionary(x => x.MediaType, x => x.Uri.ToString());
+
+        ISyndicationPerson person = item.Contributors.FirstOrDefault(x => x.RelationshipType == "author");
+        if(person != null)
+        {
+            Author = person.Name ?? person.Email;
+        }
 
         AtomEntry atom = item as AtomEntry;
         if(atom != null && !string.IsNullOrEmpty(atom.Summary))
@@ -757,6 +769,7 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     Wyam.Common.Tracing.Trace.Information($"Getting feed for {feed}");
                     string website = null;
                     string title = null;
+                    string author = null;
                     string description = null;
                     string image = null;
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
@@ -780,6 +793,14 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                                         {
                                             switch(feedReader.ElementType)
                                             {
+                                                case SyndicationElementType.Person:
+                                                    ISyndicationPerson person = await feedReader.ReadPerson();
+                                                    if(person.RelationshipType == "author")
+                                                    {
+                                                        author = person.Name ?? person.Email;
+                                                    }
+                                                    break;
+
                                                 case SyndicationElementType.Image:
                                                     ISyndicationImage img = await feedReader.ReadImage();
                                                     image = img.Url.ToString();
@@ -842,6 +863,10 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     if(!input.ContainsKey("Title") && !string.IsNullOrEmpty(title))
                     {
                         metadata.Add("Title", title);
+                    }
+                    if(!input.ContainsKey("Author") && !string.IsNullOrEmpty(author))
+                    {
+                        metadata.Add("Author", author);
                     }
                     if(!input.ContainsKey("Description") && !string.IsNullOrEmpty(description))
                     {

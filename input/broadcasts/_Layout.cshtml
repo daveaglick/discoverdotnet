@@ -28,6 +28,7 @@
 					string image = Model.String("Image");
                     string website = Model.String("Website");
                     string feed = Model.String("Feed");
+                    string author = Model.String("Author");
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
@@ -50,6 +51,15 @@
                             <a href="@(feed)">{{ '@(feed)' | no-protocol }}</a>
                         </p>
                     } 
+                    if(!string.IsNullOrWhiteSpace(author))
+                    {
+                        <h5>
+                            <span class="fas fa-user"></span> Author
+                        </h5>
+                        <p>
+                            {{ @author }}
+                        </p>
+                    }    
                 }
             </b-card-body>
 		</b-card>
