@@ -285,6 +285,7 @@ Pipelines.Add("Groups",
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetMeetupData(inputs, ctx).Result),
+    Meta("Link", (doc, ctx) => doc.String("Website")),
     Meta("CardType", "Group"),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
@@ -323,6 +324,7 @@ Pipelines.Add("Events",
     ),
     OrderBy((doc, ctx) => doc.String("Date")),
     Content(string.Empty),
+    Meta("Link", (doc, ctx) => doc.String("Website")),
     Meta("CardType", "Event"),
     Meta("CardData", (doc, ctx) => doc.GetMetadata(
         "Website",
@@ -360,6 +362,7 @@ Pipelines.Add("Resources",
         Take(10)),
     Yaml(),    
     Content(string.Empty),
+    Meta("Link", (doc, ctx) => doc.String("Website")),
     Meta("CardType", "Resource"),
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Website",
@@ -520,6 +523,23 @@ Pipelines.Add("News Feed",
             ?? doc.String("Author")
             ?? doc.String("Title")
         )
+        .WithItemImageLink((doc, ctx) => null),
+    WriteFiles()
+);
+
+Pipelines.Add("Discoveries Feed",
+    Documents("Discoveries"),
+    Take(10),
+    GenerateFeeds()
+        .WithAtomPath(_ => "feeds/discoveries.atom")
+        .WithRssPath(_ => "feeds/discoveries.rss")
+        .WithFeedTitle(_ => "Recent Discoveries From Discover .NET")
+        .WithFeedDescription(_ => "A new discovery (almost) every day.")
+        .WithItemTitle((doc, ctx) => doc.String("Title"))
+        .WithItemDescription((doc, ctx) => doc.String("Description"))
+        .WithItemPublished((doc, ctx) => doc.DateTime("DiscoveryDate"))
+        .WithItemLink((doc, ctx) => ctx.GetLink(doc.String("Link"), true))
+        .WithItemId((doc, ctx) => ctx.GetLink(doc.String("Link"), true))
         .WithItemImageLink((doc, ctx) => null),
     WriteFiles()
 );
