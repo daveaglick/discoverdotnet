@@ -19,9 +19,12 @@
     {
         <b-badge variant="primary" href="/projects/?filter-netfoundation" class="mr-1">.NET Foundation</b-badge>
     }
-    @foreach(string tag in Model.List<string>("Tags"))
+    @if(Model.ContainsKey("Tags"))
     {
-        <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
+        foreach(string tag in Model.List<string>("Tags"))
+        {
+            <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
+        }
     }
 </div>
 <div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.String("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
