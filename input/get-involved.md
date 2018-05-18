@@ -1,6 +1,11 @@
 Title: Get Involved
 ---
+
 Engaging with the broader .NET community and participating in open source can be extremely rewarding. There are lots of ways to get involved in .NET and open source, and many of them don't even require much effort or a huge time commitment.
+
+# Contribute to Discover .NET
+
+This site is a community resource and as such it can't exist without your help. The .NET ecosystem is just too big for one person to maintain an up-to-date and comprehensive catalog of everything. If you know of a project, blog, or other resource that's missing, [suggest it](/suggest). If you notice missing or incorrect data for an existing item, most of them have edit links. Finally, consider [opening an issue](https://github.com/daveaglick/discoverdotnet/issues) if you find bugs or have ideas about how the site could be improved.
 
 # Talk to fellow developers
 

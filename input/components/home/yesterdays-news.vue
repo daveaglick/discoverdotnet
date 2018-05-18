@@ -16,7 +16,7 @@
 
         <div class="row">
             <div v-for="card in cardData" :key="card.link" class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-4 full-height-card">
-                <feed-item-card :icon="getIcon(card)" :card-data="card" :feed-keys="feedKeys">
+                <feed-item-card :icon="getIcon(card)" :card-data="card">
                 </feed-item-card>
             </div>
         </div>
@@ -37,23 +37,14 @@
     module.exports = {
         data: function() {
             return {
-                cardData: [],
-                feedKeys: []
+                cardData: []
             }
         },
         created: function() {
             axios
-                .get('/data/recent-feed-items.json')
+                .get('/data/news.json')
                 .then(response => {
                     this.cardData = response.data
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-            axios
-                .get('/data/feed-keys.json')
-                .then(response => {
-                    this.feedKeys = response.data
                 })
                 .catch(e => {
                     console.log(e);
@@ -61,10 +52,10 @@
         },
         methods: {
             getIcon: function(card) {
-                if(card.feedKey.startsWith('blogs/')) {
+                if(card.feedLink.startsWith('/blogs/')) {
                     return "fa-pencil-alt";
                 }
-                if(card.feedKey.startsWith('broadcasts/')) {
+                if(card.feedLink.startsWith('/broadcasts/')) {
                     return "fa-headphones";
                 }
                 return "";

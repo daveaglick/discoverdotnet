@@ -64,6 +64,8 @@ Pipelines.Add("Projects",
         "Title",
         "Link",
         "Image",
+        "NuGet",
+        "Source",
         "Description",
         "StargazersCount",
         "ForksCount",
@@ -87,6 +89,14 @@ Pipelines.Add("Project Data",
         .WithCamelCase(),
     MinifyJs(),
     WriteFiles((doc, ctx) => "data/projects.json")
+);
+
+Pipelines.Add("Individual Project Data",
+    Documents("Projects"),
+    GenerateJson((doc, ctx) => doc["CardData"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/projects/" + doc.Source.FileName.ChangeExtension(".json"))
 );
 
 Pipelines.Add("Project Search Data",
@@ -137,7 +147,7 @@ Pipelines.Add("Blogs",
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
-    Meta("Key", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath),
+    Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/blogs/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
@@ -167,6 +177,14 @@ Pipelines.Add("Blog Data",
     WriteFiles((doc, ctx) => "data/blogs.json")
 );
 
+Pipelines.Add("Individual Blog Data",
+    Documents("Blogs"),
+    GenerateJson((doc, ctx) => doc["CardData"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/blogs/" + doc.Source.FileName.ChangeExtension(".json"))
+);
+
 Pipelines.Add("Blog Search Data",
     GenerateJson((doc, ctx) =>
         ctx.Documents.FromPipeline("Blogs").Select(x => x["SearchData"]))
@@ -181,8 +199,7 @@ Pipelines.Add("Posts",
     GenerateJson((doc, ctx) => doc["FeedItems"])
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "data/posts/blogs/" + doc.Source.FileName.ChangeExtension(".json")),
-    Meta("FeedKey", (doc, ctx) => "blogs/" + doc.Source.FileNameWithoutExtension.FullPath)
+    WriteFiles((doc, ctx) => "data/posts/" + doc.Source.FileName.ChangeExtension(".json"))
 );
 
 Pipelines.Add("Post Search Data",
@@ -211,7 +228,7 @@ Pipelines.Add("Broadcasts",
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
-    Meta("Key", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath),
+    Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Razor()
         .WithLayout("/broadcasts/_Layout.cshtml"),
     WriteFiles((doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
@@ -241,6 +258,14 @@ Pipelines.Add("Broadcast Data",
     WriteFiles((doc, ctx) => "data/broadcasts.json")
 );
 
+Pipelines.Add("Individual Broadcast Data",
+    Documents("Broadcasts"),
+    GenerateJson((doc, ctx) => doc["CardData"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "data/broadcasts/" + doc.Source.FileName.ChangeExtension(".json"))
+);
+
 Pipelines.Add("Broadcast Search Data",
     GenerateJson((doc, ctx) =>
         ctx.Documents.FromPipeline("Broadcasts").Select(x => x["SearchData"]))
@@ -255,8 +280,7 @@ Pipelines.Add("Episodes",
     GenerateJson((doc, ctx) => doc["FeedItems"])
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "data/episodes/broadcasts/" + doc.Source.FileName.ChangeExtension(".json")),
-    Meta("FeedKey", (doc, ctx) => "broadcasts/" + doc.Source.FileNameWithoutExtension.FullPath)
+    WriteFiles((doc, ctx) => "data/episodes/" + doc.Source.FileName.ChangeExtension(".json"))
 );
 
 Pipelines.Add("Episode Search Data",
@@ -399,14 +423,15 @@ Pipelines.Add("Resource Search Data",
 // Aggregate, Pages, and Resources
 //////////////////////////////////////////////////////////////////////
 
-Pipelines.Add("Recent Feed Items",
+Pipelines.Add("News",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Posts")
         .Concat(ctx.Documents.FromPipeline("Episodes"))
         .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
             .Where(p => p.Recent)
             .Select(p => new
             {
-                FeedKey = d.String("FeedKey"),
+                FeedLink = d.String("Link"),
+                FeedTitle = d.String("Title"),
                 Published = p.Published,
                 Link = p.Link,
                 Title = p.Title,
@@ -415,20 +440,7 @@ Pipelines.Add("Recent Feed Items",
         .OrderByDescending(x => x.Published))
         .WithCamelCase(),
     MinifyJs(),
-    WriteFiles((doc, ctx) => "data/recent-feed-items.json")
-);
-
-Pipelines.Add("Feed Keys",
-    GenerateJson((doc, ctx) =>
-        ctx.Documents.FromPipeline("Blogs")
-            .Concat(ctx.Documents.FromPipeline("Broadcasts"))
-            .Select(x => x.GetMetadata(
-                "Key",
-                "Title",
-                "Link")))
-        .WithCamelCase(),
-    MinifyJs(),
-    WriteFiles((doc, ctx) => "data/feed-keys.json")
+    WriteFiles((doc, ctx) => "data/news.json")
 );
 
 Pipelines.Add("Discoveries",

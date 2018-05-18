@@ -18,7 +18,7 @@
             <b-col sm v-if="(getIndexResults('blogs') !== null && getIndexResults('blogs').nbHits > 0) || (getIndexResults('posts') !== null && getIndexResults('posts').nbHits > 0)">
                 <search-results title="Blogs" :results="getIndexResults('blogs')"> 
                     <template slot-scope="props">
-                        <div><b-link :href="'/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                        <div><b-link :href="'/blogs/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
                         <div class="small" v-if="props.result._highlightResult.description" v-html="props.result._highlightResult.description.value"></div>
                     </template>
                 </search-results>
@@ -32,7 +32,7 @@
             <b-col sm v-if="(getIndexResults('broadcasts') !== null && getIndexResults('broadcasts').nbHits > 0) || (getIndexResults('episodes') !== null && getIndexResults('episodes').nbHits > 0) || (getIndexResults('resources') !== null && getIndexResults('resources').nbHits > 0)">
                 <search-results title="Broadcasts" :results="getIndexResults('broadcasts')"> 
                     <template slot-scope="props">
-                        <div><b-link :href="'/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
+                        <div><b-link :href="'/broadcasts/' + props.result.key" class="font-weight-bold" v-html="props.result._highlightResult.title.value"></b-link></div>
                         <div class="small" v-if="props.result._highlightResult.description" v-html="props.result._highlightResult.description.value"></div>
                     </template>
                 </search-results>

@@ -5,7 +5,7 @@
         <div v-if="cardData.author" class="text-muted mb-2">By {{ cardData.author }}</div>
         <h6 v-if="cardData.published" class="card-subtitle mb-2 text-muted">{{ moment(cardData.published).format("LL") }}</h6>
         <play-button :card-data="cardData"></play-button>
-        <div v-if="feed"><a :href="feed.link">{{ feed.title }}</a></div>
+        <div v-if="cardData.feedLink"><a :href="cardData.feedLink">{{ cardData.feedTitle }}</a></div>
         <slot></slot>
         <div v-if="cardData.description" :class="{ 'collapsed-detail': collapsed }">
             <div v-html="cardData.description"></div>
@@ -22,22 +22,12 @@
     module.exports = {
         props: [
             'icon',
-            'cardData',
-            'feedKeys'
+            'cardData'
         ],
         data: function() {
             return {
-                feed: null,
                 collapsed: true
             };
-        },
-        created: function() {
-            var self = this;
-            if(this.feedKeys) {
-                this.feed = this.feedKeys.find(function(item) {
-                    return item.key == self.cardData.feedKey;
-                });
-            }
         },
         methods: {
             expand: function() {
