@@ -3,14 +3,14 @@
         <discovery></discovery>        
         <past-discoveries></past-discoveries>
         <div class="text-center">
-            <b-alert show variant="secondary" class="d-inline-block">
+            <b-alert show variant="secondary" class="d-inline-block text-muted small">
                 <i class="fas fa-rss"></i> <a href="/feeds/discoveries.atom" class="mr-2">Atom</a>
                 <i class="fas fa-rss"></i> <a href="/feeds/discoveries.rss">RSS</a>
             </b-alert>
         </div>
     </b-col>
     <b-col md="12" lg="6">
-        <yesterdays-news></yesterdays-news>
+        <recent-news></recent-news>
     </b-col>
     <b-col md="12" lg="3">
         <issues></issues>
@@ -20,7 +20,7 @@
 <script type="text/javascript">
     Vue.component('discovery', httpVueLoader('/components/home/discovery.vue'));
     Vue.component('past-discoveries', httpVueLoader('/components/home/past-discoveries.vue'));
-    Vue.component('yesterdays-news', httpVueLoader('/components/home/yesterdays-news.vue'));
+    Vue.component('recent-news', httpVueLoader('/components/home/recent-news.vue'));
     Vue.component('issues', httpVueLoader('/components/home/issues.vue'));
     Vue.component('recent-issues', httpVueLoader('/components/home/recent-issues.vue'));
     Vue.component('help-wanted', httpVueLoader('/components/home/help-wanted.vue'));

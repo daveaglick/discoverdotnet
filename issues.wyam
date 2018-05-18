@@ -30,6 +30,7 @@ Pipelines.Add("Project Counts",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
         .Select(x => x.GetMetadata(
             "ProjectKey",
+            "IssuesCount",
             "RecentIssuesCount",
             "HelpWantedIssuesCount"
         )))
@@ -356,6 +357,7 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
                     { "GitHubOwner", owner },
                     { "GitHubName", name },
                     { "Issues", issueData },
+                    { "IssuesCount", issueData.Length },
                     { "RecentIssuesCount", issueData.Count(x => x.Recent) },
                     { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
                 };                

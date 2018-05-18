@@ -163,7 +163,9 @@ Pipelines.Add("Blogs",
         "Image",
         "Link",
         "Description",
+        "Author",
         "Website",
+        "Feed",
         "LastPublished",
         "NewestFeedItem"
     ))
@@ -244,7 +246,9 @@ Pipelines.Add("Broadcasts",
         "Image",
         "Link",
         "Description",
+        "Author",
         "Website",
+        "Feed",
         "LastPublished",
         "NewestFeedItem"
     ))
@@ -435,7 +439,8 @@ Pipelines.Add("News",
                 Published = p.Published,
                 Link = p.Link,
                 Title = p.Title,
-                Links = p.Links
+                Links = p.Links,
+                Author = p.Author
             }))
         .OrderByDescending(x => x.Published))
         .WithCamelCase(),

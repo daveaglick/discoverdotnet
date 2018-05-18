@@ -2,7 +2,7 @@
     <div class="mb-5">
         <div class="text-center">            
             <h3>
-                <span class="accent-secondary">Yesterday's</span>
+                <span class="accent-secondary">Recent</span>
                 <span class="accent-primary">News</span>
                 
                 <!-- This adds extra height to line up the hr -->
@@ -22,7 +22,7 @@
         </div>
 
         <div class="text-center">
-            <b-alert show variant="secondary" class="d-inline-block">
+            <b-alert show variant="secondary" class="d-inline-block text-muted small">
                 <i class="fas fa-rss"></i> <a href="/feeds/news.atom" class="mr-2">Atom</a>
                 <i class="fas fa-rss"></i> <a href="/feeds/news.rss">RSS</a>
             </b-alert>
