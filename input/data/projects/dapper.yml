@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Dapper
+Source: https://github.com/StackExchange/Dapper
+Tags:
+  - ORM

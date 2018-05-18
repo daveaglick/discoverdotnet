@@ -1,0 +1,6 @@
+Language: C#
+NuGet: ServiceStack.OrmLite.SqlServer
+Source: https://github.com/ServiceStack/ServiceStack.OrmLite
+Tags:
+  - ORM
+Twitter: ServiceStack

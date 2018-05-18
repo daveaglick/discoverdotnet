@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/CollaboratingPlatypus/PetaPoco/master/Media/Logo2/PetaPocoLogo2_256.png
+Language: C#
+NuGet: PetaPoco
+Source: https://github.com/CollaboratingPlatypus/PetaPoco
+Tags:
+  - ORM

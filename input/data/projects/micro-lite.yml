@@ -1,0 +1,5 @@
+Language: C#
+NuGet: MicroLite
+Source: https://github.com/TrevorPilley/MicroLite
+Tags:
+  - ORM

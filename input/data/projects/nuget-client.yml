@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/NuGet/Home/dev/resources/nuget.png
+Language: C#
+Source: https://github.com/NuGet/NuGet.Client
+Tags:
+  - NuGet
+  - Package Manager

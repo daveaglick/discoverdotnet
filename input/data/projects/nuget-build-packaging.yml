@@ -1,0 +1,6 @@
+Image: https://raw.githubusercontent.com/NuGet/NuGet.Build.Packaging/master/Nugetizer-3000.png
+Language: C#
+NuGet: NuGet.Build.Packaging
+Source: https://github.com/NuGet/NuGet.Build.Packaging
+Tags:
+  - NuGet

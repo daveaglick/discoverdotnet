@@ -1,0 +1,5 @@
+Language: C#
+NuGet: Insight.Database
+Source: https://github.com/jonwagner/Insight.Database
+Tags:
+  - ORM
