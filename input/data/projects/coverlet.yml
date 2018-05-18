@@ -1,0 +1,5 @@
+Source: https://github.com/tonerdo/coverlet
+NuGet: coverlet.msbuild
+Tags:
+  - Testing
+  - Code Analysis
