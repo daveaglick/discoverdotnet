@@ -22,7 +22,7 @@
                 <i class="fas fa-heart"></i> <b-link :href="cardData.donations" class="text-white">Donations Accepted</b-link>
             </div>
             <div v-if="issueCounts && issueCounts.helpWantedIssuesCount > 0" class="bg-gradient-success text-white text-center p-2">
-                <b-link :href="cardData.link + '?tab=issues&filter=helpwanted'" class="text-white"><b-badge variant="light"><i class="fas fa-bug"></i> {{ issueCounts.helpWantedIssuesCount }}</b-badge> Help Wanted</b-link>
+                <b-link :href="cardData.link + '?tab=issues&filter-helpwanted'" class="text-white"><b-badge variant="light"><i class="fas fa-bug"></i> {{ issueCounts.helpWantedIssuesCount }}</b-badge> Help Wanted</b-link>
             </div>
         </div> 
         <div slot="footer" class="small">
@@ -31,12 +31,12 @@
             </description>
             <description v-if="cardData.language" term="Language">{{ cardData.language }}</description>
             <description v-if="cardData.tags" term="Tags">
-                <div v-for="tag in cardData.tags" :key="tag">{{ tag }}</div>
+                <div v-for="tag in cardData.tags" :key="tag"><a :href="'/projects/?filter-tags=' + tag"><i class="fas fa-tag"></i> {{ tag }}</a></div>
             </description>
             <div>
-                <b-badge v-if="cardData.platform" variant="dark">.NET Platform</b-badge>
-                <b-badge v-if="cardData.microsoft" variant="success">Microsoft</b-badge>
-                <b-badge v-if="cardData.foundation" variant="primary">.NET Foundation</b-badge>
+                <b-badge v-if="cardData.platform" variant="dark" href="/projects/?filter-netplatform">.NET Platform</b-badge>
+                <b-badge v-if="cardData.microsoft" variant="success" href="/projects/?filter-microsoft">Microsoft</b-badge>
+                <b-badge v-if="cardData.foundation" variant="primary" href="/projects/?filter-netfoundation">.NET Foundation</b-badge>
             </div>
         </div>
     </card>

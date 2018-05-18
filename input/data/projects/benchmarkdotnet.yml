@@ -5,3 +5,4 @@ NuGet: BenchmarkDotNet
 Source: https://github.com/dotnet/BenchmarkDotNet
 Tags:
   - Code Analysis
+  - Profiling

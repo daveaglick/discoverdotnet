@@ -6,18 +6,22 @@
 <h1 class="mb-0 font-weight-bold display-4">
     @Model.String("Title")
 </h1>
-<div>
+<div class="mt-2">
     @if(Model.Bool("Platform"))
     {
-        <b-badge variant="dark">.NET Platform</b-badge>
+        <b-badge variant="dark" href="/projects/?filter-netplatform" class="mr-1">.NET Platform</b-badge>
     }
     @if(Model.Bool("Microsoft"))
     {
-        <b-badge variant="success">Microsoft</b-badge>
+        <b-badge variant="success" href="/projects/?filter-microsoft" class="mr-1">Microsoft</b-badge>
     }
     @if(Model.Bool("Foundation"))
     {
-        <b-badge variant="primary">.NET Foundation</b-badge>
+        <b-badge variant="primary" href="/projects/?filter-netfoundation" class="mr-1">.NET Foundation</b-badge>
+    }
+    @foreach(string tag in Model.List<string>("Tags"))
+    {
+        <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
     }
 </div>
 <div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.String("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>

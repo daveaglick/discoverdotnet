@@ -73,13 +73,13 @@
                     {
                         text: 'A-Z',
                         sort: function(a, b) {
-                            return a.title.localeCompare(b.title);
+                            return a.title ? a.title.localeCompare(b.title) : -1;
                         }
                     },
                     {
                         text: 'Z-A',
                         sort: function(a, b) {      
-                            return b.title.localeCompare(a.title);     
+                            return b.title ? b.title.localeCompare(a.title) : -1;
                         }
                     }
                 ]

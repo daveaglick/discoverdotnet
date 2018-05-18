@@ -145,20 +145,30 @@
             if(this.filters) {
                 this.resetFilterSelection();
 
-                // Preselect a filter from the query string
                 var queryDict = {};
                 location.search.substr(1).split("&").forEach(function(item) {
-                    queryDict[item.split("=")[0]] = item.split("=")[1]
+                    queryDict[item.split("=")[0].toLowerCase()] = item.split("=")[1]
                 });
-                if('filter' in queryDict) {
-                    var filterText = queryDict['filter'];
-                    var filterIndex = this.filters.findIndex(function(item) {
-                        return item.text.replace(/\W/g, '').toLowerCase() === filterText.toLowerCase();
-                    });
-                    if(filterIndex !== -1 && this.selected[filterIndex] === false) {
-                        this.selected[filterIndex] = true;
+
+                // Preselect a filter from the query string
+                var self = this;
+                this.filters.forEach(function(filter, filterIndex) {
+                    var filterQuery = 'filter-' + filter.text.replace(/\W/g, '').toLowerCase();
+                    if(filterQuery in queryDict) {
+                        if(!queryDict[filterQuery]) {
+                            // Simple toggle filter
+                            if(self.selected[filterIndex] === false) {
+                                self.selected[filterIndex] = true;
+                            }
+                        } else {
+                            // Filter value                            
+                            var filterText = decodeURIComponent(queryDict[filterQuery]);
+                            filterText.split(",").forEach(function(filterItem) {
+                                self.selected[filterIndex].push(filterItem);
+                            });
+                        }
                     }
-                }
+                });
             }
 
             // Get the card data

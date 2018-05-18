@@ -10,9 +10,9 @@
             <hr/>
             <p class="accent-script">{{ projectKeys.length }} total projects indexed!</p>
             <p class="text-left"><a href="/projects">All Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>   
-            <p class="text-left"><a href="/projects/?filter=NETPlatform">All .NET Platform Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         
-            <p class="text-left"><a href="/projects/?filter=Microsoft">All Microsoft Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         
-            <p class="text-left"><a href="/projects/?filter=NETFoundation">All .NET Foundation Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>      
+            <p class="text-left"><a href="/projects/?filter-netplatform">All .NET Platform Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/projects/?filter-microsoft">All Microsoft Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>         
+            <p class="text-left"><a href="/projects/?filter-netfoundation">All .NET Foundation Projects <span class="fa fa-long-arrow-alt-right"></span></a></p>      
         </div>
     </div>
 </template>

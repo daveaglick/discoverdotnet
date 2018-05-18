@@ -1,4 +1,5 @@
 Title: MyGet
+Image: https://www.myget.org/Content/images/myget/logo.png
 Description: Continuous Integration and Deployment, Hosted Package Repository for NuGet, NPM, Bower and VSIX. Free for open source.
 Website: http://www.myget.org
 Tags:
