@@ -594,10 +594,10 @@ Example response:
 ```json
 [
     {
-        "website": "http://www.devsum.se/",
+        "website": "https://www.devsum.se/",
         "title": "DevSum18",
         "description": "At DevSum the focus is the latest trends and technologies.",
-        "image": "http://www.devsum.se/wp-content/uploads/2017/09/devsum18_196x60_header-vit-1.png",
+        "image": "https://www.devsum.se/wp-content/uploads/2017/09/devsum18_196x60_header-vit-1.png",
         "location": "Stockholm, Sweden",
         "country": "Sweden",
         "lat": "59.19",
