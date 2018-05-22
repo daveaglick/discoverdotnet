@@ -466,6 +466,7 @@ Pipelines.Add("Discoveries",
         Documents("Resources")
     ),
     Where(@doc.ContainsKey("DiscoveryDate")),
+    Where(@doc.DateTime("DiscoveryDate") <= DateTime.Today),
     OrderBy(@doc.DateTime("DiscoveryDate"))
         .Descending()
 );
