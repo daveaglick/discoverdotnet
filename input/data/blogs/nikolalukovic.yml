@@ -1,2 +1,7 @@
 Feed: https://www.nikolalukovic.com/rss-feed.xml
 Title: Nikola Lukovic
+Tags:
+  - WPF
+  - XAML
+  - CLR
+  - DLR
