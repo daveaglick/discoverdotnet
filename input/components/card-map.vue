@@ -1,6 +1,6 @@
 <template>
     <v-map :zoom=1 :center="[41, -38]" style="height: 280px">
-        <v-tilelayer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+        <v-tilelayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></v-tilelayer>
         <v-marker-cluster>
             <v-marker
                 v-for="cardData in filteredCardData"
