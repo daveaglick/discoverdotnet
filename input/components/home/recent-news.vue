@@ -53,7 +53,7 @@
         methods: {
             getIcon: function(card) {
                 if(card.feedLink.startsWith('/blogs/')) {
-                    return "fa-pencil-alt";
+                    return "fa-align-left";
                 }
                 if(card.feedLink.startsWith('/broadcasts/')) {
                     return "fa-headphones";
