@@ -1,0 +1,7 @@
+Source: https://github.com/mellinoe/Veldrid
+NuGet: https://www.nuget.org/packages/Veldrid/
+Language: C#
+Docs: https://mellinoe.github.io/veldrid-docs/
+Chat: https://gitter.im/veldrid/Lobby
+Tags:
+  - graphics vulkan directx direct3d opengl metal gpu game gamedev
