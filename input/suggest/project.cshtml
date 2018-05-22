@@ -2,7 +2,7 @@ Title: Suggest A Project
 ---
 <suggest title="Project" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects">
     <p>
-        Note that for many projects, you'll only need to provide the <code>Source</code> and <code>NuGet</code> fields.
+        Note that for many projects, you'll only need to provide the <code>Source</code>, <code>NuGet</code>, and <code>Language</code> fields.
         The rest of the data is automatically pulled from the GitHub API if available. Other fields that aren't represented
         in GitHub like <code>Image</code> and <code>Chat</code> should also be provided.
     </p>
@@ -23,6 +23,10 @@ Title: Suggest A Project
                         {
                             name: "NuGet",
                             description: "The name (not the full NuGet Gallery URL) of a single primary package for the project. Many projects have multiple NuGet packages, but for now this should just be the most important of them."
+                        },
+                        {
+                            name: "Language",
+                            description: "The primary language of the project (for example, <code>C#</code>, <code>F#</code>, or <code>VB</code>)."
                         },
                         {
                             name: "Image",
@@ -51,10 +55,6 @@ Title: Suggest A Project
                         {
                             name: "Donations",
                             description: "A link to provide donations to the project."
-                        },
-                        {
-                            name: "Language",
-                            description: "The primary language of the project (for example, <code>C#</code>, <code>F#</code>, or <code>VB</code>)."
                         },
                         {
                             name: "Twitter",
