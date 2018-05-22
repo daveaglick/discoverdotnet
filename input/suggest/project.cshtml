@@ -1,6 +1,12 @@
 Title: Suggest A Project
 ---
-<suggest title="Project" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects"></suggest>
+<suggest title="Project" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects">
+    <p>
+        Note that for many projects, you'll only need to provide the <code>Source</code> and <code>NuGet</code> fields.
+        The rest of the data is automatically pulled from the GitHub API if available. Other fields that aren't represented
+        in GitHub like <code>Image</code> and <code>Chat</code> should also be provided.
+    </p>
+</suggest>
 
 @section Script {
     <script type="text/javascript">
@@ -15,12 +21,16 @@ Title: Suggest A Project
                             description: "The location of the source code for the project. Should contain a full URL like <code>https://github.com/daveaglick/discoverdotnet</code>."
                         },
                         {
-                            name: "Title",
-                            description: "The title of the project. If a GitHub repository was provided for the source and this is omitted, the title from the repository metadata will be used."
+                            name: "NuGet",
+                            description: "The name (not the full NuGet Gallery URL) of a single primary package for the project. Many projects have multiple NuGet packages, but for now this should just be the most important of them."
                         },
                         {
                             name: "Image",
-                            description: "A URL to an image or logo of the project. "
+                            description: "A URL to an image or logo of the project. This should be a secure <code>https</code> link."
+                        },
+                        {
+                            name: "Title",
+                            description: "The title of the project. If a GitHub repository was provided for the source and this is omitted, the title from the repository metadata will be used."
                         },
                         {
                             name: "Description",
@@ -47,12 +57,8 @@ Title: Suggest A Project
                             description: "The primary language of the project (for example, <code>C#</code>, <code>F#</code>, or <code>VB</code>)."
                         },
                         {
-                            name: "NuGet",
-                            description: "A single primary package for the project. Many projects have multiple NuGet packages, but for now this should just be the most important of them."
-                        },
-                        {
                             name: "Twitter",
-                            description: "The Twitter handle of the project without the <code>@@</code> symbol."
+                            description: "The Twitter handle of the project without the <code>@@</code> symbol. Note that this should be an account dedicated to the project and not be a personal Twitter account."
                         },
                         {
                             name: "Platform",
