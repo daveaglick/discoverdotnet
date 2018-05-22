@@ -15,12 +15,13 @@
             }
         },
         created: function() {
+            var self = this;
             axios
                 .get('/data/project-keys.json')
-                .then(response => {
-                    this.projectKeys = response.data
+                .then(function(response) {
+                    self.projectKeys = response.data
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
         }

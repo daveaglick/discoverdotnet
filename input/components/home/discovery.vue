@@ -25,12 +25,13 @@
             }
         },
         created: function() {
+            var self = this;
             axios
                 .get('/data/discovery.json')
-                .then(response => {
-                    this.cardData = response.data
+                .then(function(response) {
+                    self.cardData = response.data
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
         }

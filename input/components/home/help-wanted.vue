@@ -34,12 +34,13 @@
             }
         },
         created: function() {
+            var self = this;
             axios
                 .get('/data/issues/help-wanted/all.json')
-                .then(response => {
-                    this.issues = response.data
+                .then(function(response) {
+                    self.issues = response.data
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
         },

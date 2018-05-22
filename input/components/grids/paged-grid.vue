@@ -51,18 +51,19 @@
             pageChange: function() {
                 this.populateCardData(true);
             },
-            populateCardData: function(scroll) {                
+            populateCardData: function(scroll) {        
+                var self = this;        
                 axios
                     .get(this.cardJson + (this.currentPage - 1) + ".json")
-                    .then(response => {
-                        this.pagedCardData = response.data;
+                    .then(function(response) {
+                        self.pagedCardData = response.data;
                         if(scroll) {
                             Vue.nextTick(function () {
                                 document.getElementById('card-grid-anchor').scrollIntoView({ behavior: "smooth" });
                             });
                         }
                     })
-                    .catch(e => {
+                    .catch(function(e) {
                         console.log(e);
                     });
             }

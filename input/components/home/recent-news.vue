@@ -41,12 +41,13 @@
             }
         },
         created: function() {
+            var self = this;
             axios
                 .get('/data/news.json')
-                .then(response => {
-                    this.cardData = response.data
+                .then(function(response) {
+                    self.cardData = response.data
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
         },

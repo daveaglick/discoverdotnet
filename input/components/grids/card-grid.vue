@@ -174,14 +174,14 @@
             // Get the card data
             axios
                 .get(this.cardJson)
-                .then(response => {
-                    if(this.randomizeOrder) {
-                        this.cardData = response.data.sort(function(){return 0.5 - Math.random()});
+                .then(function(response) {
+                    if(self.randomizeOrder) {
+                        self.cardData = response.data.sort(function(){return 0.5 - Math.random()});
                     } else {
-                        this.cardData = response.data;
+                        self.cardData = response.data;
                     }
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
                 
@@ -189,10 +189,10 @@
             if(this.extraJson) {
                 axios
                     .get(this.extraJson)
-                    .then(response => {
-                        this.extraData = response.data;
+                    .then(function(response) {
+                        self.extraData = response.data;
                     })
-                    .catch(e => {
+                    .catch(function(e) {
                         console.log(e);
                     });
             }

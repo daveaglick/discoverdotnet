@@ -64,12 +64,13 @@
             }
         },
         created: function() {
+            var self = this;
             axios
                 .get('/data/issues/total-counts.json')
-                .then(response => {
-                    this.totalCounts = response.data
+                .then(function(response) {
+                    self.totalCounts = response.data
                 })
-                .catch(e => {
+                .catch(function(e) {
                     console.log(e);
                 });
         }
