@@ -3,6 +3,6 @@ NuGet: SharpVk
 Source: https://github.com/FacticiusVir/SharpVk
 Image: https://raw.githubusercontent.com/FacticiusVir/SharpVk/master/images/SharpVk.png
 Tags:
-  - Vulkan
-  - SPIR-V
+  - Graphics
+  - Game Development
   - 3D
