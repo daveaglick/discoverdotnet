@@ -1,0 +1,15 @@
+Source: https://github.com/xamarin/xamarin-android/
+Title: Xamarin.Android
+Image: https://github.com/xamarin/xamarin-android/blob/master/Documentation/images/banner.png
+Description: Xamarin.Android provides open-source bindings of the Android SDK for use with .NET managed languages such as C#.
+Website: https://www.xamarin.com/platform
+Docs: https://docs.microsoft.com/en-us/xamarin/android/
+Chat: https://gitter.im/xamarin/xamarin-android
+Language: C#
+Foundation: true
+Microsoft: true
+Tags:
+  - Xamarin
+  - Android
+  - API
+  - Application Framework
