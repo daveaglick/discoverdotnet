@@ -1,6 +1,7 @@
 Language: C#
 NuGet: Microsoft.Msagl
 Source: https://github.com/Microsoft/automatic-graph-layout
+DiscoveryDate: 5/26/2018
 Tags:
   - Data Science
   - Graphics
