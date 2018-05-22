@@ -1,0 +1,5 @@
+Source: https://github.com/maxhauser/semver
+Language: C#
+NuGet: semver
+Tags:
+  - Versioning
