@@ -3,6 +3,8 @@ Description: Orleans is a framework that provides a straight-forward approach to
 Docs: http://dotnet.github.io/orleans/Documentation/Introduction.html
 Language: C#
 NuGet: Microsoft.Orleans.Core
+Foundation: true
+Microsoft: true
 Source: https://github.com/dotnet/orleans
 Tags:
   - Distributed Computing
