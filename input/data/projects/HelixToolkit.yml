@@ -1,0 +1,20 @@
+Source: https://github.com/helix-toolkit/helix-toolkit
+Title: Helix Toolkit
+Image: https://avatars3.githubusercontent.com/u/8432523?s=200&v=4
+Description: Helix Toolkit is a collection of 3D components for .NET.
+Website: http://helix-toolkit.org/
+Language: C#
+NuGet: https://www.nuget.org/packages/HelixToolkit.Wpf.SharpDX/2.1.0
+Tags:
+  - Graphics
+  - C#
+  - SharpDX
+  - DirectX
+  - 3D
+  - UWP
+  - WPF
+  - XAML
+  - MVVM
+  - Data Visualization
+  - Dotnet
+  - 3D engine
