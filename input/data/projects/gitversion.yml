@@ -5,3 +5,4 @@ NuGet: GitVersionTask
 Source: https://github.com/GitTools/GitVersion
 Tags:
   - Git
+  - Versioning
