@@ -873,7 +873,7 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                                         }
                                         catch(Exception ex)
                                         {
-                                            Wyam.Common.Tracing.Trace.Warning($"Exception while processing {feedReader.ElementType}: {ex.Message}");
+                                            Wyam.Common.Tracing.Trace.Warning($"Exception while processing {feedReader.ElementType} in {feed}: {ex.Message}");
                                         }
                                     }
                                 }
