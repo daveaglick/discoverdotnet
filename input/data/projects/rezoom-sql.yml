@@ -1,0 +1,7 @@
+Source: https://github.com/rspeele/Rezoom.SQL
+NuGet: Rezoom.SQL.Provider
+Language: F#
+Docs: https://rspeele.gitbooks.io/rezoom-sql/doc/Tutorial/
+Tags:
+  - Type Provider
+  - ORM
