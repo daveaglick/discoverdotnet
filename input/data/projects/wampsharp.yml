@@ -6,10 +6,6 @@ Website: http://wampsharp.net
 Docs: http://wampsharp.net
 Donations: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UHRAS9KZPNPX4
 Tags:
-  - websockets
-  - rpc
-  - pubsub
-  - wampws
-  - wamp-proto
-  - realtime
-  - push
+  - Networking
+  - Distributed Computing
+  - Messaging
