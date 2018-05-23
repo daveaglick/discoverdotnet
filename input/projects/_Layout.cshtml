@@ -48,7 +48,7 @@
             @if(Model.ContainsKey("Readme"))
             {
                 <b-tab title="Readme" class="mt-4" active>
-                    <b-card>
+                    <b-card v-pre>
                         @Html.Raw(Model.String("Readme"))
                     </b-card>
                 </b-tab>
