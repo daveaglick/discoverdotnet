@@ -1,0 +1,9 @@
+Source: https://github.com/lprichar/EasyLayout.Forms
+NuGet: https://www.nuget.org/packages/EasyLayout.Forms/
+Language: C#
+Image: https://raw.githubusercontent.com/lprichar/EasyLayout.Forms/master/SampleProject.png
+Title: EasyLayout.Forms (ELXF)
+Description: Simplifies working with RelativeLayout Programatically in Xamarin.Forms
+Docs: https://github.com/lprichar/EasyLayout.Forms/blob/master/README.md
+Tags:
+  - Xamarin
