@@ -1,0 +1,11 @@
+Source: https://github.com/Code-Sharp/WampSharp
+NuGet: WampSharp.Default
+Language: C#
+Title: WampSharp
+Website: http://wampsharp.net
+Docs: http://wampsharp.net
+Donations: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UHRAS9KZPNPX4
+Tags:
+  - Networking
+  - Distributed Computing
+  - Messaging
