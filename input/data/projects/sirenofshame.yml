@@ -1,5 +1,5 @@
 Source: https://github.com/automatedArchitecture/sirenofshame
-NuGet: https://www.nuget.org/packages/SirenOfShame.Device/
+NuGet: SirenOfShame.Device
 Language: C#
 Image: https://sirenofshame.com/images/logo64.png
 Title: Siren of Shame
@@ -7,7 +7,7 @@ Description: Gamification for Continuous Integration
 Website: https://sirenofshame.com
 Docs: https://github.com/automatedArchitecture/sirenofshame/wiki
 Donations: http://sirenofshame.com/buynow
-Twitter: https://twitter.com/sirenofshame
-Platform: true
+Twitter: sirenofshame
 Tags:
   - DevOps
+  - Hardware
