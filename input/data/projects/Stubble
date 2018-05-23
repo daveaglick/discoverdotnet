@@ -1,0 +1,7 @@
+Source: https://github.com/StubbleOrg/Stubble
+NuGet: https://www.nuget.org/packages/Stubble.Core/
+Language: C#
+Image: https://raw.githubusercontent.com/StubbleOrg/Stubble/master/assets/logo-512.png
+Tags:
+  - Templating
+  - Formatting
