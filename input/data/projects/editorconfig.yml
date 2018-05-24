@@ -1,0 +1,9 @@
+Language: C#
+Source: https://github.com/RehanSaeed/EditorConfig
+Tags:
+  - Code Analysis
+  - Formatting
+  - IDE
+Title: Editorconfig
+Image: https://raw.githubusercontent.com/RehanSaeed/EditorConfig/master/logo.png
+Description:  A very generic .editorconfig file supporting .NET, C#, VB and web technologies.
