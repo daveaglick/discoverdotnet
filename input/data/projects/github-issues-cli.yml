@@ -1,0 +1,6 @@
+Source: https://github.com/jerriep/github-issues-cli
+NuGet: github-issues-cli
+Language: C#
+Tags:
+  - CLI
+  - Git
