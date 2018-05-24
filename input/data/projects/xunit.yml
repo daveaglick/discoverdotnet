@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Xunit
+Website: https://xunit.github.io/
+Source: https://github.com/xunit/xunit
+Tags:
+  - Testing
