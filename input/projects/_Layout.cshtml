@@ -32,7 +32,7 @@
 @if(!string.IsNullOrWhiteSpace(@Model.String("Description")))
 {
     <b-card class="mb-4">
-        <p class="lead mb-0">@Model.String("Description")</p>
+        <p v-pre class="lead mb-0">@Model.String("Description")</p>
     </b-card>
 }
 
