@@ -174,13 +174,16 @@
                 @if(Model.ContainsKey("Donations"))
                 {
                     string donations = Model.String("Donations");
-                    <h5>This project accepts donations</h5>
-                    <p>
-                        <b-button href="@(donations)" variant="danger"><i class="fas fa-heart"></i> Show Some Love</b-button>
-                    </p>
-                    <p>
-                        <a href="@(donations)">{{ '@(donations)' | no-protocol }}</a>
-                    </p>
+                    if(!string.IsNullOrWhiteSpace(donations))
+                    {
+                        <h5>This project accepts donations</h5>
+                        <p>
+                            <b-button href="@(donations)" variant="danger"><i class="fas fa-heart"></i> Show Some Love</b-button>
+                        </p>
+                        <p>
+                            <a href="@(donations)">{{ '@(donations)' | no-protocol }}</a>
+                        </p>
+                    }
                 }
             </b-card-body>
         </b-card>
