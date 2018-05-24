@@ -1,0 +1,5 @@
+Language: C#
+NuGet: AutoFixture
+Source: https://github.com/AutoFixture/AutoFixture
+Tags:
+  - Testing

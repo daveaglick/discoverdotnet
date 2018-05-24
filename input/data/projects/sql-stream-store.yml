@@ -1,0 +1,6 @@
+Language: C#
+NuGet: SqlStreamStore
+Source: https://github.com/SQLStreamStore/SQLStreamStore
+Tags:
+  - Data Access
+  - Event Sourcing

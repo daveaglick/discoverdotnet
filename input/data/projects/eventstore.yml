@@ -1,4 +1,6 @@
 Source: https://github.com/EventStore/EventStore
 Language: C#
+Website: https://eventstore.org/
 Tags:
   - Database
+  - Event Sourcing
