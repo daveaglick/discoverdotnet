@@ -2,5 +2,5 @@ Source: https://github.com/jerriep/git-status-cli
 NuGet: git-status-cli
 Language: C#
 Tags:
-  - CLI
+  - Global Tool
   - Git
