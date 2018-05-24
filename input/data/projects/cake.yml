@@ -1,6 +1,8 @@
 Source: https://github.com/cake-build/cake
 NuGet: Cake
 Chocolatey: cake.portable
+MyGet: cake
+Homebrew: cake
 Language: C#
 Image: https://avatars0.githubusercontent.com/u/7738262?s=200&v=4
 Title: Cake
