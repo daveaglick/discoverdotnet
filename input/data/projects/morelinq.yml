@@ -1,0 +1,8 @@
+Source: https://github.com/morelinq/MoreLINQ
+NuGet: morelinq
+Language: C#
+Description: Extensions to LINQ to Objects
+Website: https://morelinq.github.io/
+Docs: https://morelinq.github.io/
+Tags:
+  - LINQ
