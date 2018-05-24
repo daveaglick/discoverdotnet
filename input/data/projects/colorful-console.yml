@@ -4,3 +4,4 @@ NuGet: Colorful.Console
 Source: https://github.com/tomakita/Colorful.Console
 Tags:
   - CLI
+Description: Style your C# console output!
