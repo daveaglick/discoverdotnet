@@ -3,5 +3,5 @@ Source: https://github.com/Dotnet-Boxed/Templates
 Tags:
   - Templates
 Title: .NET Boxed
+Description: .NET project templates with batteries included, providing the minimum amount of code required to get you going faster.
 Image: https://raw.githubusercontent.com/Dotnet-Boxed/Templates/master/Images/Icon-512x512.png
-
