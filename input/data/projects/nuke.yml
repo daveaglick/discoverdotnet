@@ -1,6 +1,7 @@
 Image: https://raw.githubusercontent.com/nuke-build/presentation/master/images/logo2.png
 Language: C#
 NuGet: Nuke.Common
+Chat: https://publicslack.com/slacks/nukebuildnet/invites/new
 Source: https://github.com/nuke-build/nuke
 Tags:
   - Build Tool
