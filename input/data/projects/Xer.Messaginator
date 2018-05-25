@@ -1,0 +1,10 @@
+Source: https://github.com/XerProjects/Xer.Messaginator
+NuGet: Xer.Messaginator
+Language: C#
+Description: A lightweight library that enables you to listen and process messages from a variety of message sources.
+Chat: xerprojects.slack.com
+Tags:
+  - messaging
+  - message processor
+  - message source
+  - hosted services
