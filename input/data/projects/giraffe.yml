@@ -1,0 +1,8 @@
+Source: https://github.com/giraffe-fsharp/Giraffe
+NuGet: Giraffe
+Language: F#
+Image: https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/develop/giraffe.png
+Docs: https://github.com/giraffe-fsharp/Giraffe/blob/master/DOCUMENTATION.md
+Tags:
+  - Web Framework
+  - ASP.NET
