@@ -1,0 +1,11 @@
+Source: https://github.com/techtalk/SpecFlow
+NuGet: https://www.nuget.org/packages/SpecFlow/
+Language: C#
+Image: http://specflow.org/
+Docs: http://specflow.org/docs/
+Chat: https://gitter.im/gasparnagy/specflow-dev
+Twitter: https://twitter.com/specflow
+Tags:
+  - Testing
+  - BDD
+  - 
