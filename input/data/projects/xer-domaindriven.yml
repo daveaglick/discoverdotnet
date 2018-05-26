@@ -1,0 +1,7 @@
+Source: https://github.com/XerProjects/Xer.DomainDriven
+NuGet: Xer.DomainDrivem
+Language: C#
+Description: A lightweight library that aims to help build applications using basic DDD principles
+Chat: https://xerprojects.slack.com
+Tags:
+  - DDD
