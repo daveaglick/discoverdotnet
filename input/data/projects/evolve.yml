@@ -5,9 +5,7 @@ Image: https://raw.githubusercontent.com/lecaillon/Evolve/master/logo128.png
 Website: https://github.com/lecaillon/Evolve
 Docs: https://evolve-db.netlify.com/
 Tags:
-  - flyway
-  - sql
-  - database-migration
-  - sql-script  
-  - continuous-integration
-  - continuous-delivery
+  - SQL
+  - Database Migration
+  - Continuous Integration
+  - Continuous Delivery
