@@ -4,9 +4,4 @@ Language: C#
 Description: A lightweight library that aims to help build applications using basic DDD principles
 Chat: https://xerprojects.slack.com
 Tags:
-  - domain driven design
-  - ddd
-  - aggregate root
-  - entity
-  - value object
-  - domain event
+  - DDD
