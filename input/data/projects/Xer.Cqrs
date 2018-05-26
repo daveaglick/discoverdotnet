@@ -3,6 +3,7 @@ NuGet: Xer.Cqrs
 Language: C#
 Title: Xer.Cqrs
 Description: A lightweight library that aims to help build applications based on the Command and Query Responsibility Separation (CQRS).
+Chat: https://xerprojects.slack.com
 Tags:
   - cqrs
   - command
