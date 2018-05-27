@@ -15,9 +15,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Discover .NET@(Model.ContainsKey("Title") ? " - " + Model.String("Title") : "")</title>
-
-        <meta name="description" content="Awesome .NET open source & community resources">
+        @{
+            string title = Model.String("Title");
+            title = $"Discover .NET{(string.IsNullOrWhiteSpace(title) ? "" : " - " + title)}";
+            string description = Model.String("Description");
+            description = string.IsNullOrWhiteSpace(description)
+                ? "Awesome .NET open source & community resources" : description;
+            string image = Model.String("Image");
+            image = string.IsNullOrWhiteSpace(image)
+                ? "https://discoverdot.net/assets/d.png" : image;
+        }
+        <title>@title</title>
+        <meta name="description" content="@description">
+        <meta property="og:title" content="@title">
+        <meta property="og:description" content="@description">
+        <meta property="og:image" content="@image">
+        <meta property="og:url" content="@(Context.GetLink(Document, true))">
+        <meta name="twitter:title" content="@title">
+        <meta name="twitter:description" content="@description">
+        <meta name="twitter:image" content="@image">
+        <meta name="twitter:card" content="summary_large_image">
 
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

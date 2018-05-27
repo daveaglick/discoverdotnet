@@ -42,9 +42,10 @@ Pipelines.Add("Projects",
     Execute((inputs, ctx, _) => GetProjectGitHubData(inputs, ctx).Result),
     Execute((inputs, ctx, _) => GetProjectNuGetData(inputs, ctx).Result),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".html")),
     Razor()
         .WithLayout("/projects/_Layout.cshtml"),
-    WriteFiles((doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".html")),
+    WriteFiles(),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
     Meta("DonationsData", (doc, ctx) => doc.GetMetadata(
         "Website",
@@ -148,9 +149,10 @@ Pipelines.Add("Blogs",
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
     Razor()
         .WithLayout("/blogs/_Layout.cshtml"),
-    WriteFiles((doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
+    WriteFiles(),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Key",
@@ -231,9 +233,10 @@ Pipelines.Add("Broadcasts",
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
     Razor()
         .WithLayout("/broadcasts/_Layout.cshtml"),
-    WriteFiles((doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
+    WriteFiles(),
     Meta("Link", (doc, ctx) => ctx.GetLink(doc)),
     Meta("SearchData", (doc, ctx) => doc.GetMetadata(
         "Key",
@@ -496,15 +499,17 @@ Pipelines.Add("Pages",
     FrontMatter(Yaml()),
     Markdown()
         .UseExtensions(),
+    WriteFiles(".html").OnlyMetadata(),
     Razor()
         .WithLayout("/_MarkdownLayout.cshtml"),
     Concat(
         ReadFiles("**/{!_,}*.cshtml"),
         FrontMatter(Yaml()),
+        WriteFiles(".html").OnlyMetadata(),
         Razor()
             .WithLayout("/_Layout.cshtml")
     ),
-    WriteFiles(".html")
+    WriteFiles()
 );
 
 Pipelines.Add("Sass",
