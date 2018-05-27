@@ -4,5 +4,4 @@ Title: FsBlog
 Description: Blog aware, static site generation using F#.
 Docs: http://fsprojects.github.io/FsBlog
 Tags:
-  - blog
-  - static-site-generator
+  - Static Site Generation
