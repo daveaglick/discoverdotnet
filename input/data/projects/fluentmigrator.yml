@@ -1,0 +1,8 @@
+Source: https://github.com/fluentmigrator/fluentmigrator
+NuGet: https://www.nuget.org/packages/FluentMigrator
+Language: C#
+Image: https://github.com/fluentmigrator/fluentmigrator.github.io/blob/master/images/logo.svg
+Docs: https://fluentmigrator.github.io/
+Chat: https://gitter.im/FluentMigrator/fluentmigrator
+Tags:
+  - Database Migration
