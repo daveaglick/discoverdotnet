@@ -1,6 +1,9 @@
 Source: https://github.com/dungpa/fantomas
-NuGet: https://www.nuget.org/packages/dotnet-fantomas/
+NuGet: dotnet-fantomas
 Language: F#
 Image: https://raw.githubusercontent.com/dungpa/fantomas/master/fantomas_logo.png
 Title: Fantomas
 Description: FSharp source code formatter
+Tags:
+  - Code Analysis
+  - Formatting
