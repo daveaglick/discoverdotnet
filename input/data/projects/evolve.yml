@@ -5,7 +5,4 @@ Image: https://raw.githubusercontent.com/lecaillon/Evolve/master/logo128.png
 Website: https://github.com/lecaillon/Evolve
 Docs: https://evolve-db.netlify.com/
 Tags:
-  - SQL
-  - Database Migration
-  - Continuous Integration
-  - Continuous Delivery
+  - Database Tools
