@@ -2,5 +2,8 @@ Chat: https://gitter.im/FluentMigrator/fluentmigrator
 Language: C#
 NuGet: FluentMigrator
 Source: https://github.com/fluentmigrator/fluentmigrator
+Image: https://github.com/fluentmigrator/fluentmigrator.github.io/blob/master/images/logo.svg
+Docs: https://fluentmigrator.github.io/
+Chat: https://gitter.im/FluentMigrator/fluentmigrator
 Tags:
-  - ORM
+  - Database Tools
