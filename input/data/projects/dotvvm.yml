@@ -1,0 +1,14 @@
+Source: https://github.com/riganti/dotvvm
+NuGet: DotVVM
+Language: C#
+Image: https://www.dotvvm.com/Content/img/logos/logo-full.png
+Title: DotVVM
+Description: ASP.NET-based MVVM framework for easy building line of business web applications without writing tons of JavaScript.
+Website: https://www.dotvvm.com
+Docs: https://www.dotvvm.com/docs
+Chat: https://gitter.im/riganti/dotvvm
+Twitter: dotvvm
+Tags:
+  - ASP.NET
+  - MVVM
+  - Web Framework
