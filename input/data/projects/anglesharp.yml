@@ -1,6 +1,8 @@
 Image: https://raw.githubusercontent.com/AngleSharp/AngleSharp/master/header.png
 Language: C#
-NuGet: AngleSharp
+NuGet:
+  - AngleSharp
+  - AngleSharp.Scripting.JavaScript
 Source: https://github.com/AngleSharp/AngleSharp
 Tags:
   - HTML

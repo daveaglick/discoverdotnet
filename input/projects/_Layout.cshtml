@@ -59,33 +59,56 @@
                     <issues issue-json="/data/issues/projects/@(Model.String("Key")).json" class="mt-4"></issues>
                 </b-tab>
             }
-            @if(Model.ContainsKey("Versions"))
+            @if(Model.ContainsKey("NuGetPackages"))
             {
-                <b-tab title="Versions">
-                    <b-card no-body class="my-4">
-                        <table class="table table-striped mb-0">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Version</th>
-                                    <th scope="col">Downloads</th>
-                                    <th scope="col">Last Updated</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach(VersionData version in Model.Get<List<VersionData>>("Versions"))
-                                {
-                                    <tr>
-                                        <td>
-                                            <div class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(version.Version)">@(version.Version)</a></div>
-                                            <div class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(version.Version)">Direct Download</a></div>
-                                        </td>
-                                        <td>@(version.Downloads)</td>
-                                        <td>@(version.LastUpdated.ToString("MMMM d, yyyy"))</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </b-card>
+                <b-tab title="Packages">
+                    @if(Model.ContainsKey("NuGetPackages"))
+                    {
+                        <h2 class="my-4">NuGet</h2>
+                        foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
+                        {
+                            <b-card no-body class="mb-4">
+                                <b-card-body>
+                                    <h5><a href="https://www.nuget.org/packages/@(packageData.Id)">@packageData.Id</a></h5>
+                                    <b-row>
+                                        <b-col md="6" lg="3"><strong>@packageData.TotalDownloads</strong> Total Downloads</b-col>
+                                        <b-col md="6" lg="3"><strong>@packageData.PerDayDownloads</strong> Downloads Per Day</b-col>
+                                        <b-col md="6" lg="4">Latest Version: <strong>@packageData.LatestVersion.Version</strong> (@(packageData.LatestVersion.LastUpdated.ToString("MMMM d, yyyy")))</b-col>
+                                        <b-col md="6" lg="2">
+                                            <b-link href="#" v-b-toggle="'nuget-@(packageData.Id)'">
+                                                <span class="when-opened"><i class="far fa-minus-square"></i> Hide All Versions</span>
+                                                <span class="when-closed"><i class="far fa-plus-square"></i> Show All Versions</span>
+                                            </b-link>
+                                        </b-col>
+                                    </b-row>
+                                </b-card-body>
+                                <b-collapse id="nuget-@(packageData.Id)">
+                                    <table class="table table-striped mb-0">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Version</th>
+                                                <th scope="col">Downloads</th>
+                                                <th scope="col">Last Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(VersionData version in packageData.Versions)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <div class="font-weight-bold"><a href="https://www.nuget.org/packages/@(packageData.Id)/@(version.Version)">@(version.Version)</a></div>
+                                                        <div class="small"><a href="https://www.nuget.org/api/v2/package/@(packageData.Id)/@(version.Version)">Direct Download</a></div>
+                                                    </td>
+                                                    <td>@(version.Downloads)</td>
+                                                    <td>@(version.LastUpdated.ToString("MMMM d, yyyy"))</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>                             
+                                </b-collapse>
+                            </b-card>
+                        }
+                    }       
                 </b-tab>
             }
         </body-tabs>
@@ -116,15 +139,12 @@
             <b-card-body>
                 @{
 					string image = Model.String("Image");
-                    string website = Model.String("Website");
-                    string docs = Model.String("Docs");
-                    string source = Model.String("Source");
-                    string twitter = Model.String("Twitter");
-                    string chat = Model.String("Chat");
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
 					}
+
+                    string website = Model.String("Website");
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
@@ -134,6 +154,8 @@
                             <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
                         </p>
                     }    
+
+                    string docs = Model.String("Docs");
                     if(!string.IsNullOrWhiteSpace(docs))
                     {
                         <h5>
@@ -143,6 +165,8 @@
                             <a href="@(docs)">{{ '@(docs)' | no-protocol }}</a>
                         </p>
                     }    
+
+                    string source = Model.String("Source");
                     if(!string.IsNullOrWhiteSpace(source))
                     {
                         <h5>
@@ -152,6 +176,8 @@
                             <a href="@(source)">{{ '@(source)' | no-protocol }}</a>
                         </p>
                     }
+
+                    string twitter = Model.String("Twitter");
                     if(!string.IsNullOrWhiteSpace(twitter))
                     {
                         <h5>
@@ -161,14 +187,29 @@
                             <a href="https://twitter.com/@(twitter)">@@@(twitter)</a>
                         </p>
                     }
-                    if(!string.IsNullOrWhiteSpace(package))
+
+                    string chat = Model.String("Chat");
+                    if(!string.IsNullOrWhiteSpace(chat))
+                    {
+                        <h5>
+                            <span class="fab fa-commants"></span> Chat
+                        </h5>
+                        <p>
+                            <a href="@(chat)">{{ '@(chat)' | no-protocol }}</a>
+                        </p>
+                    }
+
+                    if(Model.ContainsKey("NuGetPackages"))
                     {
                         <h5>
                             <span class="fa fa-download"></span> NuGet
                         </h5>
-                        <p>
-                            <a href="https://www.nuget.org/packages/@(package)">@(package)</a>
-                        </p>
+                        @foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
+                        {
+                            <div>
+                                <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
+                            </div>
+                        }
                     }
                 }
                 @if(Model.ContainsKey("Donations"))

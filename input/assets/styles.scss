@@ -280,3 +280,8 @@ pre code {
         margin-bottom: 260px;        
     }
 }
+
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+    display: none;
+}

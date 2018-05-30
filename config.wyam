@@ -690,6 +690,16 @@ public class VersionData
     }
 }
 
+public class PackageData
+{
+    public string Id { get; set; }
+    public string TotalDownloads { get; set; }
+    public string PerDayDownloads { get; set; }
+    public List<VersionData> Versions { get; set; } // In descending order
+
+    public VersionData LatestVersion => Versions.FirstOrDefault();
+}
+
 public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
     AngleSharp.IConfiguration config = AngleSharp.Configuration.Default.WithDefaultLoader();
@@ -698,8 +708,9 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
     foreach(IDocument input in inputs)
     {
         IDocument output = input;
-        string package = input.String("NuGet");
-        if(!string.IsNullOrEmpty(package))
+        List<PackageData> packageData = new List<PackageData>();
+        IReadOnlyList<string> packages = input.List<string>("NuGet", Array.Empty<string>());
+        foreach(string package in packages.Where(x => !string.IsNullOrWhiteSpace(x)))
         {
             Wyam.Common.Tracing.Trace.Information($"Getting NuGet data for {package}");
             try
@@ -716,37 +727,31 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
                 }
                 else
                 {
+                    PackageData data = new PackageData
+                    {
+                        Id = package
+                    };
+
                     // Get statistics
                     AngleSharp.Dom.IElement statistics = document
                         .QuerySelectorAll(".package-details-info h2")
                         .First(x => x.TextContent == "Statistics")
                         .NextElementSibling;
-                    string totalDownloads = statistics.Children
+                    data.TotalDownloads = statistics.Children
                         .First(x => x.TextContent.Contains("total downloads"))
                         .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    string latestVersionDownloads = statistics.Children
-                        .First(x => x.TextContent.Contains("latest version"))
-                        .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    string perDayDownloads = statistics.Children
+                    data.PerDayDownloads = statistics.Children
                         .First(x => x.TextContent.Contains("per day"))
                         .TextContent.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0];
 
                     // Get versions
-                    List<VersionData> versions = document
+                    data.Versions = document
                         .QuerySelectorAll("#version-history table tbody tr")
                         .Select(x => new VersionData(x))
                         .ToList();
                     
-                    // Return a document with NuGet data
-                    output = context.GetDocument(input, new MetadataItems
-                    {
-                        { "TotalDownloads", totalDownloads },
-                        { "LatestVersionDownloads", latestVersionDownloads },
-                        { "PerDayDownloads", perDayDownloads },
-                        { "LatestVersion", versions.FirstOrDefault()?.Version ?? string.Empty },                        
-                        { "LatestVersionLastUpdated", versions.FirstOrDefault()?.LastUpdated },
-                        { "Versions", versions }
-                    });
+                    // Add the data
+                    packageData.Add(data);
                 }
             }
             catch(Exception ex)
@@ -754,6 +759,16 @@ public async Task<IEnumerable<IDocument>> GetProjectNuGetData(IReadOnlyList<IDoc
                 Wyam.Common.Tracing.Trace.Warning($"Error getting NuGet data for {package}: {ex.Message}");
             }
         }
+
+        if(packageData.Count > 0)
+        {            
+            // Return a new document with package data
+            output = context.GetDocument(input, new MetadataItems
+            {
+                { "NuGetPackages", packageData }
+            });
+        }
+
         outputs.Add(output);
     }
 
