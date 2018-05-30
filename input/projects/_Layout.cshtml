@@ -197,7 +197,7 @@
                     if(!string.IsNullOrWhiteSpace(chat))
                     {
                         <h5>
-                            <span class="fab fa-commants"></span> Chat
+                            <span class="fab fa-comments"></span> Chat
                         </h5>
                         <p>
                             <a href="@(chat)">{{ '@(chat)' | no-protocol }}</a>
@@ -209,12 +209,14 @@
                         <h5>
                             <span class="fa fa-download"></span> NuGet
                         </h5>
-                        @foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
-                        {
-                            <div>
-                                <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
-                            </div>
-                        }
+                        <div class="mb-2">
+                            @foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
+                            {
+                                <div>
+                                    <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
+                                </div>
+                            }
+                        </div>
                     }
                 }
                 @if(Model.ContainsKey("Donations"))
