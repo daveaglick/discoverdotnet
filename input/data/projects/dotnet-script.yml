@@ -1,0 +1,11 @@
+Source: https://github.com/filipw/dotnet-script
+Language: C#
+NuGet:
+  - dotnet-script
+  - Dotnet.Script
+  - Dotnet.Script.Core
+  - Dotnet.Script.DependencyModel
+  - Dotnet.Script.DependencyModel.Nuget
+Tags:
+  - Global Tool
+  - Scripting
