@@ -73,7 +73,12 @@
                                     <b-row>
                                         <b-col md="6" lg="3"><strong>@packageData.TotalDownloads</strong> Total Downloads</b-col>
                                         <b-col md="6" lg="3"><strong>@packageData.PerDayDownloads</strong> Downloads Per Day</b-col>
-                                        <b-col md="6" lg="4">Latest Version: <strong>@packageData.LatestVersion.Version</strong> (@(packageData.LatestVersion.LastUpdated.ToString("MMMM d, yyyy")))</b-col>
+                                        <b-col md="6" lg="4">
+                                            @if(packageData.LatestVersion != null)
+                                            {
+                                                <span>Latest Version: <strong>@packageData.LatestVersion.Version</strong> (@(packageData.LatestVersion.LastUpdated.ToString("MMMM d, yyyy")))</span>
+                                            }
+                                        </b-col>
                                         <b-col md="6" lg="2">
                                             <b-link href="#" v-b-toggle="'nuget-@(packageData.Id)'">
                                                 <span class="when-opened"><i class="far fa-minus-square"></i> Hide All Versions</span>
