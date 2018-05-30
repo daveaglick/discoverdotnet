@@ -168,6 +168,7 @@ Pipelines.Add("Blogs",
         "Author",
         "Website",
         "Feed",
+        "Comment",
         "LastPublished",
         "NewestFeedItem"
     ))
@@ -252,6 +253,7 @@ Pipelines.Add("Broadcasts",
         "Author",
         "Website",
         "Feed",
+        "Comment",
         "LastPublished",
         "NewestFeedItem"
     ))
@@ -327,6 +329,7 @@ Pipelines.Add("Groups",
         "Lat",
         "Lon",
         "CardType",
+        "Comment",
         "NextEventWebsite",
         "NextEventTitle",
         "NextEventDate",
@@ -371,6 +374,7 @@ Pipelines.Add("Events",
         "Time",
         "EndTime",
         "CardType",
+        "Comment",
         "NextEvent"
     ))
 );
@@ -407,6 +411,7 @@ Pipelines.Add("Resources",
         "Image",
         "Description",
         "CardType",
+        "Comment",
         "Tags"
     ))
 );
