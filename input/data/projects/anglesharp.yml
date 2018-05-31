@@ -7,3 +7,5 @@ Source: https://github.com/AngleSharp/AngleSharp
 Tags:
   - HTML
 Website: https://anglesharp.github.io/
+DiscoveryDate: 6/3/2018
+Comment: If you're using HTML Agility Pack (which is great), might be worth looking at AngleSharp too.
