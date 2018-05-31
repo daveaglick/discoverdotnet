@@ -1,0 +1,12 @@
+Source: https://github.com/stephan-tolksdorf/fparsec
+NuGet:
+  - https://www.nuget.org/packages/FParsec
+Language: F#
+Title: FParsec
+Description: A parser combinatory library for F#
+Website: http://www.quanttec.com/fparsec/
+Docs: http://www.quanttec.com/fparsec/tutorial.html
+Platform: true
+Tags:
+  - parsing
+  - parser
