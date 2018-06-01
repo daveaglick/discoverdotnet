@@ -69,7 +69,10 @@
                         {
                             <b-card no-body class="mb-4">
                                 <b-card-body>
-                                    <h5><a href="https://www.nuget.org/packages/@(packageData.Id)">@packageData.Id</a></h5>
+                                    <h5>
+                                        <a href="https://www.nuget.org/packages/@(packageData.Id)">@packageData.Id</a>
+                                        <small>(<a href="https://www.fuget.org/packages/@(packageData.Id)">fuget.org</a>)</small>
+                                    </h5>
                                     <b-row>
                                         <b-col md="6" lg="3"><strong>@packageData.TotalDownloads</strong> Total Downloads</b-col>
                                         <b-col md="6" lg="3"><strong>@packageData.PerDayDownloads</strong> Downloads Per Day</b-col>
@@ -102,6 +105,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="font-weight-bold"><a href="https://www.nuget.org/packages/@(packageData.Id)/@(version.Version)">@(version.Version)</a></div>
+                                                        <div class="small"><a href="https://www.fuget.org/packages/@(packageData.Id)/@(version.Version)">fuget.org</a></div>
                                                         <div class="small"><a href="https://www.nuget.org/api/v2/package/@(packageData.Id)/@(version.Version)">Direct Download</a></div>
                                                     </td>
                                                     <td>@(version.Downloads)</td>
@@ -214,6 +218,7 @@
                             {
                                 <div>
                                     <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
+                                    <small>(<a href="https://www.fuget.org/packages/@(packageData.Id)">fuget.org</a>)</small>
                                 </div>
                             }
                         </div>
