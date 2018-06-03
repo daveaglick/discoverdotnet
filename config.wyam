@@ -382,7 +382,8 @@ Pipelines.Add("Events",
         "EndTime",
         "CardType",
         "Comment",
-        "NextEvent"
+        "NextEvent",
+        "DiscoveryDate"
     ))
 );
 
