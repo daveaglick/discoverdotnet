@@ -1,6 +1,6 @@
 Source: https://github.com/Metalnem/noise
 NuGet:
-  - https://www.nuget.org/packages/Noise.NET
+  - Noise.NET
 Language: C#
 Image: https://raw.githubusercontent.com/Metalnem/noise/master/Noise.png
 Title: Noise.NET
