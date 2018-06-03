@@ -170,7 +170,8 @@ Pipelines.Add("Blogs",
         "Feed",
         "Comment",
         "LastPublished",
-        "NewestFeedItem"
+        "NewestFeedItem",
+        "DiscoveryDate"
     ))
 );
 
@@ -255,7 +256,8 @@ Pipelines.Add("Broadcasts",
         "Feed",
         "Comment",
         "LastPublished",
-        "NewestFeedItem"
+        "NewestFeedItem",
+        "DiscoveryDate"
     ))
 );
 
@@ -333,7 +335,8 @@ Pipelines.Add("Groups",
         "NextEventWebsite",
         "NextEventTitle",
         "NextEventDate",
-        "NextEventTime"
+        "NextEventTime",
+        "DiscoveryDate"
     ))
 );
 
@@ -412,7 +415,8 @@ Pipelines.Add("Resources",
         "Description",
         "CardType",
         "Comment",
-        "Tags"
+        "Tags",
+        "DiscoveryDate"
     ))
 );
 
