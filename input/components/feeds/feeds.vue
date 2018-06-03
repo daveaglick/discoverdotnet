@@ -4,6 +4,7 @@
             :title="title"
             :suggest-link="suggestLink"
             :card-json="cardJson"
+            :filters="filters"
             :sorts="sorts"
             :randomize-order="true">
         </card-grid>
@@ -18,7 +19,14 @@
             'cardJson'
         ],
         data: function() {
-            return {                
+            return {     
+                filters: [
+                    {
+                        text: 'Language',
+                        field: 'language',
+                        selected: 'English'
+                    }
+                ],           
                 sorts: [
                     {
                         text: 'A-Z',

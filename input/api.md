@@ -370,7 +370,9 @@ Example response:
         "author": "Au Thor",
         "website": "https://www.blogsite.com",
         "feed": "https://www.blogsite.com/feed",
+        "language": "English",
         "lastPublished": "2018-05-15T15:46:10+00:00",
+        "discoveryDate": "2018-05-15T15:46:10+00:00",
         "newestFeedItem": {
             "title": "The Title of the Blog Post",
             "link": "https://www.blogsite.com/link-to-post/",
@@ -407,7 +409,9 @@ Example response:
     "author": "Au Thor",
     "website": "https://www.blogsite.com",
     "feed": "https://www.blogsite.com/feed",
+    "language": "English",
     "lastPublished": "2018-05-15T15:46:10+00:00",
+    "discoveryDate": "2018-05-15T15:46:10+00:00",
     "newestFeedItem": {
         "title": "The Title of the Blog Post",
         "link": "https://www.blogsite.com/link-to-post/",
@@ -470,7 +474,9 @@ Example response:
         "author": "Au Thor",
         "website": "https://www.broadcastsite.com",
         "feed": "https://www.broadcastsite.com/feed",
+        "language": "English",
         "lastPublished": "2018-05-15T15:46:10+00:00",
+        "discoveryDate": "2018-05-15T15:46:10+00:00",
         "newestFeedItem": {
             "title": "The Title of the Broadcast Post",
             "link": "https://www.broadcastsite.com/link-to-post/",
@@ -507,7 +513,9 @@ Example response:
     "author": "Au Thor",
     "website": "https://www.broadcastsite.com",
     "feed": "https://www.broadcastsite.com/feed",
+    "language": "English",
     "lastPublished": "2018-05-15T15:46:10+00:00",
+    "discoveryDate": "2018-05-15T15:46:10+00:00",
     "newestFeedItem": {
         "title": "The Title of the Broadcast Post",
         "link": "https://www.broadcastsite.com/link-to-post/",
@@ -570,6 +578,7 @@ Example response:
         "lat": "52.23",
         "lon": "0.15",
         "cardType": "Group",
+        "discoveryDate": "2018-05-15T15:46:10+00:00",
         "nextEventWebsite": "https://www.meetup.com/dotnetcambridge/events/hklrnpyxhblc",
         "nextEventTitle": "From Modular-Monolith to Micro-service and The State of the Function",
         "nextEventDate": "2018/05/21",
@@ -631,6 +640,7 @@ Example response:
         "title": "JustDecompile",
         "description": "JustDecompile is a free Telerik tool for .NET assembly browsing and decompiling.",
         "cardType": "Resource",
+        "discoveryDate": "2018-05-15T15:46:10+00:00",
         "tags":
         [
             "Tool",

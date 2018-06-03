@@ -150,6 +150,7 @@ Pipelines.Add("Blogs",
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Meta(Keys.RelativeFilePath, (doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
+    Meta("Language", (doc, ctx) => doc.String("Language", "English")),
     Razor()
         .WithLayout("/blogs/_Layout.cshtml"),
     WriteFiles(),
@@ -169,6 +170,7 @@ Pipelines.Add("Blogs",
         "Website",
         "Feed",
         "Comment",
+        "Language",
         "LastPublished",
         "NewestFeedItem",
         "DiscoveryDate"
@@ -201,7 +203,7 @@ Pipelines.Add("Blog Search Data",
 
 Pipelines.Add("Posts",
     Documents("Blogs"),
-    Where((doc, ctx) => doc.ContainsKey("FeedItems")),
+    Where((doc, ctx) => doc.ContainsKey("FeedItems") && doc.String("Language") == "English"),
     GenerateJson((doc, ctx) => doc["FeedItems"])
         .WithCamelCase(),
     MinifyJs(),
@@ -210,7 +212,7 @@ Pipelines.Add("Posts",
 
 Pipelines.Add("Post Search Data",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Blogs")
-        .Where(d => d.ContainsKey("FeedItems"))
+        .Where(d => d.ContainsKey("FeedItems") && d.String("Language") == "English")
         .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
             .Select(i => new
             {
@@ -236,6 +238,7 @@ Pipelines.Add("Broadcasts",
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Meta(Keys.RelativeFilePath, (doc, ctx) => "broadcasts/" + doc.Source.FileName.ChangeExtension(".html")),
+    Meta("Language", (doc, ctx) => doc.String("Language", "English")),
     Razor()
         .WithLayout("/broadcasts/_Layout.cshtml"),
     WriteFiles(),
@@ -255,6 +258,7 @@ Pipelines.Add("Broadcasts",
         "Website",
         "Feed",
         "Comment",
+        "Language",
         "LastPublished",
         "NewestFeedItem",
         "DiscoveryDate"
@@ -287,7 +291,7 @@ Pipelines.Add("Broadcast Search Data",
 
 Pipelines.Add("Episodes",
     Documents("Broadcasts"),
-    Where((doc, ctx) => doc.ContainsKey("FeedItems")),
+    Where((doc, ctx) => doc.ContainsKey("FeedItems") && doc.String("Language") == "English"),
     GenerateJson((doc, ctx) => doc["FeedItems"])
         .WithCamelCase(),
     MinifyJs(),
@@ -296,7 +300,7 @@ Pipelines.Add("Episodes",
 
 Pipelines.Add("Episode Search Data",
     GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Episodes")
-        .Where(d => d.ContainsKey("FeedItems"))
+        .Where(d => d.ContainsKey("FeedItems") && d.String("Language") == "English")
         .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
             .Select(i => new
             {

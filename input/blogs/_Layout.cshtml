@@ -26,13 +26,12 @@
             <b-card-body>
                 @{
 					string image = Model.String("Image");
-                    string website = Model.String("Website");
-                    string feed = Model.String("Feed");
-                    string author = Model.String("Author");
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
 					}
+
+                    string website = Model.String("Website");
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
@@ -42,6 +41,8 @@
                             <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
                         </p>
                     }    
+
+                    string feed = Model.String("Feed");
                     if(!string.IsNullOrWhiteSpace(feed))
                     {
                         <h5>
@@ -51,13 +52,24 @@
                             <a href="@(feed)">{{ '@(feed)' | no-protocol }}</a>
                         </p>
                     }    
+
+                    string author = Model.String("Author");
                     if(!string.IsNullOrWhiteSpace(author))
                     {
                         <h5>
                             <span class="fas fa-user"></span> Author
                         </h5>
                         <p>@author</p>
-                    }    
+                    }     
+                    
+                    string language = Model.String("Language");
+                    if(!string.IsNullOrWhiteSpace(language))
+                    {
+                        <h5>
+                            <span class="fas fa-language"></span> Language
+                        </h5>
+                        <p>@language</p>
+                    }   
                 }
             </b-card-body>
 		</b-card>

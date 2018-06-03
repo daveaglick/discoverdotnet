@@ -150,9 +150,28 @@
                     queryDict[item.split("=")[0].toLowerCase()] = item.split("=")[1]
                 });
 
-                // Preselect a filter from the query string
+                // Preselect a filter
                 var self = this;
                 this.filters.forEach(function(filter, filterIndex) {
+                    // From the filter object
+                    if(filter.selected) {
+                        if(filter.selected === true) {
+                            // Simple toggle filter
+                            if(self.selected[filterIndex] === false) {
+                                self.selected[filterIndex] = true;
+                            }
+                        } else if(Array.isArray(filter.selected)) {
+                            // Filter values                            
+                            filter.selected.forEach(function(filterItem) {
+                                self.selected[filterIndex].push(filterItem);
+                            });
+                        } else {
+                            // Filter value
+                            self.selected[filterIndex].push(filter.selected);
+                        }
+                    }
+
+                    // From the query string
                     var filterQuery = 'filter-' + filter.text.replace(/\W/g, '').toLowerCase();
                     if(filterQuery in queryDict) {
                         if(!queryDict[filterQuery]) {
