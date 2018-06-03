@@ -615,7 +615,8 @@ Example response:
         "endDate": "2018/06/01",
         "time": "18:45",
         "endTime": "20:00",
-        "cardType":"Event"
+        "cardType":"Event",
+        "discoveryDate": "2018-05-15T15:46:10+00:00"
     },
     {
         ...
