@@ -1,0 +1,7 @@
+Source: https://github.com/Topshelf/Topshelf
+NuGet:
+  - Topshelf
+Language: C#
+Tags:
+  - Services
+  - Installation
