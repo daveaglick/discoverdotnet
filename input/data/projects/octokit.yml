@@ -1,0 +1,11 @@
+Source: https://github.com/octokit/octokit.net
+NuGet:
+  - Octokit
+  - Octokit.Reactive
+Image: https://raw.githubusercontent.com/octokit/octokit.net/master/octokit-dotnet_2.png
+Docs: http://octokitnet.readthedocs.io/en/latest/
+Chat: https://gitter.im/octokit/octokit.net
+DiscoveryDate: 6/5/2018
+Comment: In honor of Microsoft acquiring GitHub, consider writing some GitHub integration with Octokit
+Tags:
+  - API Client
