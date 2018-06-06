@@ -6,10 +6,6 @@ Image: https://raw.githubusercontent.com/videolan/libvlcsharp/master/Assets/icon
 Source: https://github.com/videolan/libvlcsharp
 Donations: https://www.videolan.org/contribute.html#money
 Tags:
-  - Video
-  - Audio
-  - Xamarin
-  - Mono
-  - Graphics
-  - VLC
   - Media
+  - Xamarin
+  - Graphics
