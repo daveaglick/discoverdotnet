@@ -1,0 +1,7 @@
+Source: https://github.com/dotnet/machinelearning
+NuGet:
+  - Microsoft.ML
+Language: C#
+Title: ML.NET
+Tags:
+  - Data Science
