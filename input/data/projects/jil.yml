@@ -1,0 +1,8 @@
+Source: https://github.com/kevin-montrose/Jil
+NuGet:
+  - Jil
+Language: C#
+Title: Jil
+Tags:
+  - Data Formats
+  - Serialization
