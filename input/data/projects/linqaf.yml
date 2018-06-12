@@ -1,0 +1,7 @@
+Source: https://github.com/kevin-montrose/LinqAF
+NuGet:
+  - LinqAF
+Language: C#
+Title: LinqAF
+Tags:
+  - LINQ
