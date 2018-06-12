@@ -1,0 +1,9 @@
+Source: https://github.com/ServiceStack/ServiceStack.Text
+NuGet:
+  - ServiceStack.Text
+Language: C#
+Image: https://servicestack.net/img/logo-32.png
+Title: ServiceStack.Text
+Tags:
+  - Data Formats
+  - Serialization
