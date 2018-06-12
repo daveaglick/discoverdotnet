@@ -5,3 +5,5 @@ Language: C#
 Title: LinqAF
 Tags:
   - LINQ
+DiscoveryDate: 6/13/2018
+Comment: No, the AF does not stand for that...it stands for "allocation free". This library also uses "some dubious techniques", so maybe not drop into your big Enterprise app just yet.
