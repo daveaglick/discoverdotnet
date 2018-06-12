@@ -1,0 +1,7 @@
+Source: https://github.com/xyncro/aether
+NuGet:
+  - Aether
+Language: F#
+Chat: https://gitter.im/xyncro/aether
+Tags:
+  - Utility
