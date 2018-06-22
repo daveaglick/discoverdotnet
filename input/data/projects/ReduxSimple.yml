@@ -1,9 +1,7 @@
 Source: https://github.com/Odonno/ReduxSimple
-NuGet:
-  - http://www.nuget.org/packages/ReduxSimple/
+NuGet: ReduxSimple
 Language: C#
 Image: https://raw.githubusercontent.com/Odonno/ReduxSimple/master/images/logo.png
-Docs: https://github.com/Odonno/ReduxSimple/blob/master/README.md
 Tags:
   - Redux
   - Reactive
