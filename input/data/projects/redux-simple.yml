@@ -3,6 +3,5 @@ NuGet: ReduxSimple
 Language: C#
 Image: https://raw.githubusercontent.com/Odonno/ReduxSimple/master/images/logo.png
 Tags:
-  - Redux
   - Reactive
-  - State management
+  - State Management
