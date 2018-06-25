@@ -2,11 +2,6 @@ Source: https://github.com/jamesmh/coravel
 NuGet:
   - Coravel
 Language: C#
-Docs: https://github.com/jamesmh/coravel
 Tags:
-  - dotnet
-  - dotnetcore
-  - coravel
-  - scheduling
-  - queuing
-  - extensions
+  - Scheduling
+  
