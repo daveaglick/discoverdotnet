@@ -1,0 +1,10 @@
+Source: https://github.com/HangfireIO/Hangfire
+Language: C#
+NuGet:
+  - Hangfire
+  - HangFire.Core
+  - HangFire.SqlServer
+  - Hangfire.AspNetCore
+  - Hangfire.AspNet
+Tags:
+  - Scheduling

@@ -1,0 +1,5 @@
+Source: https://github.com/kevincolyar/CronNET
+Language: C#
+NuGet: CronNET
+Tags:
+  - Scheduling
