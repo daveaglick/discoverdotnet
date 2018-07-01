@@ -1,0 +1,15 @@
+Source: https://github.com/FakeItEasy/FakeItEasy
+NuGet:
+  - FakeItEasy
+  - FakeItEasy.Analyzer.CSharp
+  - FakeItEasy.Analyzer.VisualBasic
+Language: C#
+Image: https://fakeiteasy.github.io/img/fakeiteasy_logo_512.png
+Title: FakeItEasy
+Description: A .Net dynamic fake framework for creating all types of fake objects, mocks, stubs etc. Context-aware fluent interface guides the developer. Easy to use and compatible with both C# and VB.Net.
+Website: https://fakeiteasy.github.io
+Docs: http://fakeiteasy.readthedocs.io/
+Chat: https://gitter.im/FakeItEasy/FakeItEasy
+Twitter: fakeiteasyfx
+Tags:
+  - Testing
