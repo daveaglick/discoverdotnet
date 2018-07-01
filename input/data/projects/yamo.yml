@@ -3,7 +3,7 @@ NuGet:
   - Yamo
   - Yamo.SQLite
   - Yamo.SqlServer
-Language: VB
+Language: Visual Basic
 Docs: https://github.com/esentio/Yamo
 Tags:
   - ORM
