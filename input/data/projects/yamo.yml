@@ -1,0 +1,9 @@
+Source: https://github.com/esentio/Yamo
+NuGet:
+  - Yamo
+  - Yamo.SQLite
+  - Yamo.SqlServer
+Language: VB
+Docs: https://github.com/esentio/Yamo
+Tags:
+  - ORM
