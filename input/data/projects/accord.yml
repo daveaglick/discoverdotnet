@@ -3,5 +3,6 @@ Image: https://raw.githubusercontent.com/accord-net/accord-net.github.io/master/
 Language: C#
 NuGet: Accord
 Source: https://github.com/accord-net/framework/
+DiscoveryDate: 7/5/2018
 Tags:
   - Data Science
