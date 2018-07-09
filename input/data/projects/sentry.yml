@@ -1,0 +1,12 @@
+Source: https://github.com/getsentry/sentry-dotnet/
+NuGet:
+  - Sentry
+  - Sentry.AspNetCore
+  - Sentry.Extensions.Logging
+Language: C#
+Image: https://camo.githubusercontent.com/2dfeafbee0904d6df16ddf7200993dace1629e60/68747470733a2f2f73656e7472792d6272616e642e73746f726167652e676f6f676c65617069732e636f6d2f73656e7472792d6c6f676f2d626c61636b2e706e67
+Title: .NET SDK for Sentry
+Chat: https://gitter.im/getsentry/dotnet
+Tags:
+  - API Client
+  - Logging
