@@ -1,0 +1,9 @@
+Source: https://github.com/conan-roslyn/Conan
+NuGet:
+  - Conan.CodeAnalysis
+  - Conan.Net.Compilers
+Language: C#
+Image: https://raw.githubusercontent.com/conan-roslyn/Conan/master/img/conan.png
+Title: Conan
+Tags:
+  - Metaprogramming
