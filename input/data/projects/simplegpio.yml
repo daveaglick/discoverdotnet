@@ -1,0 +1,7 @@
+Source: https://github.com/stevedesmond-ca/SimpleGPIO
+NuGet:
+  - SimpleGPIO
+Language: C#
+Title: SimpleGPIO
+Tags:
+  - Hardware
