@@ -1,0 +1,8 @@
+Source: https://github.com/6A/Cometary
+NuGet:
+  - Cometary.Core
+  - Cometary.Analyzer
+Language: C#
+Title: Cometary
+Tags:
+  - Metaprogramming
