@@ -5,5 +5,6 @@ NuGet:
 Language: C#
 Image: https://raw.githubusercontent.com/conan-roslyn/Conan/master/img/conan.png
 Title: Conan
+DiscoveryDate: 7/10/2018
 Tags:
   - Metaprogramming
