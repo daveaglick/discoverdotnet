@@ -1,0 +1,32 @@
+Source: https://github.com/Firwood-Software/AdvanceDLSupport
+NuGet:
+  - AdvancedDLSupport
+Language: C#
+Image: https://avatars3.githubusercontent.com/u/34824243
+Description: ADL is a new, modern way of writing native interop for .NET. Forget DllImport, forget static classes, forget slow overhead. Interfaces to native binding code - fast, easy, and flexible.
+Docs: https://firwood-software.github.io/AdvanceDLSupport/
+Chat: https://discord.gg/fDy5Vhb
+Donations: https://www.patreon.com/jargon or https://ko-fi.com/H2H176VD
+Tags:
+  - p/invoke
+  - cross-platform
+  - mono
+  - netcore
+  - netstandard
+  - native
+  - interop
+  - library
+  - adl
+  - dlsupport
+  - c
+  - c++
+  - cpp
+  - dllimport
+  - pinvoke
+  - advancedlsupport
+  - calli
+  - speed
+  - performance
+  - performant
+  - fast
+  - faster
