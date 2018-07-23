@@ -5,9 +5,5 @@ Title: Inlining Analyzer
 Description: Visual Studio Extension that shows in the source code if a method call will be inlined by the JIT compiler.
 Website: https://marketplace.visualstudio.com/items?itemName=StephanZehetner.InliningAnalyzer
 Tags:
-  - Tool
-  - IDE
   - Visual Studio
-  - Performance
-  - JIT Compiler
   - Code Analysis
