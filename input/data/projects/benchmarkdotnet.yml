@@ -1,5 +1,5 @@
 Chat: https://gitter.im/dotnet/BenchmarkDotNet
-Image: https://github.com/dotnet/BenchmarkDotNet/blob/master/docs/guide/logo/logo-wide.png
+Image: https://raw.githubusercontent.com/dotnet/BenchmarkDotNet/master/docs/guide/logo.png
 Language: C#
 NuGet: BenchmarkDotNet
 Source: https://github.com/dotnet/BenchmarkDotNet
