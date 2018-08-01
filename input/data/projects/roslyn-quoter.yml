@@ -2,6 +2,7 @@ Source: https://github.com/KirillOsenkov/RoslynQuoter
 Language: C#
 Title: Roslyn Quoter
 Website: http://roslynquoter.azurewebsites.net/
+DiscoveryDate: 8/1/2018
 Tags:
   - Tool
   - Code Analysis
