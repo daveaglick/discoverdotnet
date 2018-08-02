@@ -1,0 +1,8 @@
+Source: https://github.com/retirenet/dotnet-retire
+NuGet:
+  - dotnet-retire
+Language: C#
+Image: https://raw.githubusercontent.com/RetireNet/images/master/nuget/dotnet-retire/icon.512x512.png
+Tags:
+  - Security
+  - Tool
