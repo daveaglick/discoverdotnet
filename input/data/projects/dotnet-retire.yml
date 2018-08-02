@@ -1,6 +1,6 @@
 Source: https://github.com/retirenet/dotnet-retire
 NuGet:
-  - https://www.nuget.org/packages/dotnet-retire
+  - dotnet-retire
 Language: C#
 Image: https://raw.githubusercontent.com/RetireNet/images/master/nuget/dotnet-retire/icon.512x512.png
 Tags:
