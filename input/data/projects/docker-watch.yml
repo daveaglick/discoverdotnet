@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - docker-watch
+Source: https://github.com/nickvdyck/docker-watch
+Tags:
+  - Global Tool
+  - Containers
+Title: Docker Watch
+Tool: docker-watch

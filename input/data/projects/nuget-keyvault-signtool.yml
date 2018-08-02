@@ -1,0 +1,8 @@
+Language: C#
+Source: https://github.com/onovotny/NuGetKeyVaultSignTool
+Tags:
+  - Azure
+  - Security
+  - Tool
+  - NuGet
+Title: NuGetKeyVaultSignTool

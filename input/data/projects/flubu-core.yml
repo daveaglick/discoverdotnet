@@ -1,5 +1,10 @@
 Language: C#
-NuGet: FlubuCore
+NuGet:
+  - FlubuCore
+  - FlubuCore.GlobalTool
 Source: https://github.com/flubu-core/flubu.core
+Title: FlubuCore
+GlobalTool: flubu
 Tags:
   - Build Tool
+  - Global Tool

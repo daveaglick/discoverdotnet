@@ -1,0 +1,8 @@
+Language: C#
+NuGet:
+  - RSAKeyVaultProvider
+Source: https://github.com/onovotny/RSAKeyVaultProvider
+Tags:
+  - Security
+  - Azure
+Title: RSAKeyVaultProvider

@@ -1,0 +1,8 @@
+Language: F#
+NuGet:
+  - HtmlCopyVSCode
+Source: https://github.com/slang25/html-copy-vscode
+Tags:
+  - Global Tool
+Title: html-copy-vscode
+Tool: html-copy-vscode

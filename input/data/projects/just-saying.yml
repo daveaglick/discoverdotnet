@@ -1,0 +1,8 @@
+Language: C#
+NuGet:
+  - JustSaying
+Source: https://github.com/justeat/JustSaying
+Tags:
+  - Messaging
+  - AWS
+Title: JustSaying

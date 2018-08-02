@@ -2,6 +2,7 @@ Source: https://github.com/RendleLabs/dotnet-unpkg
 Title: dotnet unpkg
 NuGet: RendleLabs.UnpkgCli
 Language: C#
+GlobalTool: unpkg
 Tags:
   - Global Tool
   - Package Manager

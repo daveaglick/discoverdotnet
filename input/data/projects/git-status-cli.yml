@@ -1,6 +1,7 @@
 Source: https://github.com/jerriep/git-status-cli
 NuGet: git-status-cli
 Language: C#
+GlobalTool: git-status
 Tags:
   - Global Tool
   - Git

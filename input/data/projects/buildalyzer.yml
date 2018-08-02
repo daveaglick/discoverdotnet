@@ -2,6 +2,7 @@ Source:  https://github.com/daveaglick/Buildalyzer
 Language: C#
 Tags:
   - Build Tool
+  - MSBuild
 NuGet: Buildalyzer
-Image: https://github.com/daveaglick/Buildalyzer/raw/master/docs/buildalyzer.png
+Image: https://raw.githubusercontent.com/daveaglick/Buildalyzer/master/docs/input/assets/img/buildalyzer.png
 Donations: https://www.buymeacoffee.com/daveaglick

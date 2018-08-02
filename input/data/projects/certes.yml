@@ -1,0 +1,10 @@
+Language: C#
+NuGet:
+  - Certes
+  - dotnet-certes
+Source: https://github.com/fszlin/certes
+Tags:
+  - Security
+  - Global Tool
+Title: Certes
+Tool: certes

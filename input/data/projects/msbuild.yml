@@ -4,3 +4,4 @@ Source: https://github.com/Microsoft/msbuild
 Platform: true
 Tags:
   - Build Tool
+  - MSBuild

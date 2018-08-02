@@ -1,0 +1,8 @@
+Language: C#
+NuGet:
+  - Yarn.MSBuild
+Source: https://github.com/natemcmaster/Yarn.MSBuild
+Tags:
+  - MSBuild
+  - Package Manager
+Title: Yarn.MSBuild

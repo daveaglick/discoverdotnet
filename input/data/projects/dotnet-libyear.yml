@@ -1,6 +1,7 @@
 Title: dotnet-libyear
 Source: https://github.com/stevedesmond-ca/dotnet-libyear
 Language: C#
+GlobalTool: libyear
 NuGet: 
   - libyear
 Tags:

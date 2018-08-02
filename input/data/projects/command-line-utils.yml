@@ -1,0 +1,7 @@
+Language: C#
+NuGet:
+  - McMaster.Extensions.CommandLineUtils
+Source: https://github.com/natemcmaster/CommandLineUtils
+Tags:
+  - CLI
+Title: CommandLineUtils

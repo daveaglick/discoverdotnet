@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - dotnet-dbinfo
+Source: https://github.com/berkid89/dotnet-dbinfo
+Tags:
+  - Global Tool
+  - Database Tools
+Title: dotnet-dbinfo
+Tool: dbinfo

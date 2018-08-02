@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - localappveyor
+Source: https://github.com/joaope/localappveyor
+Tags:
+  - Global Tool
+  - Build Tool
+Title: LocalAppVeyor
+Tool: localappveyor
