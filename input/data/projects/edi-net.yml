@@ -1,8 +1,7 @@
 Source: https://github.com/indice-co/EDI.Net
 NuGet:
-  - https://www.nuget.org/packages/indice.Edi/
+  - indice.Edi
 Language: C#
 Image: https://github.com/indice-co/EDI.Net/blob/master/design/icon-128.png?raw=true
 Tags:
-  - Serializer
-  - EDI
+  - Serialization
