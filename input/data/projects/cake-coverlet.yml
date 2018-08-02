@@ -3,5 +3,5 @@ NuGet:
   - Cake.Coverlet
 Language: C#
 Tags:
-  - Cake
   - Build Tool
+  - Testing
