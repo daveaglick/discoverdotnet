@@ -1,0 +1,10 @@
+Source: https://github.com/emgarten/Sleet
+NuGet:
+  - Sleet
+Language: C#
+Title: Sleet
+Tool: sleet
+DiscoveryDate: 8/8/2018
+Tags:
+  - NuGet
+  - Global Tool
