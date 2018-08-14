@@ -3,3 +3,4 @@ Language: C#
 Tags:
   - Cryptography
 NuGet: libsodium-net
+DiscoveryDate: 9/5/2018

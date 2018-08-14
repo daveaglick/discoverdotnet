@@ -3,3 +3,4 @@ Website: https://roslynquoter.azurewebsites.net/
 Description: Roslyn tool that for a given C# program shows syntax tree API calls to construct its syntax tree
 Tags:
   - Compilation
+DiscoveryDate: 7/12/2019

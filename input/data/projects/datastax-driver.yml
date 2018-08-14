@@ -3,3 +3,4 @@ Language: C#
 Tags:
   - Data Access
 NuGet: CassandraCSharpDriver
+DiscoveryDate: 10/27/2019

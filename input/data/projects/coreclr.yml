@@ -3,3 +3,4 @@ Platform: true
 Source: https://github.com/dotnet/coreclr
 Tags:
   - Runtime
+DiscoveryDate: 9/26/2019

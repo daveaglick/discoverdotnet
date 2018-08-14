@@ -1,3 +1,4 @@
 Title: NuGet Tools
 Website: http://nugettoolsdev.azurewebsites.net
 Description: Provides insights into NuGet internals - How framework strings are parsed; which frameworks are compatible with others; which version will match a given version range string, etc.
+DiscoveryDate: 2/15/2020
