@@ -1,6 +1,8 @@
 Title: dotnet-outdated
 Source: https://github.com/jerriep/dotnet-outdated
 NuGet: dotnet-outdated
+GlobalTool: outdated
 Tags:
   - Global Tool
   - NuGet
+DiscoveryDate: 8/6/2020

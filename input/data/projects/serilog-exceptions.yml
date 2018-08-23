@@ -6,3 +6,4 @@ Title: Serilog.Exceptions
 Image: https://raw.githubusercontent.com/RehanSaeed/Serilog.Exceptions/master/Images/Serilog%20Community%20256x256.png
 Description: Log exception details and custom properties that are not output in Exception.ToString().
 NuGet: Serilog.Exceptions
+DiscoveryDate: 12/29/2018

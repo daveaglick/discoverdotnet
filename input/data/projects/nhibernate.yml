@@ -4,3 +4,4 @@ NuGet: NHibernate
 Source: https://github.com/nhibernate/nhibernate-core
 Tags:
   - ORM
+DiscoveryDate: 10/7/2019

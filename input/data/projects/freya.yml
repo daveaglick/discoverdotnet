@@ -1,0 +1,9 @@
+Source: https://github.com/xyncro/freya
+NuGet:
+  - Freya
+Language: F#
+Chat: https://gitter.im/xyncro/freya
+Twitter: freyafs
+Tags:
+  - Web Framework
+DiscoveryDate: 6/15/2019

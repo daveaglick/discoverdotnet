@@ -1,6 +1,9 @@
+Title: log4net
+Description: The Apache log4net library is a tool to help the programmer output log statements to a variety of output targets.
 Language: C#
 NuGet: log4net
-Source: https://github.com/apache/logging-log4net/
+Source: http://logging.apache.org/log4net/source-repository.html
 Tags:
   - Logging
 Website: https://logging.apache.org/log4net/
+DiscoveryDate: 2/6/2020

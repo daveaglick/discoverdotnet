@@ -1,0 +1,9 @@
+Source: https://github.com/mgravell/protobuf-net
+NuGet:
+  - protobuf-net
+Language: C#
+Donations: https://buymeacoff.ee/marcgravell
+Tags:
+  - Data Formats
+  - Serialization
+DiscoveryDate: 6/19/2018

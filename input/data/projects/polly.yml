@@ -3,5 +3,6 @@ Image: https://camo.githubusercontent.com/34b63e5aeab626ae9686f7243db578ca5dfdb2
 Language: C#
 NuGet: Polly
 Source: https://github.com/App-vNext/Polly
+DiscoveryDate: 7/9/2018
 Tags:
   - Error Handling

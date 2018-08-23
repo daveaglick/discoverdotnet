@@ -7,10 +7,11 @@ Description: The package manager for Windows
 Website: https://chocolatey.org
 Docs: https://chocolatey.org/docs
 Chat: https://gitter.im/chocolatey/choco
-Donations:
 Twitter: chocolateynuget
+DiscoveryDate: 7/26/2018
 Platform: false
 Foundation: false
 Microsoft: false
 Tags:
   - Package Manager
+  - Installation

@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - NetEscapades.Extensions.Logging.RollingFile
+Source: https://github.com/andrewlock/NetEscapades.Extensions.Logging
+Tags:
+  - Logging
+  - ASP.NET
+Title: NetEscapades.Extensions.Logging
+DiscoveryDate: 4/22/2020

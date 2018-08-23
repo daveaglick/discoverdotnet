@@ -1,6 +1,7 @@
 Source: https://github.com/haf/expecto
 NuGet: https://www.nuget.org/packages/Expecto/
 Language: F#
+DiscoveryDate: 7/15/2018
 Docs: https://github.com/haf/expecto/blob/master/README.md
 Tags:
   - Testing

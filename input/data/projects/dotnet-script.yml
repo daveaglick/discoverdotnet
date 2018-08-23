@@ -1,5 +1,6 @@
 Source: https://github.com/filipw/dotnet-script
 Language: C#
+GlobalTool: script
 NuGet:
   - dotnet-script
   - Dotnet.Script
@@ -9,3 +10,4 @@ NuGet:
 Tags:
   - Global Tool
   - Scripting
+DiscoveryDate: 8/31/2018

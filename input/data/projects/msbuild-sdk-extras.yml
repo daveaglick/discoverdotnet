@@ -1,0 +1,12 @@
+Language: C#
+NuGet:
+  - MSBuild.Sdk.Extras
+Source: https://github.com/onovotny/MSBuildSdkExtras
+Tags:
+  - MSBuild
+  - UWP
+  - Xamarin
+  - Android
+  - iOS
+Title: MSBuild.Sdk.Extras
+DiscoveryDate: 12/13/2018

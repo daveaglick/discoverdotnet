@@ -1,0 +1,8 @@
+Source: https://github.com/jamesmh/coravel
+NuGet:
+  - Coravel
+Language: C#
+Tags:
+  - Scheduling
+  
+DiscoveryDate: 3/22/2019

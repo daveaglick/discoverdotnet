@@ -1,0 +1,16 @@
+Source: https://github.com/dotnetrdf/dotnetrdf
+NuGet:
+  - dotNetRDF
+  - dotNetRDF.Data.DataTables
+  - dotNetRDF.Data.Virtuoso
+  - dotNetRDF.Query.FullText
+  - dotNetRDF.Query.Spin
+  - dotNetRDF.Web
+Language: C#
+Image: https://raw.githubusercontent.com/dotnetrdf/dotnetrdf.github.io/master/img/avatar-icon.png
+Title: dotNetRDF
+Docs: https://github.com/dotnetrdf/dotnetrdf/wiki/UserGuide
+Tags:
+  - API Client
+  - Data Access
+DiscoveryDate: 8/10/2020

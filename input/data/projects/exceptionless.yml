@@ -3,5 +3,6 @@ Donations: https://donorbox.org/exceptionless
 Language: C#
 NuGet: Exceptionless
 Source: https://github.com/exceptionless/Exceptionless.Net
+DiscoveryDate: 8/2/2018
 Tags:
   - Logging
