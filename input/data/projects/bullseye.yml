@@ -1,0 +1,9 @@
+Source: https://github.com/adamralph/bullseye
+NuGet:
+  - Bullseye
+Language: C#
+Image: https://github.com/adamralph/bullseye/raw/master/assets/bullseye.png
+Title: Bullseye
+Tags:
+  - Build Tool
+  - Utility
