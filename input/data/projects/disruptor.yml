@@ -1,0 +1,7 @@
+Source: https://github.com/disruptor-net/Disruptor-net
+NuGet:
+  - Disruptor
+Language: C#
+Title: Disruptor
+Tags:
+  - Messaging
