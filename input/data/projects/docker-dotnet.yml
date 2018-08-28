@@ -1,0 +1,9 @@
+Source: https://github.com/Microsoft/Docker.DotNet
+NuGet:
+  - Docker.DotNet
+Language: C#
+Title: Docker.DotNet
+Tags:
+  - DevOps
+  - API Client
+  - Containers
