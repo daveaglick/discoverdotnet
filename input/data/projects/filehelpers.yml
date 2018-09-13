@@ -1,0 +1,16 @@
+Source: https://github.com/MarcosMeli/FileHelpers
+NuGet:
+  - FileHelpers
+Language: C#
+Image: https://www.filehelpers.net/images/filehelpers_box_150.png
+Title: FileHelpers Project
+Description: FileHelpers is a free and easy to use .NET library to import or export data from fixed length or delimited records in files, strings or streams.
+Website: https://www.filehelpers.net/
+Docs: https://www.filehelpers.net/
+Donations: https://www.filehelpers.net/donate/
+Tags:
+  - filehelpers
+  - csv
+  - plaintext
+  - file
+  - csv-reader
