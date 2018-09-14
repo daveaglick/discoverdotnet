@@ -1,10 +1,9 @@
 Source: https://github.com/tusdotnet/tusdotnet
 NuGet:
-  - https://github.com/tusdotnet/tusdotnet
+  - tusdotnet
 Language: C#
 Image: https://avatars2.githubusercontent.com/u/29946068?s=400&u=dc5b4909413edf0826b131b0867ffcf3714539d8&v=4
+Website: http://tus.io/
 Tags:
-  - FileUpload
-  - ResumableFileUpload
-  - tus.io
-  - tus
+  - ASP.NET
+  - Networking
