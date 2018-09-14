@@ -1,12 +1,11 @@
 Source: https://github.com/mayuki/Rin
 NuGet:
-  - https://www.nuget.org/packages/Rin/
+  - Rin
 Language: C#
-Image: https://raw.githubusercontent.com/mayuki/Rin/master/docs/images/logo.svg
+Image: https://raw.githubusercontent.com/mayuki/Rin/master/docs/images/logo.svg?sanitize=true
 Title: Rin
 Description: Request/response Inspector middleware for ASP.NET Core. like Glimpse.
-Docs: https://github.com/mayuki/Rin
 Tags:
   - ASP.NET
-  - debugging
-  - utility
+  - Debugging
+  - Logging
