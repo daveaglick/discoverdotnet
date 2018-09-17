@@ -1,0 +1,14 @@
+Source: https://github.com/Polylytics/dashing
+NuGet:
+  - Dashing
+  - Dashing.Weaver
+  - Dashing.Cli
+Language: C#
+Image: https://raw.githubusercontent.com/Polylytics/dashing/master/dashing-icon.png
+Title: Dashing
+Description: Dashing is a simple to use mini ORM built on top of Dapper. It aims to be a strongly typed data access layer that is built with productivity and performance in mind.
+Docs: http://polylytics.github.io/dashing/
+Tags:
+  - ORM
+  - Data Access
+  - 
