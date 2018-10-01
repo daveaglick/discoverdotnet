@@ -1,0 +1,9 @@
+Title: dotnet-srcset
+Source: https://github.com/stevedesmond-ca/dotnet-srcset
+Language: C#
+GlobalTool: srcset
+NuGet: 
+  - dotnet-srcset
+Tags:
+  - Global Tool
+  - Graphics
