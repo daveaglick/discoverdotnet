@@ -2,7 +2,7 @@ Source: https://github.com/cezarypiatek/MappingGenerator
 Language: C#
 Image: https://github.com/cezarypiatek/MappingGenerator/raw/master/MappingGenerator/MappingGenerator/MappingGenerator.Vsix/icon.png
 Title: MappingGenerator
-Description: "AutoMapper" like, Roslyn based, code fix provider that allows to generate mapping code in design time.
+Description: "AutoMapper" like, Roslyn based, code fix provider that allows generating mapping code in design time.  The main features are: generating the implementation of mapping methods and constructors, clone methods and lambda projections. There are also a few additional features like splatting or completing method invocation and object initialization with local variables.
 Docs: https://github.com/cezarypiatek/MappingGenerator
 Donations: https://www.buymeacoffee.com/tmAJLYvWy
 Tags:
