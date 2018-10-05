@@ -5,3 +5,5 @@ Language: C#
 DiscoveryDate: 7/20/2018
 Image: https://camo.githubusercontent.com/11eb2c5474566dab6a533670ff5587f2ab7967cf/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6175746f6d61707065722f6c6f676f2e706e67
 Foundation: true
+Tags:
+  - Data Mapping
