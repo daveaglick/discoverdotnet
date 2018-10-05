@@ -1,7 +1,7 @@
 Source: https://github.com/jgiacomini/Tiny.RestClient
 NuGet:
-  - https://www.nuget.org/packages/Tiny.RestClient/
-Language: C#,
+  - Tiny.RestClient
+Language: C#
 Image: https://raw.githubusercontent.com/jgiacomini/Tiny.RestClient/master/icon.png
 Title: Tiny.RestClient
 Description: Simpliest Fluent REST client for .Net.
@@ -9,4 +9,4 @@ Website: https://github.com/jgiacomini/Tiny.RestClient
 Docs: https://github.com/jgiacomini/Tiny.RestClient
 Chat: https://gitter.im/Tiny-RestClient/Lobby
 Tags:
-  - C#;rest-client;httpclient;rest;Utility;Xamarin;UWP
+  - HTTP
