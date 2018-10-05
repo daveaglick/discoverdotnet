@@ -1,0 +1,18 @@
+Source: https://github.com/SteeltoeOSS/Connectors
+NuGet:
+  - Steeltoe.CloudFoundry.ConnectorCore
+  - Steeltoe.CloudFoundry.Connector.EFCore
+  - Steeltoe.CloudFoundry.Connector.Hystrix
+  - Steeltoe.CloudFoundry.Connector.EF6Core
+  - Steeltoe.CloudFoundry.Connector.EF6Autofac
+  - Steeltoe.CloudFoundry.ConnectorBase
+  - Steeltoe.CloudFoundry.ConnectorAutofac
+Language: C#
+Image: https://secure.gravatar.com/avatar/cd68b0d420bc86141ce709baa3160eb2?s=512&r=g&d=retro
+Title: Steeltoe CloudFoundry Connectors
+Docs: https://steeltoe.io/docs/
+Chat: https://slack.steeltoe.io/
+Twitter: SteeltoeOSS
+Foundation: true
+Tags:
+  - Distributed Computing

@@ -1,0 +1,17 @@
+Source: https://github.com/SteeltoeOSS/CircuitBreaker
+NuGet:
+  - Steeltoe.CircuitBreaker.HystrixBase
+  - Steeltoe.CircuitBreaker.HystrixCore
+  - Steeltoe.CircuitBreaker.Hystrix.MetricsStreamCore
+  - Steeltoe.CircuitBreaker.HystrixAutofac
+  - Steeltoe.CircuitBreaker.Hystrix.MetricsStreamAutofac
+  - Steeltoe.CircuitBreaker.Hystrix.MetricsEventsCore
+Language: C#
+Image: https://secure.gravatar.com/avatar/cd68b0d420bc86141ce709baa3160eb2?s=512&r=g&d=retro
+Title: Steeltoe Circuit Breaker
+Docs: https://steeltoe.io/docs/
+Chat: https://slack.steeltoe.io/
+Twitter: SteeltoeOSS
+Foundation: true
+Tags:
+  - Distributed Computing

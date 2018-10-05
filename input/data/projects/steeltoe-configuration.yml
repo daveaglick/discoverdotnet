@@ -1,0 +1,17 @@
+Source: https://github.com/SteeltoeOSS/Configuration
+NuGet:
+  - Steeltoe.Extensions.Configuration.ConfigServerBase
+  - Steeltoe.Extensions.Configuration.ConfigServerCore
+  - Steeltoe.Extensions.Configuration.CloudFoundryBase
+  - Steeltoe.Extensions.Configuration.CloudFoundryCore
+  - Steeltoe.Extensions.Configuration.CloudFoundryAutofac
+  - Steeltoe.Extensions.Configuration.ConfigServerAutofac
+Language: C#
+Image: https://secure.gravatar.com/avatar/cd68b0d420bc86141ce709baa3160eb2?s=512&r=g&d=retro
+Title: Steeltoe Configuration
+Docs: https://steeltoe.io/docs/
+Chat: https://slack.steeltoe.io/
+Twitter: SteeltoeOSS
+Foundation: true
+Tags:
+  - Configuration
