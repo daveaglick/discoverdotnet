@@ -1,8 +1,0 @@
-Language: C#
-NuGet: SciterSharpWindows
-Source: https://github.com/MISoftware/SciterSharp
-Tags:
-  - GUI
-  - WPF
-  - WinForms
-DiscoveryDate: 9/19/2018
