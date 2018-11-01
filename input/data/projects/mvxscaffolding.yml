@@ -1,11 +1,9 @@
 Source: https://github.com/Plac3hold3r/MvxScaffolding
 NuGet:
-  - https://www.nuget.org/packages/MvxScaffolding.Templates/
+  - MvxScaffolding.Templates
 Language: C#
 Image: https://raw.githubusercontent.com/Plac3hold3r/MvxScaffolding/develop/nuspec/nuget_icon.png
 Title: MvxScaffolding
-Docs: https://github.com/Plac3hold3r/MvxScaffolding/blob/develop/README.md
-Platform: true
 Tags:
   - Xamarin
   - Visual Studio
