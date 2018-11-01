@@ -1,0 +1,7 @@
+Source: https://github.com/joncloud/https
+NuGet: https
+Language: C#
+GlobalTool: https
+Tags:
+  - HTTP
+  - Global Tool
