@@ -3,7 +3,5 @@ NuGet: https
 Language: C#
 GlobalTool: https
 Tags:
-  - CLI
   - HTTP
   - Global Tool
-DiscoveryDate: 10/25/2018
