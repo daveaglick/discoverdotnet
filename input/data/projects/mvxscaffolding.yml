@@ -1,0 +1,10 @@
+Source: https://github.com/Plac3hold3r/MvxScaffolding
+NuGet:
+  - MvxScaffolding.Templates
+Language: C#
+Image: https://raw.githubusercontent.com/Plac3hold3r/MvxScaffolding/develop/nuspec/nuget_icon.png
+Title: MvxScaffolding
+Tags:
+  - Xamarin
+  - Visual Studio
+  - Templates
