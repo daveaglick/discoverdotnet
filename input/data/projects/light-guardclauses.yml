@@ -1,0 +1,13 @@
+Source: https://github.com/feo2x/light.guardclauses/
+NuGet:
+  - https://www.nuget.org/packages/Light.GuardClauses/
+Language: C#
+Image: https://raw.githubusercontent.com/feO2x/Light.GuardClauses/master/Images/light_logo.png
+Title: Light.GuardClauses
+Description: A lightweight .NET library for expressive Guard Clauses.
+Docs: https://github.com/feO2x/Light.GuardClauses/wiki
+Tags:
+  - assertions
+  - guard clauses
+  - precondition checks
+  - parameter checks
