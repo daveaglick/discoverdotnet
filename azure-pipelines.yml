@@ -1,3 +1,4 @@
+trigger: none
 steps:
   - script: build -target Build
     env:
