@@ -1,0 +1,10 @@
+Source: https://github.com/SignalR/SignalR
+NuGet:
+  - Microsoft.AspNet.SignalR
+Language: C#
+Title: SignalR
+Website: http://signalr.net/
+Docs: https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/introduction-to-signalr
+Microsoft: true
+Tags:
+  - Networking
