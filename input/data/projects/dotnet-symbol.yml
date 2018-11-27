@@ -1,0 +1,10 @@
+Source: https://github.com/dotnet/symstore/tree/master/src/dotnet-symbol
+NuGet:
+  - dotnet-symbol
+Language: C#
+Title: dotnet-symbol
+Description: Symbol downloader dotnet cli extension.
+Microsoft: true
+Tags:
+  - Global Tool
+  - Debugging
