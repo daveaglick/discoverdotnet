@@ -1,0 +1,13 @@
+Source: https://github.com/fsprojects/Fabulous
+NuGet:
+  - Fabulous.Core
+  - Fabulous.LiveUpdate
+  - Fabulous.Templates
+  - Fabulous.Maps
+  - Fabulous.OxyPlot
+  - Fabulous.SkiaSharp
+Language: F#
+Docs: https://fsprojects.github.io/Fabulous/index.html#getting=started
+Chat: https://gitter.im/fsprojects/Fabulous
+Tags:
+  - Xamarin
