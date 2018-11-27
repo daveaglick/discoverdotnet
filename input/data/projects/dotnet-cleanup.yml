@@ -1,0 +1,7 @@
+Source: https://github.com/sebnilsson/DotnetCleanup
+NuGet:
+  - dotnet-cleanup
+Language: C#
+Title: dotnet-cleanup
+Tags:
+  - Global Tool
