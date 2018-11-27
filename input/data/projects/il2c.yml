@@ -1,0 +1,10 @@
+Source: https://github.com/kekyo/IL2C
+NuGet:
+  - IL2C.Build
+  - IL2C.Core
+Language: C#
+Title: IL2C
+Description: A translator for ECMA-335 CIL/MSIL to C language.
+Tags:
+  - Assembly Manipulation
+  - Compiler
