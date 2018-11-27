@@ -1,0 +1,10 @@
+Source: https://github.com/csharpfritz/CoreWiki
+Language: C#
+Title: CoreWiki
+Description: A simple ASP.NET Core wiki that we are working on during live coding streams. It runs on Windows, Mac, Linux and Container. Core Wiki is an allusion to the Core App. This name was suggested by Shayne Boyer in the stream of the 27th/March. Initially this project is very basic and anyone who is learning ASP.NET Core 2.0 (Razor Pages) can use it to learn.
+Website: https://twitch.tv/csharpfritz
+Docs: https://github.com/csharpfritz/CoreWiki
+Twitter: charpfritz
+Tags:
+  - Examples
+  - ASP.NET
