@@ -1,0 +1,11 @@
+Source: https://github.com/FastReports/FastReport
+NuGet:
+  - FastReport.OpenSource
+  - FastReport.OpenSource.Web
+Language: C#
+Title: FastReport Open Source
+Website: https://www.fast-report.com/
+Docs: https://fastreports.github.io/FastReport.Documentation/
+Chat: https://gitter.im/FastReports/FastReport
+Tags:
+  - Reporting
