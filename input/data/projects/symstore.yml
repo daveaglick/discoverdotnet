@@ -1,0 +1,6 @@
+Source: https://github.com/dotnet/symstore
+Language: C#
+Title: Microsoft.SymbolStore
+Microsoft: true
+Tags:
+  - Debugging
