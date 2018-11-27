@@ -1,0 +1,7 @@
+Source: https://github.com/neuecc/MagicOnion
+NuGet:
+  - MagicOnion
+Language: C#
+Title: MagicOnion
+Tags:
+  - Networking
