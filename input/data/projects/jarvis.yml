@@ -3,10 +3,6 @@ Language: C#
 Image: https://github.com/spectresystems/jarvis/blob/develop/res/gfx/jarvis.png?raw=true
 Title: Jarvis
 Description: Jarvis is an Alfred alternative for Windows 10.
-Donations:
-Platform: false
-Foundation: false
-Microsoft: false
 Tags:
-  - App, Productivity
-DiscoveryDate: 3/25/2020
+  - App
+  - Productivity
