@@ -1,0 +1,7 @@
+Source: https://github.com/abock/idgen
+NuGet:
+  - IdentifierGenerator
+Language: C#
+Title: idgen
+Tags:
+  - Global Tool
