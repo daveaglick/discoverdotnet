@@ -1,0 +1,12 @@
+Source: https://github.com/shouldly/shouldly
+NuGet:
+  - Shouldly
+Language: C#
+Image: https://raw.githubusercontent.com/shouldly/shouldly/master/assets/logo_350x84.png
+Title: Shouldly
+Description: Shouldly is an assertion framework which focuses on giving great error messages when the assertion fails while being simple and terse.
+Docs: http://shouldly.readthedocs.org/en/latest
+Chat: https://gitter.im/shouldly/shouldly
+Tags:
+  - Validation
+  - Testing
