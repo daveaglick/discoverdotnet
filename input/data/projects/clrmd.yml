@@ -1,0 +1,8 @@
+Source: https://github.com/Microsoft/clrmd
+NuGet:
+  - Microsoft.Diagnostics.Runtime
+Language: C#
+Title: Microsoft.Diagnostics.Runtime
+Microsoft: true
+Tags:
+  - Debugging
