@@ -1,0 +1,10 @@
+Source: https://github.com/kaeedo/WhereInTheWorld
+NuGet:
+  - WhereInTheWorld
+Language: F#
+Title: Where In The World
+Description: Offline CLI tool to search for postal codes or city names in the world to get information about that place. Requires internet to download information about a country, but after that, querying is offline
+Docs: https://raw.githubusercontent.com/kaeedo/WhereInTheWorld/master/README.md
+Tags:
+  - Global Tool
+  - GIS
