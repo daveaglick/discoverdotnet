@@ -3,18 +3,8 @@ NuGet:
   - IL2C.Build
   - IL2C.Core
 Language: C#
-Title: A translator for ECMA-335 CIL/MSIL to C language.
-Description: Better predictability for runtime costs, better human readability for the IL2C translated C source code. Very tiny footprint requirements, we are thinking about how fit between tiny embedded system and large system with many resources. Better code/runtime portability, minimum requirements are only C99 compiler. Better interoperabilities for exist C libraries, we can use standard .NET interop technics (likely P/Invoke.) Contains seamless building system for major C toolkits, for example: CMake system, Arduino IDE, VC++ ...
-Platform: true
+Title: IL2C
+Description: A translator for ECMA-335 CIL/MSIL to C language.
 Tags:
-  - cil
-  - msil
-  - c
-  - csharp
-  - dotnet
-  - translator
-  - transpiler
-  - ecma335
-  - il
-  - intermediate-language
-  - fsharp
+  - Assembly Manipulation
+  - Compiler
