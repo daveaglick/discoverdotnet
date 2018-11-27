@@ -1,0 +1,12 @@
+Source: https://github.com/fluentassertions/fluentassertions
+NuGet:
+  - FluentAssertions
+Language: C#
+Image: https://fluentassertions.com/assets/images/fluent_assertions_large_horizontal.svg
+Title: Fluent Assertions
+Website: https://www.fluentassertions.com/
+Docs: https://fluentassertions.com/documentation/
+Chat: https://fluentassertionsslack.herokuapp.com/
+Tags:
+  - Validation
+  - Testing
