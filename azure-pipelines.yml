@@ -1,0 +1,2 @@
+steps:
+  - script: build -target Build
