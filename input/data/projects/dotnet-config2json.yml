@@ -1,0 +1,8 @@
+Source: https://github.com/andrewlock/dotnet-config2json
+NuGet:
+  - dotnet-config2json
+Language: C#
+Title: dotnet-config2json
+Tags:
+  - ASP.NET
+  - Global Tool
