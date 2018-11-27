@@ -1,0 +1,7 @@
+Source: https://github.com/FrodaSE/Minion
+NuGet:
+  - Froda.Minion
+Language: C#
+Title: Minion
+Tags:
+  - Scheduling
