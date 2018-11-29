@@ -1,0 +1,11 @@
+Source: https://github.com/stryker-mutator/stryker-net
+NuGet:
+  - Stryker.Runner.DotNetCore.CLI
+Language: C#
+Title: Stryker.NET
+Description: Mutation testing for .NET.
+Website: https://stryker-mutator.io/
+Chat: https://gitter.im/stryker-mutator/stryker-net
+Tags:
+  - Testing
+  - Global Tool
