@@ -1,0 +1,10 @@
+Source: https://github.com/petabridge/nbench
+NuGet:
+  - NBench
+Language: C#
+Image: https://raw.githubusercontent.com/petabridge/NBench/dev/images/NBench_logo_square_140.png
+Title: NBench
+Chat: https://gitter.im/petabridge/NBench
+Tags:
+  - Performance
+  - Profiling
