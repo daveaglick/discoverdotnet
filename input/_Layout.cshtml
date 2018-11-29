@@ -48,9 +48,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.css" rel="stylesheet"/>
         <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Roboto+Mono:400,700|Roboto+Slab:100,700|Roboto:300,400,700" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/MarkerCluster.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.min.css" rel="stylesheet">
         <link href="/assets/styles.css" rel="stylesheet"/>  
 
         <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
@@ -61,9 +58,6 @@
         <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/moment@2.20.1/moment.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/leaflet@1.3.1/dist/leaflet.min.js"></script> 
-        <script src="https://cdn.jsdelivr.net/npm/vue2-leaflet@0.0.58/dist/vue2-leaflet.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.3.0/dist/leaflet.markercluster-src.min.js"></script>
         <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
 
@@ -77,20 +71,12 @@
         <div id="app" class="d-flex flex-column flex-nowrap h-100">
             <header class="mb-4">
                 <div class="logo-header text-center">
-                    <div class="logo-wrapper">
-                        <div class="logo container-fluid layout-container">
-                            <div class="binoculars">
-                                <i class="fas fa-binoculars" data-fa-transform="rotate-30"></i>
-                            </div>
-                            <a href="/"><img src="/assets/logo.svg"></img></a>
-                            <p class="d-none d-sm-block">Awesome .NET open source & community resources</p>
-                        </div>                        
-                    </div>
-                    <v-map :zoom="headerMapZoom" :center="headerMapCenter" :options="headerMapOptions" class="header-map">
-                        <v-tilelayer :url="headerMapUrl" :attribution="headerMapAttribution"></v-tilelayer>
-                    </v-map>
+                    <div class="logo container-fluid layout-container">
+                        <a href="/"><img src="/assets/logo.svg"></img></a>
+                        <p class="d-none d-sm-block">Awesome .NET open source & community resources</p>
+                    </div>   
                 </div>
-                <b-navbar toggleable="md" type="dark" variant="dark">
+                <b-navbar toggleable="md" type="dark" variant="dark" class="font-weight-bold">
                     <b-container fluid class="layout-container">
                         <div class="flex-grow-1">
                             <b-navbar-toggle target="main-nav-collapse"></b-navbar-toggle>
@@ -164,13 +150,6 @@
             Vue.component('search-query', httpVueLoader('/components/search/search-query.vue'));   
             Vue.component('play-button', httpVueLoader('/components/feeds/play-button.vue'));   
 
-            // Map components
-            Vue.component('v-map', Vue2Leaflet.Map);
-            Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
-            Vue.component('v-marker', Vue2Leaflet.Marker);
-            Vue.component('v-popup', Vue2Leaflet.Popup);
-            Vue.component('v-marker-cluster', httpVueLoader('/components/Vue2LeafletMarkercluster.vue'));
-
             Vue.filter('no-protocol', function (value) {
                 if (!value)
                 {
@@ -238,23 +217,6 @@
             new Vue({
                 el: '#app',
                 data: {
-                    headerMapZoom: 10,
-                    headerMapCenter: [
-                        (Math.random() * 40 + 20).toFixed(3) * 1,
-                        (Math.random() * 120).toFixed(3) * 1
-                    ],
-                    //headerMapUrl: 'http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',
-                    headerMapUrl: 'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png',
-                    headerMapAttribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>',
-                    headerMapOptions: {
-                        zoomControl: false,
-                        boxZoom: false,
-                        doubleClickZoom: false,
-                        dragging: false,
-                        keyboard: false,
-                        scrollWheelZoom: false,
-                        touchZoom: false
-                    },
                     projectKeys: []
                 },
                 created: function() {        

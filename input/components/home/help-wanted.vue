@@ -1,27 +1,28 @@
 <template>
-    <div class="mb-5">
-        <div class="text-center mb-5">            
+    <b-card no-body header-bg-variant="secondary" bg-variant="light" class="mb-3">
+        <div slot="header">
             <h3>
                 <span class="accent-primary">Help</span>
                 <span class="accent-secondary">Wanted</span>
-                
-                <!-- This adds extra height to line up the hr -->
-                <span class="h1"></span>
-            </h3>
+            </h3>              
             <hr/>
-            <p class="accent-script">A few help wanted issues perfect for digging in. <a href="javascript:void(0)" @click="shuffle">Shuffle</a> to see more.</p>       
-
+            <div class="accent-script">A few help wanted issues perfect for digging in. <a href="javascript:void(0)" @click="shuffle">Shuffle</a> to see more.</div>
+        </div>
+        <b-card-body>
             <loading :data="issues"></loading>
-
             <issue-card v-for="issue in firstIssues" :key="issue.link" :card-data="issue" :project-keys="projectKeys" class="mb-4">
             </issue-card>
-            
-            <div class="text-right mb-4"><b-button size="sm" class="mr-sm-2 mt-2 mt-sm-0" @click="shuffle">Shuffle</b-button></div>            
-            <p class="text-left"><a href="/issues/?tab=helpwanted">All Help Wanted Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
+        </b-card-body>        
+        <div slot="footer" class="text-muted small">
+            <div class="float-md-right">
+                <b-button size="sm" @click="shuffle">Shuffle</b-button>
+            </div>            
+            <div class="float-md-left">
+                <p><a href="/issues/?tab=helpwanted">All Help Wanted Issues <span class="fa fa-long-arrow-alt-right"></span></a></p>
+            </div>
         </div>
-    </div>
+    </b-card>
 </template>
-
 
 <script>
     module.exports = {
