@@ -13,14 +13,15 @@
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using System.Net;
+using System.Net.Http;
 using System.Xml;
+using System.IO;
 using Octokit;
 using AngleSharp;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Rss;
 using Microsoft.SyndicationFeed.Atom;
 using Newtonsoft.Json;
-using System.IO;
 
 Settings[Keys.Host] = "discoverdot.net";
 Settings[Keys.LinksUseHttps] = true;
@@ -605,9 +606,9 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
 
     Wyam.Common.Tracing.Trace.Information($"Getting .NET Foundation readme");
     string foundationReadme;
-    using(System.Net.WebClient webClient = new System.Net.WebClient())
+	using (HttpClient httpClient = new HttpClient())
 	{
-		foundationReadme = await webClient.DownloadStringTaskAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
+		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 
     // Even though it's much slower, we have to query the GitHub API sequentially or else we'll trigger the abuse detection mechanisms:
@@ -863,9 +864,9 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     string description = null;
                     string image = null;
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
-                    using (WebClient webClient = new WebClient())
+                    using (HttpClient httpClient = new HttpClient())
                     {
-                        using (Stream stream = await webClient.OpenReadTaskAsync(feed))
+                        using (Stream stream = await httpClient.GetStreamAsync(feed))
                         {
                             using (StreamReader streamReader = new XmlStreamReader(stream))
                             {
@@ -1129,13 +1130,13 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     string meetupToken = context.String("MeetupToken");
     JsonSerializer serializer = new JsonSerializer();
 	List<MeetupGroup> groups = new List<MeetupGroup>();
-	using (WebClient webClient = new WebClient())
+	using (HttpClient httpClient = new HttpClient())
 	{
 		int offset = 0;
 		while (true)
 		{
             Wyam.Common.Tracing.Trace.Information($"Getting group data for offset {offset}");
-			using (Stream stream = await webClient.OpenReadTaskAsync(
+			using (Stream stream = await httpClient.GetStreamAsync(
                 $"https://api.meetup.com/find/groups?topic_id=827&only=name,link,localized_location,localized_country_name,lat,lon,key_photo,next_event&radius=global&page=200&offset={offset}&key={meetupToken}"))
 			{
 				using (StreamReader streamReader = new StreamReader(stream))
@@ -1157,7 +1158,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     IList<IDocument> outputs = groups.Select(x => context.GetDocument(x.GetMetadata())).ToList();
 
     // Process input documents    
-	using (WebClient webClient = new WebClient())
+	using (HttpClient httpClient = new HttpClient())
 	{
         foreach(IDocument input in inputs)
         {
@@ -1166,7 +1167,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
             {            
                 // Query API for Meetup groups that aren't already part of the .NET topic set
                 Wyam.Common.Tracing.Trace.Information($"Getting group data for group {meetup}");
-                using (Stream stream = await webClient.OpenReadTaskAsync(
+                using (Stream stream = await httpClient.GetStreamAsync(
                     $"https://api.meetup.com/{meetup}?only=name,link,localized_location,localized_country_name,lat,lon,key_photo,next_event&key={meetupToken}"))
                 {
                     using (StreamReader streamReader = new StreamReader(stream))
