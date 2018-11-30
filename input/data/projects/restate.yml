@@ -1,0 +1,12 @@
+Source: https://github.com/psibr/REstate
+NuGet:
+  - REstate
+  - REstate.Concurrency.Primitives
+  - REstate.Remote
+  - REstate.Engine.Repositories.Redis
+  - REstate.Engine.Repositories.EntityFrameworkCore
+Language: C#
+Image: https://raw.githubusercontent.com/psibr/REstate/master/assets/icons/REstate.svg?sanitize=true
+Title: REstate
+Tags:
+  - State Management
