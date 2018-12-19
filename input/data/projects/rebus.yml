@@ -1,0 +1,12 @@
+Source: https://github.com/rebus-org/Rebus
+NuGet:
+  - Rebus
+Language: C#
+Image: https://raw.githubusercontent.com/rebus-org/Rebus/master/artwork/little_rebusbus2_copy-200x200.png
+Title: Rebus
+Description: Simple and lean service bus implementation for .NET
+Website: https://github.com/rebus-org/Rebus/wiki
+Docs: https://github.com/rebus-org/Rebus/wiki
+Tags:
+  - Distributed Computing
+  - Messaging
