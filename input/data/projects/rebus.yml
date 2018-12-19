@@ -8,13 +8,5 @@ Description: Simple and lean service bus implementation for .NET
 Website: https://github.com/rebus-org/Rebus/wiki
 Docs: https://github.com/rebus-org/Rebus/wiki
 Tags:
-  - service-bus
-  - messaging
-  - message-queue
-  - msmq
-  - rabbitmq
-  - amazon-sqs
-  - azure
-  - azure-servicebus
-  - enterprise-service-bus
-  - messaging-patterns
+  - Distributed Computing
+  - Messaging
