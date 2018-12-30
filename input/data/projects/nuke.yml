@@ -3,7 +3,7 @@ Language: C#
 NuGet: Nuke.Common
 Chat: https://publicslack.com/slacks/nukebuildnet/invites/new
 Source: https://github.com/nuke-build/nuke
-Description: Cross-platform build automation system for C# developers
+Description: Build Automation System for C#/.NET
 Website: https://nuke.build
 Title: NUKE
 Twitter: nukebuildnet
