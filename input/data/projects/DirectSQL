@@ -1,0 +1,4 @@
+Source: https://github.com/7k8m/DirectSQL
+NuGet:
+  - https://www.nuget.org/packages/DirectSQL/
+Language: C#
