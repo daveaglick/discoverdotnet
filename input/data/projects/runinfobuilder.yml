@@ -1,0 +1,8 @@
+Source: https://github.com/rushfive/RunInfoBuilder
+NuGet:
+  - R5.RunInfoBuilder
+Language: C#
+Title: RunInfoBuilder
+Description: A unique command line parser for .NET that utilizes object trees for commands.
+Tags:
+  - CLI
