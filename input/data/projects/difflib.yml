@@ -1,0 +1,8 @@
+Source: https://github.com/lassevk/DiffLib
+NuGet:
+  - DiffLib
+Language: C#
+Title: DiffLib
+Description: A simple but powerful diff and merge class library for .NET, written in C#
+Tags:
+  - Text Processing
