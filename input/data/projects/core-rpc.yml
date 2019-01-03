@@ -1,0 +1,10 @@
+Source: https://github.com/kekekeks/CoreRPC
+NuGet:
+  - CoreRpc
+  - CoreRpc.AspNetCore
+Language: C#
+Title: CoreRPC
+Description: Extensible RPC library with Typescript client generator
+Tags:
+  - Distributed Computing
+  - ASP.NET
