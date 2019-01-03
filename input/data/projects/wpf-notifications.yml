@@ -1,0 +1,9 @@
+Source: https://github.com/Enterwell/Wpf.Notifications
+NuGet:
+  - Enterwell.Clients.Wpf.Notifications
+Language: C#
+Title: Enterwell Client WPF - Notifications
+Description: WPF notifications UI controls (as seen in VS Code)
+Tags:
+  - WPF
+  - GUI
