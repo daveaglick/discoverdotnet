@@ -1,0 +1,12 @@
+Source: https://github.com/MassTransit/MassTransit
+NuGet:
+  - MassTransit
+Language: C#
+Image: https://avatars2.githubusercontent.com/u/317796?s=200&v=4
+Title: MassTransit
+Description: MassTransit is a free, open-source service bus and distributed application framework for .NET
+Website: http://masstransit-project.com
+Docs: http://masstransit-project.com/MassTransit/
+Chat: https://gitter.im/MassTransit/MassTransit
+Tags:
+  - Distributed Computing
