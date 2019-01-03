@@ -1,0 +1,11 @@
+Source: https://github.com/NaBian/HandyControl
+NuGet:
+  - HandyControl
+Language: C#
+Image: https://raw.githubusercontent.com/NaBian/HandyControl/master/Resources/icon.png
+Title: HandyControl
+Description: Contains some simple and commonly used WPF controls
+Chat: https://gitter.im/HandyControl/Lobby
+Tags:
+  - GUI
+  - WPF
