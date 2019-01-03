@@ -1,0 +1,8 @@
+Source: https://github.com/Nucs/JsonSettings
+NuGet:
+  - nucs.JsonSettings
+Language: C#
+Title: JsonSettings
+Description: Easiest way you'll ever write settings for your app. As readable Json or encrypted byte file.
+Tags:
+  - Configuration
