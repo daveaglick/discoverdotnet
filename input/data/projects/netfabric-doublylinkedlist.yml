@@ -1,0 +1,6 @@
+Source: https://github.com/NetFabric/NetFabric.DoublyLinkedList
+NuGet:
+  - NetFabric.DoublyLinkedList
+Language: C#
+Tags:
+  - Utility
