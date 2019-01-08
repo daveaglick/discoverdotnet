@@ -1,0 +1,10 @@
+Source: https://github.com/jackmott/LinqFaster
+NuGet:
+  - LinqFaster
+  - LinqFaster.SIMD
+  - LinqFaster.Parallel
+  - LinqFaster.SIMD.Parallel
+Language: C#
+Image: https://camo.githubusercontent.com/ea1b5ac38838c780c4706d497e1a4124b097e6ce/68747470733a2f2f6a61636b6d6f74742e6769746875622e696f2f696d616765732f4c696e714661737465722e706e67
+Tags:
+  - LINQ
