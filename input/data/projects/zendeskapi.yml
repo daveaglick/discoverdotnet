@@ -1,0 +1,7 @@
+Source: https://github.com/mozts2005/ZendeskApi_v2.git
+NuGet:
+  - ZendeskApi_v2
+Language: c#
+Image: https://raw.githubusercontent.com/mozts2005/ZendeskApi_v2/master/tools/icon/lotus.png
+Tags:
+  - api client
