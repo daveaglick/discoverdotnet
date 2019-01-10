@@ -1,0 +1,10 @@
+Source: https://github.com/jamesmh/coravel
+NuGet:
+  - https://www.nuget.org/packages/Coravel/
+Language: C#
+Image: https://raw.githubusercontent.com/jamesmh/coravel/master/Docs/img/logo.png
+Tags:
+  - C#
+  - ASP.NET
+  - Mail
+  - Scheduling
