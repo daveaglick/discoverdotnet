@@ -1,0 +1,9 @@
+Source: https://github.com/confluentinc/confluent-kafka-dotnet
+NuGet:
+  - Confluent.Kafka
+  - Confluent.Kafka.Avro
+  - Confluent.SchemaRegistry
+Language: C#
+Chat: https://confluentcommunity.slack.com/messages/clients
+Tags:
+  - API Client
