@@ -1,0 +1,8 @@
+Source: https://github.com/datalust/superpower
+NuGet:
+  - Superpower
+Language: C#
+Image: https://raw.githubusercontent.com/datalust/superpower/dev/asset/Superpower-White-200px.png
+Chat: https://gitter.im/datalust/superpower
+Tags:
+  - Parsing
