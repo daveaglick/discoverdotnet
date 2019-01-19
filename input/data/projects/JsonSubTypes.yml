@@ -1,0 +1,10 @@
+Source: https://github.com/manuc66/JsonSubTypes
+NuGet:
+  - https://www.nuget.org/packages/JsonSubTypes/
+Language: C#
+Title: JsonSubTypes
+Description: JsonSubTypes a discriminated Json sub-type Converter implementation for .NET
+Docs: https://github.com/manuc66/JsonSubTypes/blob/master/README.md
+Donations: https://github.com/manuc66/JsonSubTypes/blob/master/README.md#-support-this-project
+Tags:
+  - json converter subtype inheritance deserializeobject csharp polymorphism
