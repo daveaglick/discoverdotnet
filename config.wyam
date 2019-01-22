@@ -227,7 +227,9 @@ Pipelines.Add("Post Search Data",
 );
 
 Pipelines.Add("OPML feed export", 
-    ReadFiles("data/blogs/*.yml")
+    ReadFiles("data/blogs/*.yml"),
+    Yaml(),
+    Content(string.Empty)
 );
 
 // Broadcasts and Episodes
