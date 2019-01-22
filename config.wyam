@@ -226,6 +226,10 @@ Pipelines.Add("Post Search Data",
     WriteFiles((doc, ctx) => "data/search/posts.json")
 );
 
+Pipelines.Add("OPML feed export", 
+    ReadFiles("data/blogs/*.yml"),
+);
+
 // Broadcasts and Episodes
 //////////////////////////////////////////////////////////////////////
 
