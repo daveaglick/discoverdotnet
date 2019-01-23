@@ -1,0 +1,9 @@
+Source: https://github.com/rikimaru0345/Ceras
+NuGet:
+  - Ceras
+Language: C#
+Title: Ceras
+Description: Universal binary serializer for a wide variety of scenarios
+Chat: https://discord.gg/FGaCX4c
+Tags:
+  - Serialization
