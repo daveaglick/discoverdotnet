@@ -869,8 +869,6 @@ public IEnumerable<IDocument> GetOpmlData(IReadOnlyList<IDocument> inputs, IExec
                 title = feed.Substring(from, to - from);
             }
 
-            Wyam.Common.Tracing.Trace.Information($"Title: {title} | Feed: {feed}"); //TODO: remove
-            
             MetadataItems metadata = new MetadataItems(){
                 { "Title", title },
                 { "Feed", feed }
