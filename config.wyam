@@ -148,6 +148,7 @@ Pipelines.Add("Blogs",
         Take(5)),
     Yaml(),    
     Content(string.Empty),
+    Execute((inputs, ctx, _) => GetOpmlData(inputs, ctx)),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Meta(Keys.RelativeFilePath, (doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
@@ -227,7 +228,7 @@ Pipelines.Add("Post Search Data",
 );
 
 Pipelines.Add("OPML feed export", 
-    ReadFiles("_feeds.cshtml"),
+    ReadFiles("feeds.cshtml"),
     Razor(),
     WriteFiles(".opml")
 );

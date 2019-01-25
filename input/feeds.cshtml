@@ -9,7 +9,7 @@
     <outline text="Discover.NET Blog Collection" title="Discover.NET Blog Collection">
     @foreach(IDocument blog in Documents["Blogs"])
     {
-      <outline type="rss" text="@Metadata("Title")" title="@Metadata("Title")" xmlUrl="@Metadata("Feed")" />
+      <outline type="rss" text="@blog.Metadata["Title"]" title="@blog.Metadata["Title"]" xmlUrl="@blog.Metadata["Feed"]" />
         // Output the appropriate XML for each blog document
         // The blog documents already contain metadata like "Link", "Description", etc.
     }
