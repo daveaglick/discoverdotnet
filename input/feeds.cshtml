@@ -10,8 +10,6 @@
     @foreach(IDocument blog in Documents["Blogs"])
     {
       <outline type="rss" text="@blog.Metadata["Title"]" title="@blog.Metadata["Title"]" xmlUrl="@blog.Metadata["Feed"]" />
-        // Output the appropriate XML for each blog document
-        // The blog documents already contain metadata like "Link", "Description", etc.
     }
     </outline>
   </body>
