@@ -851,29 +851,6 @@ public class FeedItemData
     }
 }
 
-public IEnumerable<IDocument> GetOpmlData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
-{
-    return inputs.Select(
-        input => {
-            string feed = input.String("Feed");
-            string title = input.String("Title");
-
-            if (!string.IsNullOrWhiteSpace(title)) 
-            {
-                // Already has a title, so we don't need to process further
-                return input; 
-            }
-
-            // process the base Url as the title in the absence of one
-
-            MetadataItems metadata = new MetadataItems(){
-                { "Title", title }
-            };
-
-            return context.GetDocument(input, metadata);
-        });
-}
-
 public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
     DateTimeOffset recent = new DateTimeOffset(DateTime.Today.AddHours(context.Bool("Preview") ? -168 : -48));
