@@ -859,15 +859,17 @@ public IEnumerable<IDocument> GetOpmlData(IReadOnlyList<IDocument> inputs, IExec
             string feed = input.String("Feed");
             string title = input.String("Title");
 
-            if (string.IsNullOrWhiteSpace(title)) {
-                // process the base Url as the title in the absence of one
-                var slashes = "//";
-                
-                int from = feed.IndexOf(slashes) + slashes.Length;
-                int to = feed.IndexOf("/", from);
-
-                title = feed.Substring(from, to - from);
+            if (!string.IsNullOrWhiteSpace(title)) {
+                return input;
             }
+
+            // process the base Url as the title in the absence of one
+            var slashes = "//";
+            
+            int from = feed.IndexOf(slashes) + slashes.Length;
+            int to = feed.IndexOf("/", from);
+
+            title = feed.Substring(from, to - from);
 
             MetadataItems metadata = new MetadataItems(){
                 { "Title", title }
