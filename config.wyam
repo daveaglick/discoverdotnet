@@ -227,7 +227,7 @@ Pipelines.Add("Post Search Data",
 );
 
 Pipelines.Add("OPML feed export", 
-    ReadFiles("_feeds.cshtml"),
+    ReadFiles("feedsopml.cshtml"),
     Razor(),
     WriteFiles((doc, ctx) => "feeds.opml")
 );
