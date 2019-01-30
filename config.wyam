@@ -1001,6 +1001,8 @@ public string GenerateTitleFromFeedName(string feed)
             int to = feed.IndexOf("/", from);
 
             title = feed.Substring(from, to - from);
+
+            return title;
 }
 
 // See https://github.com/dotnet/SyndicationFeedReaderWriter/issues/31
