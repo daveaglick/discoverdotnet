@@ -870,8 +870,7 @@ public IEnumerable<IDocument> GetOpmlData(IReadOnlyList<IDocument> inputs, IExec
             }
 
             MetadataItems metadata = new MetadataItems(){
-                { "Title", title },
-                { "Feed", feed }
+                { "Title", title }
             };
 
             return context.GetDocument(input, metadata);
