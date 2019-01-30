@@ -995,14 +995,14 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
 
 public string GenerateTitleFromFeedName(string feed)
 {
-            var slashes = "//";
-            
-            int from = feed.IndexOf(slashes) + slashes.Length;
-            int to = feed.IndexOf("/", from);
+    var slashes = "//";
+    
+    int from = feed.IndexOf(slashes) + slashes.Length;
+    int to = feed.IndexOf("/", from);
 
-            title = feed.Substring(from, to - from);
+    title = feed.Substring(from, to - from);
 
-            return title;
+    return title;
 }
 
 // See https://github.com/dotnet/SyndicationFeedReaderWriter/issues/31
