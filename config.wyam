@@ -1000,7 +1000,7 @@ public string GenerateTitleFromFeedName(string feed)
     int from = feed.IndexOf(slashes) + slashes.Length;
     int to = feed.IndexOf("/", from);
 
-    title = feed.Substring(from, to - from);
+    var title = feed.Substring(from, to - from);
 
     return title;
 }
