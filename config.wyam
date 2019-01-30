@@ -149,7 +149,6 @@ Pipelines.Add("Blogs",
     Yaml(),    
     Content(string.Empty),
     Execute((inputs, ctx, _) => GetFeedData(inputs, ctx).Result.Where(x => x != null)),
-    Execute((inputs, ctx, _) => GetOpmlData(inputs, ctx)),
     Meta("Key", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
     Meta(Keys.RelativeFilePath, (doc, ctx) => "blogs/" + doc.Source.FileName.ChangeExtension(".html")),
     Meta("Language", (doc, ctx) => doc.String("Language", "English")),
@@ -866,12 +865,6 @@ public IEnumerable<IDocument> GetOpmlData(IReadOnlyList<IDocument> inputs, IExec
             }
 
             // process the base Url as the title in the absence of one
-            var slashes = "//";
-            
-            int from = feed.IndexOf(slashes) + slashes.Length;
-            int to = feed.IndexOf("/", from);
-
-            title = feed.Substring(from, to - from);
 
             MetadataItems metadata = new MetadataItems(){
                 { "Title", title }
@@ -987,9 +980,17 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     {
                         metadata.Add("Website", website);
                     }
-                    if(!input.ContainsKey("Title") && !string.IsNullOrEmpty(title))
+                    if(!input.ContainsKey("Title"))
                     {
-                        metadata.Add("Title", title);
+                        if(!string.IsNullOrEmpty(title))
+                        {
+                            metadata.Add("Title", title);
+                        }
+                        else
+                        {
+                            var generatedTitle = GenerateTitleFromFeedName(feed);
+                            metadata.Add("Title", generatedTitle);
+                        }
                     }
                     if(!input.ContainsKey("Author") && !string.IsNullOrEmpty(author))
                     {
@@ -1013,6 +1014,16 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
 
             return null;
         }));
+}
+
+public string GenerateTitleFromFeedName(string feed)
+{
+            var slashes = "//";
+            
+            int from = feed.IndexOf(slashes) + slashes.Length;
+            int to = feed.IndexOf("/", from);
+
+            title = feed.Substring(from, to - from);
 }
 
 // See https://github.com/dotnet/SyndicationFeedReaderWriter/issues/31
