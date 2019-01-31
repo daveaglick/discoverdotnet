@@ -226,12 +226,6 @@ Pipelines.Add("Post Search Data",
     WriteFiles((doc, ctx) => "data/search/posts.json")
 );
 
-Pipelines.Add("OPML feed export", 
-    ReadFiles("_feeds.cshtml"),
-    Razor().IgnorePrefix(null),
-    WriteFiles((doc, ctx) => "feeds.opml")
-);
-
 // Broadcasts and Episodes
 //////////////////////////////////////////////////////////////////////
 
@@ -586,6 +580,12 @@ Pipelines.Add("Discoveries Feed",
         .WithItemId((doc, ctx) => ctx.GetLink(doc.String("Link"), true))
         .WithItemImageLink((doc, ctx) => null),
     WriteFiles()
+);
+
+Pipelines.Add("OPML Feed", 
+    ReadFiles("_feeds.cshtml"),
+    Razor().IgnorePrefix(null),
+    WriteFiles((doc, ctx) => "feeds.opml")
 );
 
 //////////////////////////////////////////////////////////////////////

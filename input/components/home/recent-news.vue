@@ -21,7 +21,8 @@
             <div>
                 <span class="font-weight-bold mr-2">Recent news feed: </span>
                 <i class="fas fa-rss"></i> <a href="/feeds/news.atom" class="mr-2">Atom</a>
-                <i class="fas fa-rss"></i> <a href="/feeds/news.rss">RSS</a>
+                <i class="fas fa-rss"></i> <a href="/feeds/news.rss" class="mr-2">RSS</a>
+                <i class="fas fa-rss"></i> <a href="/feeds.opml">OPML</a>
             </div>
             <hr />
             <div><a href="/blogs">More Blogs <span class="fa fa-long-arrow-alt-right"></span></a></div>

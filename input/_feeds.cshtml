@@ -3,14 +3,18 @@
 }
 <opml version="1.0">
   <head>
-    <title>Discover.NET Blog Collection</title>
+    <title>Discover .NET Feeds</title>
   </head>
   <body>
-    <outline text="Discover.NET Blog Collection" title="Discover.NET Blog Collection">
-    @foreach(IDocument blog in Documents["Blogs"])
-    {
-      <outline type="rss" text="@blog.Metadata["Title"]" title="@blog.Metadata["Title"]" xmlUrl="@blog.Metadata["Feed"]" />
-    }
+    <outline text="Discover .NET Feeds" title="Discover .NET Feeds">
+      @foreach(IDocument blog in Documents["Blogs"])
+      {
+        <outline type="rss" text="@blog.Metadata["Title"]" title="@blog.Metadata["Title"]" xmlUrl="@blog.Metadata["Feed"]" />
+      }
+      @foreach(IDocument broadcast in Documents["Broadcasts"])
+      {
+        <outline type="rss" text="@broadcast.Metadata["Title"]" title="@broadcast.Metadata["Title"]" xmlUrl="@broadcast.Metadata["Feed"]" />
+      }
     </outline>
   </body>
 </opml>
