@@ -11,3 +11,5 @@ nuget.exe
 /*.packages.xml
 /*.wyam.hash
 /*.wyam.dll
+.vscode
+!.vscode/settings.json
