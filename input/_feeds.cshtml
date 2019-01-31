@@ -1,0 +1,16 @@
+@{
+	Layout = null;
+}
+<opml version="1.0">
+  <head>
+    <title>Discover.NET Blog Collection</title>
+  </head>
+  <body>
+    <outline text="Discover.NET Blog Collection" title="Discover.NET Blog Collection">
+    @foreach(IDocument blog in Documents["Blogs"])
+    {
+      <outline type="rss" text="@blog.Metadata["Title"]" title="@blog.Metadata["Title"]" xmlUrl="@blog.Metadata["Feed"]" />
+    }
+    </outline>
+  </body>
+</opml>

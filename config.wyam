@@ -226,6 +226,12 @@ Pipelines.Add("Post Search Data",
     WriteFiles((doc, ctx) => "data/search/posts.json")
 );
 
+Pipelines.Add("OPML feed export", 
+    ReadFiles("_feeds.cshtml"),
+    Razor().IgnorePrefix(null),
+    WriteFiles((doc, ctx) => "feeds.opml")
+);
+
 // Broadcasts and Episodes
 //////////////////////////////////////////////////////////////////////
 
@@ -951,9 +957,17 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     {
                         metadata.Add("Website", website);
                     }
-                    if(!input.ContainsKey("Title") && !string.IsNullOrEmpty(title))
+                    if(!input.ContainsKey("Title"))
                     {
-                        metadata.Add("Title", title);
+                        if(!string.IsNullOrEmpty(title))
+                        {
+                            metadata.Add("Title", title);
+                        }
+                        else
+                        {
+                            var generatedTitle = GenerateTitleFromFeedName(feed);
+                            metadata.Add("Title", generatedTitle);
+                        }
                     }
                     if(!input.ContainsKey("Author") && !string.IsNullOrEmpty(author))
                     {
@@ -977,6 +991,18 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
 
             return null;
         }));
+}
+
+public string GenerateTitleFromFeedName(string feed)
+{
+    var slashes = "//";
+    
+    int from = feed.IndexOf(slashes) + slashes.Length;
+    int to = feed.IndexOf("/", from);
+
+    var title = feed.Substring(from, to - from);
+
+    return title;
 }
 
 // See https://github.com/dotnet/SyndicationFeedReaderWriter/issues/31
