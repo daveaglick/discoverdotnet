@@ -60,12 +60,12 @@ main {
     
         img { 
             width: 100%;
-            max-height: 50%; 
+            min-height: 50%; 
             -webkit-filter: drop-shadow( 0 0 1rem indigo ); 
             filter: drop-shadow( 0 0 1rem indigo );
 
             @media (min-width: 768px) {    
-                width: 80%;  
+                width: auto;  
             }
             
             @media (max-width: 576px) {   
