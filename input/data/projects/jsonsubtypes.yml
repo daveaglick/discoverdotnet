@@ -1,0 +1,11 @@
+Source: https://github.com/manuc66/JsonSubTypes
+NuGet:
+  - JsonSubTypes
+Language: C#
+Title: JsonSubTypes
+Description: JsonSubTypes a discriminated Json sub-type Converter implementation for .NET
+Docs: https://github.com/manuc66/JsonSubTypes/blob/master/README.md
+Donations: https://github.com/manuc66/JsonSubTypes/blob/master/README.md#-support-this-project
+Tags:
+  - Data Formats
+  - Serialization
