@@ -1,0 +1,9 @@
+Source: https://github.com/mehalick/Xaki
+NuGet:
+  - Xaki
+  - Xaki.AspNetCore
+Language: C#
+Image: https://xaki.azureedge.net/assets/logo-text-636723199289149229.svg
+Title: Xaki
+Description: Simplified multi-language POCO localization for .NET Core
+Website: https://xaki.io
