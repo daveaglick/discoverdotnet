@@ -1,0 +1,8 @@
+Source: https://github.com/danielgerlag/workflow-core
+NuGet:
+  - WorkflowCore
+Language: C#
+Title: Workflow Core
+Docs: https://github.com/danielgerlag/workflow-core/wiki
+Tags:
+  - State Management
