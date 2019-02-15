@@ -1,0 +1,9 @@
+Source: https://github.com/dadhi/ImTools/blob/master/README.md
+NuGet:
+  - ImTools.dll
+  - ImTools
+Language: C#
+Title: ImTools
+Description: Immutable persistent collections, Ref, and Array helpers designed for performance.
+Tags:
+  - Utility
