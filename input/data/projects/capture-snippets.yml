@@ -1,0 +1,9 @@
+Source: https://github.com/SimonCropp/CaptureSnippets
+NuGet:
+  - CaptureSnippetsSimple
+  - CaptureSnippets
+Language: C#
+Image: https://camo.githubusercontent.com/38fffae08fd3797ad7461fd8db232492891fc012/68747470733a2f2f7261772e6769746875622e636f6d2f53696d6f6e43726f70702f43617074757265536e69707065742f6d61737465722f7372632f69636f6e2e706e67
+Donations: https://www.patreon.com/join/simoncropp
+Tags:
+  - Documentation

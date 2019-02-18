@@ -8,6 +8,9 @@
             :sorts="sorts"
             :randomize-order="true">
         </card-grid>
+        <div class="text-center text-muted">
+            <i class="fas fa-rss"></i> <a href="/feeds.opml">OPML</a>
+        </div>
     </div>
 </template>
 

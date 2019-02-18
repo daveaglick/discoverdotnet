@@ -1,0 +1,7 @@
+Source: https://github.com/NFig/NFig
+NuGet:
+  - NFig
+  - NFig.Redis
+Language: C#
+Tags:
+  - Configuration
