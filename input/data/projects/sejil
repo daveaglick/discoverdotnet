@@ -1,6 +1,6 @@
 Source: https://github.com/alaatm/Sejil
 NuGet:
-  - https://www.nuget.org/packages/Sejil/
+  - Sejil
 Language: C#
 Image: https://github.com/alaatm/Sejil/blob/master/assets/001-screenshot-main_opt.jpg
 Docs: https://github.com/alaatm/Sejil
