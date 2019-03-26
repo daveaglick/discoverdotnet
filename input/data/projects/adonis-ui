@@ -1,0 +1,10 @@
+Source: https://github.com/benruehl/adonis-ui
+NuGet:
+  - AdonisUI
+  - AdonisUI.ClassicTheme
+Language: C#
+Image: https://raw.githubusercontent.com/benruehl/adonis-ui/master/resources/img/favicon-256x256.png
+Docs: https://benruehl.github.io/adonis-ui/
+Tags:
+  - GUI
+  - WPF
