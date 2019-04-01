@@ -2,8 +2,7 @@ Source: https://github.com/alaatm/Sejil
 NuGet:
   - Sejil
 Language: C#
-Image: https://github.com/alaatm/Sejil/blob/master/assets/001-screenshot-main_opt.jpg
-Docs: https://github.com/alaatm/Sejil
+Image: https://github.com/alaatm/Sejil/blob/master/assets/001-screenshot-main_opt.
 Tags:
-  - structured-logging
-  - aspnetcore
+  - Logging
+  - ASP.NET
