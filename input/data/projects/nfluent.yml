@@ -1,0 +1,8 @@
+Source: https://github.com/tpierrain/NFluent
+NuGet:
+  - NFluent
+Language: C#
+Title: NFluent
+Website: http://www.n-fluent.net/
+Tags:
+  - Testing
