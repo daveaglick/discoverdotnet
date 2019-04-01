@@ -1,0 +1,9 @@
+Source: https://github.com/SergeyTeplyakov/ErrorProne.NET
+NuGet:
+  - ErrorProne.NET
+  - ErrorProne.NET.Structs
+  - ErrorProne.NET.CoreAnalyzers
+Language: C#
+Title: Error Prone .NET
+Tags:
+  - Code Analysis
