@@ -312,6 +312,7 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
     string foundationReadme;
     using(HttpClient httpClient = new HttpClient())
 	{
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
 		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 

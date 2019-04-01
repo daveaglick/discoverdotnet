@@ -614,6 +614,7 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
     string foundationReadme;
 	using (HttpClient httpClient = new HttpClient())
 	{
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
 		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 
@@ -872,6 +873,8 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
                     using (HttpClient httpClient = new HttpClient())
                     {
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+
                         using (Stream stream = await httpClient.GetStreamAsync(feed))
                         {
                             using (StreamReader streamReader = new XmlStreamReader(stream))
@@ -1158,6 +1161,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
 	List<MeetupGroup> groups = new List<MeetupGroup>();
 	using (HttpClient httpClient = new HttpClient())
 	{
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
 		int offset = 0;
 		while (true)
 		{
@@ -1186,6 +1190,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     // Process input documents    
 	using (HttpClient httpClient = new HttpClient())
 	{
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
         foreach(IDocument input in inputs)
         {
             string meetup = input.String("Meetup");
