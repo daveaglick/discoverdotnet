@@ -1,0 +1,8 @@
+Source: https://github.com/mysticmind/dotnet-sort-refs
+NuGet:
+  - dotnet-sort-refs
+Language: C#
+GlobalTool: dotnet-sort-refs
+Tags:
+  - Global Tool
+  - Tool
