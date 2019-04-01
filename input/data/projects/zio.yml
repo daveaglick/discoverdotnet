@@ -1,0 +1,8 @@
+Source: https://github.com/xoofx/zio
+NuGet:
+  - Zio
+Language: C#
+Image: https://github.com/xoofx/zio/blob/master/img/zio.png
+Title: Zio
+Tags:
+  - IO
