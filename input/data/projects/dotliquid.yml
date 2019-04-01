@@ -1,0 +1,8 @@
+Source: https://github.com/dotliquid/dotliquid
+NuGet:
+  - DotLiquid
+Language: C#
+Docs: http://dotliquidmarkup.org/
+Chat: https://gitter.im/dotliquid/dotliquid
+Tags:
+  - Templating
