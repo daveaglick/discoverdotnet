@@ -612,9 +612,9 @@ public async Task<IEnumerable<IDocument>> GetProjectGitHubData(IReadOnlyList<IDo
 
     Wyam.Common.Tracing.Trace.Information($"Getting .NET Foundation readme");
     string foundationReadme;
-	using (HttpClient httpClient = new HttpClient())
+	using (HttpClient httpClient = context.CreateHttpClient())
 	{
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
 		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 
@@ -871,9 +871,9 @@ public async Task<IEnumerable<IDocument>> GetFeedData(IReadOnlyList<IDocument> i
                     string description = null;
                     string image = null;
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
-                    using (HttpClient httpClient = new HttpClient())
+                    using (HttpClient httpClient = context.CreateHttpClient())
                     {
-                        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
 
                         using (Stream stream = await httpClient.GetStreamAsync(feed))
                         {
@@ -1159,9 +1159,9 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     string meetupToken = context.String("MeetupToken");
     JsonSerializer serializer = new JsonSerializer();
 	List<MeetupGroup> groups = new List<MeetupGroup>();
-	using (HttpClient httpClient = new HttpClient())
+	using (HttpClient httpClient = context.CreateHttpClient())
 	{
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
 		int offset = 0;
 		while (true)
 		{
@@ -1188,9 +1188,9 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     IList<IDocument> outputs = groups.Select(x => context.GetDocument(x.GetMetadata())).ToList();
 
     // Process input documents    
-	using (HttpClient httpClient = new HttpClient())
+	using (HttpClient httpClient = context.CreateHttpClient())
 	{
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
         foreach(IDocument input in inputs)
         {
             string meetup = input.String("Meetup");

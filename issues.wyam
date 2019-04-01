@@ -310,9 +310,9 @@ public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocu
     
     Wyam.Common.Tracing.Trace.Information($"Getting .NET Foundation readme");
     string foundationReadme;
-    using(HttpClient httpClient = new HttpClient())
+    using(HttpClient httpClient = context.CreateHttpClient())
 	{
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "Discoverdot.net build process");
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
 		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
 	}
 
