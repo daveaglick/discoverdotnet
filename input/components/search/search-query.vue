@@ -61,7 +61,7 @@
             </b-col>
             <b-col class="text-right">
                 <a href="https://www.algolia.com/?utm_source=aos&utm_medium=web&utm_campaign=discovernet">
-                    <img src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg" style="width: 160px;">
+                    <img src="https://community.algolia.com/docsearch/assets/algolia-logo.svg" style="max-height: 20px; max-width: 160px;">
                 </a>
             </b-col>
         </b-row>
