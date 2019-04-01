@@ -1,0 +1,8 @@
+Source: https://github.com/lunet-io/scriban
+NuGet:
+  - Scriban
+Language: C#
+Image: https://raw.githubusercontent.com/lunet-io/scriban/master/img/scriban.png
+Title: Scriban
+Tags:
+  - Templating
