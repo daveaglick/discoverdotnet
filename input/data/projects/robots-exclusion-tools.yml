@@ -1,0 +1,9 @@
+Source: https://github.com/TurnerSoftware/RobotsExclusionTools
+NuGet:
+  - TurnerSoftware.RobotsExclusionTools
+Language: C#
+Title: Robots Exclusion Tools
+Description: A "robots.txt" parsing and querying library
+Tags:
+  - Parsing
+  - Tool
