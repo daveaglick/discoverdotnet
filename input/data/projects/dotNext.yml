@@ -1,0 +1,13 @@
+Source: https://github.com/sakno/DotNext
+NuGet:
+  - DotNext
+  - DotNext.Metaprogramming
+  - DotNext.Reflection
+  - DotNext.Threading
+  - DotNext.Unsafe
+Language: C#
+Image: https://github.com/sakno/dotNext/raw/master/logo.png
+Title: .NEXT
+Description: Extension of .NET standard class library with things like async-powered metaprogramming, async-friendly synchronization primitives, Span-friendly unmanaged heap allocation
+Website: https://sakno.github.io/dotNext/
+Docs: https://sakno.github.io/dotNext/
