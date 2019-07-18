@@ -11,3 +11,5 @@ Title: .NEXT
 Description: Extension of .NET standard class library with things like async-powered metaprogramming, async-friendly synchronization primitives, Span-friendly unmanaged heap allocation
 Website: https://sakno.github.io/dotNext/
 Docs: https://sakno.github.io/dotNext/
+Tags:
+  - Utility
