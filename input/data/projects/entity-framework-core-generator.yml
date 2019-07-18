@@ -1,0 +1,9 @@
+Source: https://github.com/loresoft/EntityFrameworkCore.Generator
+NuGet:
+  - EntityFrameworkCore.Generator
+Language: C#
+Docs: https://efg.loresoft.com/
+Tags:
+  - ORM
+  - Global Tool
+Tool: efg
