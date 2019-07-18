@@ -1,0 +1,7 @@
+Source: https://github.com/TurnerSoftware/InfinityCrawler
+NuGet:
+  - InfinityCrawler
+Title: Infinity Crawler
+Language: C#
+Tags:
+  - Web Utility
