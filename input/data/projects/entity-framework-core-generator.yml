@@ -1,13 +1,9 @@
 Source: https://github.com/loresoft/EntityFrameworkCore.Generator
 NuGet:
-  - https://www.nuget.org/packages/EntityFrameworkCore.Generator/
+  - EntityFrameworkCore.Generator
 Language: C#
 Docs: https://efg.loresoft.com/
 Tags:
-  - EF
-  - Data
-  - EntityFramework
-  - EntityFrameworkCore
-  - EFCore
-  - Generation
-  - Generator
+  - ORM
+  - Global Tool
+Tool: efg
