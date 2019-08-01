@@ -1,0 +1,10 @@
+Description: Blazor Boilerplate aka Blazor Starter Template is a SPA admin template (Core-Hosted) built with Blazor with a .NET Core 3 Server API.
+Source: https://github.com/enkodellc/blazorboilerplate
+Language: C#
+Title: Blazor Boilerplate
+Tags:
+  - Blazor
+  - .NET Core 3
+  - Examples
+Website: https://blazorboilerplate.com/
+DiscoveryDate: 8/1/2019
