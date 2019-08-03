@@ -1,0 +1,12 @@
+Title: NuGet Trends
+Website: https://nugettrends.com/
+Description: Check out NuGet packages adoption and what's trending on NuGet.
+Image: https://nugettrends.com/assets/images/banner_social.png
+Source: https://github.com/NuGetTrends/nuget-trends
+Chat: https://gitter.im/NuGetTrends/Lobby
+Language: C#
+Tags:
+  - NuGet
+  - Trends
+  - Statistics
+DiscoveryDate: 8/3/2019
