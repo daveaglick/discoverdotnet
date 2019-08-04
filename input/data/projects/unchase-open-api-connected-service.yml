@@ -1,0 +1,12 @@
+Source: https://github.com/unchase/Unchase.OpenAPI.Connectedservice
+Language: C#
+Image: https://unchase.gallerycdn.vsassets.io/extensions/unchase/unchaseopenapiconnectedservice/1.3.0/1561821131419/Microsoft.VisualStudio.Services.Icons.Default
+Title: Unchase OpenAPI (Swagger) Connected Service
+Description: A Visual Studio extension to generate C# (TypeScript) HttpClient or (C# controllers) code for OpenAPI (formerly Swagger API) web service with NSwag.
+Website: https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice
+Docs: https://github.com/unchase/Unchase.OpenAPI.Connectedservice/blob/master/README.md
+Donations: https://www.buymeacoffee.com/nikolaychebotov
+Tags:
+  - API
+  - Code Generation
+  - Visual Studio
