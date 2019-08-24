@@ -1195,7 +1195,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
         httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
         foreach(IDocument input in inputs)
         {
-            string meetup = input.String("Meetup");
+            string meetup = null; //input.String("Meetup");
             if(!string.IsNullOrEmpty(meetup))
             {            
                 // Query API for Meetup groups that aren't already part of the .NET topic set
