@@ -1159,6 +1159,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
     string meetupToken = context.String("MeetupToken");
     JsonSerializer serializer = new JsonSerializer();
 	List<MeetupGroup> groups = new List<MeetupGroup>();
+    /*
 	using (HttpClient httpClient = context.CreateHttpClient())
 	{
         httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
@@ -1185,6 +1186,7 @@ public async Task<IEnumerable<IDocument>> GetMeetupData(IReadOnlyList<IDocument>
 			}
 		}
 	}
+    */
     IList<IDocument> outputs = groups.Select(x => context.GetDocument(x.GetMetadata())).ToList();
 
     // Process input documents    
