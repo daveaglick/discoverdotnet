@@ -1,0 +1,14 @@
+Source: https://github.com/unickq/allure-nunit
+NuGet:
+  - https://www.nuget.org/packages/NUnit.Allure
+Language: C#
+Image: https://github.com/unickq/allure-nunit/raw/master/logo.png
+Title: Allure NUnit
+Description: Allure adapter for NUnit framework.
+Website: https://github.com/unickq/allure-nunit
+Docs: https://github.com/unickq/allure-nunit/wiki
+Tags:
+  - allure
+  - nunit
+  - reporting
+  - testing
