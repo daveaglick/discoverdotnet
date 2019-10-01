@@ -4,8 +4,8 @@
 // DISCOVERDOTNET_MEETUP_TOKEN
 // DISCOVERDOTNET_ALGOLIA_TOKEN
 
-#tool nuget:?package=Wyam&version=2.2.7
-#addin nuget:?package=Cake.Wyam&version=2.2.7
+#tool nuget:?package=Wyam&version=2.2.8
+#addin nuget:?package=Cake.Wyam&version=2.2.8
 #addin nuget:?package=NetlifySharp&version=0.1.0
 #addin nuget:?package=System.Runtime.Serialization.Formatters&version=4.3.0
 #addin nuget:?package=Algolia.Search&version=5.0.0
