@@ -1,0 +1,9 @@
+Source: https://github.com/mysticmind/mysticmind-postgresembed
+NuGet:
+  - MysticMind.PostgresEmbed
+Language: C#
+Title: MysticMind.PostgresEmbed
+Tags:
+  - Database
+  - Testing
+DiscoveryDate: 9/25/2018

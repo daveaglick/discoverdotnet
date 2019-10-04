@@ -1,0 +1,7 @@
+Image: https://raw.githubusercontent.com/jagregory/fluent-nhibernate/master/docs/logo.png
+Language: C#
+NuGet: FluentNHibernate
+Source: https://github.com/FluentNHibernate/fluent-nhibernate
+Tags:
+  - ORM
+DiscoveryDate: 7/18/2019

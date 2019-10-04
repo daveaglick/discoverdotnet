@@ -1,0 +1,7 @@
+Language: C#
+NuGet: CommonMark.NET
+Source: https://github.com/Knagis/CommonMark.NET
+Tags:
+  - Markdown
+  - Templating
+DiscoveryDate: 5/25/2020

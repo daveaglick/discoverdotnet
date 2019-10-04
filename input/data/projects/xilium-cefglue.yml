@@ -1,8 +1,0 @@
-Description: Xilium.CefGlue is a .NET/Mono binding for The Chromium Embedded Framework (CEF) by Marshall A. Greenblatt.
-Language: C#
-Source: https://bitbucket.org/xilium/xilium.cefglue/src
-Tags:
-  - GUI
-Title: Xilium.CefGlue
-Website: https://bitbucket.org/xilium/xilium.cefglue
-DiscoveryDate: 11/29/2018

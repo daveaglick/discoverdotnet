@@ -1,0 +1,6 @@
+Language: C#
+NuGet: ConsoleTableExt
+Source: https://github.com/minhhungit/ConsoleTableExt
+Tags:
+  - CLI
+DiscoveryDate: 11/24/2018

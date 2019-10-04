@@ -1,0 +1,6 @@
+Language: C#
+NuGet: NPoco
+Source: https://github.com/schotime/NPoco
+Tags:
+  - ORM
+DiscoveryDate: 12/12/2019

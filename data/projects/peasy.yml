@@ -1,0 +1,8 @@
+Language: C#
+NuGet: Peasy
+Source: https://github.com/peasy/Peasy.NET
+Image: https://camo.githubusercontent.com/6e1cfb01686cab3ba11a9046202f87fb884523f2/68747470733a2f2f7777772e64726f70626f782e636f6d2f732f3279616a72327839796576767a626d2f7065617379332e706e673f646c3d30267261773d31
+DiscoveryDate: 7/8/2018
+Tags:
+  - Application Framework
+

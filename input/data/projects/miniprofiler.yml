@@ -1,9 +1,0 @@
-Language: C#
-NuGet: MiniProfiler
-Source: https://github.com/MiniProfiler/dotnet
-Title: MiniProfiler for .NET
-Tags:
-  - ASP.NET
-  - Profiling
-  - Performance
-DiscoveryDate: 12/28/2018

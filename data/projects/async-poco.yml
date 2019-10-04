@@ -1,0 +1,6 @@
+Language: C#
+NuGet: AsyncPoco
+Source: https://github.com/tmenier/AsyncPoco
+Tags:
+  - ORM
+DiscoveryDate: 5/12/2020

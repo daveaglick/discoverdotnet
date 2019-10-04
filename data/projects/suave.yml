@@ -1,0 +1,8 @@
+Source: https://github.com/SuaveIO/suave
+NuGet: Suave
+Language: F#
+Website: https://suave.io/
+Docs: https://suave.io/index.html
+Tags:
+  - Web Framework
+DiscoveryDate: 7/13/2020

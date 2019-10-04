@@ -1,0 +1,6 @@
+Language: C#
+NuGet: TinyMessenger
+Source: https://github.com/grumpydev/TinyMessenger
+Tags:
+  - Messaging
+DiscoveryDate: 8/29/2018

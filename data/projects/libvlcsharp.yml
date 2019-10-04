@@ -1,0 +1,12 @@
+Language: C#
+NuGet: LibVLCSharp
+Title: LibVLCSharp
+Website: https://www.videolan.org/
+Image: https://raw.githubusercontent.com/videolan/libvlcsharp/master/Assets/icon.png
+Source: https://github.com/videolan/libvlcsharp
+Donations: https://www.videolan.org/contribute.html#money
+Tags:
+  - Media
+  - Xamarin
+  - Graphics
+DiscoveryDate: 1/27/2020

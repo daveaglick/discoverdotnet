@@ -1,0 +1,6 @@
+Language: C#
+NuGet: ConsoleTables
+Source: https://github.com/khalidabuhakmeh/ConsoleTables
+Tags:
+  - CLI
+DiscoveryDate: 5/1/2020

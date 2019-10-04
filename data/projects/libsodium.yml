@@ -1,0 +1,6 @@
+Source: https://github.com/adamcaudill/libsodium-net
+Language: C#
+Tags:
+  - Cryptography
+NuGet: libsodium-net
+DiscoveryDate: 9/5/2018

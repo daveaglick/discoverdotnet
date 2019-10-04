@@ -1,0 +1,6 @@
+Language: F#
+NuGet: Vagabond
+Source: https://github.com/mbraceproject/Vagabond
+DiscoveryDate: 7/19/2018
+Tags:
+  - Distributed Computing

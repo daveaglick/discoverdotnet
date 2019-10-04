@@ -1,8 +1,0 @@
-Source: https://github.com/spectresystems/spectre.query
-NuGet:
-  - Spectre.Query
-Language: C#
-Title: Spectre.Query
-Tags:
-  - Data Access
-DiscoveryDate: 10/15/2018

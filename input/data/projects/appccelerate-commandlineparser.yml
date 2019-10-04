@@ -1,8 +1,0 @@
-Image: https://raw.githubusercontent.com/appccelerate/appccelerate/master/docs/nuget.png
-Language: C#
-NuGet: Appccelerate.CommandLineParser
-Source: https://github.com/appccelerate/commandlineparser
-Tags:
-  - CLI
-Website: http://www.appccelerate.com/commandlineparser.html
-DiscoveryDate: 10/4/2019

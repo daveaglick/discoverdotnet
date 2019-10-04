@@ -1,0 +1,7 @@
+Source: https://github.com/joncloud/thor_net
+NuGet: ThorNet
+Language: C#
+Image: https://raw.githubusercontent.com/joncloud/thor_net/master/nuget.png
+Tags:
+  - CLI
+DiscoveryDate: 2/15/2019

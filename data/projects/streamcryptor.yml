@@ -1,0 +1,6 @@
+Source: https://github.com/bitbeans/StreamCryptor
+Language: C#
+Tags:
+  - Cryptography
+NuGet: StreamCryptor
+DiscoveryDate: 3/19/2020

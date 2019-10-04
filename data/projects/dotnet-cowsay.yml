@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - dotnet-cowsay
+Source: https://github.com/isaac2004/dotnet-cowsay/
+Tags:
+  - Global Tool
+Title: dotnet-cowsay
+Tool: cowsay
+DiscoveryDate: 10/22/2019

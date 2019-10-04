@@ -1,0 +1,8 @@
+Language: C#
+NuGet:
+  - YamlDotNet
+Source: https://github.com/aaubry/YamlDotNet
+DiscoveryDate: 8/3/2018
+Tags:
+  - Serialization
+Title: YamlDotNet

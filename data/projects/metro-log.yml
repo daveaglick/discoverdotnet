@@ -1,0 +1,9 @@
+Language: C#
+NuGet:
+  - MetroLog
+Source: https://github.com/onovotny/MetroLog
+Tags:
+  - Logging
+  - UWP
+Title: MetroLog
+DiscoveryDate: 7/29/2020

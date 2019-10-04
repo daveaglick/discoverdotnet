@@ -1,0 +1,8 @@
+Source: https://github.com/XerProjects/Xer.Delegator
+NuGet: Xer.Delegator
+Language: C#
+Description: A lightweight library that allows easy routing/delegation of messages to message handler delegates.
+Chat: https://xerprojects.slack.com
+Tags:
+  - Messaging
+DiscoveryDate: 8/24/2019

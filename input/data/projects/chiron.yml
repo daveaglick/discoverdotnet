@@ -1,9 +1,0 @@
-Source: https://github.com/xyncro/chiron
-NuGet:
-  - Chiron
-Language: F#
-Title: Chiron
-Tags:
-  - Data Formats
-  - Serialization
-DiscoveryDate: 2/7/2019

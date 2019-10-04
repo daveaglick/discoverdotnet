@@ -1,6 +1,0 @@
-Language: C#
-NuGet: LibGit2Sharp
-Source: https://github.com/libgit2/libgit2sharp
-Tags:
-  - Git
-DiscoveryDate: 7/2/2019

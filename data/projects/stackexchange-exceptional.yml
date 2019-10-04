@@ -1,0 +1,6 @@
+Language: C#
+NuGet: StackExchange.Exceptional
+Source: https://github.com/NickCraver/StackExchange.Exceptional
+Tags:
+  - Logging
+DiscoveryDate: 4/23/2019

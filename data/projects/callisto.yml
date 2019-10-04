@@ -1,0 +1,6 @@
+Language: C#
+NuGet: Callisto
+Source: https://github.com/timheuer/callisto
+Tags:
+  - GUI
+DiscoveryDate: 11/12/2019

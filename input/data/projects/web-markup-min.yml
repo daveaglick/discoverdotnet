@@ -1,8 +1,0 @@
-Source: https://github.com/Taritsyn/WebMarkupMin
-Language: C#
-Image: https://raw.githubusercontent.com/Taritsyn/WebMarkupMin/master/images/WebMarkupMin_Logo.png
-NuGet: WebMarkupMin.Core
-Tags:
-  - Minification
-  - ASP.NET
-DiscoveryDate: 2/4/2020

@@ -1,9 +1,0 @@
-Source: https://github.com/jamesmh/coravel
-NuGet:
-  - Coravel
-Language: C#
-Image: https://raw.githubusercontent.com/jamesmh/coravel/master/Docs/img/logo.png
-Tags:
-  - Scheduling
-  - ASP.NET
-DiscoveryDate: 3/22/2019

@@ -1,0 +1,11 @@
+Source: https://github.com/tpeczek/Lib.AspNetCore.ServerSentEvents
+NuGet: Lib.AspNetCore.ServerSentEvents
+Language: C#
+Title: Lib.AspNetCore.ServerSentEvents
+Description: Lib.AspNetCore.ServerSentEvents is a library which provides Server-Sent Events (SSE) support for ASP.NET Core.
+Docs: https://tpeczek.github.io/Lib.AspNetCore.ServerSentEvents/
+Donations: https://www.buymeacoffee.com/tpeczek
+Tags:
+  - ASP.NET
+  - HTTP
+DiscoveryDate: 9/2/2018

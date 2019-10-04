@@ -1,2 +1,7 @@
 @echo off
-powershell -ExecutionPolicy Unrestricted ./build.ps1 %CAKE_ARGS% %*
+cd "src\DiscoverDotnet"
+dotnet run -- %*
+set exitcode=%errorlevel%
+cd %~dp0
+echo %exitcode%
+exit /b %exitcode%

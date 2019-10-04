@@ -1,0 +1,7 @@
+Image: https://raw.githubusercontent.com/commandlineparser/commandline/master/art/CommandLine20.png
+Language: C#
+NuGet: CommandLineParser
+Source: https://github.com/commandlineparser/commandline
+Tags:
+  - CLI
+DiscoveryDate: 6/30/2020

@@ -1,0 +1,7 @@
+Language: C#
+NuGet: DapperExtensions
+Source: https://github.com/tmsmith/Dapper-Extensions
+Tags:
+  - ORM
+Title: Dapper Extensions
+DiscoveryDate: 3/4/2019

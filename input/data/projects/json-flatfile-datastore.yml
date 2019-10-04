@@ -1,6 +1,0 @@
-Source: https://github.com/ttu/json-flatfile-datastore
-Language: C#
-Tags:
-  - Database
-NuGet: JsonFlatFileDataStore
-DiscoveryDate: 6/28/2019

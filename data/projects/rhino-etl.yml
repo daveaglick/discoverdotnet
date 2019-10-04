@@ -1,0 +1,7 @@
+Image: https://raw.githubusercontent.com/wiki/hibernating-rhinos/rhino-esb/images/rhino-icon.jpg
+Language: C#
+NuGet: Rhino-Etl
+Source: https://github.com/hibernating-rhinos/rhino-etl
+Tags:
+  - ETL
+DiscoveryDate: 7/24/2019

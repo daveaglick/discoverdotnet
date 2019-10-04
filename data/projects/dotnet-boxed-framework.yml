@@ -1,0 +1,11 @@
+Language: C#
+NuGet: Boxed.AspNetCore
+Source: https://github.com/Dotnet-Boxed/Framework
+Tags:
+  - ASP.NET
+  - Web Framework
+  - Utility
+Title: .NET Boxed Framework
+Image: https://raw.githubusercontent.com/Dotnet-Boxed/Templates/master/Images/Icon-512x512.png
+Description: .NET Core Extensions and Helper NuGet packages
+DiscoveryDate: 2/26/2019

@@ -1,0 +1,6 @@
+Language: C#
+NuGet: ScriptCs.Hosting
+Source: https://github.com/scriptcs/scriptcs
+Tags:
+  - Scripting
+DiscoveryDate: 6/15/2018

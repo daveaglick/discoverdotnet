@@ -1,0 +1,7 @@
+Image: https://raw.githubusercontent.com/relentless/Http.fs/master/docs/files/img/logo_small.png
+Language: F#
+NuGet: Http.fs
+Source: https://github.com/haf/Http.fs
+Tags:
+  - HTTP
+DiscoveryDate: 11/28/2019

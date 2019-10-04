@@ -1,7 +1,10 @@
+[Bb]in/
+[Oo]bj/
 [Pp]ackages/
 [Tt]ools/*
 [Oo]utput/
 [Oo]utput.issues/
+[Dd]ebug/
 [Rr]elease/
 [Dd]iagnostic/
 nuget.exe
@@ -11,5 +14,6 @@ nuget.exe
 /*.packages.xml
 /*.wyam.hash
 /*.wyam.dll
+.vs
 .vscode
 !.vscode/settings.json

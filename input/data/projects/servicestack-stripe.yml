@@ -1,7 +1,0 @@
-Language: C#
-NuGet: ServiceStack.Stripe
-Source: https://github.com/ServiceStack/Stripe
-Tags:
-  - Commerce
-Twitter: ServiceStack
-DiscoveryDate: 1/14/2019

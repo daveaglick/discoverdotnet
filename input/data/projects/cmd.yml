@@ -1,6 +1,0 @@
-Language: C#
-NuGet: cmd
-Source: https://github.com/manojlds/cmd
-Tags:
-  - CLI
-DiscoveryDate: 7/23/2020

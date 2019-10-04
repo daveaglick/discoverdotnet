@@ -1,0 +1,8 @@
+Title: MarkdownSharp
+Description: Open source C# implementation of Markdown processor, as featured on Stack Overflow.
+Language: C#
+Source: https://code.google.com/archive/p/markdownsharp/
+Tags:
+  - Markdown
+  - Templating
+DiscoveryDate: 10/9/2018

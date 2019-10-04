@@ -1,0 +1,10 @@
+Source: https://github.com/zzzprojects/html-agility-pack
+NuGet:
+  - HtmlAgilityPack
+Language: C#
+Image: https://zzzprojects.github.io/images/logo/logo-64.png
+Title: Html Agility Pack
+Description: An agile HTML parser that builds a read/write DOM and supports plain XPATH or XSLT
+Tags:
+  - HTML
+DiscoveryDate: 10/24/2018

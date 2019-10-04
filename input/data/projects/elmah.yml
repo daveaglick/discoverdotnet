@@ -1,7 +1,0 @@
-Language: C#
-NuGet: elmah
-Source: https://github.com/elmah/Elmah
-Tags:
-  - Logging
-  - ASP.NET
-DiscoveryDate: 12/26/2019

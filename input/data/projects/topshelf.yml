@@ -1,8 +1,0 @@
-Source: https://github.com/Topshelf/Topshelf
-NuGet:
-  - Topshelf
-Language: C#
-Tags:
-  - Services
-  - Installation
-DiscoveryDate: 11/19/2019

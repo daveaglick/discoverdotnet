@@ -1,8 +1,0 @@
-Image: https://camo.githubusercontent.com/fc01dd31dbced84afe17fa1ab02d7f7cfe8f258b/687474703a2f2f636f6c6f7266756c636f6e736f6c652e636f6d2f696d616765732f636f6c6f7266756c5f69636f6e5f6e6773697a652e706e67
-Language: C#
-NuGet: Colorful.Console
-Source: https://github.com/tomakita/Colorful.Console
-Tags:
-  - CLI
-Description: Style your C# console output!
-DiscoveryDate: 7/20/2019

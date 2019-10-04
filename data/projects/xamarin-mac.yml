@@ -1,0 +1,16 @@
+Source: https://github.com/xamarin/xamarin-macios
+Title: Xamarin.Mac
+Image: https://github.com/xamarin/xamarin-macios/blob/master/banner.png
+Description: Write native macOS Apps in C#
+Website: https://www.xamarin.com/platform
+Docs: https://docs.microsoft.com/en-us/xamarin/mac/
+Chat: https://gitter.im/xamarin/xamarin-macios
+Language: C#
+Foundation: true
+Microsoft: true
+Tags:
+  - Xamarin
+  - macOS
+  - API
+  - Application Framework
+DiscoveryDate: 4/19/2020

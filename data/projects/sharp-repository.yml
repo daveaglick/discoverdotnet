@@ -1,0 +1,9 @@
+Source: https://github.com/SharpRepository/SharpRepository
+NuGet: SharpRepository.Repository
+Language: C#
+Image: https://user-images.githubusercontent.com/6349515/28491141-7b600e46-6eeb-11e7-8c4c-d6139479c18e.png
+Docs: https://github.com/SharpRepository/SharpRepository/wiki
+Chat: https://groups.google.com/forum/m/#!forum/sharprepository
+Tags:
+  - Data Access
+DiscoveryDate: 8/13/2019

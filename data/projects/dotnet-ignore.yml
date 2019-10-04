@@ -1,0 +1,10 @@
+Language: C#
+NuGet:
+  - dotnet-ignore
+Source: https://github.com/Arasz/dotnet-ignore
+Tags:
+  - Global Tool
+  - Git
+Title: dotnet-ignore
+Tool: ignore
+DiscoveryDate: 12/22/2018

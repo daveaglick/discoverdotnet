@@ -1,0 +1,6 @@
+Language: C#
+NuGet: 'Dapper.FastCrud '
+Source: https://github.com/MoonStorm/Dapper.FastCRUD
+Tags:
+  - ORM
+DiscoveryDate: 2/1/2020

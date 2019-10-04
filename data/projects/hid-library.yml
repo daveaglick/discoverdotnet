@@ -1,0 +1,7 @@
+Language: C#
+NuGet: HidLibrary
+Source: https://github.com/mikeobrien/HidLibrary
+Tags:
+  - Hardware
+  - IoT
+DiscoveryDate: 2/10/2019

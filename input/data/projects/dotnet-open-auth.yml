@@ -1,6 +1,0 @@
-Language: C#
-NuGet: DotNetOpenAuth
-Source: https://github.com/DotNetOpenAuth/DotNetOpenAuth
-Tags:
-  - Security
-DiscoveryDate: 10/25/2019

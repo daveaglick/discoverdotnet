@@ -1,0 +1,8 @@
+Source: https://github.com/Romanx/Cake.Coverlet
+NuGet:
+  - Cake.Coverlet
+Language: C#
+Tags:
+  - Build Tool
+  - Testing
+DiscoveryDate: 3/26/2019

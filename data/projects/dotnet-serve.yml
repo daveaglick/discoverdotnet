@@ -1,0 +1,8 @@
+Language: C#
+NuGet: dotnet-serve
+Source: https://github.com/natemcmaster/dotnet-serve
+GlobalTool: serve
+Tags:
+  - Networking
+  - Global Tool
+DiscoveryDate: 7/20/2020

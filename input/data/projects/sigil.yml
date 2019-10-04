@@ -1,9 +1,0 @@
-Source: https://github.com/kevin-montrose/Sigil
-NuGet:
-  - Sigil
-Language: C#
-Title: Sigil
-Tags:
-  - Code Generation
-  - Metaprogramming
-DiscoveryDate: 12/18/2019

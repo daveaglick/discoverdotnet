@@ -1,0 +1,9 @@
+Language: C#
+NuGet: FluentMigrator
+Source: https://github.com/fluentmigrator/fluentmigrator
+Image: https://fluentmigrator.github.io/images/logo.svg
+Docs: https://fluentmigrator.github.io/
+Chat: https://gitter.im/FluentMigrator/fluentmigrator
+Tags:
+  - Database Tools
+DiscoveryDate: 3/20/2020

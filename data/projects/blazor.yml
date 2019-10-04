@@ -1,0 +1,12 @@
+Source: https://github.com/aspnet/Blazor
+NuGet:
+  - Microsoft.AspNetCore.Blazor
+  - Microsoft.AspNetCore.Blazor.Build
+Language: C#
+Website: https://blazor.net/
+Docs: https://blazor.net/docs/index.html
+Chat: https://gitter.im/aspnet/Blazor
+Tags:
+  - Blazor
+  - Web Framework
+DiscoveryDate: 6/30/2019

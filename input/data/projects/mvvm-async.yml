@@ -1,7 +1,0 @@
-Language: C#
-NuGet: Nito.Mvvm.Async
-Source: https://github.com/StephenCleary/Mvvm.Async
-Tags:
-  - Utility
-  - MVVM
-DiscoveryDate: 8/1/2019

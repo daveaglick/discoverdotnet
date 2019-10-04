@@ -1,0 +1,8 @@
+Title: SharpLab
+Website: https://sharplab.io/
+DiscoveryDate: 5/30/2018
+Comment: One of my favorite tools for testing quick code snippets. You can also use it to play with new language features.
+Description: SharpLab is a .NET code playground that shows intermediate steps and results of code compilation.
+Tags:
+  - Service
+  - Compilation

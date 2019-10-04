@@ -1,7 +1,0 @@
-Title: Monkey Cache
-Source:  https://github.com/jamesmontemagno/monkey-cache
-Language: C#
-Tags:
-  - Caching
-NuGet: MonkeyCache
-DiscoveryDate: 11/21/2019

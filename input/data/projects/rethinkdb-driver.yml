@@ -1,7 +1,0 @@
-Source: https://github.com/bchavez/RethinkDb.Driver/
-Language: C#
-Tags:
-  - Data Access
-Chat: http://slack.rethinkdb.com/
-NuGet: RethinkDb.Driver
-DiscoveryDate: 12/23/2019

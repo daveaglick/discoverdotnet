@@ -1,0 +1,406 @@
+#n Wyam.Yaml -v 1.3.0
+#n Wyam.Json -v 1.3.0
+#n Wyam.Minification -v 1.3.0
+#n Octokit -v 0.29.0
+
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Octokit;
+
+//////////////////////////////////////////////////////////////////////
+// Pipelines
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Issues",
+    ReadFiles("data/projects/*.yml"),
+    If(ctx => ctx.Bool("Preview"),
+        OrderBy((doc, ctx2) => doc.Source),
+        Take(10)),
+    Yaml(),    
+    Execute((inputs, ctx, _) => GetIssueGitHubData(inputs, ctx).Result),
+    Where((doc, ctx) => doc.ContainsKey("Issues")),
+    Meta("ProjectKey", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "projects/" + doc.Source.FileName.ChangeExtension(".json"))
+);
+
+Pipelines.Add("Project Counts",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Select(x => x.GetMetadata(
+            "ProjectKey",
+            "IssuesCount",
+            "RecentIssuesCount",
+            "HelpWantedIssuesCount"
+        )))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "project-counts.json")
+);
+
+Pipelines.Add("Recent",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.Recent)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                Link = i.Link,
+                Title = i.Title
+            }))
+        .OrderByDescending(x => x.CreatedAt))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "recent/all.json")
+);
+
+Pipelines.Add("Help Wanted",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.HelpWanted)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                Link = i.Link,
+                Title = i.Title
+            }))
+        .OrderByDescending(x => x.CreatedAt))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "help-wanted/all.json")
+);
+
+Pipelines.Add("All",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.All)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"all/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Help Wanted Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Where(i => i.HelpWanted)
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.HelpWanted)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"help-wanted/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Microsoft Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Microsoft"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Microsoft)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"microsoft/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Foundation Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Foundation"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Foundation)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"foundation/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Platform Paged",
+    Execute((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .Where(d => d.Bool("Platform"))
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                CreatedAt = i.CreatedAt,
+                UpdatedAt = i.UpdatedAt,
+                Link = i.Link,
+                Title = i.Title,
+                Labels = i.Labels
+            }))
+        .OrderByDescending(x => x.CreatedAt)
+        .Partition(24, out TotalCounts.Instance.Platform)
+        .Select(x => ctx.GetDocument(new MetadataItems
+        {
+            { "Page", x.Key },
+            { "Issues", x.ToList() }
+        }))),
+    GenerateJson((doc, ctx) => doc["Issues"])
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => $"platform/{doc["Page"]}.json")
+);
+
+Pipelines.Add("Total Counts",
+    GenerateJson(ctx => TotalCounts.Instance)
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "total-counts.json")
+);
+
+Pipelines.Add("Search",
+    GenerateJson((doc, ctx) => ctx.Documents.FromPipeline("Issues")
+        .SelectMany(d => d.Get<IEnumerable<IssueData>>("Issues")
+            .Select(i => new
+            {
+                ProjectKey = d.String("ProjectKey"),
+                Link = i.Link,
+                Title = i.Title
+            })))
+        .WithCamelCase(),
+    MinifyJs(),
+    WriteFiles((doc, ctx) => "search.json")
+);
+
+//////////////////////////////////////////////////////////////////////
+// Helpers
+//////////////////////////////////////////////////////////////////////
+
+public class TotalCounts
+{
+    public int All;
+    public int HelpWanted;
+    public int Microsoft;
+    public int Foundation;
+    public int Platform;
+
+    public static TotalCounts Instance = new TotalCounts();
+}
+
+public static class Extensions
+{
+	public static IEnumerable<IGrouping<int, TSource>> Partition<TSource>(
+		this IEnumerable<TSource> source,
+		int groupSize,
+        out int count)
+	{
+		int c = 0;
+		IEnumerable<IGrouping<int, TSource>> result = source
+			.Select(x => new KeyValuePair<int, TSource>(c++ / groupSize, x))
+			.GroupBy(x => x.Key, x => x.Value)
+            .ToList();  // Materialize the list since we need an accurate count to pass out
+        count = c;
+        return result;
+	}
+}
+
+public class IssueData
+{
+    public static string[] HelpWantedLabels = new []
+    {
+        "helpwanted",
+        "goodfirstissue",
+        "firsttimersonly",
+        "upforgrabs",
+        "newcontributor",
+        "goodfirsttask"
+    };
+
+    public DateTimeOffset CreatedAt { get; }
+    public DateTimeOffset UpdatedAt { get; }
+    public string Link { get; }
+    public string Title { get; }
+    public string[] Labels { get; }
+    public bool Recent { get; }
+    public bool HelpWanted { get; }
+
+    public IssueData(Issue issue, DateTimeOffset oneDayAgo)
+    {
+        CreatedAt = issue.CreatedAt;
+        UpdatedAt = issue.UpdatedAt ?? issue.CreatedAt;
+        Link = issue.HtmlUrl;
+        Title = issue.Title;
+        Labels = issue.Labels.Select(x => x.Name).ToArray();
+        Recent = CreatedAt > oneDayAgo;
+        HelpWanted = Labels
+            .Select(l => new string(l.Where(c => char.IsLetterOrDigit(c)).ToArray()))
+            .Any(l => HelpWantedLabels.Contains(l, StringComparer.OrdinalIgnoreCase));
+    }
+}
+
+public async Task<IEnumerable<IDocument>> GetIssueGitHubData(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+{           
+    string[] microsoftOwners = new []
+    {
+        "dotnet",
+        "aspnet",
+        "microsoft",
+        "nuget",
+        "mono",
+        "azure"
+    };
+
+    GitHubClient github = new GitHubClient(new ProductHeaderValue("discoverdotnet"))
+    {
+        Credentials = new Credentials(context.String("GitHubToken"))
+    };
+    DateTimeOffset oneDayAgo = DateTimeOffset.Now.AddHours(-24);
+    
+    Wyam.Common.Tracing.Trace.Information($"Getting .NET Foundation readme");
+    string foundationReadme;
+    using(HttpClient httpClient = context.CreateHttpClient())
+	{
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
+		foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
+	}
+
+    // Even though it's much slower, we have to query the GitHub API sequentially or else we'll trigger the abuse detection mechanisms:
+    // "Make requests for a single user or client ID serially. Do not make requests for a single user or client ID concurrently."
+    // https://developer.github.com/v3/guides/best-practices-for-integrators/#dealing-with-abuse-rate-limits
+
+    List<IDocument> outputs = new List<IDocument>();
+    foreach(IDocument input in inputs)
+    {
+        IDocument output = input;
+
+        // Extract the GitHub owner and name
+        Uri source;
+        if(Uri.TryCreate(input.String("Source"), UriKind.Absolute, out source)
+            && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
+        {
+            string owner = source.Segments[1].Trim('/');
+            string name = source.Segments[2].Trim('/');
+
+            int tries = 2;
+            while(true)
+            {
+                // Get issue data
+                try
+                {
+                    Wyam.Common.Tracing.Trace.Information($"Getting GitHub issue data for {owner}/{name}");
+                    IReadOnlyList<Issue> issues = (await github.Issue.GetAllForRepository(
+                        owner,
+                        name,
+                        new RepositoryIssueRequest
+                        {
+                            Filter = IssueFilter.All
+                        },
+                        new ApiOptions
+                        {
+                            PageSize = 100
+                        }))
+                        .Where(x => x.PullRequest == null)
+                        .ToList();
+                    if(issues.Count > 0)
+                    {
+                        IssueData[] issueData = issues
+                            .Select(x => new IssueData(x, oneDayAgo))
+                            .OrderByDescending(x => x.CreatedAt)
+                            .ToArray();
+                        MetadataItems metadata = new MetadataItems
+                        {
+                            { "GitHubOwner", owner },
+                            { "GitHubName", name },
+                            { "Issues", issueData },
+                            { "IssuesCount", issueData.Length },
+                            { "RecentIssuesCount", issueData.Count(x => x.Recent) },
+                            { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
+                        };                
+                        if(!input.ContainsKey("Microsoft") && microsoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
+                        {
+                            metadata.Add("Microsoft", true);
+                        }
+                        if(!input.ContainsKey("Foundation") && foundationReadme.IndexOf($"github.com/{owner}/{name}", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            metadata.Add("Foundation", true);
+                        }
+                        
+                        // Return a document with issue metadata
+                        output = context.GetDocument(input, metadata);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Wyam.Common.Tracing.Trace.Information($"Exception getting GitHub data for {owner}/{name}: {ex.Message}");
+                    if(tries-- == 0)
+                    {
+                        throw;
+                    }
+                    continue;
+                }
+
+                break;
+            }                    
+
+            // Report on out API rate limit
+            MiscellaneousRateLimit rateLimit = await github.Miscellaneous.GetRateLimits();
+            Wyam.Common.Tracing.Trace.Information($"GitHub rate limit: {rateLimit.Resources.Core.Remaining} remaining");
+        }
+
+        outputs.Add(output);
+    }
+
+    return outputs;
+}
