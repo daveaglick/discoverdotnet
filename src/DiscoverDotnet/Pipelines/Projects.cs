@@ -14,7 +14,7 @@ namespace DiscoverDotnet.Pipelines
             {
                 new ReadFiles(Config.FromContext(x => (IEnumerable<string>)new string[]
                 {
-                    x.FileSystem.RootPath.Combine("data/projects/*.yml").FullPath }
+                    x.FileSystem.RootPath.Combine("../../data/projects/*.yml").FullPath }
                 ))
             };
         }
