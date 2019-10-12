@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Statiq.App;
 
 namespace DiscoverDotnet
@@ -10,6 +11,7 @@ namespace DiscoverDotnet
         {
             return await Bootstrapper
                 .CreateDefault(args)
+                .ConfigureServices(x => x.AddSingleton<GitHubManager>())
                 .RunAsync();
         }
     }
