@@ -27,17 +27,17 @@
   
   <!--
   <ItemGroup>
-    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.6" />
-    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.6" />
-  </ItemGroup>  
-  -->
+    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.9" />
+    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.9" />
+  </ItemGroup> 
+  --> 
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\statiqdev\Statiq.Framework\src\core\Statiq.App\Statiq.App.csproj" />

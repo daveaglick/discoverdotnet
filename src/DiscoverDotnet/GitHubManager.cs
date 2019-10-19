@@ -21,7 +21,7 @@ namespace DiscoverDotnet
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private readonly GitHubClient _gitHub;
 
-        public GitHubManager(IReadOnlySettings settings)
+        public GitHubManager(IEngineSettings settings)
         {
             _gitHub = new GitHubClient(new ProductHeaderValue(nameof(DiscoverDotnet)))
             {

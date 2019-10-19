@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -16,12 +16,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         @{
-            string title = Model.String("Title");
+            string title = Model.GetString("Title");
             title = $"Discover .NET{(string.IsNullOrWhiteSpace(title) ? "" : " - " + title)}";
-            string description = Model.String("Description");
+            string description = Model.GetString("Description");
             description = string.IsNullOrWhiteSpace(description)
                 ? "Awesome .NET open source & community resources" : description;
-            string image = Model.String("Image");
+            string image = Model.GetString("Image");
             image = string.IsNullOrWhiteSpace(image)
                 ? "https://discoverdot.net/assets/d.png" : image;
         }

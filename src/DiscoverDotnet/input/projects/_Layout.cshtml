@@ -4,42 +4,42 @@
 
 <h5 class="mb-2 accent-script text-secondary" style="line-height: 0">Project</h5>
 <h1 class="mb-0 font-weight-bold display-4">
-    @Model.String("Title")
+    @Model.GetString("Title")
 </h1>
 <div class="mt-2">
-    @if(Model.Bool("Platform"))
+    @if(Model.GetBool("Platform"))
     {
         <b-badge variant="dark" href="/projects/?filter-netplatform" class="mr-1">.NET Platform</b-badge>
     }
-    @if(Model.Bool("Microsoft"))
+    @if(Model.GetBool("Microsoft"))
     {
         <b-badge variant="success" href="/projects/?filter-microsoft" class="mr-1">Microsoft</b-badge>
     }
-    @if(Model.Bool("Foundation"))
+    @if(Model.GetBool("Foundation"))
     {
         <b-badge variant="primary" href="/projects/?filter-netfoundation" class="mr-1">.NET Foundation</b-badge>
     }
     @if(Model.ContainsKey("Tags"))
     {
-        foreach(string tag in Model.List<string>("Tags"))
+        foreach(string tag in Model.GetList<string>("Tags"))
         {
             <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
         }
     }
 </div>
-<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.String("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
-@if(!string.IsNullOrWhiteSpace(@Model.String("Description")))
+@if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
 {
     <b-card class="mb-4">
-        <p v-pre class="lead mb-0">@Model.String("Description")</p>
+        <p v-pre class="lead mb-0">@Model.GetString("Description")</p>
     </b-card>
 }
 
 @RenderBody()
 
 @{
-    string package = Model.String("NuGet");
+    string package = Model.GetString("NuGet");
 }
 
 <b-row>
@@ -49,14 +49,14 @@
             {
                 <b-tab title="Readme" class="mt-4" active>
                     <b-card v-pre>
-                        @Html.Raw(Model.String("Readme"))
+                        @Html.Raw(Model.GetString("Readme"))
                     </b-card>
                 </b-tab>
             }
             @if(Model.Get<int>("OpenIssuesCount") > 0)
             {
                 <b-tab title="Issues">
-                    <issues issue-json="/data/issues/projects/@(Model.String("Key")).json" class="mt-4"></issues>
+                    <issues issue-json="/data/issues/projects/@(Model.GetString("Key")).json" class="mt-4"></issues>
                 </b-tab>
             }
             @if(Model.ContainsKey("NuGetPackages"))
@@ -65,7 +65,7 @@
                     @if(Model.ContainsKey("NuGetPackages"))
                     {
                         <h2 class="my-4">NuGet</h2>
-                        foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
+                        foreach(PackageData packageData in Model.GetList<PackageData>("NuGetPackages"))
                         {
                             <b-card no-body class="mb-4">
                                 <b-card-body>
@@ -130,15 +130,15 @@
                     <b-row class="text-center">
                         <b-col>
                             <div><i class="fas fa-star"></i></div>
-                            <h5>@Model.String("StargazersCount")</h5>
+                            <h5>@Model.GetString("StargazersCount")</h5>
                         </b-col>
                         <b-col>
                             <div><i class="fas fa-code-branch"></i></div>
-                            <h5>@Model.String("ForksCount")</h5>
+                            <h5>@Model.GetString("ForksCount")</h5>
                         </b-col>
                         <b-col>
                             <div><i class="fas fa-bug"></i></div>
-                            <h5>@Model.String("OpenIssuesCount")</h5>
+                            <h5>@Model.GetString("OpenIssuesCount")</h5>
                         </b-col>
                     </b-row>
                 </b-card-body>
@@ -147,13 +147,13 @@
         <b-card no-body class="mb-4">
             <b-card-body>
                 @{
-					string image = Model.String("Image");
+					string image = Model.GetString("Image");
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
 					}
 
-                    string website = Model.String("Website");
+                    string website = Model.GetString("Website");
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
@@ -164,7 +164,7 @@
                         </p>
                     }    
 
-                    string docs = Model.String("Docs");
+                    string docs = Model.GetString("Docs");
                     if(!string.IsNullOrWhiteSpace(docs))
                     {
                         <h5>
@@ -175,7 +175,7 @@
                         </p>
                     }    
 
-                    string source = Model.String("Source");
+                    string source = Model.GetString("Source");
                     if(!string.IsNullOrWhiteSpace(source))
                     {
                         <h5>
@@ -186,7 +186,7 @@
                         </p>
                     }
 
-                    string twitter = Model.String("Twitter");
+                    string twitter = Model.GetString("Twitter");
                     if(!string.IsNullOrWhiteSpace(twitter))
                     {
                         <h5>
@@ -197,7 +197,7 @@
                         </p>
                     }
 
-                    string chat = Model.String("Chat");
+                    string chat = Model.GetString("Chat");
                     if(!string.IsNullOrWhiteSpace(chat))
                     {
                         <h5>
@@ -214,7 +214,7 @@
                             <span class="fa fa-download"></span> NuGet
                         </h5>
                         <div class="mb-2">
-                            @foreach(PackageData packageData in Model.List<PackageData>("NuGetPackages"))
+                            @foreach(PackageData packageData in Model.GetList<PackageData>("NuGetPackages"))
                             {
                                 <div>
                                     <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
@@ -226,7 +226,7 @@
                 }
                 @if(Model.ContainsKey("Donations"))
                 {
-                    string donations = Model.String("Donations");
+                    string donations = Model.GetString("Donations");
                     if(!string.IsNullOrWhiteSpace(donations))
                     {
                         <h5>This project accepts donations</h5>
@@ -248,16 +248,16 @@
 
                 <h5>Downloads</h5>
                 <p>
-                    <span>@(Model.String("TotalDownloads")) total downloads</span><br/>
-                    <span>@(Model.String("PerDayDownloads")) downloads per day</span>
+                    <span>@(Model.GetString("TotalDownloads")) total downloads</span><br/>
+                    <span>@(Model.GetString("PerDayDownloads")) downloads per day</span>
                 </p>
 
                 <h5>Latest Version</h5>
                 <p>
-                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.String("LatestVersion"))">@(Model.String("LatestVersion"))</a></span><br/>
-                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.String("LatestVersion"))">Direct Download</a></span><br/>
-                    <span>@(Model.String("LatestVersionDownloads")) downloads</span><br/>
-                    <span>Last updated @(Model.DateTime("LatestVersionLastUpdated").ToString("MMMM d, yyyy"))</span>
+                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.GetString("LatestVersion"))">@(Model.GetString("LatestVersion"))</a></span><br/>
+                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.GetString("LatestVersion"))">Direct Download</a></span><br/>
+                    <span>@(Model.GetString("LatestVersionDownloads")) downloads</span><br/>
+                    <span>Last updated @(Model.GetDateTime("LatestVersionLastUpdated").ToString("MMMM d, yyyy"))</span>
                 </p>
             </b-card>
         }
