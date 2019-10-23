@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Statiq.Common;
 using Statiq.Core;
@@ -8,33 +9,16 @@ using Statiq.Sass;
 
 namespace DiscoverDotnet.Pipelines
 {
-    public class ProjectKeys : Pipeline
+    public class ProjectKeys : AggregateDataPipeline
     {
-        public ProjectKeys()
-        {
-            Dependencies = new HashSet<string>
-            {
-                nameof(Projects)
-            };
+        protected override string SourcePipeline => nameof(Projects);
 
-            ProcessModules = new ModuleList
-            {
-                new GenerateJson(
-                    Config.FromContext(c => c.Outputs
-                        .FromPipeline(nameof(Projects))
-                        .Select(x => x.GetMetadata(
-                            "Key",
-                            "Title",
-                            "Link"))))
-                    .WithCamelCase(),
-                new MinifyJs(),
-                new SetDestination("data/project-keys.json")
-            };
+        protected override Func<IDocument, object> Data =>
+            x => x.GetMetadata(
+                "Key",
+                "Title",
+                "Link");
 
-            OutputModules = new ModuleList
-            {
-                new WriteFiles()
-            };
-        }
+        protected override Config<FilePath> Destination => (FilePath)"data/project-keys.json";
     }
 }

@@ -17,11 +17,8 @@ namespace DiscoverDotnet.Pipelines
         {
             InputModules = new ModuleList
             {
-                new ReadFiles(Config.FromContext(x => (IEnumerable<string>)new string[]
-                {
-                    x.FileSystem.RootPath.Combine("../../data/projects/*.yml").FullPath
-                })),
-                new ExecuteIf(Config.FromContext(x => x.ApplicationState.CommandName.Equals("preview", StringComparison.OrdinalIgnoreCase)))
+                new ReadFiles(Config.FromContext(x => x.FileSystem.RootPath.Combine("../../data/projects/*.yml").FullPath)),
+                new ExecuteIf(Config.FromContext(x => x.ApplicationState.IsCommand("preview")))
                 {
                     new OrderDocuments(Config.FromDocument(x => x.Source)),
                     new TakeDocuments(10)
