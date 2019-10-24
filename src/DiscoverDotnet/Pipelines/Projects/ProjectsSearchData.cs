@@ -6,7 +6,7 @@ using Statiq.Core;
 using Statiq.Json;
 using Statiq.Minification;
 
-namespace DiscoverDotnet.Pipelines
+namespace DiscoverDotnet.Pipelines.Projects
 {
     public class ProjectsSearchData : AggregateDataPipeline
     {

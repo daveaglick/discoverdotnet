@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DiscoverDotnet.Modules;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +10,7 @@ using Statiq.Json;
 using Statiq.Razor;
 using Statiq.Yaml;
 
-namespace DiscoverDotnet.Pipelines
+namespace DiscoverDotnet.Pipelines.Blogs
 {
     public class Blogs : Pipeline
     {
@@ -40,6 +41,7 @@ namespace DiscoverDotnet.Pipelines
                 new AddMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
+                    "Image",
                     "Link",
                     "Description",
                     "Author",

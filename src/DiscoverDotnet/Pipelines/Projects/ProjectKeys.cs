@@ -7,7 +7,7 @@ using Statiq.Json;
 using Statiq.Minification;
 using Statiq.Sass;
 
-namespace DiscoverDotnet.Pipelines
+namespace DiscoverDotnet.Pipelines.Projects
 {
     public class ProjectKeys : AggregateDataPipeline
     {
