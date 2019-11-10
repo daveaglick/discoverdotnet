@@ -16,3 +16,4 @@ nuget.exe
 /*.wyam.dll
 .vs/
 .vscode/
+/*.pfx

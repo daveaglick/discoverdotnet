@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AngleSharp;
+using DiscoverDotnet.Models;
 using Microsoft.Extensions.Logging;
 using Statiq.Common;
 
@@ -16,7 +17,7 @@ namespace DiscoverDotnet.Modules
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
             IDocument output = input;
-            List<PackageData> packageData = new List<PackageData>();
+            List<Package> packageData = new List<Package>();
             IReadOnlyList<string> packages = input.GetList("NuGet", Array.Empty<string>());
             foreach (string package in packages.Where(x => !string.IsNullOrWhiteSpace(x)))
             {
@@ -35,7 +36,7 @@ namespace DiscoverDotnet.Modules
                     }
                     else
                     {
-                        PackageData data = new PackageData
+                        Package data = new Package
                         {
                             Id = package
                         };
@@ -55,7 +56,7 @@ namespace DiscoverDotnet.Modules
                         // Get versions
                         data.Versions = document
                             .QuerySelectorAll("#version-history table tbody tr")
-                            .Select(x => new VersionData(x))
+                            .Select(x => new PackageVersion(x))
                             .ToList();
 
                         // Add the data

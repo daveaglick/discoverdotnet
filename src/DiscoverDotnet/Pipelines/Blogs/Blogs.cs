@@ -29,16 +29,17 @@ namespace DiscoverDotnet.Pipelines.Blogs
             ProcessModules = new ModuleList
             {
                 new ParseYaml(),
-                new ReplaceContent(string.Empty),
+                new SetContent(string.Empty),
                 new GetFeedData(),
-                new AddMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new AddMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
-                new AddMetadata("Language", Config.FromDocument(x => x.GetString("Language", "English"))),
-                new AddMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
+                new SetDestination(Config.FromDocument(x => (FilePath)$"blogs/{x.Source.FileName.ChangeExtension("html")}")),
+                new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
+                new SetMetadata("Language", Config.FromDocument(x => x.GetString("Language", "English"))),
+                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
                     "Description"))),
-                new AddMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
                     "Image",
@@ -51,8 +52,7 @@ namespace DiscoverDotnet.Pipelines.Blogs
                     "Language",
                     "LastPublished",
                     "NewestFeedItem",
-                    "DiscoveryDate"))),
-                new SetDestination(Config.FromDocument(x => (FilePath)$"blogs/{x.Source.FileName.ChangeExtension("html")}"))
+                    "DiscoveryDate")))
             };
 
             TransformModules = new ModuleList

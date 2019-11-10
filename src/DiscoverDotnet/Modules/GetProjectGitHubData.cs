@@ -13,18 +13,8 @@ namespace DiscoverDotnet.Modules
 {
     public class GetProjectGitHubData : Module
     {
-        private static readonly HashSet<string> MicrosoftOwners = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-        {
-            "dotnet",
-            "aspnet",
-            "microsoft",
-            "nuget",
-            "mono",
-            "azure"
-        };
-
         private GitHubManager _gitHub;
-        private string _foundationReadme;
+        private FoundationManager _foundation;
 
         protected override async Task BeforeExecutionAsync(IExecutionContext context)
         {
@@ -32,14 +22,10 @@ namespace DiscoverDotnet.Modules
             {
                 _gitHub = context.GetRequiredService<GitHubManager>();
             }
-
-            if (_foundationReadme == null)
+            if (_foundation == null)
             {
-                context.LogInformation("Getting .NET Foundation Readme");
-                using (HttpClient httpClient = context.CreateHttpClient())
-                {
-                    _foundationReadme = await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
-                }
+                _foundation = context.GetRequiredService<FoundationManager>();
+                await _foundation.PopulateAsync(context);
             }
         }
 
@@ -55,7 +41,7 @@ namespace DiscoverDotnet.Modules
                 string name = source.Segments[2].Trim('/');
 
                 // Get the repository
-                context.LogInformation($"Getting GitHub data for {owner}/{name}");
+                context.LogInformation($"Getting GitHub project data for {owner}/{name}");
                 Repository repository = await _gitHub.GetAsync(x => x.Repository.Get(owner, name), context);
 
                 // Get the metadata
@@ -79,11 +65,11 @@ namespace DiscoverDotnet.Modules
                 {
                     metadata.Add("Website", repository.Homepage);
                 }
-                if (!input.ContainsKey("Microsoft") && MicrosoftOwners.Contains(owner))
+                if (!input.ContainsKey("Microsoft") && GitHubManager.MicrosoftOwners.Contains(owner))
                 {
                     metadata.Add("Microsoft", true);
                 }
-                if (!input.ContainsKey("Foundation") && _foundationReadme.IndexOf($"github.com/{owner}/{name}", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (!input.ContainsKey("Foundation") && _foundation.IsInFoundation(owner, name))
                 {
                     metadata.Add("Foundation", true);
                 }

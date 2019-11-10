@@ -26,20 +26,19 @@
     <PackageReference Include="Octokit" Version="0.36.0" />
   </ItemGroup>
   
-  <!--
   <ItemGroup>
-    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.12" />
-    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.12" />
+    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.18" />
+    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.18" />
   </ItemGroup> 
-  --> 
   
+  <!--
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\statiqdev\Statiq.Framework\src\core\Statiq.App\Statiq.App.csproj" />
     <ProjectReference Include="..\..\..\..\statiqdev\Statiq.Framework\src\core\Statiq.Common\Statiq.Common.csproj" />
@@ -53,5 +52,18 @@
     <ProjectReference Include="..\..\..\..\statiqdev\Statiq.Framework\src\extensions\Statiq.Minification\Statiq.Minification.csproj" />
     <ProjectReference Include="..\..\..\..\statiqdev\Statiq.Framework\src\extensions\Statiq.Feeds\Statiq.Feeds.csproj" />
   </ItemGroup>
+  --> 
+
+  <Target Name="SignBuild" Condition="'$(OS)' == 'Windows_NT' AND '$(SIGNTOOL)' != '' AND $(DAVIDGLICK_CERTPASS) != '' AND !($(DesignTimeBuild) == true OR $(BuildingProject) != true)" AfterTargets="AfterBuild">
+    <!-- https://www.digicert.com/code-signing/signcode-signtool-command-line.htm -->
+    <PropertyGroup>
+      <SignCommand>"$(SIGNTOOL)" sign /f "$(ProjectDir)..\..\digicert-davidglick.pfx" /p $(DAVIDGLICK_CERTPASS) /fd SHA256 /td SHA256 /tr "http://timestamp.digicert.com" /d "SIPC" /du "https://sipc.org"</SignCommand>
+    </PropertyGroup>
+    <!-- Sign both the bin and obj files since some targets like Publish and Pack copy from obj -->
+    <Exec Command="$(SignCommand) &quot;$(ProjectDir)$(OutputPath)$(TargetName).dll&quot;" />
+    <Exec Command="$(SignCommand) &quot;$(ProjectDir)$(OutputPath)$(TargetName).exe&quot;" />
+    <Exec Command="$(SignCommand) &quot;$(ProjectDir)$(IntermediateOutputPath)$(TargetName).dll&quot;" />
+    <Exec Command="$(SignCommand) &quot;$(ProjectDir)$(IntermediateOutputPath)$(TargetName).exe&quot;" />
+  </Target>
 
 </Project>

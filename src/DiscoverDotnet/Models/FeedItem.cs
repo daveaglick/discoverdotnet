@@ -5,9 +5,9 @@ using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Atom;
 using Microsoft.SyndicationFeed.Rss;
 
-namespace DiscoverDotnet
+namespace DiscoverDotnet.Models
 {
-    public class FeedItemData
+    public class FeedItem
     {
         public string Title { get; }
         public string Link { get; }
@@ -17,11 +17,11 @@ namespace DiscoverDotnet
         public IDictionary<string, string> Links { get; }
         public string Author { get; }
 
-        public FeedItemData(ISyndicationItem item, DateTimeOffset recent)
+        public FeedItem(ISyndicationItem item, DateTimeOffset recent)
         {
             Title = item.Title;
             Link = item.Links.FirstOrDefault(x => x.RelationshipType == RssLinkTypes.Alternate)?.Uri.ToString() ?? item.Id;
-            Published = item.Published != default(DateTimeOffset) ? item.Published : item.LastUpdated;
+            Published = item.Published != default ? item.Published : item.LastUpdated;
             Recent = Published > recent;
             Description = item.Description;
             Links = item.Links

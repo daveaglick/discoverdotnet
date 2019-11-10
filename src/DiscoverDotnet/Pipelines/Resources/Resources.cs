@@ -24,16 +24,16 @@ namespace DiscoverDotnet.Pipelines.Resources
             ProcessModules = new ModuleList
             {
                 new ParseYaml(),
-                new ReplaceContent(string.Empty),
-                new AddMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new AddMetadata("Link", Config.FromDocument(d => d.GetString("Website"))),
-                new AddMetadata("CardType", "Resource"), // TODO: Do we still need this without groups/events?
-                new AddMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
+                new SetContent(string.Empty),
+                new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new SetMetadata("Link", Config.FromDocument(d => d.GetString("Website"))),
+                new SetMetadata("CardType", "Resource"), // TODO: Do we still need this without groups/events?
+                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
                     "Website",
                     "Title",
                     "Description",
                     "Tags"))),
-                new AddMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Website",
                     "Title",
                     "Image",

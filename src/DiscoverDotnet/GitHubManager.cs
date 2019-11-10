@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +21,16 @@ namespace DiscoverDotnet
 
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private readonly GitHubClient _gitHub;
+
+        public static readonly HashSet<string> MicrosoftOwners = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        {
+            "dotnet",
+            "aspnet",
+            "microsoft",
+            "nuget",
+            "mono",
+            "azure"
+        };
 
         public GitHubManager(IReadOnlyConfigurationSettings settings)
         {

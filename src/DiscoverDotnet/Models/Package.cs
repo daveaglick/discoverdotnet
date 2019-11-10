@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DiscoverDotnet
+namespace DiscoverDotnet.Models
 {
-    public class PackageData
+    public class Package
     {
         public string Id { get; set; }
         public string TotalDownloads { get; set; }
         public string PerDayDownloads { get; set; }
-        public List<VersionData> Versions { get; set; } // In descending order
+        public List<PackageVersion> Versions { get; set; } // In descending order
 
-        public VersionData LatestVersion => Versions.FirstOrDefault();
+        public PackageVersion LatestVersion => Versions.FirstOrDefault();
     }
 }

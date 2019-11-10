@@ -28,23 +28,24 @@ namespace DiscoverDotnet.Pipelines.Projects
             ProcessModules = new ModuleList
             {
                 new ParseYaml(),
-                new ReplaceContent(string.Empty),
+                new SetContent(string.Empty),
                 new GetProjectGitHubData(),
                 new GetProjectNuGetData(),
-                new AddMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new AddMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
-                new AddMetadata("DonationsData", Config.FromDocument(x => x.GetMetadata(
+                new SetDestination(Config.FromDocument(x => (FilePath)$"projects/{x.Source.FileName.ChangeExtension("html")}")),
+                new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
+                new SetMetadata("DonationsData", Config.FromDocument(x => x.GetMetadata(
                     "Website",
                     "NuGet",
                     "Source",
                     "Destination"))),
-                new AddMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
                     "Description",
                     "StargazersCount",
                     "Tags"))),
-                new AddMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
                     "Link",
@@ -64,8 +65,7 @@ namespace DiscoverDotnet.Pipelines.Projects
                     "Comment",
                     "Platform",
                     "Microsoft",
-                    "Foundation"))),
-                new SetDestination(Config.FromDocument(x => (FilePath)$"projects/{x.Source.FileName.ChangeExtension("html")}"))
+                    "Foundation")))
             };
 
             TransformModules = new ModuleList

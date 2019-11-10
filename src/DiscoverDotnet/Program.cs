@@ -11,7 +11,9 @@ namespace DiscoverDotnet
         {
             return await Bootstrapper
                 .CreateDefault(args)
-                .ConfigureServices(x => x.AddSingleton<GitHubManager>())
+                .ConfigureServices(services => services
+                    .AddSingleton<GitHubManager>()
+                    .AddSingleton<FoundationManager>())
                 .RunAsync();
         }
     }

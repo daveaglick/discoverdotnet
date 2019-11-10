@@ -65,7 +65,7 @@
                     @if(Model.ContainsKey("NuGetPackages"))
                     {
                         <h2 class="my-4">NuGet</h2>
-                        foreach(PackageData packageData in Model.GetList<PackageData>("NuGetPackages"))
+                        foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
                         {
                             <b-card no-body class="mb-4">
                                 <b-card-body>
@@ -100,7 +100,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach(VersionData version in packageData.Versions)
+                                            @foreach(PackageVersion version in packageData.Versions)
                                             {
                                                 <tr>
                                                     <td>
@@ -214,7 +214,7 @@
                             <span class="fa fa-download"></span> NuGet
                         </h5>
                         <div class="mb-2">
-                            @foreach(PackageData packageData in Model.GetList<PackageData>("NuGetPackages"))
+                            @foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
                             {
                                 <div>
                                     <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>

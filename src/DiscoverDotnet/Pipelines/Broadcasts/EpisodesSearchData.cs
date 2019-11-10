@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DiscoverDotnet.Models;
 using DiscoverDotnet.Modules;
 using Microsoft.Extensions.Configuration;
 using Statiq.Common;
@@ -21,7 +22,7 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
 
         protected override Func<IDocument, IEnumerable<object>> Data =>
             doc => doc
-                .Get<IEnumerable<FeedItemData>>("FeedItems")
+                .Get<IEnumerable<FeedItem>>("FeedItems")
                 .Select(i => new
                 {
                     i.Title,

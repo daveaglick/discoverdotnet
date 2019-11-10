@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DiscoverDotnet.Models;
 using DiscoverDotnet.Pipelines.Blogs;
 using DiscoverDotnet.Pipelines.Broadcasts;
 using Statiq.Common;
@@ -25,7 +26,7 @@ namespace DiscoverDotnet.Pipelines
                 new GenerateJson(
                     Config.FromContext(c => c.Outputs
                         .FromPipelines(nameof(Posts), nameof(Episodes))
-                        .SelectMany(d => d.Get<IEnumerable<FeedItemData>>("FeedItems")
+                        .SelectMany(d => d.Get<IEnumerable<FeedItem>>("FeedItems")
                             .Where(p => p.Recent)
                             .Select(p => new
                             {

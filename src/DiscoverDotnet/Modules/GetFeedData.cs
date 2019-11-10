@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using AngleSharp;
+using DiscoverDotnet.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Atom;
@@ -116,8 +117,8 @@ namespace DiscoverDotnet.Modules
                     MetadataItems metadata = new MetadataItems();
                     if (items.Count > 0)
                     {
-                        FeedItemData[] feedItems = items
-                            .Select(x => new FeedItemData(x, _recent))
+                        FeedItem[] feedItems = items
+                            .Select(x => new FeedItem(x, _recent))
                             .OrderByDescending(x => x.Published)
                             .Take(50) // Only take the 50 most recent items
                             .ToArray();
