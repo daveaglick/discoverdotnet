@@ -7,11 +7,11 @@ using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Resources
 {
-    public class ResourcesData : AggregateDataPipeline
+    public class ResourcesData : SelectDataPipeline
     {
         protected override string SourcePipeline => nameof(Resources);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc["CardData"];
 
         protected override Config<FilePath> Destination => (FilePath)"data/resources.json";
     }

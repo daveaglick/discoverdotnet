@@ -12,11 +12,11 @@ using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Broadcasts
 {
-    public class BroadcastsData : AggregateDataPipeline
+    public class BroadcastsData : SelectDataPipeline
     {
         protected override string SourcePipeline => nameof(Broadcasts);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc["CardData"];
 
         protected override Config<FilePath> Destination => (FilePath)"data/broadcasts.json";
     }

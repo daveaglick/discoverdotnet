@@ -13,7 +13,8 @@ namespace DiscoverDotnet
                 .CreateDefault(args)
                 .ConfigureServices(services => services
                     .AddSingleton<GitHubManager>()
-                    .AddSingleton<FoundationManager>())
+                    .AddSingleton<FoundationManager>()
+                    .AddSingleton<TotalIssueCounts>())
                 .RunAsync();
         }
     }

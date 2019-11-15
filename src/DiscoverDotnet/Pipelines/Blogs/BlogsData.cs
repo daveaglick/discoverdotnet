@@ -12,11 +12,11 @@ using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Blogs
 {
-    public class BlogsData : AggregateDataPipeline
+    public class BlogsData : SelectDataPipeline
     {
         protected override string SourcePipeline => nameof(Blogs);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc["CardData"];
 
         protected override Config<FilePath> Destination => (FilePath)"data/blogs.json";
     }

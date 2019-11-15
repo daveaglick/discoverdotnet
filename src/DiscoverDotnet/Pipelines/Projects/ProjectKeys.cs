@@ -9,12 +9,12 @@ using Statiq.Sass;
 
 namespace DiscoverDotnet.Pipelines.Projects
 {
-    public class ProjectKeys : AggregateDataPipeline
+    public class ProjectKeys : SelectDataPipeline
     {
         protected override string SourcePipeline => nameof(Projects);
 
         protected override Func<IDocument, object> Data =>
-            x => x.GetMetadata(
+            doc => doc.GetMetadata(
                 "Key",
                 "Title",
                 "Link");

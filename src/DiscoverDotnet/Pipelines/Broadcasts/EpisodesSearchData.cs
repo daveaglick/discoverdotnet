@@ -13,7 +13,7 @@ using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Broadcasts
 {
-    public class EpisodesSearchData : AggregateManyDataPipeline
+    public class EpisodesSearchData : SelectManyDataPipeline
     {
         protected override string SourcePipeline => nameof(Broadcasts);
 

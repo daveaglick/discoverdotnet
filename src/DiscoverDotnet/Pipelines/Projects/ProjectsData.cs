@@ -8,11 +8,11 @@ using Statiq.Minification;
 
 namespace DiscoverDotnet.Pipelines.Projects
 {
-    public class ProjectsData : AggregateDataPipeline
+    public class ProjectsData : SelectDataPipeline
     {
         protected override string SourcePipeline => nameof(Projects);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc["CardData"];
 
         protected override Config<FilePath> Destination => (FilePath)"data/projects.json";
     }

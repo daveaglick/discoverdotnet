@@ -13,7 +13,7 @@ using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Blogs
 {
-    public class PostsSearchData : AggregateManyDataPipeline
+    public class PostsSearchData : SelectManyDataPipeline
     {
         protected override string SourcePipeline => nameof(Blogs);
 

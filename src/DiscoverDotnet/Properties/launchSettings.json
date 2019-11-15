@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DiscoverDotnet": {
+      "commandName": "Project",
+      "commandLineArgs": "preview"
+    }
+  }
+}

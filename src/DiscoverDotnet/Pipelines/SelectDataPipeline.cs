@@ -8,19 +8,19 @@ using Statiq.Minification;
 
 namespace DiscoverDotnet.Pipelines
 {
-    public abstract class AggregateDataPipeline : Pipeline
+    public abstract class SelectDataPipeline : Pipeline
     {
-        protected AggregateDataPipeline()
+        protected SelectDataPipeline()
         {
             Dependencies.Add(SourcePipeline);
 
             ProcessModules = new ModuleList
             {
                 new GenerateJson(
-                    Config.FromContext(c => c.Outputs
+                    Config.FromContext(ctx => ctx.Outputs
                         .FromPipeline(SourcePipeline)
-                        .Where(x => Predicate == null || Predicate(x))
-                        .Select(x => Data(x))))
+                        .Where(doc => Predicate == null || Predicate(doc))
+                        .Select(doc => Data(doc))))
                     .WithCamelCase(),
                 new MinifyJs(),
                 new SetDestination(Destination)
