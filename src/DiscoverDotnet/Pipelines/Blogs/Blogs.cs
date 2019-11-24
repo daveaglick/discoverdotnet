@@ -28,6 +28,7 @@ namespace DiscoverDotnet.Pipelines.Blogs
 
             ProcessModules = new ModuleList
             {
+                new LogMessage(Config.FromContext(ctx => $"Getting blog data for {ctx.Inputs.Length} blogs...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetFeedData(),

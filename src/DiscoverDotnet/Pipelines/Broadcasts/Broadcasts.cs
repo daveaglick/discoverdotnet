@@ -25,6 +25,7 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
 
             ProcessModules = new ModuleList
             {
+                new LogMessage(Config.FromContext(ctx => $"Getting broadcast data for {ctx.Inputs.Length} broadcasts...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetFeedData(),

@@ -4,6 +4,7 @@ using Statiq.Common;
 using Statiq.Core;
 using Statiq.Json;
 using Statiq.Minification;
+using Statiq.Netlify;
 using Statiq.Sass;
 
 namespace DiscoverDotnet.Pipelines

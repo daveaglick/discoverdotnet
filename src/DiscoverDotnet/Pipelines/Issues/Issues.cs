@@ -28,6 +28,7 @@ namespace DiscoverDotnet.Pipelines.Issues
 
             ProcessModules = new ModuleList
             {
+                new LogMessage(Config.FromContext(ctx => $"Getting issue data for {ctx.Inputs.Length} issues...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetIssueGitHubData(),

@@ -27,6 +27,7 @@ namespace DiscoverDotnet.Pipelines.Projects
 
             ProcessModules = new ModuleList
             {
+                new LogMessage(Config.FromContext(ctx => $"Getting project data for {ctx.Inputs.Length} projects...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetProjectGitHubData(),
