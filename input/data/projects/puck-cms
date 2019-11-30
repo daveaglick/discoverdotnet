@@ -1,0 +1,10 @@
+Source: https://github.com/yohsii/puck-core
+Language: c#
+Title: Puck CMS
+Description: a cross platform, open source .NET Core CMS. Fast, scalable, code-first, unobtrusive and extensible with powerful querying and Lucene integration
+Website: https://puckcms.com
+Docs: https://github.com/yohsii/puck-core/wiki
+Twitter: https://twitter.com/yohsii
+Tags:
+  - cms
+  - asp.net
