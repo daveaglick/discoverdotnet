@@ -1,0 +1,17 @@
+Source: https://github.com/Nihlus/Puzzle
+NuGet:
+  - Puzzle
+Language: C#
+Docs: https://github.com/Nihlus/Puzzle/wiki
+Chat: https://discord.gg/fDy5Vhb
+Tags:
+  - image
+  - processing
+  - phash
+  - similarity
+  - perception hash
+  - agpl
+  - images
+  - copyright
+  - reverse
+  - search
