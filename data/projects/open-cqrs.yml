@@ -1,4 +1,4 @@
-Source: https://github.com/OpenCQRS/OpenCQRS
+SourceCode: https://github.com/OpenCQRS/OpenCQRS
 NuGet:
   - OpenCqrs
 Language: C#

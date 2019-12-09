@@ -3,7 +3,7 @@ NuGet:
   - NetEscapades.Configuration.Yaml
   - NetEscapades.Configuration.Remote
   - NetEscapades.Configuration.Vault
-Source: https://github.com/andrewlock/NetEscapades.Configuration
+SourceCode: https://github.com/andrewlock/NetEscapades.Configuration
 Tags:
   - Configuration
   - ASP.NET

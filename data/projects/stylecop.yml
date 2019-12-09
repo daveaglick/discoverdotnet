@@ -1,7 +1,7 @@
 Chat: https://gitter.im/StyleCop/StyleCop
 Language: C#
 NuGet: StyleCop.MSBuild
-Source: https://github.com/StyleCop/StyleCop
+SourceCode: https://github.com/StyleCop/StyleCop
 Tags:
   - Code Analysis
 DiscoveryDate: 3/2/2019

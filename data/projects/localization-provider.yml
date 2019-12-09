@@ -1,4 +1,4 @@
-Source: https://github.com/valdisiljuconoks/localization-provider-core
+SourceCode: https://github.com/valdisiljuconoks/localization-provider-core
 Title: Localization Provider for .Net Core
 Description: Alternative localization provider based on EF. You will forget about clumsy Resx files and will be able to work with translations in strongly-typed manner. No more magic strings.
 Website: https://github.com/valdisiljuconoks/localization-provider-core/blob/master/README.md

@@ -1,6 +1,6 @@
 Language: C#
 NuGet: i18N
-Source: https://github.com/turquoiseowl/i18n
+SourceCode: https://github.com/turquoiseowl/i18n
 Tags:
   - Localization
   - ASP.NET

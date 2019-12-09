@@ -1,4 +1,4 @@
-Source: https://github.com/xyncro/freya
+SourceCode: https://github.com/xyncro/freya
 NuGet:
   - Freya
 Language: F#

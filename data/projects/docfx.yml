@@ -1,7 +1,7 @@
 Chat: https://gitter.im/dotnet/docfx
 Language: C#
 NuGet: docfx
-Source: https://github.com/dotnet/docfx
+SourceCode: https://github.com/dotnet/docfx
 Tags:
   - Documentation
 DiscoveryDate: 10/31/2019

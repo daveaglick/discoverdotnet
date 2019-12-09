@@ -1,4 +1,4 @@
-Source: https://github.com/indice-co/EDI.Net
+SourceCode: https://github.com/indice-co/EDI.Net
 NuGet:
   - indice.Edi
 Language: C#

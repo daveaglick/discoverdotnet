@@ -2,7 +2,7 @@ Title: Suggest A Project
 ---
 <suggest title="Project" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/input/data/projects">
     <p>
-        Note that for many projects, you'll only need to provide the <code>Source</code>, <code>NuGet</code>, and <code>Language</code> fields.
+        Note that for many projects, you'll only need to provide the <code>SourceCode</code>, <code>NuGet</code>, and <code>Language</code> fields.
         The rest of the data is automatically pulled from the GitHub API if available. Other fields that aren't represented
         in GitHub like <code>Image</code> and <code>Chat</code> should also be provided.
     </p>
@@ -17,7 +17,7 @@ Title: Suggest A Project
                 return {
                     fields: [
                         {
-                            name: "Source",
+                            name: "SourceCode",
                             description: "The location of the source code for the project. Should contain a full URL like <code>https://github.com/daveaglick/discoverdotnet</code>."
                         },
                         {
@@ -35,15 +35,15 @@ Title: Suggest A Project
                         },
                         {
                             name: "Title",
-                            description: "The title of the project. If a GitHub repository was provided for the source and this is omitted, the title from the repository metadata will be used."
+                            description: "The title of the project. If a GitHub repository was provided for the source code and this is omitted, the title from the repository metadata will be used."
                         },
                         {
                             name: "Description",
-                            description: "A short description of the project. If a GitHub repository was provided for the source and this is omitted, the description from the repository metadata will be used."
+                            description: "A short description of the project. If a GitHub repository was provided for the source code and this is omitted, the description from the repository metadata will be used."
                         },
                         {
                             name: "Website",
-                            description: "The primary website for the project. If a GitHub repository was provided for the source and this is omitted, the website from the repository metadata will be used."
+                            description: "The primary website for the project. If a GitHub repository was provided for the source code and this is omitted, the website from the repository metadata will be used."
                         },
                         {
                             name: "Docs",

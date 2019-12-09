@@ -1,7 +1,7 @@
 Chat: https://gitter.im/DbUp/DbUp
 Language: C#
 NuGet: dbup
-Source: https://github.com/DbUp/DbUp
+SourceCode: https://github.com/DbUp/DbUp
 Tags:
   - Deployment
 DiscoveryDate: 5/10/2020

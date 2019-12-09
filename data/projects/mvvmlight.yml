@@ -1,6 +1,6 @@
 Language: C#
 NuGet: MvvmLight
-Source: https://github.com/lbugnion/mvvmlight
+SourceCode: https://github.com/lbugnion/mvvmlight
 Tags:
   - XAML
   - UWP

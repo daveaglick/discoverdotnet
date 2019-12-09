@@ -2,7 +2,7 @@ Chat: https://gitter.im/dadhi/DryIoc
 Description: A fast, small, full-featured IoC Container for .NET
 Language: C#
 NuGet: DryIoc.dll
-Source: https://bitbucket.org/dadhi/dryioc
+SourceCode: https://bitbucket.org/dadhi/dryioc
 Tags:
   - IoC
 Title: DryIoc

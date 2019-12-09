@@ -1,7 +1,7 @@
 Image: https://camo.githubusercontent.com/647979d2d34a5848fc076ec29cfbede8d9a6b23a/687474703a2f2f737065747a2e6769746875622e696f2f696d672f77617264656e5f6c6f676f2e706e67
 Language: C#
 NuGet: Warden
-Source: https://github.com/warden-stack/Warden
+SourceCode: https://github.com/warden-stack/Warden
 Tags:
   - Logging
   - Monitoring

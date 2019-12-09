@@ -1,6 +1,6 @@
 Description: .NET bindings for the Chromium Embedded Framework.
 Language: C#
-Source: https://bitbucket.org/chromiumfx/chromiumfx/src
+SourceCode: https://bitbucket.org/chromiumfx/chromiumfx/src
 Tags:
   - GUI
 Title: ChromiumFX

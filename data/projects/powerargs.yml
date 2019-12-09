@@ -1,6 +1,6 @@
 Language: C#
 NuGet: PowerArgs
-Source: https://github.com/adamabdelhamed/PowerArgs
+SourceCode: https://github.com/adamabdelhamed/PowerArgs
 Tags:
   - CLI
 DiscoveryDate: 4/21/2020

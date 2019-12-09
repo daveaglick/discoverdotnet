@@ -1,4 +1,4 @@
-Source: https://github.com/abock/idgen
+SourceCode: https://github.com/abock/idgen
 NuGet:
   - IdentifierGenerator
 Language: C#

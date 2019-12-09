@@ -17,8 +17,8 @@ namespace DiscoverDotnet.Pipelines.Projects
         {
             InputModules = new ModuleList
             {
-                new ReadFiles(Config.FromContext(x => x.FileSystem.RootPath.Combine("../../data/projects/*.yml").FullPath)),
-                new ExecuteIf(Config.FromContext(x => x.ApplicationState.IsCommand("preview")))
+                new ReadFiles(Config.FromContext(ctx => ctx.FileSystem.RootPath.Combine("../../data/projects/*.yml").FullPath)),
+                new ExecuteIf(Config.FromContext(ctx => ctx.ApplicationState.IsCommand("preview") || ctx.Settings.GetBool("limited")))
                 {
                     new OrderDocuments(Config.FromDocument(x => x.Source)),
                     new TakeDocuments(10)
@@ -30,29 +30,22 @@ namespace DiscoverDotnet.Pipelines.Projects
                 new LogMessage(Config.FromContext(ctx => $"Getting project data for {ctx.Inputs.Length} projects...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
-                new GetProjectGitHubData(),
-                new GetProjectNuGetData(),
+                new GetProjectData(),
                 new SetDestination(Config.FromDocument(x => (FilePath)$"projects/{x.Source.FileName.ChangeExtension("html")}")),
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
                 new SetMetadata("DonationsData", Config.FromDocument(x => x.GetMetadata(
                     "Website",
                     "NuGet",
-                    "Source",
+                    "SourceCode",
                     "Destination"))),
-                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
-                    "Key",
-                    "Title",
-                    "Description",
-                    "StargazersCount",
-                    "Tags"))),
                 new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",
                     "Link",
                     "Image",
                     "NuGet",
-                    "Source",
+                    "SourceCode",
                     "Description",
                     "StargazersCount",
                     "ForksCount",

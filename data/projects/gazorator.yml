@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/mholo65/gazorator
+SourceCode: https://github.com/mholo65/gazorator
 NuGet: Gazorator 
 Tags:
   - Razor

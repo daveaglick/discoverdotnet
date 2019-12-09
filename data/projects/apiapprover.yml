@@ -1,4 +1,4 @@
-Source: https://github.com/JakeGinnivan/ApiApprover
+SourceCode: https://github.com/JakeGinnivan/ApiApprover
 NuGet:
   - ApiApprover
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/Topshelf/Topshelf
+SourceCode: https://github.com/Topshelf/Topshelf
 NuGet:
   - Topshelf
 Language: C#

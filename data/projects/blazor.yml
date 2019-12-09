@@ -1,4 +1,4 @@
-Source: https://github.com/aspnet/Blazor
+SourceCode: https://github.com/aspnet/Blazor
 NuGet:
   - Microsoft.AspNetCore.Blazor
   - Microsoft.AspNetCore.Blazor.Build

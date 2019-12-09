@@ -1,4 +1,4 @@
-Source: https://github.com/naudio/NAudio
+SourceCode: https://github.com/naudio/NAudio
 Language: C#
 Image: https://github.com/naudio/NAudio/blob/master/naudio-logo.png
 NuGet: NAudio

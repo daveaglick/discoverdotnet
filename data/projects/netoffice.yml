@@ -7,7 +7,7 @@ NuGet:
   - NetOfficeFw.Excel
   - NetOfficeFw.PowerPoint
   - NetOfficeFw.Outlook
-Source: https://github.com/NetOfficeFw/NetOffice
+SourceCode: https://github.com/NetOfficeFw/NetOffice
 Docs: https://netoffice.io
 Image: https://avatars2.githubusercontent.com/u/9567429?s=200&v=4
 Tags:

@@ -1,4 +1,4 @@
-Source: https://github.com/mysticmind/reversemarkdown-net
+SourceCode: https://github.com/mysticmind/reversemarkdown-net
 NuGet:
   - ReverseMarkdown
 Language: C#

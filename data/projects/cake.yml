@@ -1,4 +1,4 @@
-Source: https://github.com/cake-build/cake
+SourceCode: https://github.com/cake-build/cake
 NuGet: Cake
 Chocolatey: cake.portable
 MyGet: cake

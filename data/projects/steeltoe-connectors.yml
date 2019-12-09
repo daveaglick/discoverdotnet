@@ -1,4 +1,4 @@
-Source: https://github.com/SteeltoeOSS/Connectors
+SourceCode: https://github.com/SteeltoeOSS/Connectors
 NuGet:
   - Steeltoe.CloudFoundry.ConnectorCore
   - Steeltoe.CloudFoundry.Connector.EFCore

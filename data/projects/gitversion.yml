@@ -2,7 +2,7 @@ Chat: https://gitter.im/GitTools/GitVersion
 Image: https://camo.githubusercontent.com/a5d0a97f66fe4f780ee1024f589d4811ebf21315/68747470733a2f2f7261772e6769746875622e636f6d2f476974546f6f6c732f47697456657273696f6e2f6d61737465722f646f63732f696d672f7061636b6167655f69636f6e2e706e67
 Language: C#
 NuGet: GitVersionTask
-Source: https://github.com/GitTools/GitVersion
+SourceCode: https://github.com/GitTools/GitVersion
 Tags:
   - Git
   - Versioning

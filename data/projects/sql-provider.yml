@@ -1,6 +1,6 @@
 Language: F#
 NuGet: SQLProvider
-Source: https://github.com/fsprojects/SQLProvider
+SourceCode: https://github.com/fsprojects/SQLProvider
 Tags:
   - Data Access
   - Type Provider

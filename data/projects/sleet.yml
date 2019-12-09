@@ -1,4 +1,4 @@
-Source: https://github.com/emgarten/Sleet
+SourceCode: https://github.com/emgarten/Sleet
 NuGet:
   - Sleet
 Language: C#

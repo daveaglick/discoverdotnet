@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/RehanSaeed/Serilog.Exceptions
+SourceCode: https://github.com/RehanSaeed/Serilog.Exceptions
 Tags:
   - Logging
 Title: Serilog.Exceptions

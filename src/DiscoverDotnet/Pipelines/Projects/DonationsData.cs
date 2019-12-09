@@ -20,7 +20,7 @@ namespace DiscoverDotnet.Pipelines.Projects
                 "Title",
                 "Website",
                 "NuGet",
-                "Source",
+                "SourceCode",
                 "Donations");
 
         protected override Config<FilePath> Destination => (FilePath)"data/donations.json";

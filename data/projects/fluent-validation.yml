@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/JeremySkinner/FluentValidation/master/fv.png
 Language: C#
 NuGet: FluentValidation
-Source: https://github.com/JeremySkinner/FluentValidation
+SourceCode: https://github.com/JeremySkinner/FluentValidation
 Tags:
   - Validation
 DiscoveryDate: 5/27/2019

@@ -3,7 +3,7 @@ Donations: https://opencollective.com/imagesharp
 Image: https://raw.githubusercontent.com/SixLabors/ImageSharp/master/build/icons/imagesharp-logo-256.png
 Language: C#
 NuGet: SixLabors.ImageSharp
-Source: https://github.com/SixLabors/ImageSharp
+SourceCode: https://github.com/SixLabors/ImageSharp
 Tags:
   - Graphics
 DiscoveryDate: 8/17/2018

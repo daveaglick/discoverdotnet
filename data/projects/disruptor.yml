@@ -1,4 +1,4 @@
-Source: https://github.com/disruptor-net/Disruptor-net
+SourceCode: https://github.com/disruptor-net/Disruptor-net
 NuGet:
   - Disruptor
 Language: C#

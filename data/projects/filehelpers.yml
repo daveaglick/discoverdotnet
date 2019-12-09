@@ -1,4 +1,4 @@
-Source: https://github.com/MarcosMeli/FileHelpers
+SourceCode: https://github.com/MarcosMeli/FileHelpers
 NuGet:
   - FileHelpers
 Language: C#

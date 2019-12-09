@@ -1,6 +1,6 @@
 Language: C#
 NuGet: jacobslusser.ScintillaNET
-Source: https://github.com/jacobslusser/ScintillaNET
+SourceCode: https://github.com/jacobslusser/ScintillaNET
 Tags:
   - GUI
   - WinForms

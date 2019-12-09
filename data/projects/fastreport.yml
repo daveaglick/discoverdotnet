@@ -1,4 +1,4 @@
-Source: https://github.com/FastReports/FastReport
+SourceCode: https://github.com/FastReports/FastReport
 NuGet:
   - FastReport.OpenSource
   - FastReport.OpenSource.Web

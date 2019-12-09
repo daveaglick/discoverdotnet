@@ -1,6 +1,6 @@
 Language: C#
 NuGet: FluentMigrator
-Source: https://github.com/fluentmigrator/fluentmigrator
+SourceCode: https://github.com/fluentmigrator/fluentmigrator
 Image: https://fluentmigrator.github.io/images/logo.svg
 Docs: https://fluentmigrator.github.io/
 Chat: https://gitter.im/FluentMigrator/fluentmigrator

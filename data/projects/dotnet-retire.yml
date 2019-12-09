@@ -1,4 +1,4 @@
-Source: https://github.com/retirenet/dotnet-retire
+SourceCode: https://github.com/retirenet/dotnet-retire
 NuGet:
   - dotnet-retire
 Language: C#

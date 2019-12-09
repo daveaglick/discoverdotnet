@@ -1,4 +1,4 @@
-Source: https://github.com/kaeedo/WhereInTheWorld
+SourceCode: https://github.com/kaeedo/WhereInTheWorld
 NuGet:
   - WhereInTheWorld
 Language: F#

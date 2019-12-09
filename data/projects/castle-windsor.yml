@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/castleproject/Windsor/master/docs/images/windsor-logo.png
 Language: C#
 NuGet: Castle.Windsor
-Source: https://github.com/castleproject/Windsor
+SourceCode: https://github.com/castleproject/Windsor
 Tags:
   - IoC
 DiscoveryDate: 4/14/2020

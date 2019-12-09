@@ -1,4 +1,4 @@
-Source: https://github.com/jgiacomini/Tiny.RestClient
+SourceCode: https://github.com/jgiacomini/Tiny.RestClient
 NuGet:
   - Tiny.RestClient
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/ap0llo/markdown-generator
+SourceCode: https://github.com/ap0llo/markdown-generator
 NuGet:
   - Grynwald.MarkdownGenerator
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/Microsoft/clrmd
+SourceCode: https://github.com/Microsoft/clrmd
 NuGet:
   - Microsoft.Diagnostics.Runtime
 Language: C#

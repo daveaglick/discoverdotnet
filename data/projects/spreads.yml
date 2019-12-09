@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Spreads
-Source: https://github.com/Spreads/Spreads/
+SourceCode: https://github.com/Spreads/Spreads/
 Tags:
   - Data Science
 DiscoveryDate: 1/23/2019

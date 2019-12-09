@@ -1,6 +1,6 @@
 Language: C#
 NuGet: PayPalMerchantSDK
-Source: https://github.com/paypal/merchant-sdk-dotnet
+SourceCode: https://github.com/paypal/merchant-sdk-dotnet
 Tags:
   - Commerce
 DiscoveryDate: 6/17/2019

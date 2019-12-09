@@ -1,4 +1,4 @@
-Source: https://github.com/stryker-mutator/stryker-net
+SourceCode: https://github.com/stryker-mutator/stryker-net
 NuGet:
   - Stryker.Runner.DotNetCore.CLI
 Language: C#

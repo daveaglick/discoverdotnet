@@ -1,7 +1,7 @@
 Chat: https://gitter.im/jstedfast/MailKit
 Language: C#
 NuGet: MailKit
-Source: https://github.com/jstedfast/MailKit
+SourceCode: https://github.com/jstedfast/MailKit
 Tags:
   - Mail
 DiscoveryDate: 2/26/2020

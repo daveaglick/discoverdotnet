@@ -1,4 +1,4 @@
-Source: https://github.com/webprofusion/certify
+SourceCode: https://github.com/webprofusion/certify
 Language: C#
 Title: Certify
 Description: SSL Certificate Manager UI for Windows, powered by Let's Encrypt

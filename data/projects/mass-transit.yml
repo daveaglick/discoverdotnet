@@ -1,4 +1,4 @@
-Source: https://github.com/MassTransit/MassTransit
+SourceCode: https://github.com/MassTransit/MassTransit
 NuGet:
   - MassTransit
 Language: C#

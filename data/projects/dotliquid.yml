@@ -1,4 +1,4 @@
-Source: https://github.com/dotliquid/dotliquid
+SourceCode: https://github.com/dotliquid/dotliquid
 NuGet:
   - DotLiquid
 Language: C#

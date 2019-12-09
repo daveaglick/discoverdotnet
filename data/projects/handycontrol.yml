@@ -1,4 +1,4 @@
-Source: https://github.com/NaBian/HandyControl
+SourceCode: https://github.com/NaBian/HandyControl
 NuGet:
   - HandyControl
 Language: C#

@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/vcsjones/AzureSignTool
+SourceCode: https://github.com/vcsjones/AzureSignTool
 Tags:
   - Azure
   - Security

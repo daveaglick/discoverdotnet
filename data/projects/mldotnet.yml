@@ -1,4 +1,4 @@
-Source: https://github.com/dotnet/machinelearning
+SourceCode: https://github.com/dotnet/machinelearning
 NuGet:
   - Microsoft.ML
 Language: C#

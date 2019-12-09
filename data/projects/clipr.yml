@@ -1,6 +1,6 @@
 Language: C#
 NuGet: clipr
-Source: https://github.com/nemec/clipr
+SourceCode: https://github.com/nemec/clipr
 Tags:
   - CLI
 DiscoveryDate: 7/8/2020

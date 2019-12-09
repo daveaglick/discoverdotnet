@@ -1,4 +1,4 @@
-Source: https://github.com/ServiceStack/ServiceStack.Text
+SourceCode: https://github.com/ServiceStack/ServiceStack.Text
 NuGet:
   - ServiceStack.Text
 Language: C#

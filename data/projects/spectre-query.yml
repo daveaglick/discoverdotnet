@@ -1,4 +1,4 @@
-Source: https://github.com/spectresystems/spectre.query
+SourceCode: https://github.com/spectresystems/spectre.query
 NuGet:
   - Spectre.Query
 Language: C#

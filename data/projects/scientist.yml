@@ -1,4 +1,4 @@
-Source: https://github.com/github/Scientist.net
+SourceCode: https://github.com/github/Scientist.net
 NuGet:
   - Scientist
 Language: C#

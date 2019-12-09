@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - dotnet-cowsay
-Source: https://github.com/isaac2004/dotnet-cowsay/
+SourceCode: https://github.com/isaac2004/dotnet-cowsay/
 Tags:
   - Global Tool
 Title: dotnet-cowsay

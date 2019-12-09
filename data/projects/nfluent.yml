@@ -1,4 +1,4 @@
-Source: https://github.com/tpierrain/NFluent
+SourceCode: https://github.com/tpierrain/NFluent
 NuGet:
   - NFluent
 Language: C#

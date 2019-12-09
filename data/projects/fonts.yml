@@ -2,7 +2,7 @@ Chat: https://gitter.im/SixLabors/Fonts
 Image: https://raw.githubusercontent.com/SixLabors/Fonts/master/icons/icon.png
 Language: C#
 NuGet: SixLabors.Fonts
-Source: https://github.com/SixLabors/Fonts
+SourceCode: https://github.com/SixLabors/Fonts
 Tags:
   - Graphics
 DiscoveryDate: 5/16/2020

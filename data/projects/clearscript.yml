@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/Microsoft/ClearScript
+SourceCode: https://github.com/Microsoft/ClearScript
 Tags:
   - JavaScript
   - Interoperability

@@ -1,4 +1,4 @@
-Source: https://github.com/danielgerlag/workflow-core
+SourceCode: https://github.com/danielgerlag/workflow-core
 NuGet:
   - WorkflowCore
 Language: C#

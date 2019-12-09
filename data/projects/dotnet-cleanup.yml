@@ -1,4 +1,4 @@
-Source: https://github.com/sebnilsson/DotnetCleanup
+SourceCode: https://github.com/sebnilsson/DotnetCleanup
 NuGet:
   - dotnet-cleanup
 Language: C#

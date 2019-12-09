@@ -22,21 +22,22 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Algolia.Search" Version="6.5.1" />
     <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.2" />
     <PackageReference Include="Octokit" Version="0.36.0" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Netlify" Version="1.0.0-alpha.20" />
-    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.20" />
+    <PackageReference Include="Statiq.App" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Html" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Json" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Markdown" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Razor" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Sass" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Yaml" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Minification" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Netlify" Version="1.0.0-alpha.21" />
+    <PackageReference Include="Statiq.Feeds" Version="1.0.0-alpha.21" />
   </ItemGroup> 
   
   <!--

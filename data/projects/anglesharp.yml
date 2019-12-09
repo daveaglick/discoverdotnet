@@ -3,7 +3,7 @@ Language: C#
 NuGet:
   - AngleSharp
   - AngleSharp.Scripting.JavaScript
-Source: https://github.com/AngleSharp/AngleSharp
+SourceCode: https://github.com/AngleSharp/AngleSharp
 Tags:
   - HTML
 Website: https://anglesharp.github.io/

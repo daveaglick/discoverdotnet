@@ -1,4 +1,4 @@
-Source: https://github.com/moq/moq4
+SourceCode: https://github.com/moq/moq4
 NuGet:
   - Moq
 Language: C#

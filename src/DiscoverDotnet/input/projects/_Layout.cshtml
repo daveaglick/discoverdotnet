@@ -175,14 +175,14 @@
                         </p>
                     }    
 
-                    string source = Model.GetString("Source");
-                    if(!string.IsNullOrWhiteSpace(source))
+                    string sourceCode = Model.GetString("SourceCode");
+                    if(!string.IsNullOrWhiteSpace(sourceCode))
                     {
                         <h5>
-                            <span class="fa fa-code"></span> Source
+                            <span class="fa fa-code"></span> Source Code
                         </h5>
                         <p>
-                            <a href="@(source)">{{ '@(source)' | no-protocol }}</a>
+                            <a href="@(sourceCode)">{{ '@(sourceCode)' | no-protocol }}</a>
                         </p>
                     }
 

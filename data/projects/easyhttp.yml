@@ -1,6 +1,6 @@
 Language: C#
 NuGet: EasyHttp
-Source: https://github.com/EasyHttp/EasyHttp
+SourceCode: https://github.com/EasyHttp/EasyHttp
 Tags:
   - HTTP
 DiscoveryDate: 8/26/2018

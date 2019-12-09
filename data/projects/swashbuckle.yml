@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Swashbuckle
-Source: https://github.com/domaindrivendev/Swashbuckle
+SourceCode: https://github.com/domaindrivendev/Swashbuckle
 DiscoveryDate: 7/31/2018
 Tags:
   - Documentation

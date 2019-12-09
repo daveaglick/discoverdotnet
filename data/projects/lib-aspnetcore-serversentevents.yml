@@ -1,4 +1,4 @@
-Source: https://github.com/tpeczek/Lib.AspNetCore.ServerSentEvents
+SourceCode: https://github.com/tpeczek/Lib.AspNetCore.ServerSentEvents
 NuGet: Lib.AspNetCore.ServerSentEvents
 Language: C#
 Title: Lib.AspNetCore.ServerSentEvents

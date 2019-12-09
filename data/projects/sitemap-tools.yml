@@ -1,4 +1,4 @@
-Source: https://github.com/TurnerSoftware/SitemapTools
+SourceCode: https://github.com/TurnerSoftware/SitemapTools
 NuGet:
   - TurnerSoftware.SitemapTools
 Language: C#

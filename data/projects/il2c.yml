@@ -1,4 +1,4 @@
-Source: https://github.com/kekyo/IL2C
+SourceCode: https://github.com/kekyo/IL2C
 NuGet:
   - IL2C.Build
   - IL2C.Core

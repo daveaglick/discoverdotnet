@@ -1,4 +1,4 @@
-Source: https://github.com/rebus-org/Rebus
+SourceCode: https://github.com/rebus-org/Rebus
 NuGet:
   - Rebus
 Language: C#

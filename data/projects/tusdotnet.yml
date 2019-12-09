@@ -1,4 +1,4 @@
-Source: https://github.com/tusdotnet/tusdotnet
+SourceCode: https://github.com/tusdotnet/tusdotnet
 NuGet:
   - tusdotnet
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/SteeltoeOSS/Configuration
+SourceCode: https://github.com/SteeltoeOSS/Configuration
 NuGet:
   - Steeltoe.Extensions.Configuration.ConfigServerBase
   - Steeltoe.Extensions.Configuration.ConfigServerCore

@@ -1,4 +1,4 @@
-Source: https://github.com/6A/Cometary
+SourceCode: https://github.com/6A/Cometary
 NuGet:
   - Cometary.Core
   - Cometary.Analyzer

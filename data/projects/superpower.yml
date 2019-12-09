@@ -1,4 +1,4 @@
-Source: https://github.com/datalust/superpower
+SourceCode: https://github.com/datalust/superpower
 NuGet:
   - Superpower
 Language: C#

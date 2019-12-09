@@ -1,4 +1,4 @@
-Source: https://github.com/AutoMapper/AutoMapper
+SourceCode: https://github.com/AutoMapper/AutoMapper
 NuGet:
   - AutoMapper
 Language: C#

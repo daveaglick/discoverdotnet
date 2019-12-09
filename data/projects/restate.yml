@@ -1,4 +1,4 @@
-Source: https://github.com/psibr/REstate
+SourceCode: https://github.com/psibr/REstate
 NuGet:
   - REstate
   - REstate.Concurrency.Primitives

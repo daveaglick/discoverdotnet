@@ -1,4 +1,4 @@
-Source: https://github.com/FakeItEasy/FakeItEasy
+SourceCode: https://github.com/FakeItEasy/FakeItEasy
 NuGet:
   - FakeItEasy
   - FakeItEasy.Analyzer.CSharp

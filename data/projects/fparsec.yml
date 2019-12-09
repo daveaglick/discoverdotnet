@@ -1,4 +1,4 @@
-Source: https://github.com/stephan-tolksdorf/fparsec
+SourceCode: https://github.com/stephan-tolksdorf/fparsec
 NuGet:
   - FParsec
 Language: F#

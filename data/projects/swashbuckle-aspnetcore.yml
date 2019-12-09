@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Swashbuckle.AspNetCore
-Source: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+SourceCode: https://github.com/domaindrivendev/Swashbuckle.AspNetCore
 Tags:
   - Documentation
   - API

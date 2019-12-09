@@ -1,6 +1,6 @@
 Title: HashLib
 Description: Here you can find implementations of many hashing algorithms (including all sha3 round 2 and 3 candidates). You can hash files, streams, common types of data.
-Source: https://archive.codeplex.com/?p=hashlib
+SourceCode: https://archive.codeplex.com/?p=hashlib
 Language: C#
 Tags:
   - Cryptography

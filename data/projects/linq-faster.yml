@@ -1,4 +1,4 @@
-Source: https://github.com/jackmott/LinqFaster
+SourceCode: https://github.com/jackmott/LinqFaster
 NuGet:
   - LinqFaster
   - LinqFaster.SIMD

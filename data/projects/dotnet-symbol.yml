@@ -1,4 +1,4 @@
-Source: https://github.com/dotnet/symstore/tree/master/src/dotnet-symbol
+SourceCode: https://github.com/dotnet/symstore/tree/master/src/dotnet-symbol
 NuGet:
   - dotnet-symbol
 Language: C#

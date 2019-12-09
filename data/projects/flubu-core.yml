@@ -2,7 +2,7 @@ Language: C#
 NuGet:
   - FlubuCore
   - FlubuCore.GlobalTool
-Source: https://github.com/flubu-core/flubu.core
+SourceCode: https://github.com/flubu-core/flubu.core
 Title: FlubuCore
 GlobalTool: flubu
 Tags:

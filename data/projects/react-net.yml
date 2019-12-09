@@ -1,6 +1,6 @@
 Language: C#
 NuGet: React.Core
-Source: https://github.com/reactjs/React.NET
+SourceCode: https://github.com/reactjs/React.NET
 Tags:
   - Compiler
   - Web Framework

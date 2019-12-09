@@ -1,4 +1,4 @@
-Source: https://github.com/tuespetre/Impatient
+SourceCode: https://github.com/tuespetre/Impatient
 NuGet:
   - Impatient
   - Impatient.EntityFrameworkCore.SqlServer

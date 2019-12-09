@@ -15,8 +15,8 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
         {
             InputModules = new ModuleList
             {
-                new ReadFiles(Config.FromContext(x => x.FileSystem.RootPath.Combine("../../data/broadcasts/*.yml").FullPath)),
-                new ExecuteIf(Config.FromContext(x => x.ApplicationState.IsCommand("preview")))
+                new ReadFiles(Config.FromContext(ctx => ctx.FileSystem.RootPath.Combine("../../data/broadcasts/*.yml").FullPath)),
+                new ExecuteIf(Config.FromContext(ctx => ctx.ApplicationState.IsCommand("preview") || ctx.Settings.GetBool("limited")))
                 {
                     new OrderDocuments(Config.FromDocument(x => x.Source)),
                     new TakeDocuments(5)
@@ -33,10 +33,6 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
                 new SetMetadata("Language", Config.FromDocument(x => x.GetString("Language", "English"))),
-                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
-                    "Key",
-                    "Title",
-                    "Description"))),
                 new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Key",
                     "Title",

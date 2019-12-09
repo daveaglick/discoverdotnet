@@ -1,6 +1,6 @@
 Language: C#
 NuGet: dotnet-serve
-Source: https://github.com/natemcmaster/dotnet-serve
+SourceCode: https://github.com/natemcmaster/dotnet-serve
 GlobalTool: serve
 Tags:
   - Networking

@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - dotnet-ignore
-Source: https://github.com/Arasz/dotnet-ignore
+SourceCode: https://github.com/Arasz/dotnet-ignore
 Tags:
   - Global Tool
   - Git

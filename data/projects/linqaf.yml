@@ -1,4 +1,4 @@
-Source: https://github.com/kevin-montrose/LinqAF
+SourceCode: https://github.com/kevin-montrose/LinqAF
 NuGet:
   - LinqAF
 Language: C#

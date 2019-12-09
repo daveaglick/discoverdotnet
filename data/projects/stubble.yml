@@ -1,4 +1,4 @@
-Source: https://github.com/StubbleOrg/Stubble
+SourceCode: https://github.com/StubbleOrg/Stubble
 NuGet: Stubble.Core
 Language: C#
 Image: https://raw.githubusercontent.com/StubbleOrg/Stubble/master/assets/logo-512.png

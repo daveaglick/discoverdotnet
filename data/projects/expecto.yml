@@ -1,4 +1,4 @@
-Source: https://github.com/haf/expecto
+SourceCode: https://github.com/haf/expecto
 NuGet: https://www.nuget.org/packages/Expecto/
 Language: F#
 DiscoveryDate: 7/15/2018

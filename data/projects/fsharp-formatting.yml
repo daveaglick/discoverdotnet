@@ -1,7 +1,7 @@
 Image: https://fsprojects.github.io/FSharp.Formatting/misc/logo.png
 Language: F#
 NuGet: FSharp.Formatting
-Source: https://github.com/fsprojects/FSharp.Formatting
+SourceCode: https://github.com/fsprojects/FSharp.Formatting
 Tags:
   - Markdown
   - Documentation

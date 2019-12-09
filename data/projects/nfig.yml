@@ -1,4 +1,4 @@
-Source: https://github.com/NFig/NFig
+SourceCode: https://github.com/NFig/NFig
 NuGet:
   - NFig
   - NFig.Redis

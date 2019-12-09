@@ -1,4 +1,4 @@
-Source: https://github.com/filipw/dotnet-script
+SourceCode: https://github.com/filipw/dotnet-script
 Language: C#
 GlobalTool: script
 NuGet:

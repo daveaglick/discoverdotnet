@@ -1,4 +1,4 @@
-Source: https://github.com/nsubstitute/NSubstitute
+SourceCode: https://github.com/nsubstitute/NSubstitute
 NuGet:
   - NSubstitute
   - NSubstitute.Analyzers.CSharp

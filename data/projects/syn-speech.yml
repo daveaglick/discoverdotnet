@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Syn.Speech
-Source: https://github.com/SynHub/syn-speech
+SourceCode: https://github.com/SynHub/syn-speech
 Tags:
   - Speech
 Title: Syn.Speech

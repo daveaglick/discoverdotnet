@@ -1,4 +1,4 @@
-Source: https://github.com/SteeltoeOSS/Discovery
+SourceCode: https://github.com/SteeltoeOSS/Discovery
 NuGet:
   - Steeltoe.Discovery.ClientCore
   - Steeltoe.Discovery.ClientAutofac

@@ -1,4 +1,4 @@
-Source: https://github.com/SergeyTeplyakov/ErrorProne.NET
+SourceCode: https://github.com/SergeyTeplyakov/ErrorProne.NET
 NuGet:
   - ErrorProne.NET
   - ErrorProne.NET.Structs

@@ -1,4 +1,4 @@
-Source: https://github.com/tonerdo/coverlet
+SourceCode: https://github.com/tonerdo/coverlet
 NuGet: coverlet.msbuild
 Tags:
   - Testing

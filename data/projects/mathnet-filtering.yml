@@ -1,6 +1,6 @@
 Language: C#
 NuGet: MathNet.Filtering
-Source: https://github.com/mathnet/mathnet-filtering
+SourceCode: https://github.com/mathnet/mathnet-filtering
 Tags:
   - Data Science
 DiscoveryDate: 1/28/2020

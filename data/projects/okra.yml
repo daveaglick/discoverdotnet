@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Okra.Core
-Source: https://github.com/OkraFramework/Okra.Core
+SourceCode: https://github.com/OkraFramework/Okra.Core
 Tags:
   - MVVM
   - IoC

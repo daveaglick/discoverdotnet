@@ -1,4 +1,4 @@
-Source: https://github.com/szehetner/InliningAnalyzer
+SourceCode: https://github.com/szehetner/InliningAnalyzer
 Language: C#
 Image: https://github.com/szehetner/InliningAnalyzer/raw/master/src/VsExtension/Sample.png
 Title: Inlining Analyzer

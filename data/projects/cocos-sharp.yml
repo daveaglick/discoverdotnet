@@ -1,6 +1,6 @@
 Language: C#
 NuGet: CocosSharp
-Source: https://github.com/mono/CocosSharp
+SourceCode: https://github.com/mono/CocosSharp
 Tags:
   - Game Development
 DiscoveryDate: 1/23/2020

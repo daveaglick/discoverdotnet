@@ -1,4 +1,4 @@
-Source: https://github.com/andrewlock/dotnet-config2json
+SourceCode: https://github.com/andrewlock/dotnet-config2json
 NuGet:
   - dotnet-config2json
 Language: C#

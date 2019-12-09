@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Catel.Core
-Source: https://github.com/catel/catel
+SourceCode: https://github.com/catel/catel
 Tags:
   - MVVM
   - UWP

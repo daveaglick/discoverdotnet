@@ -1,6 +1,6 @@
 Language: C#
 NuGet: QRCodeCore
-Source: https://github.com/dlemstra/QRCodeCore
+SourceCode: https://github.com/dlemstra/QRCodeCore
 Tags:
   - Graphics
 DiscoveryDate: 11/27/2019

@@ -2,7 +2,7 @@ Chat: https://gitter.im/dajuric/dot-imaging
 Image: https://raw.githubusercontent.com/dajuric/dot-imaging/master/Deploy/Logo/logo-big.png
 Language: C#
 NuGet: DotImaging.Primitives2D
-Source: https://github.com/dajuric/dot-imaging
+SourceCode: https://github.com/dajuric/dot-imaging
 Tags:
   - Graphics
 DiscoveryDate: 1/4/2020

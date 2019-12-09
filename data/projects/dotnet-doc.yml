@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - dotnet-doc
-Source: https://github.com/spboyer/dotnet-doc
+SourceCode: https://github.com/spboyer/dotnet-doc
 Tags:
   - Global Tool
   - Documentation

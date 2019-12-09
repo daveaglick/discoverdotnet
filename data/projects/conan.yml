@@ -1,4 +1,4 @@
-Source: https://github.com/conan-roslyn/Conan
+SourceCode: https://github.com/conan-roslyn/Conan
 NuGet:
   - Conan.CodeAnalysis
   - Conan.Net.Compilers

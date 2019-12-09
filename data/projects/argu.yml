@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/fsprojects/Argu/master/docs/files/img/logo.png
 Language: F#
 NuGet: Argu
-Source: https://github.com/fsprojects/Argu
+SourceCode: https://github.com/fsprojects/Argu
 Tags:
   - CLI
 DiscoveryDate: 11/7/2018

@@ -1,4 +1,4 @@
-Source: https://github.com/lunet-io/scriban
+SourceCode: https://github.com/lunet-io/scriban
 NuGet:
   - Scriban
 Language: C#

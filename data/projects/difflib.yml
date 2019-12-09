@@ -1,4 +1,4 @@
-Source: https://github.com/lassevk/DiffLib
+SourceCode: https://github.com/lassevk/DiffLib
 NuGet:
   - DiffLib
 Language: C#

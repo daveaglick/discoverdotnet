@@ -1,4 +1,4 @@
-Source: https://github.com/adamcaudill/libsodium-net
+SourceCode: https://github.com/adamcaudill/libsodium-net
 Language: C#
 Tags:
   - Cryptography

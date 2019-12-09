@@ -1,6 +1,6 @@
 Language: C#
 NuGet: JavaScriptEngineSwitcher.Core
-Source: https://github.com/Taritsyn/JavaScriptEngineSwitcher
+SourceCode: https://github.com/Taritsyn/JavaScriptEngineSwitcher
 Tags:
   - JavaScript
   - Interoperability

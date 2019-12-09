@@ -1,6 +1,6 @@
 Language: C#
 NuGet: GeoJSON.Net
-Source: https://github.com/GeoJSON-Net/GeoJSON.Net
+SourceCode: https://github.com/GeoJSON-Net/GeoJSON.Net
 Tags:
   - GIS
 DiscoveryDate: 4/20/2020

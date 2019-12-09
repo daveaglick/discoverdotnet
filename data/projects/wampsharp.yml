@@ -1,4 +1,4 @@
-Source: https://github.com/Code-Sharp/WampSharp
+SourceCode: https://github.com/Code-Sharp/WampSharp
 NuGet: 
   - WampSharp
   - WampSharp.Default

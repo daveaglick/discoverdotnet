@@ -3,7 +3,7 @@ Description: ObjectListView is a C# wrapper around a .NET ListView. It makes the
 Language: C#
 NuGet: ObjectListView.Official
 Website: http://objectlistview.sourceforge.net
-Source: http://objectlistview.sourceforge.net/cs/download.html#bleeding-edge-source
+SourceCode: http://objectlistview.sourceforge.net/cs/download.html#bleeding-edge-source
 Tags:
   - GUI
 DiscoveryDate: 5/22/2019

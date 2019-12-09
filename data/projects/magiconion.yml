@@ -1,4 +1,4 @@
-Source: https://github.com/neuecc/MagicOnion
+SourceCode: https://github.com/neuecc/MagicOnion
 NuGet:
   - MagicOnion
 Language: C#

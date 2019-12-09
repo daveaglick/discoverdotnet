@@ -1,7 +1,7 @@
 Chat: https://gitter.im/jstedfast/MimeKit
 Language: C#
 NuGet: MimeKit
-Source: https://github.com/jstedfast/MimeKit
+SourceCode: https://github.com/jstedfast/MimeKit
 Tags:
   - Mail
 DiscoveryDate: 10/6/2019

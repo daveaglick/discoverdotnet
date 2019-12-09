@@ -1,4 +1,4 @@
-Source: https://github.com/mgravell/protobuf-net
+SourceCode: https://github.com/mgravell/protobuf-net
 NuGet:
   - protobuf-net
 Language: C#

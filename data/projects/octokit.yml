@@ -1,4 +1,4 @@
-Source: https://github.com/octokit/octokit.net
+SourceCode: https://github.com/octokit/octokit.net
 NuGet:
   - Octokit
   - Octokit.Reactive

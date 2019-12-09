@@ -2,7 +2,7 @@ Image: https://raw.githubusercontent.com/nuke-build/presentation/master/images/l
 Language: C#
 NuGet: Nuke.Common
 Chat: https://publicslack.com/slacks/nukebuildnet/invites/new
-Source: https://github.com/nuke-build/nuke
+SourceCode: https://github.com/nuke-build/nuke
 Description: Build Automation System for C#/.NET
 Website: https://nuke.build
 Title: NUKE

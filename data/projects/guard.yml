@@ -1,4 +1,4 @@
-Source: https://github.com/safakgur/guard
+SourceCode: https://github.com/safakgur/guard
 NuGet:
   - Dawn.Guard
 Language: C#

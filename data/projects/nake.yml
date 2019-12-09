@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/yevhen/Nake/master/Logo.Wide.png
 Language: C#
 NuGet: Nake
-Source: https://github.com/yevhen/Nake
+SourceCode: https://github.com/yevhen/Nake
 Tags:
   - Build Tool
 DiscoveryDate: 5/4/2019

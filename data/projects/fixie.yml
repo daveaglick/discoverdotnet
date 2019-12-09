@@ -2,6 +2,6 @@ Image: https://fixie.github.io/images/fixie_192.png
 Language: C#
 NuGet: fixie
 DiscoveryDate: 6/27/2018
-Source: https://github.com/fixie/fixie
+SourceCode: https://github.com/fixie/fixie
 Tags:
   - Testing

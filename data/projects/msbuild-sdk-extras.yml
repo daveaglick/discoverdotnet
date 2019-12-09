@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - MSBuild.Sdk.Extras
-Source: https://github.com/onovotny/MSBuildSdkExtras
+SourceCode: https://github.com/onovotny/MSBuildSdkExtras
 Tags:
   - MSBuild
   - UWP

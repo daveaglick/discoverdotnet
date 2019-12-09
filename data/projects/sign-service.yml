@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/onovotny/SignService
+SourceCode: https://github.com/onovotny/SignService
 Tags:
   - Security
 Title: SignService

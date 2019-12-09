@@ -1,6 +1,6 @@
 Language: C#
 NuGet: PdfiumViewer
-Source: https://github.com/pvginkel/PdfiumViewer
+SourceCode: https://github.com/pvginkel/PdfiumViewer
 Tags:
   - PDF
   - WinForms

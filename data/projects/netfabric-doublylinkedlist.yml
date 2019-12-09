@@ -1,4 +1,4 @@
-Source: https://github.com/NetFabric/NetFabric.DoublyLinkedList
+SourceCode: https://github.com/NetFabric/NetFabric.DoublyLinkedList
 NuGet:
   - NetFabric.DoublyLinkedList
 Language: C#

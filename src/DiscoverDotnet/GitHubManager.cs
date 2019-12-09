@@ -36,7 +36,7 @@ namespace DiscoverDotnet
         {
             _gitHub = new GitHubClient(new ProductHeaderValue(nameof(DiscoverDotnet)))
             {
-                Credentials = new Credentials(settings.GetString("DISCOVERDOTNET_GITHUB_TOKEN"))
+                Credentials = new Credentials(settings.GetString("GITHUB_TOKEN"))
             };
         }
 

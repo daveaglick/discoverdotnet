@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/NuGet/NuGet.Build.Packaging/master/Nugetizer-3000.png
 Language: C#
 NuGet: NuGet.Build.Packaging
-Source: https://github.com/NuGet/NuGet.Build.Packaging
+SourceCode: https://github.com/NuGet/NuGet.Build.Packaging
 Tags:
   - NuGet
 DiscoveryDate: 8/8/2020

@@ -1,4 +1,4 @@
-Source: https://github.com/Sustainsys/Saml2
+SourceCode: https://github.com/Sustainsys/Saml2
 NuGet:
   - Sustainsys.Saml2
   - Sustainsys.Saml2.HttpModule

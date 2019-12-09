@@ -1,7 +1,7 @@
 Image: https://raw.githubusercontent.com/canton7/Stylet/master/StyletIcon.png
 Language: C#
 NuGet: Stylet
-Source: https://github.com/canton7/stylet/
+SourceCode: https://github.com/canton7/stylet/
 Tags:
   - XAML
   - UWP

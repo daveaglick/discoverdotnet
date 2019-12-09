@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Microsoft.Diagnostics.EventFlow
-Source: https://github.com/Azure/diagnostics-eventflow
+SourceCode: https://github.com/Azure/diagnostics-eventflow
 Tags:
   - Logging
 DiscoveryDate: 5/15/2019

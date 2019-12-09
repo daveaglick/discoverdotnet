@@ -5,7 +5,7 @@ Language: C#
 NuGet: Microsoft.Orleans.Core
 Foundation: true
 Microsoft: true
-Source: https://github.com/dotnet/orleans
+SourceCode: https://github.com/dotnet/orleans
 Tags:
   - Distributed Computing
 Title: Orleans

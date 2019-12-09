@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Microsoft.Toolkit.Uwp
-Source: https://github.com/Microsoft/UWPCommunityToolkit
+SourceCode: https://github.com/Microsoft/UWPCommunityToolkit
 Tags:
   - GUI
   - UWP

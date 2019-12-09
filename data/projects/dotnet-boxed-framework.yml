@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Boxed.AspNetCore
-Source: https://github.com/Dotnet-Boxed/Framework
+SourceCode: https://github.com/Dotnet-Boxed/Framework
 Tags:
   - ASP.NET
   - Web Framework

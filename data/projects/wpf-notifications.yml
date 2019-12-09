@@ -1,4 +1,4 @@
-Source: https://github.com/Enterwell/Wpf.Notifications
+SourceCode: https://github.com/Enterwell/Wpf.Notifications
 NuGet:
   - Enterwell.Clients.Wpf.Notifications
 Language: C#

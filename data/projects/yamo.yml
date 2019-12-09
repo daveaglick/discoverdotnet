@@ -1,4 +1,4 @@
-Source: https://github.com/esentio/Yamo
+SourceCode: https://github.com/esentio/Yamo
 NuGet:
   - Yamo
   - Yamo.SQLite

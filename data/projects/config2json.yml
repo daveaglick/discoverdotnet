@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - dotnet-config2json
-Source: https://github.com/andrewlock/dotnet-config2json
+SourceCode: https://github.com/andrewlock/dotnet-config2json
 Tags:
   - Global Tool
   - Configuration

@@ -36,11 +36,11 @@ namespace DiscoverDotnet.Modules
             IDocument output = input;
 
             // Extract the GitHub owner and name
-            if (Uri.TryCreate(input.GetString("Source"), UriKind.Absolute, out Uri source)
-                && source.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
+            if (Uri.TryCreate(input.GetString("SourceCode"), UriKind.Absolute, out Uri sourceCode)
+                && sourceCode.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
             {
-                string owner = source.Segments[1].Trim('/');
-                string name = source.Segments[2].Trim('/');
+                string owner = sourceCode.Segments[1].Trim('/');
+                string name = sourceCode.Segments[2].Trim('/');
 
                 // Get issue data
                 context.LogInformation($"Getting GitHub issue data for {owner}/{name}");

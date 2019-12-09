@@ -1,4 +1,4 @@
-Source: https://github.com/SignalR/SignalR
+SourceCode: https://github.com/SignalR/SignalR
 NuGet:
   - Microsoft.AspNet.SignalR
 Language: C#

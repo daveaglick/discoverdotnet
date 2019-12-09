@@ -1,4 +1,4 @@
-Source: https://github.com/SteeltoeOSS/CircuitBreaker
+SourceCode: https://github.com/SteeltoeOSS/CircuitBreaker
 NuGet:
   - Steeltoe.CircuitBreaker.HystrixBase
   - Steeltoe.CircuitBreaker.HystrixCore

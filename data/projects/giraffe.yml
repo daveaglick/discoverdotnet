@@ -1,4 +1,4 @@
-Source: https://github.com/giraffe-fsharp/Giraffe
+SourceCode: https://github.com/giraffe-fsharp/Giraffe
 NuGet: Giraffe
 Language: F#
 Image: https://raw.githubusercontent.com/giraffe-fsharp/Giraffe/develop/giraffe.png

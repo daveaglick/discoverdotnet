@@ -2,7 +2,7 @@ Chat: https://gitter.im/CsvHelper/Lobby
 Image: https://joshclose.github.io/CsvHelper/images/logo-header.png
 Language: C#
 NuGet: CsvHelper
-Source: https://github.com/JoshClose/CsvHelper
+SourceCode: https://github.com/JoshClose/CsvHelper
 Tags:
   - Office
   - Data Formats

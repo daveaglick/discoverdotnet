@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Flurl
-Source: https://github.com/tmenier/Flurl
+SourceCode: https://github.com/tmenier/Flurl
 Tags:
   - HTTP
 Twitter: FlurlHttp

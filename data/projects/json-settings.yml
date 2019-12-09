@@ -1,4 +1,4 @@
-Source: https://github.com/Nucs/JsonSettings
+SourceCode: https://github.com/Nucs/JsonSettings
 NuGet:
   - nucs.JsonSettings
 Language: C#

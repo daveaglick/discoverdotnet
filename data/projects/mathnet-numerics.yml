@@ -1,7 +1,7 @@
 Chat: https://discuss.mathdotnet.com/c/numerics
 Language: C#
 NuGet: MathNet.Numerics
-Source: https://github.com/mathnet/mathnet-numerics
+SourceCode: https://github.com/mathnet/mathnet-numerics
 Tags:
   - Data Science
 Twitter: MathDotNet

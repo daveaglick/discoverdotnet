@@ -1,6 +1,6 @@
 Language: C#
 NuGet: AvalonEdit
-Source: https://github.com/icsharpcode/AvalonEdit
+SourceCode: https://github.com/icsharpcode/AvalonEdit
 Tags:
   - GUI
   - WPF

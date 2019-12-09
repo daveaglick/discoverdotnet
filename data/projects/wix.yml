@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/wixtoolset/wix4
+SourceCode: https://github.com/wixtoolset/wix4
 Tags:
   - Installation
 DiscoveryDate: 10/11/2018

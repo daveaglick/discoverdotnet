@@ -1,6 +1,6 @@
 Language: C#
 NuGet: DeviceId
-Source: https://github.com/MatthewKing/DeviceId
+SourceCode: https://github.com/MatthewKing/DeviceId
 Tags:
   - Utility
   - Hardware

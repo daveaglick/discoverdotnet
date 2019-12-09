@@ -1,4 +1,4 @@
-Source: https://github.com/kekekeks/CoreRPC
+SourceCode: https://github.com/kekekeks/CoreRPC
 NuGet:
   - CoreRpc
   - CoreRpc.AspNetCore

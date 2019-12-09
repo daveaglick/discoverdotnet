@@ -13,8 +13,8 @@ namespace DiscoverDotnet.Pipelines.Resources
         {
             InputModules = new ModuleList
             {
-                new ReadFiles(Config.FromContext(x => x.FileSystem.RootPath.Combine("../../data/resources/*.yml").FullPath)),
-                new ExecuteIf(Config.FromContext(x => x.ApplicationState.IsCommand("preview")))
+                new ReadFiles(Config.FromContext(ctx => ctx.FileSystem.RootPath.Combine("../../data/resources/*.yml").FullPath)),
+                new ExecuteIf(Config.FromContext(ctx => ctx.ApplicationState.IsCommand("preview") || ctx.Settings.GetBool("limited")))
                 {
                     new OrderDocuments(Config.FromDocument(x => x.Source)),
                     new TakeDocuments(10)
@@ -28,11 +28,6 @@ namespace DiscoverDotnet.Pipelines.Resources
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument(d => d.GetString("Website"))),
                 new SetMetadata("CardType", "Resource"), // TODO: Do we still need this without groups/events?
-                new SetMetadata("SearchData", Config.FromDocument(x => x.GetMetadata(
-                    "Website",
-                    "Title",
-                    "Description",
-                    "Tags"))),
                 new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
                     "Website",
                     "Title",

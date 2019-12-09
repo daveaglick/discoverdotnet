@@ -2,7 +2,7 @@ Chat: https://gitter.im/iancooper/Paramore
 Image: https://camo.githubusercontent.com/b358763d40b3a011f60080922943544ab6dd1358/68747470733a2f2f6f70656e636c69706172742e6f72672f70656f706c652f616d696c6f2f63616e6f6e2e737667
 Language: C#
 NuGet: Paramore.Brighter
-Source: https://github.com/BrighterCommand/Brighter
+SourceCode: https://github.com/BrighterCommand/Brighter
 Tags:
   - Messaging
 DiscoveryDate: 1/14/2020

@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Codaxy.WkHtmlToPdf
-Source: https://github.com/codaxy/wkhtmltopdf
+SourceCode: https://github.com/codaxy/wkhtmltopdf
 Tags:
   - PDF
 DiscoveryDate: 8/16/2018

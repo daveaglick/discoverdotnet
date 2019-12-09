@@ -1,4 +1,4 @@
-Source: https://github.com/feo2x/light.guardclauses/
+SourceCode: https://github.com/feo2x/light.guardclauses/
 NuGet:
   - Light.GuardClauses
 Language: C#

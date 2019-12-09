@@ -1,7 +1,7 @@
 Image: https://bluemountaincapital.github.io/Deedle/images/logo.png
 Language: F#
 NuGet: Deedle
-Source: https://github.com/BlueMountainCapital/Deedle
+SourceCode: https://github.com/BlueMountainCapital/Deedle
 Tags:
   - Data Science
 DiscoveryDate: 11/1/2018

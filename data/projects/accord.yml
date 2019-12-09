@@ -2,7 +2,7 @@ Title: Accord.NET Framework
 Image: https://raw.githubusercontent.com/accord-net/accord-net.github.io/master/logo.png
 Language: C#
 NuGet: Accord
-Source: https://github.com/accord-net/framework/
+SourceCode: https://github.com/accord-net/framework/
 DiscoveryDate: 7/5/2018
 Tags:
   - Data Science

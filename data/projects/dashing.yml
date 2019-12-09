@@ -1,4 +1,4 @@
-Source: https://github.com/Polylytics/dashing
+SourceCode: https://github.com/Polylytics/dashing
 NuGet:
   - Dashing
   - Dashing.Weaver

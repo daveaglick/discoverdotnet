@@ -1,4 +1,4 @@
-Source: https://github.com/petabridge/nbench
+SourceCode: https://github.com/petabridge/nbench
 NuGet:
   - NBench
 Language: C#

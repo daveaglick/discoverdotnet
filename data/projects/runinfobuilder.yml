@@ -1,4 +1,4 @@
-Source: https://github.com/rushfive/RunInfoBuilder
+SourceCode: https://github.com/rushfive/RunInfoBuilder
 NuGet:
   - R5.RunInfoBuilder
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/Metalnem/noise
+SourceCode: https://github.com/Metalnem/noise
 NuGet:
   - Noise.NET
 Language: C#

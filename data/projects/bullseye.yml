@@ -1,4 +1,4 @@
-Source: https://github.com/adamralph/bullseye
+SourceCode: https://github.com/adamralph/bullseye
 NuGet:
   - Bullseye
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/mysticmind/dotnet-sort-refs
+SourceCode: https://github.com/mysticmind/dotnet-sort-refs
 NuGet:
   - dotnet-sort-refs
 Language: C#

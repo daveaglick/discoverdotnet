@@ -17,8 +17,8 @@ namespace DiscoverDotnet.Pipelines
 
             OutputModules = new ModuleList
             {
-                new ThrowException(Config.FromSettings(x => x.ContainsKey("DISCOVERDOTNET_NETLIFY_TOKEN") ? null : "The setting NETLIFY_TOKEN must be defined")),
-                new DeployNetlifySite("discoverdotnet-test", Config.FromSetting<string>("DISCOVERDOTNET_NETLIFY_TOKEN"))
+                new ThrowException(Config.FromSettings(x => x.ContainsKey("NETLIFY_TOKEN") ? null : "The setting NETLIFY_TOKEN must be defined")),
+                new DeployNetlifySite("f3900c88-7859-4b37-a7fc-628bb0d168fa", Config.FromSetting<string>("NETLIFY_TOKEN"))
             };
         }
     }

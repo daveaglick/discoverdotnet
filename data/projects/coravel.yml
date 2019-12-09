@@ -1,4 +1,4 @@
-Source: https://github.com/jamesmh/coravel
+SourceCode: https://github.com/jamesmh/coravel
 NuGet:
   - Coravel
 Language: C#

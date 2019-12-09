@@ -1,4 +1,4 @@
-Source: https://github.com/shouldly/shouldly
+SourceCode: https://github.com/shouldly/shouldly
 NuGet:
   - Shouldly
 Language: C#

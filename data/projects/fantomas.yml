@@ -1,4 +1,4 @@
-Source: https://github.com/dungpa/fantomas
+SourceCode: https://github.com/dungpa/fantomas
 NuGet: dotnet-fantomas
 Language: F#
 Image: https://raw.githubusercontent.com/dungpa/fantomas/master/fantomas_logo.png

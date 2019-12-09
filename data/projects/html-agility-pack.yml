@@ -1,4 +1,4 @@
-Source: https://github.com/zzzprojects/html-agility-pack
+SourceCode: https://github.com/zzzprojects/html-agility-pack
 NuGet:
   - HtmlAgilityPack
 Language: C#

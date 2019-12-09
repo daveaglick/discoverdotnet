@@ -1,4 +1,4 @@
-Source: https://github.com/sakno/DotNext
+SourceCode: https://github.com/sakno/DotNext
 NuGet:
   - DotNext
   - DotNext.Metaprogramming

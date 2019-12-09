@@ -2,7 +2,7 @@ Chat: https://gitter.im/roslyn-analyzers/Lobby
 Language: C#
 NuGet: Microsoft.CodeAnalysis.FxCopAnalyzers
 Platform: true
-Source: https://github.com/dotnet/roslyn-analyzers
+SourceCode: https://github.com/dotnet/roslyn-analyzers
 Tags:
   - Code Analysis
 DiscoveryDate: 1/7/2020

@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - NetEscapades.AspNetCore.SecurityHeaders
-Source: https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders
+SourceCode: https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders
 Tags:
   - Security
   - ASP.NET

@@ -1,4 +1,4 @@
-Source: https://github.com/mehalick/Xaki
+SourceCode: https://github.com/mehalick/Xaki
 NuGet:
   - Xaki
   - Xaki.AspNetCore

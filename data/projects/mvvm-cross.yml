@@ -3,7 +3,7 @@ Donations: https://opencollective.com/mvvmcross/
 Image: https://raw.githubusercontent.com/MvvmCross/MvvmCross/develop/docs/assets/img/logo/MvvmCross-logo.png
 Language: C#
 NuGet: MvvmCross
-Source: https://github.com/MvvmCross/MvvmCross
+SourceCode: https://github.com/MvvmCross/MvvmCross
 Tags:
   - XAML
   - UWP

@@ -1,6 +1,6 @@
 Language: F#
 NuGet: Paket
-Source: https://github.com/fsprojects/Paket
+SourceCode: https://github.com/fsprojects/Paket
 Tags:
   - NuGet
   - Package Manager

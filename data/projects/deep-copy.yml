@@ -1,7 +1,7 @@
 Language: C#
 NuGet:
   - DeepCopy
-Source: https://github.com/ReubenBond/DeepCopy
+SourceCode: https://github.com/ReubenBond/DeepCopy
 Tags:
   - Utility
 Title: DeepCopy

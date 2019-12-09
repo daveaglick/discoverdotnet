@@ -1,4 +1,4 @@
-Source: https://github.com/fsprojects/Fabulous
+SourceCode: https://github.com/fsprojects/Fabulous
 NuGet:
   - Fabulous.Core
   - Fabulous.LiveUpdate

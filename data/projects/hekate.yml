@@ -1,4 +1,4 @@
-Source: https://github.com/xyncro/hekate
+SourceCode: https://github.com/xyncro/hekate
 NuGet:
   - Hekate
 Language: F#

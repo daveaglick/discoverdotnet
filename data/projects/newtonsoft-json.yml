@@ -1,4 +1,4 @@
-Source: https://github.com/JamesNK/Newtonsoft.Json
+SourceCode: https://github.com/JamesNK/Newtonsoft.Json
 NuGet:
   - Newtonsoft.Json
 Language: C#

@@ -1,4 +1,4 @@
-Source: https://github.com/fluentassertions/fluentassertions
+SourceCode: https://github.com/fluentassertions/fluentassertions
 NuGet:
   - FluentAssertions
 Language: C#

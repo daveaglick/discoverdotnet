@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Refit
-Source: https://github.com/paulcbetts/refit
+SourceCode: https://github.com/paulcbetts/refit
 Tags:
   - HTTP
 DiscoveryDate: 6/20/2018

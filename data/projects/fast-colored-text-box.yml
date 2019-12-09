@@ -1,6 +1,6 @@
 Language: C#
 NuGet: FCTB
-Source: https://github.com/PavelTorgashov/FastColoredTextBox
+SourceCode: https://github.com/PavelTorgashov/FastColoredTextBox
 Tags:
   - GUI
   - WinForms

@@ -1,4 +1,4 @@
-Source: https://github.com/loresoft/EntityFrameworkCore.Generator
+SourceCode: https://github.com/loresoft/EntityFrameworkCore.Generator
 NuGet:
   - EntityFrameworkCore.Generator
 Language: C#

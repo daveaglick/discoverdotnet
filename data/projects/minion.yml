@@ -1,4 +1,4 @@
-Source: https://github.com/FrodaSE/Minion
+SourceCode: https://github.com/FrodaSE/Minion
 NuGet:
   - Froda.Minion
 Language: C#

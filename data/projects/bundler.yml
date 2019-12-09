@@ -1,6 +1,6 @@
 Language: C#
 NuGet: Bundler
-Source: https://github.com/ServiceStack/Bundler
+SourceCode: https://github.com/ServiceStack/Bundler
 Tags:
   - Assets
 DiscoveryDate: 1/29/2020

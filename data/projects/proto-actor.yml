@@ -1,7 +1,7 @@
 Chat: https://gitter.im/AsynkronIT/protoactor
 Language: C#
 NuGet: Proto.Actor
-Source: https://github.com/AsynkronIT/protoactor-dotnet
+SourceCode: https://github.com/AsynkronIT/protoactor-dotnet
 DiscoveryDate: 6/10/2018
 Tags:
   - Distributed Computing

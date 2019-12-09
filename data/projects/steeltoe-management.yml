@@ -1,4 +1,4 @@
-Source: https://github.com/SteeltoeOSS/Management
+SourceCode: https://github.com/SteeltoeOSS/Management
 NuGet:
   - Steeltoe.Management.Diagnostics
   - Steeltoe.Management.EndpointBase

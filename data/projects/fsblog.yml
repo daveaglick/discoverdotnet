@@ -1,4 +1,4 @@
-Source: https://github.com/fsprojects/FsBlog
+SourceCode: https://github.com/fsprojects/FsBlog
 Language: F#
 Title: FsBlog
 Description: Blog aware, static site generation using F#.

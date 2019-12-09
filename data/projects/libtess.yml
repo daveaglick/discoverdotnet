@@ -1,5 +1,5 @@
 Language: C#
-Source: https://github.com/speps/LibTessDotNet
+SourceCode: https://github.com/speps/LibTessDotNet
 Tags:
   - Graphics
   - WinForms

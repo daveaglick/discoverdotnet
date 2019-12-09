@@ -1,4 +1,4 @@
-Source: https://github.com/dotnetrdf/dotnetrdf
+SourceCode: https://github.com/dotnetrdf/dotnetrdf
 NuGet:
   - dotNetRDF
   - dotNetRDF.Data.DataTables
