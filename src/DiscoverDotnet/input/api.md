@@ -18,8 +18,6 @@ All data is provided as JSON files. No authentication or rate limits apply (that
 * [Aggregate Issues](#aggregate-issues)
 * [Blogs](#blogs)
 * [Broadcasts](#broadcasts)
-* [Groups](#groups)
-* [Events](#events)
 * [Resources](#resources)
 * [Miscellaneous](#miscellaneous)
 
@@ -550,73 +548,6 @@ Example response:
             "text/html": "https://www.broadcastsite.com/link-to-post/"
         },
         "author": "Au Thor"
-    },
-    {
-        ...
-    }
-]
-```
-
----
-
-### Groups
-
-Get data for all groups:
-
-`GET https://discoverdot.net/data/groups.json`
-
-Example response:
-
-```json
-[
-    {
-        "website": "https://www.meetup.com/dotnetcambridge/",
-        "title": ".NET Cambridge",
-        "image": "https://secure.meetupstatic.com/photos/event/1/1/0/3/600_461884355.jpeg",
-        "location": "Cambridge, United Kingdom",
-        "country": "United Kingdom",
-        "lat": "52.23",
-        "lon": "0.15",
-        "cardType": "Group",
-        "discoveryDate": "2018-05-15T15:46:10+00:00",
-        "nextEventWebsite": "https://www.meetup.com/dotnetcambridge/events/hklrnpyxhblc",
-        "nextEventTitle": "From Modular-Monolith to Micro-service and The State of the Function",
-        "nextEventDate": "2018/05/21",
-        "nextEventTime": "18:45"
-    },
-    {
-        ...
-    }
-]
-```
-
----
-
-### Events
-
-Get data for all events:
-
-`GET https://discoverdot.net/data/events.json`
-
-Example response:
-
-```json
-[
-    {
-        "website": "https://www.devsum.se/",
-        "title": "DevSum18",
-        "description": "At DevSum the focus is the latest trends and technologies.",
-        "image": "https://www.devsum.se/wp-content/uploads/2017/09/devsum18_196x60_header-vit-1.png",
-        "location": "Stockholm, Sweden",
-        "country": "Sweden",
-        "lat": "59.19",
-        "lon": "18.03",
-        "date": "2018/05/31",
-        "endDate": "2018/06/01",
-        "time": "18:45",
-        "endTime": "20:00",
-        "cardType":"Event",
-        "discoveryDate": "2018-05-15T15:46:10+00:00"
     },
     {
         ...
