@@ -1,2 +1,2 @@
 steps:
-  - script: build --help
+  - script: dotnet run -p src/DiscoverDotnet/DiscoverDotnet.csproj -v m -- --help 
