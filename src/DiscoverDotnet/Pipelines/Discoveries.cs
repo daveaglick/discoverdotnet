@@ -32,7 +32,7 @@ namespace DiscoverDotnet.Pipelines
                     nameof(Resources.Resources)),
                 new FilterDocuments(Config.FromDocument(x =>
                     x.ContainsKey("DiscoveryDate") && x.GetDateTime("DiscoveryDate") <= DateTime.Today)),
-                new OrderDocuments("DiscoveryDate").Descending()
+                new OrderDocuments(Config.FromDocument(doc => doc.GetDateTime("DiscoveryDate")).Descending()
             };
         }
     }
