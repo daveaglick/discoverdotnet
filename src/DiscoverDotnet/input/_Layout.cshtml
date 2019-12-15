@@ -85,9 +85,7 @@
                                         <b-nav-item href="/projects">Projects</b-nav-item>
                                         <b-nav-item href="/issues">Issues</b-nav-item>
                                         <b-nav-item href="/blogs">Blogs</b-nav-item>
-                                        <b-nav-item href="/broadcasts">Broadcasts</b-nav-item>
-                                        <b-nav-item href="/groups">Groups</b-nav-item>
-                                        <b-nav-item href="/events">Events</b-nav-item>
+                                        <b-nav-item href="/broadcasts">Broadcasts</b-nav-item>\
                                         <b-nav-item href="/resources">Resources</b-nav-item>
                                     </b-navbar-nav>     
                             </b-collapse>  
@@ -141,8 +139,6 @@
             Vue.component('broadcast-card', httpVueLoader('/components/cards/broadcast-card.vue'));
             Vue.component('issue-card', httpVueLoader('/components/cards/issue-card.vue'));
             Vue.component('feed-item-card', httpVueLoader('/components/cards/feed-item-card.vue'));
-            Vue.component('group-card', httpVueLoader('/components/cards/group-card.vue'));
-            Vue.component('event-card', httpVueLoader('/components/cards/event-card.vue'));
             Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
             Vue.component('body-tabs', httpVueLoader('/components/body-tabs.vue'));   
             Vue.component('search-box', httpVueLoader('/components/search/search-box.vue'));   
@@ -165,22 +161,6 @@
                 }
                 return moment(value).fromNow();
             });
-                        
-            Vue.filter('event-date', function (value) {
-                if (!value)
-                {
-                    return '';
-                }
-                return moment(value, "YYYY/MM/DD").format("l");
-            });
-                        
-            Vue.filter('event-time', function (value) {
-                if (!value)
-                {
-                    return '';
-                }
-                return moment(value, "HH:mm").format("LT");
-            });
 
             Vue.mixin({
                 methods: {
@@ -199,12 +179,6 @@
                         }
                         var cardType = cardData.cardType;
                         if(cardType) {
-                            if(cardType === "Group") {
-                                return 'group-card';
-                            }
-                            if(cardType === "Event") {
-                                return 'event-card';
-                            }
                             if(cardType === "Resource") {
                                 return 'resource-card';
                             }
