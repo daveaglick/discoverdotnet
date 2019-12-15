@@ -1,4 +1,11 @@
-trigger: none
+trigger:
+- none
+schedules:
+- cron: "0 */2 * * *"
+  branches:
+    include:
+    - master
+  always: true
 steps:
   - script: build deploy
     env:
