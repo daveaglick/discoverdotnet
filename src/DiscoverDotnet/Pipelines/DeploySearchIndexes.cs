@@ -26,6 +26,7 @@ namespace DiscoverDotnet.Pipelines
                 new ThrowException(Config.FromSettings(x => x.ContainsKey("ALGOLIA_TOKEN") ? null : "The setting ALGOLIA_TOKEN must be defined")),
 
                 // Projects
+                /*
                 new ReplaceDocuments(nameof(Projects.Projects)),
                 new UpdateSearchIndex(
                     ApplicationId,
@@ -123,6 +124,7 @@ namespace DiscoverDotnet.Pipelines
                         "Description",
                         "Tags"
                     })),
+            */
             };
         }
     }
