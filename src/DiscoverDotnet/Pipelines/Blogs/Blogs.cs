@@ -6,6 +6,7 @@ using DiscoverDotnet.Modules;
 using Microsoft.Extensions.Configuration;
 using Statiq.Common;
 using Statiq.Core;
+using Statiq.Html;
 using Statiq.Json;
 using Statiq.Razor;
 using Statiq.Yaml;
@@ -54,7 +55,8 @@ namespace DiscoverDotnet.Pipelines.Blogs
 
             TransformModules = new ModuleList
             {
-                new RenderRazor().WithLayout((FilePath)"/blogs/_Layout.cshtml")
+                new RenderRazor().WithLayout((FilePath)"/blogs/_layout.cshtml"),
+                new MirrorResources()
             };
 
             OutputModules = new ModuleList

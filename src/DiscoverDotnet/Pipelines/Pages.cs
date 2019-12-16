@@ -5,6 +5,7 @@ using DiscoverDotnet.Pipelines.Blogs;
 using DiscoverDotnet.Pipelines.Broadcasts;
 using Statiq.Common;
 using Statiq.Core;
+using Statiq.Html;
 using Statiq.Json;
 using Statiq.Markdown;
 using Statiq.Minification;
@@ -29,7 +30,7 @@ namespace DiscoverDotnet.Pipelines
                 {
                     new ExtractFrontMatter(new ParseYaml()),
                     new ExecuteIf(
-                        Config.FromDocument(doc => doc.Source.Extension.Equals(".md", StringComparison.OrdinalIgnoreCase)),
+                        Config.FromDocument(doc => doc.MediaTypeEquals("text/markdown")),
                         new RenderMarkdown().UseExtensions()),
                     new SetDestination(".html")
                 }
@@ -38,9 +39,10 @@ namespace DiscoverDotnet.Pipelines
             TransformModules = new ModuleList
             {
                 new ExecuteIf(
-                    Config.FromDocument(doc => doc.Source.Extension.Equals(".md", StringComparison.OrdinalIgnoreCase)),
-                    new RenderRazor().WithLayout((FilePath)"/_MarkdownLayout.cshtml"))
-                    .Else(new RenderRazor().WithLayout((FilePath)"/_Layout.cshtml"))
+                    Config.FromDocument(doc => doc.MediaTypeEquals("text/markdown")),
+                    new RenderRazor().WithLayout((FilePath)"/_markdown.cshtml"))
+                    .Else(new RenderRazor().WithLayout((FilePath)"/_layout.cshtml")),
+                new MirrorResources()
             };
 
             OutputModules = new ModuleList

@@ -4,6 +4,7 @@ using System.Text;
 using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
+using Statiq.Html;
 using Statiq.Razor;
 using Statiq.Yaml;
 
@@ -51,7 +52,8 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
 
             TransformModules = new ModuleList
             {
-                new RenderRazor().WithLayout((FilePath)"/broadcasts/_Layout.cshtml")
+                new RenderRazor().WithLayout((FilePath)"/broadcasts/_layout.cshtml"),
+                new MirrorResources()
             };
 
             OutputModules = new ModuleList

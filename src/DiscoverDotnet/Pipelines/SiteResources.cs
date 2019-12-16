@@ -12,9 +12,7 @@ namespace DiscoverDotnet.Pipelines
     {
         public SiteResources()
         {
-            Isolated = true;
-
-            OutputModules = new ModuleList
+            ProcessModules = new ModuleList
             {
                 new CopyFiles("**/*{!.cshtml,!.md,!.less,!.yml,!.scss,}")
             };

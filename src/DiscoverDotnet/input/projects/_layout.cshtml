@@ -1,5 +1,5 @@
 @{
-	Layout = @"/_Layout.cshtml";
+	Layout = @"/_layout.cshtml";
 }
 
 <h5 class="mb-2 accent-script text-secondary" style="line-height: 0">Project</h5>
@@ -27,7 +27,7 @@
         }
     }
 </div>
-<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/projects/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/projects/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
 @if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
 {
@@ -263,9 +263,3 @@
         }
     </b-col>
 </b-row>
-
-@section Script {
-    <script type="text/javascript">
-        Vue.component('issues', httpVueLoader('/components/projects/issues.vue'));
-    </script>
-}

@@ -1,12 +1,12 @@
 @{
-	Layout = @"/_Layout.cshtml";
+	Layout = @"/_layout.cshtml";
 }
 
 <h5 class="mb-0 accent-script text-secondary" style="line-height: 0">Blog</h5>
 <h1 class="font-weight-bold display-4">
     @Model.GetString("Title")
 </h1>
-<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/input/data/blogs/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/blogs/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
 @if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
 {
@@ -75,9 +75,3 @@
 		</b-card>
     </b-col>
 </b-row>
-
-@section Script {
-	<script type="text/javascript">
-		Vue.component('feed-items', httpVueLoader('/components/feeds/feed-items.vue'));
-	</script>
-}

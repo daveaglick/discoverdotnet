@@ -47,7 +47,7 @@
         <link href="/bootstrap/bootstrap.css" rel="stylesheet"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.css" rel="stylesheet"/>
         <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Roboto+Mono:400,700|Roboto+Slab:100,700|Roboto:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Roboto+Mono:400,700|Roboto+Slab:100,700|Roboto:300,400,700" rel="stylesheet" data-no-mirror>
         <link href="/assets/styles.css" rel="stylesheet"/>  
 
         <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
@@ -126,25 +126,21 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            // Global components
-            Vue.component('loading', httpVueLoader('/components/loading.vue'));   
-            Vue.component('description', httpVueLoader('/components/description.vue'));   
-            Vue.component('small-card', httpVueLoader('/components/cards/small-card.vue'));   
-            Vue.component('card', httpVueLoader('/components/cards/card.vue'));   
-            Vue.component('card-grid', httpVueLoader('/components/grids/card-grid.vue'));    
-            Vue.component('filter-buttons', httpVueLoader('/components/grids/filter-buttons.vue'));  
-            Vue.component('paged-grid', httpVueLoader('/components/grids/paged-grid.vue'));       
-            Vue.component('project-card', httpVueLoader('/components/cards/project-card.vue'));
-            Vue.component('blog-card', httpVueLoader('/components/cards/blog-card.vue'));
-            Vue.component('broadcast-card', httpVueLoader('/components/cards/broadcast-card.vue'));
-            Vue.component('issue-card', httpVueLoader('/components/cards/issue-card.vue'));
-            Vue.component('feed-item-card', httpVueLoader('/components/cards/feed-item-card.vue'));
-            Vue.component('resource-card', httpVueLoader('/components/cards/resource-card.vue'));
-            Vue.component('body-tabs', httpVueLoader('/components/body-tabs.vue'));   
-            Vue.component('search-box', httpVueLoader('/components/search/search-box.vue'));   
-            Vue.component('search-results', httpVueLoader('/components/search/search-results.vue'));   
-            Vue.component('search-query', httpVueLoader('/components/search/search-query.vue'));   
-            Vue.component('play-button', httpVueLoader('/components/feeds/play-button.vue'));   
+            // @Document.Source.Directory.FullPath
+            // Load all .vue single-file components in either the "portal/components" folder (for shared components) or at the current level
+            @{
+                DirectoryPath inputDirectory = Context.FileSystem.GetRootDirectory().Path.Combine("input");
+                string componentsPath = inputDirectory.Combine(Context.FileSystem.GetInputDirectory("components").Path).FullPath;
+                foreach(IDocument vueDocument in Outputs[nameof(SiteResources)]
+                    .Where(x => string.Equals(x.Source.Extension, ".vue", StringComparison.OrdinalIgnoreCase)
+                        && (x.Destination.Directory.FullPath.Equals(Document.Destination.Directory.FullPath, StringComparison.OrdinalIgnoreCase)
+                            || x.Source.Directory.FullPath.StartsWith(componentsPath, StringComparison.OrdinalIgnoreCase))))
+                {
+                    <text>
+                        Vue.component('@vueDocument.Source.FileNameWithoutExtension', httpVueLoader('@inputDirectory.Combine(Document.Destination.Directory).GetRelativePath(vueDocument.Source)'));
+                    </text>
+                }
+            } 
 
             Vue.filter('no-protocol', function (value) {
                 if (!value)
