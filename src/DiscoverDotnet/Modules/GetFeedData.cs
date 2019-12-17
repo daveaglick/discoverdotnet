@@ -23,7 +23,7 @@ namespace DiscoverDotnet.Modules
         protected override void BeforeExecution(IExecutionContext context)
         {
             _recent = new DateTimeOffset(
-                DateTime.Today.AddHours(context.ApplicationState.IsCommand("preview") || context.Settings.GetBool("limited") ? -168 : -48));
+                DateTime.Today.AddHours(context.ApplicationState.IsCommand("preview") || context.Settings.GetBool("dev") ? -168 : -48));
         }
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)

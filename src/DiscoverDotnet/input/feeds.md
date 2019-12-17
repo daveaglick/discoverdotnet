@@ -7,4 +7,4 @@ Discover .NET provides several data feeds in both Atom and RSS formats:
 
 An OPML file containing all of the blogs and broadcasts listed on Discover .NET is also available:
 
-[OPML](/feeds.ompl)
+[OPML](/feeds.opml)

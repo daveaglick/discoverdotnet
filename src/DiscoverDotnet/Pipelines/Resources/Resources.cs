@@ -14,7 +14,7 @@ namespace DiscoverDotnet.Pipelines.Resources
             InputModules = new ModuleList
             {
                 new ReadFiles(Config.FromContext(ctx => ctx.FileSystem.RootPath.Combine("../../data/resources/*.yml").FullPath)),
-                new ExecuteIf(Config.FromContext(ctx => ctx.ApplicationState.IsCommand("preview") || ctx.Settings.GetBool("limited")))
+                new ExecuteIf(Config.FromContext(ctx => ctx.ApplicationState.IsCommand("preview") || ctx.Settings.GetBool("dev")))
                 {
                     new OrderDocuments(Config.FromDocument(x => x.Source)),
                     new TakeDocuments(10)
