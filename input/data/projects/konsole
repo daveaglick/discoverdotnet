@@ -1,0 +1,11 @@
+SourceCode: https://github.com/goblinfactory/konsole
+NuGet:
+  - https://www.nuget.org/packages/Goblinfactory.Konsole/
+Language: C#
+Image: https://raw.githubusercontent.com/goblinfactory/konsole/master/docs/crazy-fast-screen.PNG
+Title: Konsole - Low ceremony, simply to use C# (.NET standard) windowing console library
+Description: Konsole - Low ceremony, simply to use C# (.NET standard) windowing console library, providing threadsafe progress bars, windows and forms and drawing for console applications. Build complex multi threadsafe UX's with only a few lines of code.
+Docs: https://github.com/goblinfactory/konsole
+Chat: https://gitter.im/goblinfactory-konsole/community?source=orgpage
+Tags:
+  - console konsole progressbar window
