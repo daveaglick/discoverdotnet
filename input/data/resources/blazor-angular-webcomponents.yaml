@@ -1,0 +1,9 @@
+Title: Re-Using Angular Components In A Blazor WebAssembly Application Using Angular Elements - Web Components Custom Elements, FTW!
+Website: https://www.thinktecture.com/blazor/integrations/angular-elements-web-components/
+Description: How to re-use existing Angular applications/components in an ASP.NET Core Blazor WebAssembly application by leveraging Web Components Custom Elements
+Tags:
+  - Blazor
+  - WebAssembly
+  - .NET Core
+  - Angular
+  - Web Components
