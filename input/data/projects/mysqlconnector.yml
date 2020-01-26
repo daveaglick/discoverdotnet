@@ -1,0 +1,16 @@
+SourceCode: https://github.com/mysql-net/MySqlConnector
+NuGet:
+  - MySqlConnector
+  - MySqlConnector.Authentication.Ed25519
+  - MySqlConnector.Logging.log4net
+  - MySqlConnector.Logging.Microsoft.Extensions.Logging
+  - MySqlConnector.Logging.NLog
+  - MySqlConnector.Logging.Serilog
+Language: C#
+Image: https://mysqlconnector.net/img/logo.png
+Title: MySqlConnector
+Description: A truly async MySQL ADO.NET provider, supporting MySQL Server, MariaDB, Percona Server, Amazon Aurora, Azure Database for MySQL and more.
+Website: https://mysqlconnector.net/
+Twitter: mysqlconnector
+Tags:
+  - Data Access
