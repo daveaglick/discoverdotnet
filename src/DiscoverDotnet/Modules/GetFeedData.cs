@@ -35,7 +35,7 @@ namespace DiscoverDotnet.Modules
                 {
                     // Download the feed
                     context.LogInformation($"Getting feed for {feed}");
-                    string website = null;
+                    Uri website = null;
                     string title = null;
                     string author = null;
                     string description = null;
@@ -78,7 +78,7 @@ namespace DiscoverDotnet.Modules
 
                                                 case SyndicationElementType.Link:
                                                     ISyndicationLink link = await feedReader.ReadLink();
-                                                    website = link.Uri.ToString();
+                                                    website = link.Uri;
                                                     break;
 
                                                 case SyndicationElementType.Item:
@@ -118,7 +118,7 @@ namespace DiscoverDotnet.Modules
                     if (items.Count > 0)
                     {
                         FeedItem[] feedItems = items
-                            .Select(x => new FeedItem(x, _recent))
+                            .Select(x => new FeedItem(x, _recent, website))
                             .OrderByDescending(x => x.Published)
                             .Take(50) // Only take the 50 most recent items
                             .ToArray();
@@ -126,9 +126,9 @@ namespace DiscoverDotnet.Modules
                         metadata.Add("LastPublished", feedItems.First().Published);
                         metadata.Add("NewestFeedItem", feedItems[0]);
                     }
-                    if (!input.ContainsKey("Website") && !string.IsNullOrEmpty(website))
+                    if (!input.ContainsKey("Website") && website != null)
                     {
-                        metadata.Add("Website", website);
+                        metadata.Add("Website", website.ToString());
                     }
                     if (!input.ContainsKey("Title"))
                     {

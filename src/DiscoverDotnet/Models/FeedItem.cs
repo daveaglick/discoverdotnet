@@ -17,10 +17,19 @@ namespace DiscoverDotnet.Models
         public IDictionary<string, string> Links { get; }
         public string Author { get; }
 
-        public FeedItem(ISyndicationItem item, DateTimeOffset recent)
+        public FeedItem(ISyndicationItem item, DateTimeOffset recent, Uri website)
         {
             Title = item.Title;
-            Link = item.Links.FirstOrDefault(x => x.RelationshipType == RssLinkTypes.Alternate)?.Uri.ToString() ?? item.Id;
+            ISyndicationLink firstLink = item.Links.FirstOrDefault(x => x.RelationshipType == RssLinkTypes.Alternate);
+            if (firstLink != null)
+            {
+                Link = firstLink.Uri.IsAbsoluteUri ? firstLink.Uri.AbsoluteUri : new Uri(website, firstLink.Uri).AbsoluteUri;
+            }
+            else
+            {
+                Link = item.Id;
+            }
+
             Published = item.Published != default ? item.Published : item.LastUpdated;
             Recent = Published > recent;
             Description = item.Description;
