@@ -1,0 +1,17 @@
+SourceCode: https://github.com/Techsola/AmbientTasks
+NuGet:
+  - https://www.nuget.org/packages/AmbientTasks/
+Language: C#
+Chat: https://gitter.im/Techsola/AmbientTasks
+Tags:
+  - async
+  - task
+  - void
+  - post
+  - background
+  - ambient
+  - scope
+  - wait
+  - track
+  - handle
+  - error
