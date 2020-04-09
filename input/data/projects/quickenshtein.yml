@@ -1,0 +1,8 @@
+SourceCode: https://github.com/Turnerj/Quickenshtein
+NuGet:
+  - Quickenshtein
+Language: C#
+Tags:
+  - Text Processing
+  - Algorithms
+  - Tool
