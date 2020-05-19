@@ -1,0 +1,14 @@
+SourceCode: https://github.com/NethermindEth/nethermind
+NuGet:
+  - N/A
+Language: C#
+Image: https://pbs.twimg.com/profile_images/1023893504878145536/3mk4z_pv.jpg
+Title: Nethermind Ethereum
+Description: Full Ethereum blockchain client written in .NET
+Website: https://nethermind.io
+Docs: https://nethermind.readthedocs.io/en/latest/
+Chat: https://gitter.im/nethermindeth/nethermind
+Donations: 0xBc11295936Aa79d594139de1B2e12629414F3BDB
+Twitter: https://twitter.com/nethermindeth
+Tags:
+  - Blockchain
