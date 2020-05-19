@@ -8,5 +8,4 @@ Description: A .NET Core client library for the Fantasy Premier League APIs
 Website: https://github.com/fplbot/fplbot
 Docs: https://github.com/fplbot/fplbot
 Tags:
-  - fpl
-  - Slack
+  - API Client
