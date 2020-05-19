@@ -1,0 +1,9 @@
+SourceCode: https://github.com/tzkhan/Charming
+NuGet:
+  - Charming
+  - Charming.Types
+Language: C#
+Docs: https://github.com/tzkhan/Charming/wiki
+Tags:
+  - Azure
+  - Code Generation
