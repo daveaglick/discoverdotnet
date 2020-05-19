@@ -1,0 +1,8 @@
+SourceCode: https://github.com/fplbot/fplbot
+Language: C#
+Title: Fantasy Premier League Slackbot
+Description: A dockerized .NET Core 3 Slackbot for Fantasy Premier League
+Website: https://github.com/fplbot/fplbot
+Docs: https://github.com/fplbot/fplbot
+Tags:
+  - Bot
