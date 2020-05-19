@@ -1,0 +1,8 @@
+Title: NuGet Package Explorer
+Website: https://www.microsoft.com/en-us/p/nuget-package-explorer/9wzdncrdmdm3?activetab=pivot:overviewtab
+Description: NuGet Package Explorer (NPE) is an application that makes it easy to create and explore NuGet packages. You can load a .nupkg or .snupkg file from disk or directly from a feed such as nuget.org.
+Image: https://store-images.s-microsoft.com/image/apps.21130.9007199266443154.63bfa066-ecef-41a3-8d81-17d43ee08195.a3785f2b-3e24-4721-b314-9106dfc74dc8?mode=scale&q=90&h=270&w=270&background=%230078D7
+Tags:
+  - Tool
+  - NuGet
+DiscoveryDate: 4/12/2020
