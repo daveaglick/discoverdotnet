@@ -1,0 +1,11 @@
+SourceCode: https://github.com/JeringTech/Javascript.NodeJS
+NuGet:
+  - Jering.Javascript.NodeJS
+Language: C#
+Image: https://github.com/JeringTech/Javascript.NodeJS/blob/master/nuget_icon.png
+Title: Jering.Javascript.NodeJS
+Description: Invoke Javascript in NodeJS, from C#. With this ability, you can use Javascript libraries and scripts from your C# projects.
+Website: https://github.com/JeringTech/Javascript.NodeJS
+Docs: https://github.com/JeringTech/Javascript.NodeJS
+Tags:
+  - JavaScript
