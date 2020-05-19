@@ -1,0 +1,16 @@
+SourceCode: https://github.com/hlaueriksson/LoFuUnit
+NuGet:
+  - LoFuUnit
+  - LoFuUnit.AutoFakeItEasy
+  - LoFuUnit.AutoMoq
+  - LoFuUnit.AutoNSubstitute
+  - LoFuUnit.MSTest
+  - LoFuUnit.NUnit
+  - LoFuUnit.Xunit
+Language: C#
+Image: https://raw.githubusercontent.com/hlaueriksson/LoFuUnit/master/icon.png
+Title: LoFuUnit
+Description: Testing with Local Functions in .NET / C# with your favorite Unit Testing Framework
+Tags:
+  - BDD
+  - Testing
