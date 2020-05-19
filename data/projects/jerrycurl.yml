@@ -1,0 +1,24 @@
+Source: https://github.com/rwredding/jerrycurl
+NuGet:
+  - Jerrycurl
+  - Jerrycurl.Mvc
+  - Jerrycurl.Vendors.Sqlite
+  - Jerrycurl.Vendors.MySql
+  - Jerrycurl.Vendors.Oracle
+  - Jerrycurl.Extensions.Json
+  - Jerrycurl.Build.Razor
+  - Jerrycurl.Vendors.Postgres
+  - Jerrycurl.Extensions.Newtonsoft.Json
+  - Jerrycurl.Vendors.SqlServer
+  - Jerrycurl.Extensions.EntityFrameworkCore
+  - Jerrycurl.Tools.PowerShell.Cli
+  - dotnet-jerry
+Language: C#
+Image: https://github.com/rwredding/jerrycurl/blob/master/gfx/icon.svg
+Docs: https://jerrycurl.net/documentation
+Chat: https://gitter.im/jerrycurl-mvc/community
+Twitter: jerrycurlmvc
+Tags:
+  - ORM
+  - Razor
+  - Global Tool
