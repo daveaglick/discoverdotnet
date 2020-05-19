@@ -1,0 +1,11 @@
+SourceCode: https://github.com/fplbot/fplbot
+NuGet:
+  - Fpl.Client
+Language: C#
+Image: https://api.nuget.org/v3-flatcontainer/fpl.client/0.3.1/icon
+Title: Fpl.Client
+Description: A .NET Core client library for the Fantasy Premier League APIs
+Website: https://github.com/fplbot/fplbot
+Docs: https://github.com/fplbot/fplbot
+Tags:
+  - API Client
