@@ -1,0 +1,15 @@
+SourceCode: https://github.com/hlaueriksson/puppeteer-sharp-contrib
+NuGet:
+  - PuppeteerSharp.Contrib.Extensions
+  - PuppeteerSharp.Contrib.Extensions.Unsafe
+  - PuppeteerSharp.Contrib.PageObjects
+  - PuppeteerSharp.Contrib.Should
+  - PuppeteerSharp.Contrib.Should.Unsafe
+Language: C#
+Image: https://raw.githubusercontent.com/hlaueriksson/puppeteer-sharp-contrib/master/icon.png
+Title: PuppeteerSharp.Contrib
+Description: Puppeteer Sharp Contributions offers extensions to the Puppeteer Sharp API. It provides a convenient way to write readable and robust browser tests in .NET
+Tags:
+  - Testing
+  - Validation
+  - Web Utility
