@@ -1,6 +1,6 @@
 Source: https://github.com/unchase/Unchase.Odata.Connectedservice
 Language: C#
-Image: https://unchase.gallerycdn.vsassets.io/extensions/unchase/unchaseodataconnectedservice/0.6.0/1564918339068/Microsoft.VisualStudio.Services.Icons.Default
+Image: https://raw.githubusercontent.com/unchase/Unchase.Odata.Connectedservice/master/src/Unchase.OData.ConnectedService/Resources/logo_128x128.png
 Title: Unchase OData Connected Service
 Description: A Visual Studio extension to generate C# (VB) client code for OData web service.
 Website: https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseodataconnectedservice
