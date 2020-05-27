@@ -2,6 +2,6 @@ SourceCode: https://github.com/7k8m/DirectSQL
 NuGet:
   - DirectSQL
 Language: C#
-Docs: https://7k8m.github.io/DirectSQL.Document/doc/
+Docs: https://directsql.github.io/DirectSQL.Document/doc/
 Tags:
   - Data Access
