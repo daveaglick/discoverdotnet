@@ -1,8 +1,0 @@
-SourceCode: https://github.com/jerriep/github-issues-cli
-NuGet: github-issues-cli
-Language: C#
-GlobalTool: ghi
-Tags:
-  - Global Tool
-  - Git
-DiscoveryDate: 4/17/2020
