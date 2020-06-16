@@ -1,0 +1,12 @@
+SourceCode: https://github.com/unchase/Unchase.Swashbuckle.AspNetCore.Extensions
+NuGet:
+  - Unchase.Swashbuckle.AspNetCore.Extensions
+Language: C#
+Image: https://raw.githubusercontent.com/unchase/Unchase.Swashbuckle.AspNetCore.Extensions/master/assets/logo.png
+Title: Unchase.Swashbuckle.AspNetCore.Extensions
+Description: A library contains a bunch of extensions (filters) for Swashbuckle.AspNetCore.
+Docs: https://github.com/unchase/Unchase.Swashbuckle.AspNetCore.Extensions/blob/master/README.md
+Donations: https://www.buymeacoffee.com/nikolaychebotov
+Tags:
+  - API
+  - Documentation
