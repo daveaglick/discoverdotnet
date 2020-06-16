@@ -1,4 +1,4 @@
-Source: https://github.com/TurnerSoftware/CacheTower
+SourceCode: https://github.com/TurnerSoftware/CacheTower
 NuGet:
   - CacheTower
   - CacheTower.Extensions.Redis
