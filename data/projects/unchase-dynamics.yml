@@ -1,0 +1,14 @@
+SourceCode: https://github.com/unchase/Unchase.Dynamics365.Connectedservice
+NuGet:
+  - Unchase.Dynamics365.Customization
+Language: C#
+Image: https://raw.githubusercontent.com/unchase/Unchase.Dynamics365.Connectedservice/master/img/Unchase-Dynamics365-Connected-Service-Logo.png
+Title: Unchase.Dynamics365.Connectedservice
+Description: A Visual Studio extension for generating early-bound .NET Framework (or C++) classes that represent the entity data model used by Dynamics 365 for Customer Engagement.
+Website: https://marketplace.visualstudio.com/items?itemName=Unchase.unchasedynamics365connectedservice
+Docs: https://github.com/unchase/Unchase.Dynamics365.Connectedservice/blob/master/README.md
+Donations: https://www.buymeacoffee.com/nikolaychebotov
+Tags:
+  - API Client
+  - Code Generation
+  - Visual Studio
