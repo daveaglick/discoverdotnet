@@ -1,0 +1,14 @@
+SourceCode: https://github.com/dotnetcore/CAP
+NuGet:
+  - https://www.nuget.org/packages/DotNetCore.CAP/
+Language: C#
+Image: https://cap.dotnetcore.xyz/img/logo.svg
+Title: CAP
+Description: CAP is an open source C# library that implements event bus and eventual consistency (distributed transactions) in distributed systems. It is lightweight, and easy to use.  In the process of building an SOA or MicroService system, we usually need to use the event to integrate each service. In the process, simple use of message queue does not guarantee reliability. CAP adopts local message table program integrated with the current database to solve exceptions that may occur in the process of the distributed system calling each other. It can ensure that the event messages are not lost in any case.  You can also use CAP as an EventBus. CAP provides a simpler way to implement event publishing and subscriptions. You do not need to inherit or implement any interface during subscription and sending process.
+Website: https://cap.dotnetcore.xyz/
+Docs: https://cap.dotnetcore.xyz/
+Tags:
+  - outbox
+  - service-bus
+  - message-bus
+  - event-bus
