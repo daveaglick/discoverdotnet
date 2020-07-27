@@ -3,7 +3,7 @@ trigger:
 pr:
 - none
 schedules:
-- cron: "0 */2 * * *"
+- cron: "0 */2 * * *" 
   branches:
     include:
     - master
