@@ -1,6 +1,6 @@
 SourceCode: https://github.com/dotnetcore/CAP
 NuGet:
-  - https://www.nuget.org/packages/DotNetCore.CAP/
+  - DotNetCore.CAP
 Language: C#
 Image: https://cap.dotnetcore.xyz/img/logo.svg
 Title: CAP
@@ -8,7 +8,5 @@ Description: CAP is an open source C# library that implements event bus and even
 Website: https://cap.dotnetcore.xyz/
 Docs: https://cap.dotnetcore.xyz/
 Tags:
-  - outbox
-  - service-bus
-  - message-bus
-  - event-bus
+  - Distributed Computing
+  - Messaging
