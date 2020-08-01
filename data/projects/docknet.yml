@@ -1,0 +1,10 @@
+SourceCode: https://github.com/bduman/docknet
+NuGet:
+  - https://www.nuget.org/packages/Docknet/
+Language: C#
+Title: Docknet
+Description: Pull docker image without docker installation
+Tags:
+  - docker
+  - pull
+  - image
