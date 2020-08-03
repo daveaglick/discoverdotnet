@@ -1,6 +1,6 @@
 Language: C#
 NuGet: PiranhaCMS
-SourceCode: https://github.com/PiranhaCMS/Piranha
+SourceCode: https://github.com/PiranhaCMS/piranha.core
 Tags:
   - CMS
 DiscoveryDate: 4/30/2019
