@@ -1,0 +1,16 @@
+SourceCode: https://github.com/IvanStoychev/IvanStoychev.StringExtensions
+NuGet:
+  - IvanStoychev.StringExtensions
+Language: C#
+Image: https://camo.githubusercontent.com/4e1278d4d1fc7ba33a8222a4bf4dc61c667c45c6/68747470733a2f2f696d6775722e636f6d2f386254484f64712e706e67
+Docs: https://github.com/IvanStoychev/IvanStoychev.StringExtensions/wiki
+Chat: https://gitter.im/IvanStoychev-StringExtensions/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+Donations: https://ko-fi.com/U7U31XQ28
+Tags:
+  - c#
+  - string
+  - extension
+  - useful
+  - ease-of-life
+  - nuget
+  - library
