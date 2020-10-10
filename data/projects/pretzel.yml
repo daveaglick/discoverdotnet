@@ -1,0 +1,16 @@
+SourceCode: https://github.com/Code52/pretzel
+NuGet: Pretzel.Logic
+Language: C#
+Image: https://raw.githubusercontent.com/Code52/pretzel/master/pretzel.png
+Docs: http://code52.org/pretzel/
+Tags:
+    - Jekyll
+    - Liquid
+    - Razor
+    - Markdown
+    - blog
+    - html
+    - static
+    - site
+    - generator
+DiscoveryDate: 10/9/2020
