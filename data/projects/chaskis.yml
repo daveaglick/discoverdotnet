@@ -1,0 +1,14 @@
+SourceCode: https://github.com/xforever1313/Chaskis
+NuGet: ChaskisCore
+Chocolatey: chaskis
+Language: C#
+Image: https://files.shendrick.net/projects/chaskis/assets/icon.png
+Docs: https://github.com/xforever1313/Chaskis/wiki
+Chat: https://webchat.freenode.net/#chaskis
+Tags:
+    - IRC
+    - Bot
+    - Framework
+    - Plugins
+    - Chat
+DiscoveryDate: 10/10/2020
