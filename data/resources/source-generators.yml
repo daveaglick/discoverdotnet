@@ -1,0 +1,7 @@
+Title: .NET 5 Source Generators - MediatR - CQRS - OMG!
+Website: https://www.edument.se/en/blog/post/net-5-source-generators-mediatr-cqrs
+Description: In this blog post we will explore how we can use the new source generator feature in .NET 5 to automatically generate an API for a system using the MediatR library and the CQRS pattern.
+Image: https://cdn.starwebserver.se/shops/edument/files/cache/source-generators-tore_grande.jpg
+Tags:
+  - csharp
+  - roslyn
