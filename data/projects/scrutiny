@@ -1,0 +1,8 @@
+SourceCode: https://github.com/kaeedo/Scrutiny
+NuGet:
+  - https://www.nuget.org/packages/Scrutiny/
+Language: F#
+Image: https://raw.githubusercontent.com/kaeedo/Scrutiny/master/header.svg
+Docs: https://github.com/kaeedo/Scrutiny/blob/master/README.md
+Tags:
+  - Testing
