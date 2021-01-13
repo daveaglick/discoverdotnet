@@ -1,6 +1,6 @@
 <Project> 
   <PropertyGroup>
-    <CodeAnalysisRuleSet>../../daveaglick.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>daveaglick.ruleset</CodeAnalysisRuleSet>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

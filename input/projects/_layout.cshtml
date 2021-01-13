@@ -1,0 +1,265 @@
+@{
+	Layout = @"/_layout.cshtml";
+}
+
+<h5 class="mb-2 accent-script text-secondary" style="line-height: 0">Project</h5>
+<h1 class="mb-0 font-weight-bold display-4">
+    @Model.GetString("Title")
+</h1>
+<div class="mt-2">
+    @if(Model.GetBool("Platform"))
+    {
+        <b-badge variant="dark" href="/projects/?filter-netplatform" class="mr-1">.NET Platform</b-badge>
+    }
+    @if(Model.GetBool("Microsoft"))
+    {
+        <b-badge variant="success" href="/projects/?filter-microsoft" class="mr-1">Microsoft</b-badge>
+    }
+    @if(Model.GetBool("Foundation"))
+    {
+        <b-badge variant="primary" href="/projects/?filter-netfoundation" class="mr-1">.NET Foundation</b-badge>
+    }
+    @if(Model.ContainsKey("Tags"))
+    {
+        foreach(string tag in Model.GetList<string>("Tags"))
+        {
+            <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
+        }
+    }
+</div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/projects/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+
+@if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
+{
+    <b-card class="mb-4">
+        <p v-pre class="lead mb-0">@Model.GetString("Description")</p>
+    </b-card>
+}
+
+@RenderBody()
+
+@{
+    string package = Model.GetString("NuGet");
+}
+
+<b-row>
+    <b-col md="9" order="2" order-md="1">
+        <body-tabs>
+            @if(Model.ContainsKey("Readme"))
+            {
+                <b-tab title="Readme" class="mt-4" active>
+                    <b-card v-pre>
+                        @Html.Raw(Model.GetString("Readme"))
+                    </b-card>
+                </b-tab>
+            }
+            @if(Model.Get<int>("OpenIssuesCount") > 0)
+            {
+                <b-tab title="Issues">
+                    <issues issue-json="/data/issues/projects/@(Model.GetString("Key")).json" class="mt-4"></issues>
+                </b-tab>
+            }
+            @if(Model.ContainsKey("NuGetPackages"))
+            {
+                <b-tab title="Packages">
+                    @if(Model.ContainsKey("NuGetPackages"))
+                    {
+                        <h2 class="my-4">NuGet</h2>
+                        foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
+                        {
+                            <b-card no-body class="mb-4">
+                                <b-card-body>
+                                    <h5>
+                                        <a href="https://www.nuget.org/packages/@(packageData.Id)">@packageData.Id</a>
+                                        <small>(<a href="https://www.fuget.org/packages/@(packageData.Id)">fuget.org</a>)</small>
+                                    </h5>
+                                    <b-row>
+                                        <b-col md="6" lg="3"><strong>@packageData.TotalDownloads</strong> Total Downloads</b-col>
+                                        <b-col md="6" lg="3"><strong>@packageData.PerDayDownloads</strong> Downloads Per Day</b-col>
+                                        <b-col md="6" lg="4">
+                                            @if(packageData.LatestVersion != null)
+                                            {
+                                                <span>Latest Version: <strong>@packageData.LatestVersion.Version</strong> (@(packageData.LatestVersion.LastUpdated.ToString("MMMM d, yyyy")))</span>
+                                            }
+                                        </b-col>
+                                        <b-col md="6" lg="2">
+                                            <b-link href="#" v-b-toggle="'nuget-@(packageData.Id)'">
+                                                <span class="when-opened"><i class="far fa-minus-square"></i> Hide All Versions</span>
+                                                <span class="when-closed"><i class="far fa-plus-square"></i> Show All Versions</span>
+                                            </b-link>
+                                        </b-col>
+                                    </b-row>
+                                </b-card-body>
+                                <b-collapse id="nuget-@(packageData.Id)">
+                                    <table class="table table-striped mb-0">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Version</th>
+                                                <th scope="col">Downloads</th>
+                                                <th scope="col">Last Updated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(PackageVersion version in packageData.Versions)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <div class="font-weight-bold"><a href="https://www.nuget.org/packages/@(packageData.Id)/@(version.Version)">@(version.Version)</a></div>
+                                                        <div class="small"><a href="https://www.fuget.org/packages/@(packageData.Id)/@(version.Version)">fuget.org</a></div>
+                                                        <div class="small"><a href="https://www.nuget.org/api/v2/package/@(packageData.Id)/@(version.Version)">Direct Download</a></div>
+                                                    </td>
+                                                    <td>@(version.Downloads)</td>
+                                                    <td>@(version.LastUpdated.ToString("MMMM d, yyyy"))</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>                             
+                                </b-collapse>
+                            </b-card>
+                        }
+                    }       
+                </b-tab>
+            }
+        </body-tabs>
+    </b-col>
+    <b-col md="3" order="1" order-md="2">        
+        @if(Model.ContainsKey("StargazersCount"))
+        {
+            <b-card no-body class="mb-4">
+                <b-card-body>
+                    <b-row class="text-center">
+                        <b-col>
+                            <div><i class="fas fa-star"></i></div>
+                            <h5>@Model.GetString("StargazersCount")</h5>
+                        </b-col>
+                        <b-col>
+                            <div><i class="fas fa-code-branch"></i></div>
+                            <h5>@Model.GetString("ForksCount")</h5>
+                        </b-col>
+                        <b-col>
+                            <div><i class="fas fa-bug"></i></div>
+                            <h5>@Model.GetString("OpenIssuesCount")</h5>
+                        </b-col>
+                    </b-row>
+                </b-card-body>
+            </b-card>
+        }
+        <b-card no-body class="mb-4">
+            <b-card-body>
+                @{
+					string image = Model.GetString("Image");
+					if(!string.IsNullOrWhiteSpace(image))
+					{
+						<b-img src="@(image)" fluid class="mb-4"></b-img>
+					}
+
+                    string website = Model.GetString("Website");
+                    if(!string.IsNullOrWhiteSpace(website))
+                    {
+                        <h5>
+                            <span class="fa fa-external-link-square-alt"></span> Website
+                        </h5>
+                        <p>
+                            <a href="@(website)">{{ '@(website)' | no-protocol }}</a>
+                        </p>
+                    }    
+
+                    string docs = Model.GetString("Docs");
+                    if(!string.IsNullOrWhiteSpace(docs))
+                    {
+                        <h5>
+                            <span class="fa fa-book"></span> Documentation
+                        </h5>
+                        <p>
+                            <a href="@(docs)">{{ '@(docs)' | no-protocol }}</a>
+                        </p>
+                    }    
+
+                    string sourceCode = Model.GetString("SourceCode");
+                    if(!string.IsNullOrWhiteSpace(sourceCode))
+                    {
+                        <h5>
+                            <span class="fa fa-code"></span> Source Code
+                        </h5>
+                        <p>
+                            <a href="@(sourceCode)">{{ '@(sourceCode)' | no-protocol }}</a>
+                        </p>
+                    }
+
+                    string twitter = Model.GetString("Twitter");
+                    if(!string.IsNullOrWhiteSpace(twitter))
+                    {
+                        <h5>
+                            <span class="fab fa-twitter"></span> Twitter
+                        </h5>
+                        <p>
+                            <a href="https://twitter.com/@(twitter)">@@@(twitter)</a>
+                        </p>
+                    }
+
+                    string chat = Model.GetString("Chat");
+                    if(!string.IsNullOrWhiteSpace(chat))
+                    {
+                        <h5>
+                            <span class="fas fa-comments"></span> Chat
+                        </h5>
+                        <p>
+                            <a href="@(chat)">{{ '@(chat)' | no-protocol }}</a>
+                        </p>
+                    }
+
+                    if(Model.ContainsKey("NuGetPackages"))
+                    {
+                        <h5>
+                            <span class="fa fa-download"></span> NuGet
+                        </h5>
+                        <div class="mb-2">
+                            @foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
+                            {
+                                <div>
+                                    <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
+                                    <small>(<a href="https://www.fuget.org/packages/@(packageData.Id)">fuget.org</a>)</small>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+                @if(Model.ContainsKey("Donations"))
+                {
+                    string donations = Model.GetString("Donations");
+                    if(!string.IsNullOrWhiteSpace(donations))
+                    {
+                        <h5>This project accepts donations</h5>
+                        <p>
+                            <b-button href="@(donations)" variant="danger"><i class="fas fa-heart"></i> Show Some Love</b-button>
+                        </p>
+                        <p>
+                            <a href="@(donations)">{{ '@(donations)' | no-protocol }}</a>
+                        </p>
+                    }
+                }
+            </b-card-body>
+        </b-card>
+
+        @if(Model.ContainsKey("TotalDownloads"))
+        {
+            <b-card header-text-variant="white" header-bg-variant="dark" class="mb-4">
+                <div slot="header">NuGet Statistics</div>
+
+                <h5>Downloads</h5>
+                <p>
+                    <span>@(Model.GetString("TotalDownloads")) total downloads</span><br/>
+                    <span>@(Model.GetString("PerDayDownloads")) downloads per day</span>
+                </p>
+
+                <h5>Latest Version</h5>
+                <p>
+                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.GetString("LatestVersion"))">@(Model.GetString("LatestVersion"))</a></span><br/>
+                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.GetString("LatestVersion"))">Direct Download</a></span><br/>
+                    <span>@(Model.GetString("LatestVersionDownloads")) downloads</span><br/>
+                    <span>Last updated @(Model.GetDateTime("LatestVersionLastUpdated").ToString("MMMM d, yyyy"))</span>
+                </p>
+            </b-card>
+        }
+    </b-col>
+</b-row>

@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{27CAE0CF-D416-4634-92B2-2467201FE132}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscoverDotnet", "src\DiscoverDotnet\DiscoverDotnet.csproj", "{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Files", "Files.shproj", "{C3D497EA-3113-4ED0-8806-94B20FC235DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscoverDotnet", "DiscoverDotnet.csproj", "{F028FC81-E7F2-436E-8B83-41649227E5E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,16 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F028FC81-E7F2-436E-8B83-41649227E5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F028FC81-E7F2-436E-8B83-41649227E5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F028FC81-E7F2-436E-8B83-41649227E5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F028FC81-E7F2-436E-8B83-41649227E5E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4FA4F1E0-6D94-4EEA-93E8-37E187F2E2A0} = {27CAE0CF-D416-4634-92B2-2467201FE132}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7D429364-0273-46B4-A587-2E9886A33EA2}

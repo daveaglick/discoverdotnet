@@ -1,0 +1,242 @@
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+
+@font-face {
+    font-family: 'Langdon';
+    src:url('langdon.woff') format('woff'),
+        url('langdon.svg#Langdon') format('svg'),
+        url('langdon.eot'),
+        url('langdon.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%; 
+    background-color: rgb(248, 249, 250);
+}
+
+main {
+    flex: 1;
+}
+
+.flex-0 {
+    flex: 0;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.layout-container {
+    @media (min-width: 1800px) {
+        max-width: 85%;       
+    }
+} 
+
+.logo-header {                   
+    @include gradient-y(#bd9ee5, #563d7c);
+    position: relative;
+    padding: 0;
+    height: 12vw;
+
+    @media (min-width: 576px) {  
+        height: 100px;        
+    }
+    
+    @media (min-width: 992px) {   
+        height: 120px;
+    }
+
+    @media (min-width: 1800px) {
+        height: 130px;        
+    }
+    
+    .logo {
+        top: 0;
+        height: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    
+        img { 
+            width: 100%;
+            max-height: 50%; 
+            -webkit-filter: drop-shadow( 0 0 1rem indigo ); 
+            filter: drop-shadow( 0 0 1rem indigo );
+
+            @media (min-width: 768px) {    
+                width: 80%;  
+            }
+            
+            @media (max-width: 576px) {   
+                max-height: 80%; 
+            }
+        }
+    
+        p {
+            color: white;
+            font-size: 1.5rem;
+            font-family: 'Nothing You Could Do';
+            margin: 0;
+            margin-top: .25em;
+        }
+    }
+}
+
+.accent-primary {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 700;
+}
+
+.accent-secondary {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 100;
+}
+
+.display-1, .display-2, .display-3, .display-4 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 700;
+}
+
+.accent-script {
+    font-family: 'Nothing You Could Do', cursive;
+}
+
+.card > .card-border-bottom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.card > .card-border-top {
+    border-top: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.card-corner {
+    top: 0;
+    right: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 56px 56px 0;
+}
+
+.card-corner-light {
+    border-color: transparent rgba(255,255,255,0.2) transparent transparent;
+}
+
+.card-corner-dark {
+    border-color: transparent rgba(0,0,0,0.2) transparent transparent;
+}
+
+.card-corner > * {
+    margin-left: 28px;
+}
+
+.card-header.bg-dark {
+    @include gradient-bg($dark);
+}
+
+.icon-card-image {
+    max-height: 64px;
+}
+
+.thead-dark, .thead-dark th {
+    @include gradient-bg($dark);
+}
+
+.full-height-card {
+    > .card {
+        height: 100% !important;
+    }
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 20px -4px;
+}
+
+pre {
+    background-color: $gray-200 !important;
+    @include border-radius($border-radius-lg);
+    padding: 6px;
+}
+
+pre code {
+    background-color: $gray-200 !important;
+}
+
+// Hide anchors from the GitHub readme files
+.anchor {
+    display: none;
+}
+
+.collapsed-detail {
+    max-height: 48px;
+    overflow: hidden;
+    position: relative;
+
+    .fade-detail { 
+        position: absolute; 
+        bottom: 0em;
+        width: 100%;
+        height: 48px;
+        @include gradient-y(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), 0%, 100%);
+    }
+}
+
+.body-tabs {
+    .nav-tabs {
+        border: 1px solid $nav-tabs-border-color;
+        border-radius: $border-radius !important;
+        padding: ($spacer * .5) ($spacer * .5) 0 ($spacer * .5);
+        background: $white;
+        
+        .nav-link {
+            @include hover-focus {
+                border-bottom-color: transparent;
+            }
+        }
+        
+        .nav-link.active {
+            background-color: rgb(248, 249, 250);
+            border-bottom-color: rgb(248, 249, 250);
+        }
+    }
+}
+
+.search-results em {
+    font-style: normal;
+    background-color: lighten( $yellow, 40% );
+}
+
+.popover {
+    max-width: 80%;
+    z-index: 10000;
+
+    /* This is an ugly hack to make sure the popover "flips" by positioning it above the search box and then always making
+    it taller than the header so it consistently displays below the search box - these heights need to match up with the header */    
+    
+    margin-bottom: 24vw;
+
+    @media (min-width: 576px) {  
+        margin-bottom: 200px;        
+    }
+    
+    @media (min-width: 768px) {    
+        margin-bottom: 200px;
+    }
+    
+    @media (min-width: 992px) {   
+        margin-bottom: 240px;
+    }
+
+    @media (min-width: 1200px) {
+        margin-bottom: 260px;        
+    }
+}
+
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+    display: none;
+}

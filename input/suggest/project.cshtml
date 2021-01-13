@@ -1,0 +1,87 @@
+Title: Suggest A Project
+---
+<suggest title="Project" :fields="fields" url="https://github.com/daveaglick/discoverdotnet/new/master/data/projects">
+    <p>
+        Note that for many projects, you'll only need to provide the <code>SourceCode</code>, <code>NuGet</code>, and <code>Language</code> fields.
+        The rest of the data is automatically pulled from the GitHub API if available. Other fields that aren't represented
+        in GitHub like <code>Image</code> and <code>Chat</code> should also be provided.
+    </p>
+</suggest>
+
+@section Script {
+    <script type="text/javascript">
+        Vue.mixin({
+            data: function () {
+                return {
+                    fields: [
+                        {
+                            name: "SourceCode",
+                            description: "The location of the source code for the project. Should contain a full URL like <code>https://github.com/daveaglick/discoverdotnet</code>."
+                        },
+                        {
+                            name: "NuGet",
+                            description: "The name (not the full NuGet Gallery URL) of all NuGet packages for the project. Separate multiple packages with a comma.",
+                            multiple: true
+                        },
+                        {
+                            name: "Language",
+                            description: "The primary language of the project (for example, <code>C#</code>, <code>F#</code>, or <code>VB</code>)."
+                        },
+                        {
+                            name: "Image",
+                            description: "A URL to an image or logo of the project. This should be a secure <code>https</code> link."
+                        },
+                        {
+                            name: "Title",
+                            description: "The title of the project. If a GitHub repository was provided for the source code and this is omitted, the title from the repository metadata will be used."
+                        },
+                        {
+                            name: "Description",
+                            description: "A short description of the project. If a GitHub repository was provided for the source code and this is omitted, the description from the repository metadata will be used."
+                        },
+                        {
+                            name: "Website",
+                            description: "The primary website for the project. If a GitHub repository was provided for the source code and this is omitted, the website from the repository metadata will be used."
+                        },
+                        {
+                            name: "Docs",
+                            description: "The primary documentation site for the project."
+                        },
+                        {
+                            name: "Chat",
+                            description: "A link to the chat room for the project if one exists."
+                        },
+                        {
+                            name: "Donations",
+                            description: "A link to provide donations to the project."
+                        },
+                        {
+                            name: "Twitter",
+                            description: "The Twitter handle of the project without the <code>@@</code> symbol. Note that this should be an account dedicated to the project and not be a personal Twitter account."
+                        },
+                        {
+                            name: "Platform",
+                            description: "Set to <code>true</code> if the project is considered part of the .NET platform, otherwise this can be omitted.",
+                            bool: true
+                        },
+                        {
+                            name: "Foundation",
+                            description: "Set to <code>true</code> if the project is a member of the .NET Foundation. In most cases this can be automatically determined based on the projects listed at the .NET Foundation website and this property isn't needed.",
+                            bool: true
+                        },
+                        {
+                            name: "Microsoft",
+                            description: "Set to <code>true</code> if the project is developed or sponsored by Microsoft. In most cases this can be automatically determined based on the owner of the repository and this property isn't needed.",
+                            bool: true
+                        },
+                        {
+                            name: "Tags",
+                            description: "A list of tags for the project. Care should be taken to use already existing tags where practical. Separate multiple tags with a comma.",
+                            multiple: true
+                        }
+                    ]
+                };
+            }
+        })
+    </script>
+}
