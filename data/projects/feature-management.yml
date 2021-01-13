@@ -2,8 +2,5 @@ SourceCode: https://github.com/Odonno/AspNetCore.FeatureManagement.UI
 NuGet: AspNetCore.FeatureManagement.UI
 Language: C#
 Tags:
-  - Feature Management
-  - Feature Toggle
   - Configuration
   - ASP.NET
-  - API
