@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using DiscoverDotnet.Models;
-using DiscoverDotnet.Modules;
 using Statiq.Common;
-using Statiq.Core;
-using Statiq.Json;
-using Statiq.Minification;
-using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Issues
 {
@@ -23,6 +15,6 @@ namespace DiscoverDotnet.Pipelines.Issues
 
         protected override Action<int, TotalIssueCounts> SetTotal => (count, totals) => totals.HelpWanted = count;
 
-        protected override Config<FilePath> Destination => Config.FromDocument(doc => (FilePath)$"data/issues/help-wanted/{doc.GetInt("Page")}.json");
+        protected override Config<NormalizedPath> Destination => Config.FromDocument(doc => (NormalizedPath)$"data/issues/help-wanted/{doc.GetInt("Page")}.json");
     }
 }

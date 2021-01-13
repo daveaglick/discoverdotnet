@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using DiscoverDotnet.Models;
 using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
-using Statiq.Json;
 using Statiq.Minification;
-using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines.Issues
 {
@@ -36,7 +31,7 @@ namespace DiscoverDotnet.Pipelines.Issues
                         .OrderByDescending(x => x.CreatedAt)))
                     .WithCamelCase(),
                 new MinifyJs(),
-                new SetDestination((FilePath)"data/issues/recent/all.json")
+                new SetDestination((NormalizedPath)"data/issues/recent/all.json")
             };
 
             OutputModules = new ModuleList

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DiscoverDotnet.Modules;
+﻿using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
 using Statiq.Html;
@@ -30,11 +27,11 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetFeedData(),
-                new SetDestination(Config.FromDocument(x => (FilePath)$"broadcasts/{x.Source.FileName.ChangeExtension("html")}")),
+                new SetDestination(Config.FromDocument(x => (NormalizedPath)$"broadcasts/{x.Source.FileName.ChangeExtension("html")}")),
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
                 new SetMetadata("Language", Config.FromDocument(x => x.GetString("Language", "English"))),
-                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.FilterMetadata(
                     "Key",
                     "Title",
                     "Image",
@@ -49,9 +46,9 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
                     "NewestFeedItem")))
             };
 
-            TransformModules = new ModuleList
+            PostProcessModules = new ModuleList
             {
-                new RenderRazor().WithLayout((FilePath)"/broadcasts/_layout.cshtml"),
+                new RenderRazor().WithLayout((NormalizedPath)"/broadcasts/_layout.cshtml"),
                 new MirrorResources()
             };
 

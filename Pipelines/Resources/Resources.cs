@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Statiq.Common;
+﻿using Statiq.Common;
 using Statiq.Core;
 using Statiq.Yaml;
 
@@ -28,7 +25,7 @@ namespace DiscoverDotnet.Pipelines.Resources
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument(d => d.GetString("Website"))),
                 new SetMetadata("CardType", "Resource"), // TODO: Do we still need this without groups/events?
-                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.FilterMetadata(
                     "Website",
                     "Title",
                     "Image",

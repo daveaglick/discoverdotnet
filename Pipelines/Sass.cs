@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Statiq.Common;
+﻿using Statiq.Common;
 using Statiq.Core;
-using Statiq.Json;
-using Statiq.Minification;
-using Statiq.Netlify;
 using Statiq.Sass;
 
 namespace DiscoverDotnet.Pipelines
@@ -20,7 +15,7 @@ namespace DiscoverDotnet.Pipelines
                 new ReadFiles("**/{!_,}*.scss")
             };
 
-            TransformModules = new ModuleList
+            PostProcessModules = new ModuleList
             {
                 new CompileSass().WithCompactOutputStyle()
             };

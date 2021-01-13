@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DiscoverDotnet.Models;
-using DiscoverDotnet.Modules;
+﻿using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
-using Statiq.Json;
 using Statiq.Minification;
 using Statiq.Yaml;
 
@@ -37,7 +31,7 @@ namespace DiscoverDotnet.Pipelines.Issues
                 new GenerateJson(Config.FromDocument(doc => doc["Issues"]))
                     .WithCamelCase(),
                 new MinifyJs(),
-                new SetDestination(Config.FromDocument(x => (FilePath)$"data/issues/projects/{x.Source.FileName.ChangeExtension(".json")}"))
+                new SetDestination(Config.FromDocument(x => (NormalizedPath)$"data/issues/projects/{x.Source.FileName.ChangeExtension(".json")}"))
             };
 
             OutputModules = new ModuleList

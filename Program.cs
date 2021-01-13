@@ -1,7 +1,8 @@
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Statiq.App;
+using Statiq.Common;
+using Statiq.Web;
 
 namespace DiscoverDotnet
 {
@@ -9,8 +10,9 @@ namespace DiscoverDotnet
     {
         private static async Task<int> Main(string[] args)
         {
-            return await Bootstrapper
+            return await Bootstrapper.Factory
                 .CreateDefault(args)
+                .AddHostingCommands()
                 .ConfigureServices(services => services
                     .AddSingleton<GitHubManager>()
                     .AddSingleton<FoundationManager>()

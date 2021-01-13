@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Statiq.Common;
 
 namespace DiscoverDotnet.Models

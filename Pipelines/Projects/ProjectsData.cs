@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Statiq.Common;
-using Statiq.Core;
-using Statiq.Json;
-using Statiq.Minification;
 
 namespace DiscoverDotnet.Pipelines.Projects
 {
@@ -14,6 +9,6 @@ namespace DiscoverDotnet.Pipelines.Projects
 
         protected override Func<IDocument, object> Data => doc => doc["CardData"];
 
-        protected override Config<FilePath> Destination => (FilePath)"data/projects.json";
+        protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/projects.json";
     }
 }

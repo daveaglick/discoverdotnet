@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DiscoverDotnet.Models;
+using DiscoverDotnet.Modules;
 using DiscoverDotnet.Pipelines.Blogs;
 using DiscoverDotnet.Pipelines.Broadcasts;
 using Statiq.Common;
 using Statiq.Core;
-using Statiq.Json;
 using Statiq.Minification;
-using Statiq.Sass;
 
 namespace DiscoverDotnet.Pipelines
 {
@@ -41,7 +40,7 @@ namespace DiscoverDotnet.Pipelines
                         .OrderByDescending(x => x.Published)))
                     .WithCamelCase(),
                 new MinifyJs(),
-                new SetDestination((FilePath)"data/news.json")
+                new SetDestination((NormalizedPath)"data/news.json")
             };
 
             OutputModules = new ModuleList

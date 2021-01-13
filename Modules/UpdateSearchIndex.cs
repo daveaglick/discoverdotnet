@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Algolia.Search.Clients;
 using Algolia.Search.Http;
-using Algolia.Search.Iterators;
 using Algolia.Search.Models.Common;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;

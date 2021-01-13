@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.SyndicationFeed;
 using Microsoft.SyndicationFeed.Atom;
-using Microsoft.SyndicationFeed.Rss;
 
 namespace DiscoverDotnet
 {

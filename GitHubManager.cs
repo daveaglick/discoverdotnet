@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -32,7 +30,7 @@ namespace DiscoverDotnet
             "azure"
         };
 
-        public GitHubManager(IReadOnlyConfigurationSettings settings)
+        public GitHubManager(ISettings settings)
         {
             _gitHub = new GitHubClient(new ProductHeaderValue(nameof(DiscoverDotnet)))
             {

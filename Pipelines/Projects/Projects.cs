@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DiscoverDotnet.Modules;
-using Microsoft.Extensions.Configuration;
+﻿using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
 using Statiq.Html;
-using Statiq.Json;
 using Statiq.Razor;
 using Statiq.Yaml;
 
@@ -32,15 +27,15 @@ namespace DiscoverDotnet.Pipelines.Projects
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetProjectData(),
-                new SetDestination(Config.FromDocument(x => (FilePath)$"projects/{x.Source.FileName.ChangeExtension("html")}")),
+                new SetDestination(Config.FromDocument(x => (NormalizedPath)$"projects/{x.Source.FileName.ChangeExtension("html")}")),
                 new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
-                new SetMetadata("DonationsData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("DonationsData", Config.FromDocument(x => x.FilterMetadata(
                     "Website",
                     "NuGet",
                     "SourceCode",
                     "Destination"))),
-                new SetMetadata("CardData", Config.FromDocument(x => x.GetMetadata(
+                new SetMetadata("CardData", Config.FromDocument(x => x.FilterMetadata(
                     "Key",
                     "Title",
                     "Link",
@@ -62,9 +57,9 @@ namespace DiscoverDotnet.Pipelines.Projects
                     "Foundation")))
             };
 
-            TransformModules = new ModuleList
+            PostProcessModules = new ModuleList
             {
-                new RenderRazor().WithLayout((FilePath)"/projects/_layout.cshtml"),
+                new RenderRazor().WithLayout((NormalizedPath)"/projects/_layout.cshtml"),
                 new MirrorResources()
             };
 

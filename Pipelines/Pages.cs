@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DiscoverDotnet.Pipelines.Blogs;
-using DiscoverDotnet.Pipelines.Broadcasts;
-using Statiq.Common;
+﻿using Statiq.Common;
 using Statiq.Core;
 using Statiq.Html;
-using Statiq.Json;
 using Statiq.Markdown;
-using Statiq.Minification;
 using Statiq.Razor;
-using Statiq.Sass;
 using Statiq.Yaml;
 
 namespace DiscoverDotnet.Pipelines
@@ -36,12 +28,12 @@ namespace DiscoverDotnet.Pipelines
                 }
             };
 
-            TransformModules = new ModuleList
+            PostProcessModules = new ModuleList
             {
                 new ExecuteIf(
                     Config.FromDocument(doc => doc.MediaTypeEquals("text/markdown")),
-                    new RenderRazor().WithLayout((FilePath)"/_markdown.cshtml"))
-                    .Else(new RenderRazor().WithLayout((FilePath)"/_layout.cshtml")),
+                    new RenderRazor().WithLayout((NormalizedPath)"/_markdown.cshtml"))
+                    .Else(new RenderRazor().WithLayout((NormalizedPath)"/_layout.cshtml")),
                 new MirrorResources()
             };
 

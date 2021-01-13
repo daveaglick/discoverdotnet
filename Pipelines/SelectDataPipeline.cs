@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using DiscoverDotnet.Modules;
 using Statiq.Common;
 using Statiq.Core;
-using Statiq.Json;
 using Statiq.Minification;
 
 namespace DiscoverDotnet.Pipelines
@@ -22,7 +21,7 @@ namespace DiscoverDotnet.Pipelines
                         .Where(doc => Predicate == null || Predicate(doc))
                         .Select(doc => Data(doc))))
                     .WithCamelCase(),
-                new MinifyJs(),
+                /* new MinifyJs(), */
                 new SetDestination(Destination)
             };
 
@@ -38,6 +37,6 @@ namespace DiscoverDotnet.Pipelines
 
         protected abstract Func<IDocument, object> Data { get; }
 
-        protected abstract Config<FilePath> Destination { get; }
+        protected abstract Config<NormalizedPath> Destination { get; }
     }
 }

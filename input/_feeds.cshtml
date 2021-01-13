@@ -7,11 +7,11 @@
   </head>
   <body>
     <outline text="Discover .NET Feeds" title="Discover .NET Feeds">
-      @foreach(IDocument blog in Outputs["Blogs"])
+      @foreach(IDocument blog in Outputs.FromPipeline("Blogs"))
       {
         <outline type="rss" text="@blog["Title"]" title="@blog["Title"]" xmlUrl="@blog["Feed"]" />
       }
-      @foreach(IDocument broadcast in Outputs["Broadcasts"])
+      @foreach(IDocument broadcast in Outputs.FromPipeline("Broadcasts"))
       {
         <outline type="rss" text="@broadcast["Title"]" title="@broadcast["Title"]" xmlUrl="@broadcast["Feed"]" />
       }

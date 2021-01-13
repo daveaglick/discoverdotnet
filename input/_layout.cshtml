@@ -127,18 +127,18 @@
             Vue.config.debug = true; 
             Vue.config.devtools = true
 
-            // @Document.Source.Directory.FullPath
+            // @Document.Source.Parent.FullPath
             // Load all .vue single-file components in either the "portal/components" folder (for shared components) or at the current level
             @{
-                DirectoryPath inputDirectory = Context.FileSystem.GetRootDirectory().Path.Combine("input");
+                NormalizedPath inputDirectory = Context.FileSystem.GetRootDirectory().Path.Combine("input");
                 string componentsPath = inputDirectory.Combine(Context.FileSystem.GetInputDirectory("components").Path).FullPath;
-                foreach(IDocument vueDocument in Outputs[nameof(SiteResources)]
+                foreach(IDocument vueDocument in Outputs.FromPipeline(nameof(SiteResources))
                     .Where(x => string.Equals(x.Source.Extension, ".vue", StringComparison.OrdinalIgnoreCase)
-                        && (x.Destination.Directory.FullPath.Equals(Document.Destination.Directory.FullPath, StringComparison.OrdinalIgnoreCase)
-                            || x.Source.Directory.FullPath.StartsWith(componentsPath, StringComparison.OrdinalIgnoreCase))))
+                        && (x.Destination.Parent.FullPath.Equals(Document.Destination.Parent.FullPath, StringComparison.OrdinalIgnoreCase)
+                            || x.Source.Parent.FullPath.StartsWith(componentsPath, StringComparison.OrdinalIgnoreCase))))
                 {
                     <text>
-                        Vue.component('@vueDocument.Source.FileNameWithoutExtension', httpVueLoader('@inputDirectory.Combine(Document.Destination.Directory).GetRelativePath(vueDocument.Source)'));
+                        Vue.component('@vueDocument.Source.FileNameWithoutExtension', httpVueLoader('@inputDirectory.Combine(Document.Destination.Parent).GetRelativePath(vueDocument.Source)'));
                     </text>
                 }
             } 
