@@ -3,4 +3,3 @@ Language: C#
 Description: IronScheme aims to be a R6RS conforming Scheme-like implementation based on the Microsoft DLR.
 Tags:
   - Compiler
-DiscoveryDate: 8/8/2019

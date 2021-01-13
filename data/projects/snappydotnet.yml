@@ -5,4 +5,3 @@ Tags:
 Description: Snappy.NET is a .NET wrapper for Snappy compression algorithm. It includes raw block compression as well as an implementation of Snappy framing format.
 Website: https://snappy.machinezoo.com
 NuGet: Snappy.NET
-DiscoveryDate: 2/4/2019

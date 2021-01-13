@@ -5,4 +5,3 @@ Platform: true
 SourceCode: https://github.com/dotnet/roslyn-analyzers
 Tags:
   - Code Analysis
-DiscoveryDate: 1/7/2020

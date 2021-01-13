@@ -3,4 +3,3 @@ NuGet: Microsoft.Extensions.DependencyInjection
 SourceCode: https://github.com/aspnet/DependencyInjection
 Tags:
   - IoC
-DiscoveryDate: 11/26/2018

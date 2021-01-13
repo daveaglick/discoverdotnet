@@ -3,4 +3,3 @@ Language: C#
 Tags:
   - Data Access
 NuGet: StackExchange.Redis
-DiscoveryDate: 3/8/2019
