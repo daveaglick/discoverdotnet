@@ -1,0 +1,12 @@
+SourceCode: https://github.com/augustoproiete/ookii-dialogs-wpf
+NuGet:
+  - Ookii.Dialogs.Wpf
+Language: C#
+Image: https://raw.githubusercontent.com/augustoproiete/ookii-dialogs-wpf/master/assets/ookii-dialogs-wpf-nuget.png
+Title: Ookii.Dialogs.Wpf
+Description: Class library for WPF applications providing several common dialogs. Included are classes for task dialogs, credential dialogs, progress dialogs, and common file dialogs
+Donations: https://github.com/sponsors/augustoproiete
+Tags:
+  - Wpf
+  - Dialogs
+  - Controls
