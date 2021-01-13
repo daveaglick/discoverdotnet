@@ -1,5 +1,7 @@
 SourceCode: https://github.com/b3b00/csly
 NuGet:
   - sly
+Tags:
+  - Parsing
 Language: C#
 Docs: https://github.com/b3b00/csly/wiki
