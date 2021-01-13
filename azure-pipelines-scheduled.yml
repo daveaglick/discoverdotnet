@@ -9,7 +9,7 @@ schedules:
     - master
   always: true
 steps:
-  - script: dotnet run -p src/DiscoverDotnet/DiscoverDotnet.csproj -v m -- deploy
+  - script: dotnet run -v m -- deploy
     env:
       GITHUB_TOKEN: $(GITHUB_TOKEN)
       NETLIFY_TOKEN: $(NETLIFY_TOKEN)
