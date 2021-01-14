@@ -13,4 +13,4 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.100' # SDK Version to use.
-    - run: dotnet run -- -s Validate=true
+    - run: dotnet run -- -s Validate=true -l Debug
