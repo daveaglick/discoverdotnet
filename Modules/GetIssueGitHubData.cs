@@ -31,10 +31,16 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
+            // Don't get data if we're justt validating
+            if (context.Settings.GetBool(SiteKeys.Validate))
+            {
+                return input.Yield();
+            }
+
             IDocument output = input;
 
             // Extract the GitHub owner and name
-            if (Uri.TryCreate(input.GetString("SourceCode"), UriKind.Absolute, out Uri sourceCode)
+            if (Uri.TryCreate(input.GetString(SiteKeys.SourceCode), UriKind.Absolute, out Uri sourceCode)
                 && sourceCode.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
             {
                 string owner = sourceCode.Segments[1].Trim('/');
@@ -68,20 +74,20 @@ namespace DiscoverDotnet.Modules
                         .ToArray();
                     MetadataItems metadata = new MetadataItems
                     {
-                        { "GitHubOwner", owner },
-                        { "GitHubName", name },
-                        { "Issues", issueData },
-                        { "IssuesCount", issueData.Length },
-                        { "RecentIssuesCount", issueData.Count(x => x.Recent) },
-                        { "HelpWantedIssuesCount", issueData.Count(x => x.HelpWanted) }
+                        { SiteKeys.GitHubOwner, owner },
+                        { SiteKeys.GitHubName, name },
+                        { SiteKeys.Issues, issueData },
+                        { SiteKeys.IssuesCount, issueData.Length },
+                        { SiteKeys.RecentIssuesCount, issueData.Count(x => x.Recent) },
+                        { SiteKeys.HelpWantedIssuesCount, issueData.Count(x => x.HelpWanted) }
                     };
-                    if (!input.ContainsKey("Microsoft") && GitHubManager.MicrosoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
+                    if (!input.ContainsKey(SiteKeys.Microsoft) && GitHubManager.MicrosoftOwners.Contains(owner, StringComparer.OrdinalIgnoreCase))
                     {
-                        metadata.Add("Microsoft", true);
+                        metadata.Add(SiteKeys.Microsoft, true);
                     }
-                    if (!input.ContainsKey("Foundation") && _foundation.IsInFoundation(owner, name))
+                    if (!input.ContainsKey(SiteKeys.Foundation) && _foundation.IsInFoundation(owner, name))
                     {
-                        metadata.Add("Foundation", true);
+                        metadata.Add(SiteKeys.Foundation, true);
                     }
 
                     output = input.Clone(metadata);

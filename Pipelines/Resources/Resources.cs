@@ -22,17 +22,17 @@ namespace DiscoverDotnet.Pipelines.Resources
             {
                 new ParseYaml(),
                 new SetContent(string.Empty),
-                new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new SetMetadata("Link", Config.FromDocument(d => d.GetString("Website"))),
-                new SetMetadata("CardType", "Resource"), // TODO: Do we still need this without groups/events?
-                new SetMetadata("CardData", Config.FromDocument(x => x.FilterMetadata(
-                    "Website",
-                    "Title",
-                    "Image",
-                    "Description",
-                    "CardType",
-                    "Comment",
-                    "Tags")))
+                new SetMetadata(SiteKeys.Key, Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new SetMetadata(SiteKeys.Link, Config.FromDocument(d => d.GetString(SiteKeys.Website))),
+                new SetMetadata(SiteKeys.CardType, SiteKeys.Resource), // TODO: Do we still need this without groups/events?
+                new SetMetadata(SiteKeys.CardData, Config.FromDocument(x => x.FilterMetadata(
+                    SiteKeys.Website,
+                    SiteKeys.Title,
+                    SiteKeys.Image,
+                    SiteKeys.Description,
+                    SiteKeys.CardType,
+                    SiteKeys.Comment,
+                    SiteKeys.Tags)))
             };
         }
     }

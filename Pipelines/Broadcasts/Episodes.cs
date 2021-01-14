@@ -8,9 +8,9 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
         protected override string SourcePipeline => nameof(Broadcasts);
 
         protected override Func<IDocument, bool> Predicate =>
-            doc => doc.ContainsKey("FeedItems") && doc.GetString("Language") == "English";
+            doc => doc.ContainsKey(SiteKeys.FeedItems) && doc.GetString(SiteKeys.Language) == "English";
 
-        protected override Func<IDocument, object> Data => doc => doc["FeedItems"];
+        protected override Func<IDocument, object> Data => doc => doc[SiteKeys.FeedItems];
 
         protected override Config<NormalizedPath> Destination =>
             Config.FromDocument(doc => (NormalizedPath)$"data/episodes/{doc.Source.FileName.ChangeExtension(".json")}");

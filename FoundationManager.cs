@@ -31,16 +31,24 @@ namespace DiscoverDotnet
             {
                 if (_readme == null)
                 {
-                    context.LogInformation("Getting .NET Foundation readme");
-                    _readme = await retryPolicy.ExecuteAsync(
-                        async _ =>
-                        {
-                            using (HttpClient httpClient = context.CreateHttpClient())
+                    // Don't worry about the Foundation readme if we're only validating
+                    if (context.GetBool(SiteKeys.Validate))
+                    {
+                        _readme = string.Empty;
+                    }
+                    else
+                    {
+                        context.LogInformation("Getting .NET Foundation readme");
+                        _readme = await retryPolicy.ExecuteAsync(
+                            async _ =>
                             {
-                                return await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
-                            }
-                        },
-                        context.CancellationToken);
+                                using (HttpClient httpClient = context.CreateHttpClient())
+                                {
+                                    return await httpClient.GetStringAsync("https://raw.githubusercontent.com/dotnet/home/master/README.md");
+                                }
+                            },
+                            context.CancellationToken);
+                    }
                 }
             }
             finally

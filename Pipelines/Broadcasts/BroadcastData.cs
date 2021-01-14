@@ -7,7 +7,7 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
     {
         protected override string SourcePipeline => nameof(Broadcasts);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => x => x[SiteKeys.CardData];
 
         protected override Config<NormalizedPath> Destination =>
             Config.FromDocument(doc => (NormalizedPath)$"data/broadcasts/{doc.Source.FileName.ChangeExtension(".json")}");

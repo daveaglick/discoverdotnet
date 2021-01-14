@@ -7,15 +7,15 @@ namespace DiscoverDotnet.Pipelines.Projects
     {
         protected override string SourcePipeline => nameof(Projects);
 
-        protected override Func<IDocument, bool> Predicate => x => x.ContainsKey("Donations");
+        protected override Func<IDocument, bool> Predicate => x => x.ContainsKey(SiteKeys.Donations);
 
         protected override Func<IDocument, object> Data =>
             doc => doc.FilterMetadata(
-                "Title",
-                "Website",
-                "NuGet",
-                "SourceCode",
-                "Donations");
+                SiteKeys.Title,
+                SiteKeys.Website,
+                SiteKeys.NuGet,
+                SiteKeys.SourceCode,
+                SiteKeys.Donations);
 
         protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/donations.json";
     }

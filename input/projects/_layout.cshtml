@@ -4,68 +4,68 @@
 
 <h5 class="mb-2 accent-script text-secondary" style="line-height: 0">Project</h5>
 <h1 class="mb-0 font-weight-bold display-4">
-    @Model.GetString("Title")
+    @Model.GetString(SiteKeys.Title)
 </h1>
 <div class="mt-2">
-    @if(Model.GetBool("Platform"))
+    @if(Model.GetBool(SiteKeys.Platform))
     {
         <b-badge variant="dark" href="/projects/?filter-netplatform" class="mr-1">.NET Platform</b-badge>
     }
-    @if(Model.GetBool("Microsoft"))
+    @if(Model.GetBool(SiteKeys.Microsoft))
     {
         <b-badge variant="success" href="/projects/?filter-microsoft" class="mr-1">Microsoft</b-badge>
     }
-    @if(Model.GetBool("Foundation"))
+    @if(Model.GetBool(SiteKeys.Foundation))
     {
         <b-badge variant="primary" href="/projects/?filter-netfoundation" class="mr-1">.NET Foundation</b-badge>
     }
-    @if(Model.ContainsKey("Tags"))
+    @if(Model.ContainsKey(SiteKeys.Tags))
     {
-        foreach(string tag in Model.GetList<string>("Tags"))
+        foreach(string tag in Model.GetList<string>(SiteKeys.Tags))
         {
             <span class="mr-1"><a href="/projects/?filter-tags=@(tag)"><i class="fas fa-tag"></i> @tag</a></span>
         }
     }
 </div>
-<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/projects/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/projects/@(Model.GetString(SiteKeys.Key)).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
-@if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
+@if(!string.IsNullOrWhiteSpace(@Model.GetString(SiteKeys.Description)))
 {
     <b-card class="mb-4">
-        <p v-pre class="lead mb-0">@Model.GetString("Description")</p>
+        <p v-pre class="lead mb-0">@Model.GetString(SiteKeys.Description)</p>
     </b-card>
 }
 
 @RenderBody()
 
 @{
-    string package = Model.GetString("NuGet");
+    string package = Model.GetString(SiteKeys.NuGet);
 }
 
 <b-row>
     <b-col md="9" order="2" order-md="1">
         <body-tabs>
-            @if(Model.ContainsKey("Readme"))
+            @if(Model.ContainsKey(SiteKeys.Readme))
             {
                 <b-tab title="Readme" class="mt-4" active>
                     <b-card v-pre>
-                        @Html.Raw(Model.GetString("Readme"))
+                        @Html.Raw(Model.GetString(SiteKeys.Readme))
                     </b-card>
                 </b-tab>
             }
-            @if(Model.Get<int>("OpenIssuesCount") > 0)
+            @if(Model.Get<int>(SiteKeys.OpenIssuesCount) > 0)
             {
                 <b-tab title="Issues">
-                    <issues issue-json="/data/issues/projects/@(Model.GetString("Key")).json" class="mt-4"></issues>
+                    <issues issue-json="/data/issues/projects/@(Model.GetString(SiteKeys.Key)).json" class="mt-4"></issues>
                 </b-tab>
             }
-            @if(Model.ContainsKey("NuGetPackages"))
+            @if(Model.ContainsKey(SiteKeys.NuGetPackages))
             {
                 <b-tab title="Packages">
-                    @if(Model.ContainsKey("NuGetPackages"))
+                    @if(Model.ContainsKey(SiteKeys.NuGetPackages))
                     {
                         <h2 class="my-4">NuGet</h2>
-                        foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
+                        foreach(Package packageData in Model.GetList<Package>(SiteKeys.NuGetPackages))
                         {
                             <b-card no-body class="mb-4">
                                 <b-card-body>
@@ -123,22 +123,22 @@
         </body-tabs>
     </b-col>
     <b-col md="3" order="1" order-md="2">        
-        @if(Model.ContainsKey("StargazersCount"))
+        @if(Model.ContainsKey(SiteKeys.StargazersCount))
         {
             <b-card no-body class="mb-4">
                 <b-card-body>
                     <b-row class="text-center">
                         <b-col>
                             <div><i class="fas fa-star"></i></div>
-                            <h5>@Model.GetString("StargazersCount")</h5>
+                            <h5>@Model.GetString(SiteKeys.StargazersCount)</h5>
                         </b-col>
                         <b-col>
                             <div><i class="fas fa-code-branch"></i></div>
-                            <h5>@Model.GetString("ForksCount")</h5>
+                            <h5>@Model.GetString(SiteKeys.ForksCount)</h5>
                         </b-col>
                         <b-col>
                             <div><i class="fas fa-bug"></i></div>
-                            <h5>@Model.GetString("OpenIssuesCount")</h5>
+                            <h5>@Model.GetString(SiteKeys.OpenIssuesCount)</h5>
                         </b-col>
                     </b-row>
                 </b-card-body>
@@ -147,13 +147,13 @@
         <b-card no-body class="mb-4">
             <b-card-body>
                 @{
-					string image = Model.GetString("Image");
+					string image = Model.GetString(SiteKeys.Image);
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
 					}
 
-                    string website = Model.GetString("Website");
+                    string website = Model.GetString(SiteKeys.Website);
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
@@ -164,7 +164,7 @@
                         </p>
                     }    
 
-                    string docs = Model.GetString("Docs");
+                    string docs = Model.GetString(SiteKeys.Docs);
                     if(!string.IsNullOrWhiteSpace(docs))
                     {
                         <h5>
@@ -175,7 +175,7 @@
                         </p>
                     }    
 
-                    string sourceCode = Model.GetString("SourceCode");
+                    string sourceCode = Model.GetString(SiteKeys.SourceCode);
                     if(!string.IsNullOrWhiteSpace(sourceCode))
                     {
                         <h5>
@@ -186,7 +186,7 @@
                         </p>
                     }
 
-                    string twitter = Model.GetString("Twitter");
+                    string twitter = Model.GetString(SiteKeys.Twitter);
                     if(!string.IsNullOrWhiteSpace(twitter))
                     {
                         <h5>
@@ -197,7 +197,7 @@
                         </p>
                     }
 
-                    string chat = Model.GetString("Chat");
+                    string chat = Model.GetString(SiteKeys.Chat);
                     if(!string.IsNullOrWhiteSpace(chat))
                     {
                         <h5>
@@ -208,13 +208,13 @@
                         </p>
                     }
 
-                    if(Model.ContainsKey("NuGetPackages"))
+                    if(Model.ContainsKey(SiteKeys.NuGetPackages))
                     {
                         <h5>
                             <span class="fa fa-download"></span> NuGet
                         </h5>
                         <div class="mb-2">
-                            @foreach(Package packageData in Model.GetList<Package>("NuGetPackages"))
+                            @foreach(Package packageData in Model.GetList<Package>(SiteKeys.NuGetPackages))
                             {
                                 <div>
                                     <a href="https://www.nuget.org/packages/@(packageData.Id)">@(packageData.Id)</a>
@@ -224,9 +224,9 @@
                         </div>
                     }
                 }
-                @if(Model.ContainsKey("Donations"))
+                @if(Model.ContainsKey(SiteKeys.Donations))
                 {
-                    string donations = Model.GetString("Donations");
+                    string donations = Model.GetString(SiteKeys.Donations);
                     if(!string.IsNullOrWhiteSpace(donations))
                     {
                         <h5>This project accepts donations</h5>
@@ -241,23 +241,23 @@
             </b-card-body>
         </b-card>
 
-        @if(Model.ContainsKey("TotalDownloads"))
+        @if(Model.ContainsKey(SiteKeys.TotalDownloads))
         {
             <b-card header-text-variant="white" header-bg-variant="dark" class="mb-4">
                 <div slot="header">NuGet Statistics</div>
 
                 <h5>Downloads</h5>
                 <p>
-                    <span>@(Model.GetString("TotalDownloads")) total downloads</span><br/>
-                    <span>@(Model.GetString("PerDayDownloads")) downloads per day</span>
+                    <span>@(Model.GetString(SiteKeys.TotalDownloads)) total downloads</span><br/>
+                    <span>@(Model.GetString(SiteKeys.PerDayDownloads)) downloads per day</span>
                 </p>
 
                 <h5>Latest Version</h5>
                 <p>
-                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.GetString("LatestVersion"))">@(Model.GetString("LatestVersion"))</a></span><br/>
-                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.GetString("LatestVersion"))">Direct Download</a></span><br/>
-                    <span>@(Model.GetString("LatestVersionDownloads")) downloads</span><br/>
-                    <span>Last updated @(Model.GetDateTime("LatestVersionLastUpdated").ToString("MMMM d, yyyy"))</span>
+                    <span class="font-weight-bold"><a href="https://www.nuget.org/packages/@(package)/@(Model.GetString(SiteKeys.LatestVersion))">@(Model.GetString(SiteKeys.LatestVersion))</a></span><br/>
+                    <span class="small"><a href="https://www.nuget.org/api/v2/package/@(package)/@(Model.GetString(SiteKeys.LatestVersion))">Direct Download</a></span><br/>
+                    <span>@(Model.GetString(SiteKeys.LatestVersionDownloads)) downloads</span><br/>
+                    <span>Last updated @(Model.GetDateTime(SiteKeys.LatestVersionLastUpdated).ToString("MMMM d, yyyy"))</span>
                 </p>
             </b-card>
         }

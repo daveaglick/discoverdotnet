@@ -19,11 +19,11 @@ namespace DiscoverDotnet.Pipelines.Issues
                     Config.FromContext(ctx => ctx.Outputs
                         .FromPipeline(nameof(Issues))
                         .SelectMany(doc => doc
-                            .GetList<Issue>("Issues")
+                            .GetList<Issue>(SiteKeys.Issues)
                             .Where(i => i.Recent)
                             .Select(i => new
                             {
-                                ProjectKey = doc.GetString("ProjectKey"),
+                                ProjectKey = doc.GetString(SiteKeys.ProjectKey),
                                 CreatedAt = i.CreatedAt,
                                 Link = i.Link,
                                 Title = i.Title

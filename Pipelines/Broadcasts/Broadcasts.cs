@@ -28,22 +28,22 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
                 new SetContent(string.Empty),
                 new GetFeedData(),
                 new SetDestination(Config.FromDocument(x => (NormalizedPath)$"broadcasts/{x.Source.FileName.ChangeExtension("html")}")),
-                new SetMetadata("Key", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new SetMetadata("Link", Config.FromDocument((d, c) => c.GetLink(d))),
-                new SetMetadata("Language", Config.FromDocument(x => x.GetString("Language", "English"))),
-                new SetMetadata("CardData", Config.FromDocument(x => x.FilterMetadata(
-                    "Key",
-                    "Title",
-                    "Image",
-                    "Link",
-                    "Description",
-                    "Author",
-                    "Website",
-                    "Feed",
-                    "Comment",
-                    "Language",
-                    "LastPublished",
-                    "NewestFeedItem")))
+                new SetMetadata(SiteKeys.Key, Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new SetMetadata(SiteKeys.Link, Config.FromDocument((d, c) => c.GetLink(d))),
+                new SetMetadata(SiteKeys.Language, Config.FromDocument(x => x.GetString(SiteKeys.Language, "English"))),
+                new SetMetadata(SiteKeys.CardData, Config.FromDocument(x => x.FilterMetadata(
+                    SiteKeys.Key,
+                    SiteKeys.Title,
+                    SiteKeys.Image,
+                    SiteKeys.Link,
+                    SiteKeys.Description,
+                    SiteKeys.Author,
+                    SiteKeys.Website,
+                    SiteKeys.Feed,
+                    SiteKeys.Comment,
+                    SiteKeys.Language,
+                    SiteKeys.LastPublished,
+                    SiteKeys.NewestFeedItem)))
             };
 
             PostProcessModules = new ModuleList

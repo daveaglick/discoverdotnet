@@ -9,10 +9,10 @@ namespace DiscoverDotnet.Pipelines.Issues
 
         protected override Func<IDocument, object> Data =>
             doc => doc.FilterMetadata(
-                "ProjectKey",
-                "IssuesCount",
-                "RecentIssuesCount",
-                "HelpWantedIssuesCount");
+                SiteKeys.ProjectKey,
+                SiteKeys.IssuesCount,
+                SiteKeys.RecentIssuesCount,
+                SiteKeys.HelpWantedIssuesCount);
 
         protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/issues/project-counts.json";
     }

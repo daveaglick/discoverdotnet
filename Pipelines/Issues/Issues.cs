@@ -26,9 +26,9 @@ namespace DiscoverDotnet.Pipelines.Issues
                 new ParseYaml(),
                 new SetContent(string.Empty),
                 new GetIssueGitHubData(),
-                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey("Issues"))),
-                new SetMetadata("ProjectKey", Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
-                new GenerateJson(Config.FromDocument(doc => doc["Issues"]))
+                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey(SiteKeys.Issues))),
+                new SetMetadata(SiteKeys.ProjectKey, Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
+                new GenerateJson(Config.FromDocument(doc => doc[SiteKeys.Issues]))
                     .WithCamelCase(),
                 new MinifyJs(),
                 new SetDestination(Config.FromDocument(x => (NormalizedPath)$"data/issues/projects/{x.Source.FileName.ChangeExtension(".json")}"))

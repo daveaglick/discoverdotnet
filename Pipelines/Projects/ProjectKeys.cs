@@ -9,9 +9,9 @@ namespace DiscoverDotnet.Pipelines.Projects
 
         protected override Func<IDocument, object> Data =>
             doc => doc.FilterMetadata(
-                "Key",
-                "Title",
-                "Link");
+                SiteKeys.Key,
+                SiteKeys.Title,
+                SiteKeys.Link);
 
         protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/project-keys.json";
     }

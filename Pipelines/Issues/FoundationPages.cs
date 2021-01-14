@@ -10,10 +10,10 @@ namespace DiscoverDotnet.Pipelines.Issues
         {
         }
 
-        protected override Func<IDocument, bool> DocumentPredicate => doc => doc.GetBool("Foundation");
+        protected override Func<IDocument, bool> DocumentPredicate => doc => doc.GetBool(SiteKeys.Foundation);
 
         protected override Action<int, TotalIssueCounts> SetTotal => (count, totals) => totals.Foundation = count;
 
-        protected override Config<NormalizedPath> Destination => Config.FromDocument(doc => (NormalizedPath)$"data/issues/foundation/{doc.GetInt("Page")}.json");
+        protected override Config<NormalizedPath> Destination => Config.FromDocument(doc => (NormalizedPath)$"data/issues/foundation/{doc.GetInt(SiteKeys.Page)}.json");
     }
 }

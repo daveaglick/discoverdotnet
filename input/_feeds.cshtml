@@ -7,13 +7,13 @@
   </head>
   <body>
     <outline text="Discover .NET Feeds" title="Discover .NET Feeds">
-      @foreach(IDocument blog in Outputs.FromPipeline("Blogs"))
+      @foreach(IDocument blog in Outputs.FromPipeline(nameof(DiscoverDotnet.Pipelines.Blogs.Blogs)))
       {
-        <outline type="rss" text="@blog["Title"]" title="@blog["Title"]" xmlUrl="@blog["Feed"]" />
+        <outline type="rss" text="@blog[SiteKeys.Title]" title="@blog[SiteKeys.Title]" xmlUrl="@blog[SiteKeys.Feed]" />
       }
-      @foreach(IDocument broadcast in Outputs.FromPipeline("Broadcasts"))
+      @foreach(IDocument broadcast in Outputs.FromPipeline(nameof(DiscoverDotnet.Pipelines.Broadcasts.Broadcasts)))
       {
-        <outline type="rss" text="@broadcast["Title"]" title="@broadcast["Title"]" xmlUrl="@broadcast["Feed"]" />
+        <outline type="rss" text="@broadcast[SiteKeys.Title]" title="@broadcast[SiteKeys.Title]" xmlUrl="@broadcast[SiteKeys.Feed]" />
       }
     </outline>
   </body>

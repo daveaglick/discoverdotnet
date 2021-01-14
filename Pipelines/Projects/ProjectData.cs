@@ -7,7 +7,7 @@ namespace DiscoverDotnet.Pipelines.Projects
     {
         protected override string SourcePipeline => nameof(Projects);
 
-        protected override Func<IDocument, object> Data => x => x["CardData"];
+        protected override Func<IDocument, object> Data => x => x[SiteKeys.CardData];
 
         protected override Config<NormalizedPath> Destination =>
             Config.FromDocument(x => (NormalizedPath)$"data/projects/{x.Source.FileName.ChangeExtension("json")}");

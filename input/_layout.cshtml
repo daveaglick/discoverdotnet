@@ -16,12 +16,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         @{
-            string title = Model.GetString("Title");
+            string title = Model.GetString(SiteKeys.Title);
             title = $"Discover .NET{(string.IsNullOrWhiteSpace(title) ? "" : " - " + title)}";
-            string description = Model.GetString("Description");
+            string description = Model.GetString(SiteKeys.Description);
             description = string.IsNullOrWhiteSpace(description)
                 ? "Awesome .NET open source & community resources" : description;
-            string image = Model.GetString("Image");
+            string image = Model.GetString(SiteKeys.Image);
             image = string.IsNullOrWhiteSpace(image)
                 ? "https://discoverdot.net/assets/d.png" : image;
         }

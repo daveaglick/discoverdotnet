@@ -7,7 +7,7 @@ namespace DiscoverDotnet.Pipelines.Blogs
     {
         protected override string SourcePipeline => nameof(Blogs);
 
-        protected override Func<IDocument, object> Data => doc => doc["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc[SiteKeys.CardData];
 
         protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/blogs.json";
     }

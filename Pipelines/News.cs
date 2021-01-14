@@ -25,12 +25,12 @@ namespace DiscoverDotnet.Pipelines
                 new GenerateJson(
                     Config.FromContext(c => c.Outputs
                         .FromPipelines(nameof(Posts), nameof(Episodes))
-                        .SelectMany(d => d.Get<IEnumerable<FeedItem>>("FeedItems")
+                        .SelectMany(d => d.Get<IEnumerable<FeedItem>>(SiteKeys.FeedItems)
                             .Where(p => p.Recent)
                             .Select(p => new
                             {
-                                FeedLink = d.GetString("Link"),
-                                FeedTitle = d.GetString("Title"),
+                                FeedLink = d.GetString(SiteKeys.Link),
+                                FeedTitle = d.GetString(SiteKeys.Title),
                                 p.Published,
                                 p.Link,
                                 p.Title,

@@ -21,17 +21,17 @@ namespace DiscoverDotnet.Pipelines.Issues
                         .FromPipeline(nameof(Issues))
                         .Where(doc => DocumentPredicate == null || DocumentPredicate(doc))
                         .SelectMany(doc => doc
-                            .GetList<Issue>("Issues")
+                            .GetList<Issue>(SiteKeys.Issues)
                             .Where(i => IssuePredicate == null || IssuePredicate(i))
                             .Select(i => new PagedIssue(i, doc)))
                         .OrderByDescending(x => x.CreatedAt)
                         .Partition(24, count => SetTotal(count, totals))
                         .Select(x => ctx.CreateDocument(new MetadataItems
                         {
-                            { "Page", x.Key },
-                            { "Issues", x.ToList() }
+                            { SiteKeys.Page, x.Key },
+                            { SiteKeys.Issues, x.ToList() }
                         })))),
-                new GenerateJson(Config.FromDocument(doc => doc["Issues"]))
+                new GenerateJson(Config.FromDocument(doc => doc[SiteKeys.Issues]))
                     .WithCamelCase(),
                 new MinifyJs(),
                 new SetDestination(Destination)

@@ -35,6 +35,12 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
+            // Don't get data if we're justt validating
+            if (context.Settings.GetBool(SiteKeys.Validate))
+            {
+                return input.Yield();
+            }
+
             ConcurrentDictionary<string, object> metadata = new ConcurrentDictionary<string, object>();
             await GetProjectGitHubDataAsync(input, context, metadata);
             await GetProjectNuGetDataAsync(input, context, metadata);
@@ -44,7 +50,7 @@ namespace DiscoverDotnet.Modules
         private async Task GetProjectGitHubDataAsync(IDocument input, IExecutionContext context, ConcurrentDictionary<string, object> metadata)
         {
             // Extract the GitHub owner and name
-            if (Uri.TryCreate(input.GetString("SourceCode"), UriKind.Absolute, out Uri sourceCode)
+            if (Uri.TryCreate(input.GetString(SiteKeys.SourceCode), UriKind.Absolute, out Uri sourceCode)
                 && sourceCode.Host.EndsWith("github.com", StringComparison.OrdinalIgnoreCase))
             {
                 string owner = sourceCode.Segments[1].Trim('/');
@@ -55,21 +61,21 @@ namespace DiscoverDotnet.Modules
                 Repository repository = await _gitHub.GetAsync(x => x.Repository.Get(owner, name), context);
 
                 // Get the metadata
-                metadata.TryAdd("StargazersCount", repository.StargazersCount);
-                metadata.TryAdd("ForksCount", repository.ForksCount);
-                metadata.TryAdd("OpenIssuesCount", repository.OpenIssuesCount);
-                metadata.TryAdd("PushedAt", repository.PushedAt);
-                metadata.TryAdd("CreatedAt", repository.CreatedAt);
-                metadata.TryAdd("Title", repository.Name);
-                metadata.TryAdd("Description", repository.Description);
-                metadata.TryAdd("Website", repository.Homepage);
+                metadata.TryAdd(SiteKeys.StargazersCount, repository.StargazersCount);
+                metadata.TryAdd(SiteKeys.ForksCount, repository.ForksCount);
+                metadata.TryAdd(SiteKeys.OpenIssuesCount, repository.OpenIssuesCount);
+                metadata.TryAdd(SiteKeys.PushedAt, repository.PushedAt);
+                metadata.TryAdd(SiteKeys.CreatedAt, repository.CreatedAt);
+                metadata.TryAdd(SiteKeys.Title, repository.Name);
+                metadata.TryAdd(SiteKeys.Description, repository.Description);
+                metadata.TryAdd(SiteKeys.Website, repository.Homepage);
                 if (GitHubManager.MicrosoftOwners.Contains(owner))
                 {
-                    metadata.GetOrAdd("Microsoft", true);
+                    metadata.GetOrAdd(SiteKeys.Microsoft, true);
                 }
                 if (_foundation.IsInFoundation(owner, name))
                 {
-                    metadata.GetOrAdd("Foundation", true);
+                    metadata.GetOrAdd(SiteKeys.Foundation, true);
                 }
 
                 // Get the readme (will throw if there's no readme)
@@ -79,7 +85,7 @@ namespace DiscoverDotnet.Modules
                     string readme = await _gitHub.GetAsync(x => x.Repository.Content.GetReadmeHtml(owner, name), context, false);
                     if (!string.IsNullOrEmpty(readme))
                     {
-                        metadata.TryAdd("Readme", readme);
+                        metadata.TryAdd(SiteKeys.Readme, readme);
                     }
                 }
                 catch (Exception ex)
@@ -92,7 +98,7 @@ namespace DiscoverDotnet.Modules
         private async Task GetProjectNuGetDataAsync(IDocument input, IExecutionContext context, ConcurrentDictionary<string, object> metadata)
         {
             List<Package> packageData = new List<Package>();
-            IReadOnlyList<string> packages = input.GetList("NuGet", Array.Empty<string>());
+            IReadOnlyList<string> packages = input.GetList(SiteKeys.NuGet, Array.Empty<string>());
             foreach (string package in packages.Where(x => !string.IsNullOrWhiteSpace(x)))
             {
                 context.LogInformation($"Getting NuGet data for {package}");

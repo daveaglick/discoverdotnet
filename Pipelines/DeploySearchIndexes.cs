@@ -24,11 +24,11 @@ namespace DiscoverDotnet.Pipelines
                     "projects",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Key",
-                        "Title",
-                        "Description",
-                        "StargazersCount",
-                        "Tags"
+                        SiteKeys.Key,
+                        SiteKeys.Title,
+                        SiteKeys.Description,
+                        SiteKeys.StargazersCount,
+                        SiteKeys.Tags
                     })),
 
                 // Blogs
@@ -39,21 +39,21 @@ namespace DiscoverDotnet.Pipelines
                     "blogs",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Key",
-                        "Title",
-                        "Description"
+                        SiteKeys.Key,
+                        SiteKeys.Title,
+                        SiteKeys.Description
                     })),
 
                 // Posts
                 new ReplaceDocuments(nameof(Posts)),
-                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey("FeedItems") && doc.GetString("Language") == "English")),
+                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey(SiteKeys.FeedItems) && doc.GetString(SiteKeys.Language) == "English")),
                 new ExecuteConfig(Config.FromDocument((doc, ctx) => doc
-                    .Get<IEnumerable<FeedItem>>("FeedItems")
+                    .Get<IEnumerable<FeedItem>>(SiteKeys.FeedItems)
                     .Select(x => ctx.CreateDocument(new MetadataItems
                     {
-                        { "Title", x.Title },
-                        { "Link", x.Link },
-                        { "Published", x.Published }
+                        { SiteKeys.Title, x.Title },
+                        { SiteKeys.Link, x.Link },
+                        { SiteKeys.Published, x.Published }
                     })))),
                 new UpdateSearchIndex(
                     ApplicationId,
@@ -61,9 +61,9 @@ namespace DiscoverDotnet.Pipelines
                     "posts",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Title",
-                        "Link",
-                        "Published"
+                        SiteKeys.Title,
+                        SiteKeys.Link,
+                        SiteKeys.Published
                     })),
 
                 // Broadcasts
@@ -74,21 +74,21 @@ namespace DiscoverDotnet.Pipelines
                     "broadcasts",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Key",
-                        "Title",
-                        "Description"
+                        SiteKeys.Key,
+                        SiteKeys.Title,
+                        SiteKeys.Description
                     })),
 
                 // Episodes
                 new ReplaceDocuments(nameof(Episodes)),
-                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey("FeedItems") && doc.GetString("Language") == "English")),
+                new FilterDocuments(Config.FromDocument(doc => doc.ContainsKey(SiteKeys.FeedItems) && doc.GetString(SiteKeys.Language) == "English")),
                 new ExecuteConfig(Config.FromDocument((doc, ctx) => doc
-                    .Get<IEnumerable<FeedItem>>("FeedItems")
+                    .Get<IEnumerable<FeedItem>>(SiteKeys.FeedItems)
                     .Select(x => ctx.CreateDocument(new MetadataItems
                     {
-                        { "Title", x.Title },
-                        { "Link", x.Link },
-                        { "Published", x.Published }
+                        { SiteKeys.Title, x.Title },
+                        { SiteKeys.Link, x.Link },
+                        { SiteKeys.Published, x.Published }
                     })))),
                 new UpdateSearchIndex(
                     ApplicationId,
@@ -96,9 +96,9 @@ namespace DiscoverDotnet.Pipelines
                     "episodes",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Title",
-                        "Link",
-                        "Published"
+                        SiteKeys.Title,
+                        SiteKeys.Link,
+                        SiteKeys.Published
                     })),
 
                 // Resources
@@ -109,10 +109,10 @@ namespace DiscoverDotnet.Pipelines
                     "resources",
                     Config.FromValue<IEnumerable<string>>(new[]
                     {
-                        "Website",
-                        "Title",
-                        "Description",
-                        "Tags"
+                        SiteKeys.Website,
+                        SiteKeys.Title,
+                        SiteKeys.Description,
+                        SiteKeys.Tags
                     })),
             */
             };

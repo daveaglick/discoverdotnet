@@ -26,7 +26,13 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
-            string feed = input.GetString("Feed");
+            // Don't get data if we're justt validating
+            if (context.Settings.GetBool(SiteKeys.Validate))
+            {
+                return null;
+            }
+
+            string feed = input.GetString(SiteKeys.Feed);
             if (!string.IsNullOrEmpty(feed))
             {
                 try
@@ -41,7 +47,7 @@ namespace DiscoverDotnet.Modules
                     List<ISyndicationItem> items = new List<ISyndicationItem>();
                     using (HttpClient httpClient = context.CreateHttpClient())
                     {
-                        httpClient.DefaultRequestHeaders.Add("User-Agent", "Wyam");
+                        httpClient.DefaultRequestHeaders.Add("User-Agent", nameof(Statiq));
 
                         using (Stream stream = await httpClient.GetStreamAsync(feed))
                         {
@@ -120,37 +126,37 @@ namespace DiscoverDotnet.Modules
                             .OrderByDescending(x => x.Published)
                             .Take(50) // Only take the 50 most recent items
                             .ToArray();
-                        metadata.Add("FeedItems", feedItems);
-                        metadata.Add("LastPublished", feedItems.First().Published);
-                        metadata.Add("NewestFeedItem", feedItems[0]);
+                        metadata.Add(SiteKeys.FeedItems, feedItems);
+                        metadata.Add(SiteKeys.LastPublished, feedItems.First().Published);
+                        metadata.Add(SiteKeys.NewestFeedItem, feedItems[0]);
                     }
-                    if (!input.ContainsKey("Website") && website != null)
+                    if (!input.ContainsKey(SiteKeys.Website) && website != null)
                     {
-                        metadata.Add("Website", website.ToString());
+                        metadata.Add(SiteKeys.Website, website.ToString());
                     }
-                    if (!input.ContainsKey("Title"))
+                    if (!input.ContainsKey(SiteKeys.Title))
                     {
                         if (!string.IsNullOrEmpty(title))
                         {
-                            metadata.Add("Title", title);
+                            metadata.Add(SiteKeys.Title, title);
                         }
                         else
                         {
                             string generatedTitle = GenerateTitleFromFeedName(feed);
-                            metadata.Add("Title", generatedTitle);
+                            metadata.Add(SiteKeys.Title, generatedTitle);
                         }
                     }
-                    if (!input.ContainsKey("Author") && !string.IsNullOrEmpty(author))
+                    if (!input.ContainsKey(SiteKeys.Author) && !string.IsNullOrEmpty(author))
                     {
-                        metadata.Add("Author", author);
+                        metadata.Add(SiteKeys.Author, author);
                     }
-                    if (!input.ContainsKey("Description") && !string.IsNullOrEmpty(description))
+                    if (!input.ContainsKey(SiteKeys.Description) && !string.IsNullOrEmpty(description))
                     {
-                        metadata.Add("Description", description);
+                        metadata.Add(SiteKeys.Description, description);
                     }
-                    if (!input.ContainsKey("Image") && !string.IsNullOrEmpty(image))
+                    if (!input.ContainsKey(SiteKeys.Image) && !string.IsNullOrEmpty(image))
                     {
-                        metadata.Add("Image", image);
+                        metadata.Add(SiteKeys.Image, image);
                     }
                     return input.Clone(metadata).Yield();
                 }
@@ -160,6 +166,7 @@ namespace DiscoverDotnet.Modules
                 }
             }
 
+            // Return null so this feed is not included
             return null;
         }
 

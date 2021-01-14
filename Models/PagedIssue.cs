@@ -17,7 +17,7 @@ namespace DiscoverDotnet.Models
         public PagedIssue(Issue issue, IDocument document)
         {
             _issue = issue;
-            ProjectKey = document.GetString("ProjectKey");
+            ProjectKey = document.GetString(SiteKeys.ProjectKey);
         }
     }
 }

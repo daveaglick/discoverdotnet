@@ -15,6 +15,6 @@ namespace DiscoverDotnet.Pipelines.Issues
 
         protected override Action<int, TotalIssueCounts> SetTotal => (count, totals) => totals.HelpWanted = count;
 
-        protected override Config<NormalizedPath> Destination => Config.FromDocument(doc => (NormalizedPath)$"data/issues/help-wanted/{doc.GetInt("Page")}.json");
+        protected override Config<NormalizedPath> Destination => Config.FromDocument(doc => (NormalizedPath)$"data/issues/help-wanted/{doc.GetInt(SiteKeys.Page)}.json");
     }
 }

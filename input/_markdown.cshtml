@@ -3,10 +3,10 @@
 }
 
 <b-container>
-    @if(Model.ContainsKey("Title"))
+    @if(Model.ContainsKey(SiteKeys.Title))
     {
         <h1 class="font-weight-bold display-4">
-            @Model.GetString("Title")
+            @Model.GetString(SiteKeys.Title)
         </h1>
     }
     <b-card>

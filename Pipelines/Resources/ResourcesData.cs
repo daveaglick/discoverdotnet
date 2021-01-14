@@ -7,7 +7,7 @@ namespace DiscoverDotnet.Pipelines.Resources
     {
         protected override string SourcePipeline => nameof(Resources);
 
-        protected override Func<IDocument, object> Data => doc => doc["CardData"];
+        protected override Func<IDocument, object> Data => doc => doc[SiteKeys.CardData];
 
         protected override Config<NormalizedPath> Destination => (NormalizedPath)"data/resources.json";
     }

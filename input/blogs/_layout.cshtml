@@ -4,14 +4,14 @@
 
 <h5 class="mb-0 accent-script text-secondary" style="line-height: 0">Blog</h5>
 <h1 class="font-weight-bold display-4">
-    @Model.GetString("Title")
+    @Model.GetString(SiteKeys.Title)
 </h1>
-<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/blogs/@(Model.GetString("Key")).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
+<div class="mt-2 mb-4 small"><a href="https://github.com/daveaglick/discoverdotnet/edit/master/data/blogs/@(Model.GetString(SiteKeys.Key)).yml"><i class="fas fa-pencil-alt"></i> Edit This Entry</a></div>
 
-@if(!string.IsNullOrWhiteSpace(@Model.GetString("Description")))
+@if(!string.IsNullOrWhiteSpace(@Model.GetString(SiteKeys.Description)))
 {
     <b-card class="mb-4">
-        <p v-pre class="lead mb-0">@Model.GetString("Description")</p>
+        <p v-pre class="lead mb-0">@Model.GetString(SiteKeys.Description)</p>
     </b-card>
 }
 
@@ -19,19 +19,19 @@
 
 <b-row>
     <b-col md="9" order="2" order-md="1">
-		<feed-items feed-item-json="/data/posts/@(Model.GetString("Key")).json" icon="fa-align-left"></feed-items>
+		<feed-items feed-item-json="/data/posts/@(Model.GetString(SiteKeys.Key)).json" icon="fa-align-left"></feed-items>
     </b-col>
     <b-col md="3" order="1" order-md="2">
 		<b-card no-body class="mb-4">
             <b-card-body>
                 @{
-					string image = Model.GetString("Image");
+					string image = Model.GetString(SiteKeys.Image);
 					if(!string.IsNullOrWhiteSpace(image))
 					{
 						<b-img src="@(image)" fluid class="mb-4"></b-img>
 					}
 
-                    string website = Model.GetString("Website");
+                    string website = Model.GetString(SiteKeys.Website);
                     if(!string.IsNullOrWhiteSpace(website))
                     {
                         <h5>
@@ -42,7 +42,7 @@
                         </p>
                     }    
 
-                    string feed = Model.GetString("Feed");
+                    string feed = Model.GetString(SiteKeys.Feed);
                     if(!string.IsNullOrWhiteSpace(feed))
                     {
                         <h5>
@@ -53,7 +53,7 @@
                         </p>
                     }    
 
-                    string author = Model.GetString("Author");
+                    string author = Model.GetString(SiteKeys.Author);
                     if(!string.IsNullOrWhiteSpace(author))
                     {
                         <h5>
@@ -62,7 +62,7 @@
                         <p>@author</p>
                     }     
                     
-                    string language = Model.GetString("Language");
+                    string language = Model.GetString(SiteKeys.Language);
                     if(!string.IsNullOrWhiteSpace(language))
                     {
                         <h5>
