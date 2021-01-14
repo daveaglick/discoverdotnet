@@ -1,0 +1,9 @@
+SourceCode: https://github.com/adrianiftode/FluentAssertions.Web
+NuGet:
+  - FluentAssertions.Web
+Language: C#
+Title: Fluent Assertions Web
+Docs: https://github.com/adrianiftode/FluentAssertions.Web/blob/master/readme.md
+Tags:
+  - Validation
+  - Testing
