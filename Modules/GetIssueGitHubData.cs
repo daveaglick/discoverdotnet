@@ -18,6 +18,12 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task BeforeExecutionAsync(IExecutionContext context)
         {
+            // Don't get data if we're just validating
+            if (context.Settings.GetBool(SiteKeys.Validate))
+            {
+                return;
+            }
+
             if (_gitHub == null)
             {
                 _gitHub = context.GetRequiredService<GitHubManager>();
@@ -31,7 +37,7 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
-            // Don't get data if we're justt validating
+            // Don't get data if we're just validating
             if (context.Settings.GetBool(SiteKeys.Validate))
             {
                 return input.Yield();
