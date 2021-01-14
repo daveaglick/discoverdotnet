@@ -1,0 +1,16 @@
+name: Validate Site
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.100' # SDK Version to use.
+    - run: dotnet run -- -s Validate=true
