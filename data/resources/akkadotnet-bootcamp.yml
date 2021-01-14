@@ -1,0 +1,10 @@
+Title: Akka.NET Bootcamp
+Website: http://learnakka.net/
+Description: Free step-by-step course for learning Akka.NET via do-it-yourself methods. Requires an email address.
+Image: https://petabridge.com/images/bootcamp_logo.png
+Tags:
+  - akka.net
+  - actor systems
+  - concurrency
+  - reactive systems
+  - distributed systems
