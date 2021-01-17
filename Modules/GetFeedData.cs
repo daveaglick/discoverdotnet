@@ -16,7 +16,13 @@ namespace DiscoverDotnet.Modules
 {
     public class GetFeedData : ParallelModule
     {
+        private readonly bool _truncateDescription;
         private DateTimeOffset _recent;
+
+        public GetFeedData(bool truncateDescription)
+        {
+            _truncateDescription = truncateDescription;
+        }
 
         protected override void BeforeExecution(IExecutionContext context)
         {
@@ -26,7 +32,7 @@ namespace DiscoverDotnet.Modules
 
         protected override async Task<IEnumerable<IDocument>> ExecuteInputAsync(IDocument input, IExecutionContext context)
         {
-            // Don't get data if we're justt validating
+            // Don't get data if we're just validating
             if (context.Settings.GetBool(SiteKeys.Validate))
             {
                 return null;
@@ -122,7 +128,7 @@ namespace DiscoverDotnet.Modules
                     if (items.Count > 0)
                     {
                         FeedItem[] feedItems = items
-                            .Select(x => new FeedItem(x, _recent, website))
+                            .Select(x => new FeedItem(x, _recent, website, _truncateDescription, context))
                             .OrderByDescending(x => x.Published)
                             .Take(50) // Only take the 50 most recent items
                             .ToArray();

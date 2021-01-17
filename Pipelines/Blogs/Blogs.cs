@@ -26,7 +26,7 @@ namespace DiscoverDotnet.Pipelines.Blogs
                 new LogMessage(Config.FromContext(ctx => $"Getting blog data for {ctx.Inputs.Length} blogs...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
-                new GetFeedData(),
+                new GetFeedData(true),
                 new SetDestination(Config.FromDocument(x => (NormalizedPath)$"blogs/{x.Source.FileName.ChangeExtension("html")}")),
                 new SetMetadata(SiteKeys.Key, Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata(SiteKeys.Link, Config.FromDocument((d, c) => c.GetLink(d))),

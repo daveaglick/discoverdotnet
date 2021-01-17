@@ -26,7 +26,7 @@ namespace DiscoverDotnet.Pipelines.Broadcasts
                 new LogMessage(Config.FromContext(ctx => $"Getting broadcast data for {ctx.Inputs.Length} broadcasts...")),
                 new ParseYaml(),
                 new SetContent(string.Empty),
-                new GetFeedData(),
+                new GetFeedData(false),
                 new SetDestination(Config.FromDocument(x => (NormalizedPath)$"broadcasts/{x.Source.FileName.ChangeExtension("html")}")),
                 new SetMetadata(SiteKeys.Key, Config.FromDocument(x => x.Source.FileNameWithoutExtension.FullPath)),
                 new SetMetadata(SiteKeys.Link, Config.FromDocument((d, c) => c.GetLink(d))),
