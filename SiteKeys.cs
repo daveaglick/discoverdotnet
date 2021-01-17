@@ -26,6 +26,7 @@ namespace DiscoverDotnet
         public const string LastPublished = nameof(LastPublished);
         public const string NewestFeedItem = nameof(NewestFeedItem);
         public const string FeedItems = nameof(FeedItems);
+        public const string FeedItem = nameof(FeedItem);
         public const string Foundation = nameof(Foundation);
         public const string Microsoft = nameof(Microsoft);
         public const string Platform = nameof(Platform);
