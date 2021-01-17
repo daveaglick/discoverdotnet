@@ -1,72 +1,73 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54470483-5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54470483-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-            gtag('config', 'UA-54470483-5');
-        </script>
+        gtag('config', 'UA-54470483-5');
+    </script>
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        @{
-            string title = Model.GetString(SiteKeys.Title);
-            title = $"Discover .NET{(string.IsNullOrWhiteSpace(title) ? "" : " - " + title)}";
-            string description = Model.GetString(SiteKeys.Description);
-            description = string.IsNullOrWhiteSpace(description)
-                ? "Awesome .NET open source & community resources" : description;
-            string image = Model.GetString(SiteKeys.Image);
-            image = string.IsNullOrWhiteSpace(image)
-                ? "https://discoverdot.net/assets/d.png" : image;
-        }
-        <title>@title</title>
-        <meta name="description" content="@description">
-        <meta property="og:title" content="@title">
-        <meta property="og:description" content="@description">
-        <meta property="og:image" content="@image">
-        <meta property="og:url" content="@(Context.GetLink(Document, true))">
-        <meta name="twitter:title" content="@title">
-        <meta name="twitter:description" content="@description">
-        <meta name="twitter:image" content="@image">
-        <meta name="twitter:card" content="summary_large_image">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1">
-        <meta name="msapplication-TileColor" content="#6f42c1">
-        <meta name="theme-color" content="#ffffff">
-        
-        <link href="/bootstrap/bootstrap.css" rel="stylesheet"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.css" rel="stylesheet"/>
-        <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Roboto+Mono:400,700|Roboto+Slab:100,700|Roboto:300,400,700" rel="stylesheet" data-no-mirror>
-        <link href="/assets/styles.css" rel="stylesheet"/>  
+    @{
+        string title = Model.GetString(SiteKeys.Title);
+        title = $"Discover .NET{(string.IsNullOrWhiteSpace(title) ? "" : " - " + title)}";
+        string description = Model.GetString(SiteKeys.Description);
+        description = string.IsNullOrWhiteSpace(description)
+            ? "Awesome .NET open source & community resources" : description;
+        string image = Model.GetString(SiteKeys.Image);
+        image = string.IsNullOrWhiteSpace(image)
+            ? "https://discoverdot.net/assets/d.png" : image;
+    }
+    <title>@title</title>
+    <meta name="description" content="@description">
+    <meta property="og:title" content="@title">
+    <meta property="og:description" content="@description">
+    <meta property="og:image" content="@image">
+    <meta property="og:url" content="@(Context.GetLink(Document, true))">
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@description">
+    <meta name="twitter:image" content="@image">
+    <meta name="twitter:card" content="summary_large_image">
 
-        <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/http-vue-loader@1.3.5"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/moment@2.20.1/moment.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6f42c1">
+    <meta name="msapplication-TileColor" content="#6f42c1">
+    <meta name="theme-color" content="#ffffff">
 
-        @RenderSection("Head", false)
+    <link href="/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Roboto+Mono:400,700|Roboto+Slab:100,700|Roboto:300,400,700" rel="stylesheet" data-no-mirror>
+    <link href="/assets/styles.css" rel="stylesheet" />
 
-        <script>
-            hljs.initHighlightingOnLoad();
-        </script>
-    </head>
+    <script src="https://cdn.jsdelivr.net/npm/es6-promise/dist/es6-promise.auto.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill@6.26.0/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-vue@2.0.0-rc.11/dist/bootstrap-vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/http-vue-loader@1.3.5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.20.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    @RenderSection("Head", false)
+
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
     <body>
         <div id="app" class="d-flex flex-column flex-nowrap h-100">
             <header class="mb-4">
@@ -115,8 +116,10 @@
                         <a href="https://twitter.com/discover_dotnet" class="text-light"><i class="fab fa-twitter"></i></a>
                     </div>
                     <div class="small">Data updated about every two hours</div>
-                    <div class="small"><i class="fas fa-heart"></i> Generated by <a href="https://wyam.io" class="text-light">Wyam</a> on <a href="https://appveyor.com" class="text-light">AppVeyor</a>, hosted at <a href="https://netlify.com" class="text-light">Netlify</a>, search by <a href="https://algolia.com" class="text-light">Algolia</a></div>
-                    <div class="mt-2"><a href="https://www.buymeacoffee.com/daveaglick" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a></div>
+                    <div class="small"><i class="fas fa-heart"></i> Generated by <a href="https://statiq.dev" class="text-light">Statiq</a>, hosted at <a href="https://netlify.com" class="text-light">Netlify</a>, search by <a href="https://algolia.com" class="text-light">Algolia</a></div>
+                    <div class="mt-2">
+                        <a class="github-button" href="https://github.com/sponsors/daveaglick" data-size="large" aria-label="Sponsor @@daveaglick on GitHub">Sponsor @@daveaglick</a>
+                    </div>
                 </b-container>
             </footer>
         </div>
