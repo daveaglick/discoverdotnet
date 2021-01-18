@@ -13,6 +13,6 @@ jobs:
         dotnet-version: '5.0.100' # SDK Version to use.
     - run: dotnet run -- deploy
       env:
-        GITHUB_TOKEN: $(PERSONAL_GITHUB_TOKEN)
-        NETLIFY_TOKEN: $(NETLIFY_TOKEN)
-        ALGOLIA_TOKEN: $(ALGOLIA_TOKEN)
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+        ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
