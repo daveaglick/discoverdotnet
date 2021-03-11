@@ -1,4 +1,4 @@
-SourceCode: https://github.com/7k8m/DirectSQL
+SourceCode: https://github.com/DirectSQL/DirectSQL
 NuGet:
   - DirectSQL
 Language: C#
