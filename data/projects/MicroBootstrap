@@ -1,0 +1,17 @@
+SourceCode: https://github.com/mehdihadeli/microbootstrap
+NuGet:
+  - https://www.nuget.org/packages/MicroBootstrap
+Language: C#
+Image: https://github.com/mehdihadeli/MicroBootstrap/blob/master/src/MicroBootstrap/icon.png?raw=true
+Title: MicroBootstrap
+Description: MicroBootstrap is a framework for quickly and conveniently creating microservices on .NET Core.
+Website: https://mehdihadeli.github.io/MicroBootstrap
+Chat: https://github.com/mehdihadeli/MicroBootstrap/discussions
+Twitter: https://twitter.com/mehdi_hadeli
+Platform: true
+Foundation: true
+Tags:
+  - .net core
+  - .net
+  - c#
+  - microservices
