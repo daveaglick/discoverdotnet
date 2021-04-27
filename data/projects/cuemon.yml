@@ -1,0 +1,48 @@
+SourceCode: https://github.com/gimlichael/Cuemon
+Language: C#
+NuGet:
+  - Cuemon.AspNetCore
+  - Cuemon.AspNetCore.Authentication
+  - Cuemon.AspNetCore.Mvc
+  - Cuemon.AspNetCore.Razor.TagHelpers
+  - Cuemon.Core
+  - Cuemon.Data
+  - Cuemon.Data.Integrity
+  - Cuemon.Data.SqlClient
+  - Cuemon.Diagnostics
+  - Cuemon.Extensions.AspNetCore
+  - Cuemon.Extensions.AspNetCore.Authentication
+  - Cuemon.Extensions.AspNetCore.Mvc
+  - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Newtonsoft.Json
+  - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Xml
+  - Cuemon.Extensions.Collections.Generic
+  - Cuemon.Extensions.Collections.Specialized
+  - Cuemon.Extensions.Core
+  - Cuemon.Extensions.Data
+  - Cuemon.Extensions.Data.Integrity
+  - Cuemon.Extensions.DependencyInjection
+  - Cuemon.Extensions.Diagnostics
+  - Cuemon.Extensions.Hosting
+  - Cuemon.Extensions.IO
+  - Cuemon.Extensions.Net
+  - Cuemon.Extensions.Newtonsoft.Json
+  - Cuemon.Extensions.Reflection
+  - Cuemon.Extensions.Runtime.Caching
+  - Cuemon.Extensions.Text
+  - Cuemon.Extensions.Threading
+  - Cuemon.Extensions.Xml
+  - Cuemon.Extensions.Xunit
+  - Cuemon.Extensions.Xunit.Hosting
+  - Cuemon.Extensions.Xunit.Hosting.AspNetCore
+  - Cuemon.Extensions.Xunit.Hosting.AspNetCore.Mvc
+  - Cuemon.IO
+  - Cuemon.Net
+  - Cuemon.Resilience
+  - Cuemon.Runtime.Caching
+  - Cuemon.Security.Cryptography
+  - Cuemon.Threading
+  - Cuemon.Xml
+Image: https://nblcdn.net/cuemon/128x128.png
+Website: https://www.cuemon.net/
+Docs: https://docs.cuemon.net/
+Title: Cuemon for .NET
