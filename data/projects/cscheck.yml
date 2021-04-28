@@ -1,0 +1,10 @@
+SourceCode: https://github.com/AnthonyLloyd/CsCheck
+Language: C#
+NuGet: CsCheck
+Image: https://raw.githubusercontent.com/AnthonyLloyd/CsCheck/master/CsCheck.png
+Twitter: CsCheck4
+Tags:
+  - Testing
+  - Performance
+  - Profiling
+  - Debugging
