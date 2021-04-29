@@ -1,0 +1,16 @@
+SourceCode: https://github.com/oqtane/oqtane.framework
+NuGet:
+  - Oqtane.Framework
+Language: c#
+Image: https://www.oqtane.org/Portals/_default/Skins/Oqtane/Images/logo.png
+Title: Oqtane - A Modular Application Framework for Blazor
+Website: https://www.oqtane.org/
+Docs: https://docs.oqtane.org/
+Chat: https://github.com/oqtane/oqtane.framework/discussions
+Twitter: https://twitter.com/oqtane
+Foundation: true
+Tags:
+  - Blazor
+  - C#
+  - ASP.NET
+  - WASM
