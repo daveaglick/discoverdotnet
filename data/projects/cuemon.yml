@@ -15,6 +15,7 @@ NuGet:
   - Cuemon.Extensions.AspNetCore.Mvc
   - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Newtonsoft.Json
   - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Xml
+  - Cuemon.Extensions.AspNetCore.Mvc.RazorPages
   - Cuemon.Extensions.Collections.Generic
   - Cuemon.Extensions.Collections.Specialized
   - Cuemon.Extensions.Core
