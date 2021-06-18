@@ -1,0 +1,12 @@
+SourceCode: https://github.com/CodeFactoryLLC/CodeFactory
+NuGet:
+  - https://www.nuget.org/packages/CodeFactorySDK/
+Language: C#
+Image: https://docs.codefactory.software/images/CodeFactoryLogoLarge.png
+Title: CodeFactory for Visual Studio 2019
+Description: The inspiration for this project: Too many applications are built with inconsistent "plumbing code" driving up support complexity and impacting delivery velocity.   What it does: #CodeFactory for #VisualStudio enables architects & dev leads to auto-generate & implement consistent design pattern adherence across the entire dev team.  How you/your team built it:  Cracked open the Visual Studio API and wrote an SDK tool allowing authors to build their own automation and a runtime client that consumes/interacts with CodeFactoryeXtension (CFX) files.   Challenges you/your team ran into: The Visual Studio API is a beast - this took a lot of work.   Accomplishments that you are/your team is proud of: Demonstrated at DotNetConf a usecase that auto-converted an ASP.net webform project to Blazor. Video of this on our website and the template is open source and well documented on GitHub,   What you/your team learned: We won't be the main source of automation ideas. The creator community is more able to meet the ever-changing needs and the SDK enables a maker-space community.   What's next for this project? We are focused on adoption and gathering automation scenarios ideas from the community.
+Website: www.codefactory.software
+Docs: https://docs.codefactory.software/guidance/Introduction/Overview.html
+Twitter: _codefactory_
+Tags:
+  - #codegeneration
