@@ -1,0 +1,25 @@
+SourceCode: https://github.com/dapr/dapr
+NuGet:
+  - Dapr.Client
+  - Dapr.AspNetCore
+  - Dapr.Actors
+  - Dapr.Actors.AspNetCore
+  - Dapr.Extensions.Configuration
+Language: Go
+Image: https://dapr.io/images/dapr.svg
+Title: DAPR
+Description: Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge.
+Website: https://dapr.io/
+Docs: https://docs.dapr.io/
+Chat: https://aka.ms/dapr-discord
+Microsoft: true
+Tags:
+  - kubernetes
+  - microservices
+  - state-management
+  - microservice
+  - serverless
+  - containers
+  - pubsub
+  - event-driven
+  - sidecar
