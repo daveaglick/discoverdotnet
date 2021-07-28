@@ -1,0 +1,10 @@
+SourceCode: https://github.com/ndsvw/Fluent-Random-Picker
+NuGet:
+  - FluentRandomPicker
+Language: C#
+Image: https://raw.githubusercontent.com/ndsvw/Fluent-Random-Picker/main/FluentRandomPicker/icon.png
+Docs: https://github.com/ndsvw/Fluent-Random-Picker#readme
+Tags:
+  - Utility
+  - Random
+  - Fluent
