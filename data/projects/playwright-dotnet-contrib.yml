@@ -1,0 +1,11 @@
+SourceCode: https://github.com/hlaueriksson/playwright-dotnet-contrib
+NuGet:
+  - PlaywrightContrib.Extensions
+  - PlaywrightContrib.FluentAssertions
+  - PlaywrightContrib.PageObjects
+Language: C#
+Image: https://raw.githubusercontent.com/hlaueriksson/playwright-dotnet-contrib/master/icon.png
+Tags:
+  - Testing
+  - Validation
+  - Web Utility
