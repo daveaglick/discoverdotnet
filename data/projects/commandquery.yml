@@ -7,15 +7,13 @@ NuGet:
   - CommandQuery.AWSLambda
   - CommandQuery.AzureFunctions
   - CommandQuery.Client
-  - CommandQuery.DependencyInjection
-  - CommandQuery.Extensions
+  - CommandQuery.GoogleCloudFunctions
 Language: C#
 Image: https://raw.githubusercontent.com/hlaueriksson/CommandQuery/master/icon.png
-Title: CommandQuery
-Description: Command Query Separation (CQS) for .NET Framework and .NET Core
 Tags:
   - API
   - API Client
   - ASP.NET
   - AWS
   - Azure
+  - GCP
