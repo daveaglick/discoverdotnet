@@ -14,12 +14,4 @@ Docs: https://docs.dapr.io/
 Chat: https://aka.ms/dapr-discord
 Microsoft: true
 Tags:
-  - kubernetes
-  - microservices
-  - state-management
-  - microservice
-  - serverless
-  - containers
-  - pubsub
-  - event-driven
-  - sidecar
+  - Distributed Computing
