@@ -66,6 +66,7 @@ namespace DiscoverDotnet.Analyzers
             "GUI",
             "Game Development",
             "Games",
+            "GCP",
             "Git",
             "Global Tool",
             "Graphics",
