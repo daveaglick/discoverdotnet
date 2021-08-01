@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DiscoverDotnet.Pipelines.Projects;
-using Microsoft.Extensions.Logging;
 using Statiq.Common;
 
 namespace DiscoverDotnet.Analyzers
