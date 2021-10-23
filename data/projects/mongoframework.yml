@@ -2,6 +2,7 @@ SourceCode: https://github.com/TurnerSoftware/MongoFramework
 NuGet:
   - MongoFramework
   - MongoFramework.Profiling.MiniProfiler
+Image: https://github.com/TurnerSoftware/MongoFramework/raw/main/images/icon.png
 Language: C#
 Tags:
   - Data Access
