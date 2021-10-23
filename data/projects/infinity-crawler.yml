@@ -1,7 +1,7 @@
 SourceCode: https://github.com/TurnerSoftware/InfinityCrawler
 NuGet:
   - InfinityCrawler
-Image: https://github.com/TurnerSoftware/InfinityCrawler/blob/main/images/icon.png
+Image: https://github.com/TurnerSoftware/InfinityCrawler/raw/main/images/icon.png
 Title: Infinity Crawler
 Language: C#
 Tags:
