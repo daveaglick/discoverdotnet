@@ -1,6 +1,7 @@
 SourceCode: https://github.com/TurnerSoftware/SitemapTools
 NuGet:
   - TurnerSoftware.SitemapTools
+Image: https://github.com/TurnerSoftware/SitemapTools/raw/main/images/icon.png
 Language: C#
 Title: Sitemap Tools
 Description: A sitemap (sitemap.xml) parsing and querying library
