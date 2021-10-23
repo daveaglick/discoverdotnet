@@ -2,7 +2,7 @@ SourceCode: https://github.com/TurnerSoftware/BuildVersioning
 NuGet:
   - TurnerSoftware.BuildVersioning
 Language: C#
-Image: https://github.com/TurnerSoftware/BuildVersioning/blob/main/images/icon.png
+Image: https://github.com/TurnerSoftware/BuildVersioning/raw/main/images/icon.png
 Title: Build Versioning
 Tags:
   - Versioning
