@@ -6,6 +6,7 @@ NuGet:
   - CacheTower.Providers.FileSystem.Json
   - CacheTower.Providers.FileSystem.Protobuf
   - CacheTower.Providers.Redis
+Image: https://github.com/TurnerSoftware/CacheTower/raw/main/images/icon.png
 Language: C#
 Title: Cache Tower
 Tags:
