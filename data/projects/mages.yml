@@ -1,0 +1,11 @@
+Image: https://raw.githubusercontent.com/FlorianRappl/Mages/master/logo.png
+Language: C#
+NuGet:
+  - Mages
+SourceCode: https://github.com/FlorianRappl/Mages
+Tags:
+  - Runtime
+  - Scripting
+Website: https://github.com/FlorianRappl/Mages/tree/devel/doc
+DiscoveryDate: 10/30/2021
+Comment: Great language for extensibility in your application.
