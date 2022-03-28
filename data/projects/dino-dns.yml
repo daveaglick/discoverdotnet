@@ -1,0 +1,8 @@
+SourceCode: https://github.com/TurnerSoftware/DinoDNS
+NuGet:
+  - TurnerSoftware.DinoDns
+Image: https://github.com/TurnerSoftware/DinoDNS/raw/main/images/icon.png
+Language: C#
+Title: Dino DNS
+Tags:
+  - Networking
