@@ -1,0 +1,14 @@
+SourceCode: https://github.com/DeeJayTC/net-dynamic-api
+NuGet:
+  - TCDev.ApiGenerator
+Language: C#
+Title: TCDev.ApiGenerator (WIP Name)
+Description: Allows creating of fully working CRUD APIs with OData functionality from just a simple class file
+Website: https://www.tcdev.de
+Docs: https://tcdev.gitbook.io/apigenerator-docs/
+Chat: https://discord.com/invite/pAbVu2jNA9
+Donations: https://github.com/sponsors/DeeJayTC
+Twitter: @timcadenbach (for now...no project account yet)
+Tags:
+  - EntityFramework
+  - API
