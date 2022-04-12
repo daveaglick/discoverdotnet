@@ -1,0 +1,21 @@
+SourceCode: https://github.com/unoplatform/uno
+NuGet:
+  - Uno.UI
+Language: C#
+Image: https://uno-website-assets.s3.amazonaws.com/wp-content/uploads/2021/03/24151905/uno-logo-tm.svg
+Title: Uno Platform
+Description: Build Mobile, Desktop and WebAssembly apps with C# and XAML.
+Website: https://platform.uno/
+Docs: https://platform.uno/docs/articles/intro.html
+Chat: https://discord.com/channels/372137812037730304/550416151172087808
+Twitter: https://twitter.com/UnoPlatform
+Tags:
+  - WinUI
+  - WPF
+  - XAML
+  - WASM
+  - Android
+  - iOS
+  - macOS
+  - Linux
+  - Productivity
