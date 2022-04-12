@@ -10,12 +10,10 @@ Docs: https://platform.uno/docs/articles/intro.html
 Chat: https://discord.com/channels/372137812037730304/550416151172087808
 Twitter: https://twitter.com/UnoPlatform
 Tags:
-  - WinUI
-  - WPF
+  - Application Framework
+  - GUI
   - XAML
   - WASM
   - Android
   - iOS
   - macOS
-  - Linux
-  - Productivity
