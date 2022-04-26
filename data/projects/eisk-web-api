@@ -1,0 +1,17 @@
+SourceCode: https://github.com/EISK/eisk.webapi
+NuGet:
+  - Eisk.WebApi
+Language: C#
+Title: EISK Web API
+Website: https://eisk.github.io
+Docs: Project templates based on latest .NET (v6.0) technologies for building scalable web api, along with clean architecture patterns.
+Twitter: @ashrafulalam
+Tags:
+  - ASP.NET
+  - .NET
+  - Web-API
+  - Template
+  - Starter-Kit
+  - boilerplate
+  - TDD
+  - Clean-Architecture
