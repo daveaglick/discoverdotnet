@@ -1,0 +1,17 @@
+SourceCode: https://github.com/jodydonetti/ZiggyCreatures.FusionCache
+NuGet:
+  - ZiggyCreatures.FusionCache
+  - ZiggyCreatures.FusionCache.Serialization.SystemTextJson
+  - ZiggyCreatures.FusionCache.Serialization.NewtonsoftJson
+  - ZiggyCreatures.FusionCache.Backplane.Memory
+  - ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis
+Language: C#
+Image: https://raw.githubusercontent.com/jodydonetti/ZiggyCreatures.FusionCache/main/docs/logo-256x256.png
+Title: FusionCache
+Description: FusionCache is an easy to use, high performance and robust cache with an optional distributed 2nd layer and some advanced features.
+Docs: https://github.com/jodydonetti/ZiggyCreatures.FusionCache
+Tags:
+  - Caching
+  - Distributed Computing
+  - Extensibility
+  - Performance
