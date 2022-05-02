@@ -5,7 +5,7 @@ Language: C#
 Title: EISK Web API
 Website: https://eisk.github.io
 Docs: Project templates based on latest .NET (v6.0) technologies for building scalable web api, along with clean architecture patterns.
-Twitter: @ashrafulalam
+Twitter: ashrafulalam
 Tags:
   - API
   - Templates
