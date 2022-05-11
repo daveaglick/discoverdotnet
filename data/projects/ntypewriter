@@ -1,0 +1,7 @@
+SourceCode: https://github.com/NeVeSpl/NTypewriter
+Language: C#
+Title: NTypewriter
+Description: File/code generator from scriban text templates populated with data about your C# code.
+Tags:
+  - scriban
+  - Templating
