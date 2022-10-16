@@ -10,10 +10,13 @@ NuGet:
   - Cuemon.Data.Integrity
   - Cuemon.Data.SqlClient
   - Cuemon.Diagnostics
+  - Cuemon.Extensions.Asp.Versioning
+  - Cuemon.Extensions.AspNetCore.Authentication.AwsSignature4
   - Cuemon.Extensions.AspNetCore
   - Cuemon.Extensions.AspNetCore.Authentication
   - Cuemon.Extensions.AspNetCore.Mvc
   - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Newtonsoft.Json
+  - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Text.Json
   - Cuemon.Extensions.AspNetCore.Mvc.Formatters.Xml
   - Cuemon.Extensions.AspNetCore.Mvc.RazorPages
   - Cuemon.Extensions.Collections.Generic
@@ -29,6 +32,8 @@ NuGet:
   - Cuemon.Extensions.Newtonsoft.Json
   - Cuemon.Extensions.Reflection
   - Cuemon.Extensions.Runtime.Caching
+  - Cuemon.Extensions.Swashbuckle.AspNetCore
+  - Cuemon.Extensions.Text.Json
   - Cuemon.Extensions.Text
   - Cuemon.Extensions.Threading
   - Cuemon.Extensions.Xml
