@@ -26,6 +26,7 @@ NuGet:
   - Cuemon.Extensions.Data.Integrity
   - Cuemon.Extensions.DependencyInjection
   - Cuemon.Extensions.Diagnostics
+  - Cuemon.Extensions.Globalization
   - Cuemon.Extensions.Hosting
   - Cuemon.Extensions.IO
   - Cuemon.Extensions.Net
