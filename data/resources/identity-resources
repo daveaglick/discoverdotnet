@@ -1,0 +1,8 @@
+Title: IdentityServer – IdentityResource vs. ApiResource vs. ApiScope
+Website: https://nestenius.se/2023/02/02/identityserver-identityresource-vs-apiresource-vs-apiscope/
+Description: Learn how to work with the various resource types in IdentityServer
+Tags:
+  - aspnetcore
+  - identityserver
+  - openidconnect
+  - oauth2
