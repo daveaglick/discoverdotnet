@@ -1,0 +1,7 @@
+Title: Troubleshooting JwtBearer authentication problems in ASP.NET Core
+Website: https://nestenius.se/2023/02/21/troubleshooting-jwtbearer-authentication-problems-in-asp-net-core/
+Description: Struggled to troubleshoot JwtBearer authentication problems in ASP.NET? I’ve written about some of  the best step-by-step ways to do so in this blog post.
+Tags:
+  - aspnetcore
+  - addjwtbearer
+  - jwt
