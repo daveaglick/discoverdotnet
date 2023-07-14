@@ -1,0 +1,11 @@
+SourceCode: https://github.com/riok/mapperly
+NuGet:
+  - Riok.Mapperly
+Language: C#
+Image: https://mapperly.riok.app/img/logo.svg
+Docs: https://mapperly.riok.app/
+Donations: https://github.com/sponsors/riok
+Tags:
+  - Code Generation
+  - Utility
+  - Data Mapping
