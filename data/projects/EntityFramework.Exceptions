@@ -1,0 +1,8 @@
+SourceCode: https://github.com/Giorgi/EntityFramework.Exceptions/
+NuGet:
+  - EntityFramework.Exceptions
+Language: C#
+Tags:
+  - ORM
+  - Database
+Donations: https://github.com/sponsors/Giorgi
