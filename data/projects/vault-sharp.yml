@@ -1,0 +1,10 @@
+SourceCode: https://github.com/rajanadar/VaultSharp
+NuGet:
+  - VaultSharp
+Language: C#
+Title: VaultSharp
+Description: The most comprehensive cross-platform .NET Library for HashiCorp's Vault - A Secret Management System
+Website: https://rajanadar.github.io/VaultSharp/
+Tags:
+  - Security
+  - Configuration
