@@ -1,6 +1,6 @@
 SourceCode: https://github.com/stratio-automotive/Stratio.Extensions.Configuration.Vault
 NuGet:
-  - https://www.nuget.org/packages/Stratio.Extensions.Configuration.Vault
+  - Stratio.Extensions.Configuration.Vault
 Language: C#
 Title: Stratio.Extentions.Configuration.Vault
 Description: Simplifying Secrets Management in .NET using Hashicorp Vault (powered by Stratio)
