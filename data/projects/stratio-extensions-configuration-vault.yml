@@ -7,9 +7,5 @@ Description: Simplifying Secrets Management in .NET using Hashicorp Vault (power
 Website: www.stratioautomotive.com
 Docs: https://stratio-automotive.github.io/Stratio.Extensions.Configuration.Vault/
 Tags:
-  - Hashicorp Vault
-  - CSharp
-  - Library
-  - DotNet
-  - .NET
-  - 
+  - Security
+  - Configuration
