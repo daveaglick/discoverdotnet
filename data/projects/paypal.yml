@@ -1,5 +1,0 @@
-Language: C#
-NuGet: PayPalMerchantSDK
-SourceCode: https://github.com/paypal/merchant-sdk-dotnet
-Tags:
-  - Commerce
